@@ -10,4 +10,6 @@ import Foundation
 protocol ViewRepresentable {
     func setUpViews()
     func setupConstraints()
+    func configure(titleText:String, descriptionText: String?, buttonTitleText: String)
 }
+

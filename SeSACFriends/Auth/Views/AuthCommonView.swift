@@ -8,7 +8,6 @@
 import UIKit
 import SnapKit
 
-
 class AuthCommonView: UIView, ViewRepresentable {
     let labelView: UIStackView = {
         let view = UIStackView()
@@ -40,7 +39,7 @@ class AuthCommonView: UIView, ViewRepresentable {
     
     let button: SeSACButton = {
         let button = SeSACButton()
-        button.size = .h40
+        button.size = .h48
         return button
     }()
 
@@ -62,6 +61,12 @@ class AuthCommonView: UIView, ViewRepresentable {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+    
+    func configure(titleText: String, descriptionText: String? = nil, buttonTitleText: String = "다음") {
+        button.setTitle(buttonTitleText, for: .normal)
+        titleLabel.text = titleText
+        descriptionLabel?.text = descriptionText
     }
     
     func setUpViews() {
@@ -86,7 +91,6 @@ class AuthCommonView: UIView, ViewRepresentable {
             $0.centerY.equalToSuperview().multipliedBy(0.8)
         }
         labelView.snp.makeConstraints {
-            $0.height.equalTo(100)
             $0.leading.trailing.equalToSuperview()
         }
         titleLabel.snp.makeConstraints {

@@ -11,7 +11,9 @@ class FontTheme {
     static let NotoSansRegular = "NotoSansKR-Regular"
     static let NotoSansMedium = "NotoSansKR-Medium"
     
-    static let Display1_R20 = UIFont(name: FontTheme.NotoSansRegular, size: 20)!
+    static var Display1_R20: UIFont {
+        return UIFont(name: FontTheme.NotoSansRegular, size: 20)!
+    }
     static let Title1_M16 = UIFont(name: FontTheme.NotoSansMedium, size: 16)!
     static let Title2_R16 = UIFont(name: FontTheme.NotoSansRegular, size: 16)!
     static let Title3_M14 = UIFont(name: FontTheme.NotoSansMedium, size: 14)!
