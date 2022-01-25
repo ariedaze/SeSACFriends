@@ -14,7 +14,7 @@ final class AuthNicknameViewController: UIViewController {
     let mainView = AuthTextFieldView()
     
     let viewModel = AuthNicknameViewModel()
-    let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     
     override func loadView() {
         self.view = mainView
@@ -32,17 +32,29 @@ final class AuthNicknameViewController: UIViewController {
     
     private func bind() {
         let input = AuthNicknameViewModel.Input(
-            nicknameText: mainView.textField.rx.text,
-            buttonClicked: mainView.button.rx.tap)
+            buttonTap: mainView.button.rx.tap.asSignal(),
+            nicknameText: mainView.textField.rx.text)
         let output = viewModel.transform(input: input)
         
         output.validStatus
             .map { $0 ? SeSACButton.Status.fill : .disable }
             .bind(to: mainView.button.rx.status)
             .disposed(by: disposeBag)
-
-        output.sceneTransition
-            .subscribe { _ in
+        
+        output.toastMessage
+            .drive(onNext: { [unowned self] message in
+                self.view.makeToast(message, position: .top)
+            })
+            .disposed(by: disposeBag)
+        
+        output.invalidTap
+            .drive { a in
+                print("invalid", a)
+            }
+            .disposed(by: disposeBag)
+        
+        output.validTap
+            .drive { _ in
                 let vc = AuthBirthViewController()
                 self.navigationController?.pushViewController(vc, animated: true)
             }

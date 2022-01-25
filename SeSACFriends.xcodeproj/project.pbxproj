@@ -39,7 +39,7 @@
 		E5754074279A4F3A001F9247 /* AuthGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5754073279A4F3A001F9247 /* AuthGenderViewController.swift */; };
 		E5754076279A4F68001F9247 /* AuthBirthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5754075279A4F68001F9247 /* AuthBirthViewController.swift */; };
 		E5754078279B0BDC001F9247 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5754077279B0BDC001F9247 /* AuthModel.swift */; };
-		E575407D279B0D2B001F9247 /* EmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E575407C279B0D2B001F9247 /* EmailViewModel.swift */; };
+		E575407D279B0D2B001F9247 /* AuthEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E575407C279B0D2B001F9247 /* AuthEmailViewModel.swift */; };
 		E5754081279D1AB8001F9247 /* AuthTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5754080279D1AB8001F9247 /* AuthTextFieldView.swift */; };
 		E5754083279D1EE9001F9247 /* AuthCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5754082279D1EE9001F9247 /* AuthCodeView.swift */; };
 		E5754085279D1F0B001F9247 /* AuthBirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5754084279D1F0B001F9247 /* AuthBirthView.swift */; };
@@ -89,7 +89,7 @@
 		E5754073279A4F3A001F9247 /* AuthGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthGenderViewController.swift; sourceTree = "<group>"; };
 		E5754075279A4F68001F9247 /* AuthBirthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBirthViewController.swift; sourceTree = "<group>"; };
 		E5754077279B0BDC001F9247 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
-		E575407C279B0D2B001F9247 /* EmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewModel.swift; sourceTree = "<group>"; };
+		E575407C279B0D2B001F9247 /* AuthEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEmailViewModel.swift; sourceTree = "<group>"; };
 		E5754080279D1AB8001F9247 /* AuthTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextFieldView.swift; sourceTree = "<group>"; };
 		E5754082279D1EE9001F9247 /* AuthCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCodeView.swift; sourceTree = "<group>"; };
 		E5754084279D1F0B001F9247 /* AuthBirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBirthView.swift; sourceTree = "<group>"; };
@@ -250,7 +250,7 @@
 			children = (
 				E57540642798820A001F9247 /* AuthPhoneViewModel.swift */,
 				E575406D27994045001F9247 /* AuthCodeViewModel.swift */,
-				E575407C279B0D2B001F9247 /* EmailViewModel.swift */,
+				E575407C279B0D2B001F9247 /* AuthEmailViewModel.swift */,
 				E5754097279DDA93001F9247 /* AuthNicknameViewModel.swift */,
 				E57540A0279E8A2B001F9247 /* AuthBirthViewModel.swift */,
 				E57540A2279E8A3A001F9247 /* AuthGenderViewModel.swift */,
@@ -392,7 +392,7 @@
 				E575409A279DDF21001F9247 /* APIService.swift in Sources */,
 				E575401E27968ED0001F9247 /* SceneDelegate.swift in Sources */,
 				E5754098279DDA93001F9247 /* AuthNicknameViewModel.swift in Sources */,
-				E575407D279B0D2B001F9247 /* EmailViewModel.swift in Sources */,
+				E575407D279B0D2B001F9247 /* AuthEmailViewModel.swift in Sources */,
 				E5754085279D1F0B001F9247 /* AuthBirthView.swift in Sources */,
 				E575404E279705ED001F9247 /* SeSACButton.swift in Sources */,
 				E5754063279878B8001F9247 /* ViewRepresentable.swift in Sources */,
@@ -471,7 +471,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -526,7 +526,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

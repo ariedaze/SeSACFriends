@@ -1,28 +1,34 @@
 //
-//  AuthNicknameViewModel.swift
+//  AuthEmailViewModel.swift
 //  SeSACFriends
 //
-//  Created by Ahyeonway on 2022/01/24.
+//  Created by Ahyeonway on 2022/01/22.
 //
 
 import Foundation
 import RxSwift
 import RxCocoa
 
-class AuthNicknameViewModel: ViewModelType, ValidationViewModel {
-    var validationFailed = "닉네임은 1자 이상 10자 이내로 부탁드려요"
+class AuthEmailViewModel: ViewModelType, ValidationViewModel {
+    var validationFailed = "이메일 형식이 올바르지 않습니다."
     var toastMessage = PublishRelay<String>()
     
     func validate(_ text: String) -> Bool {
-        guard text.count >= 1 && text.count <= 10 else {
+        guard isPhonePattern(text: text) else {
             return false
         }
         return true
     }
+    func isPhonePattern(text : String) -> Bool{
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: text)
+    }
     
     struct Input {
         let buttonTap: Signal<Void>
-        let nicknameText: ControlProperty<String?>
+        let emailText: ControlProperty<String?>
     }
     
     struct Output {
@@ -38,7 +44,7 @@ class AuthNicknameViewModel: ViewModelType, ValidationViewModel {
         
         // button tapped and invalid
         let invalidInputError = input.buttonTap
-            .withLatestFrom(input.nicknameText.asDriver())
+            .withLatestFrom(input.emailText.asDriver())
             .filter {
                 if !self.validate($0 ?? "") {
                     self.toastMessage.accept(self.validationFailed)
@@ -50,7 +56,7 @@ class AuthNicknameViewModel: ViewModelType, ValidationViewModel {
         
         // button tapped and valid
         let validInputResult = input.buttonTap
-            .withLatestFrom(input.nicknameText.asDriver())
+            .withLatestFrom(input.emailText.asDriver())
             .filter {
                 if self.validate($0 ?? "") {
                     return true
@@ -59,7 +65,7 @@ class AuthNicknameViewModel: ViewModelType, ValidationViewModel {
             }
             .asDriver(onErrorJustReturn: "")
 
-        let nicknameValidationResult = input.nicknameText
+        let emailTextValidationResult = input.emailText
             .orEmpty
             .map { self.validate($0) }
             .share(replay: 1, scope: .whileConnected)
@@ -67,9 +73,8 @@ class AuthNicknameViewModel: ViewModelType, ValidationViewModel {
         return Output(
             invalidTap: invalidInputError,
             validTap: validInputResult,
-            validStatus: nicknameValidationResult,
+            validStatus: emailTextValidationResult,
             toastMessage: toastMessage.asDriver(onErrorJustReturn: ""))
     }
 
 }
-
