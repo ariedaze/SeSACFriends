@@ -38,8 +38,6 @@ final class AuthCodeView: AuthCommonView {
             $0.leading.equalToSuperview().offset(16)
             $0.height.equalTo(48)
         }
-        // remove
-        textField.backgroundColor = .yellow
         
         resetButton.snp.makeConstraints {
             $0.leading.equalTo(textField.snp.trailing).offset(8)

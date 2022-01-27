@@ -23,7 +23,5 @@ final class AuthTextFieldView: AuthCommonView {
             $0.trailing.equalToSuperview().offset(-16)
             $0.height.equalTo(48)
         }
-        // remove
-        textField.backgroundColor = .yellow
     }
 }

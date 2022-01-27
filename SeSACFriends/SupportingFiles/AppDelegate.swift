@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
-        Thread.sleep(forTimeInterval: 5.0)
+//        Thread.sleep(forTimeInterval: 5.0)
         // 알림 등록(권한)
         if #available(iOS 10.0, *) {
           // For iOS 10 display notification (sent via APNS)
@@ -44,7 +44,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("FCM registration token: \(token)")
           }
         }
-//        
+
+        Auth.auth().currentUser?.getIDToken(completion: { id, error in
+            print(id, "내가 id다!!!!ㄱ")
+        })
         return true
     }
 

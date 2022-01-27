@@ -28,12 +28,22 @@ class SeSACTextField: UITextField {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = .lightGray
     }
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     override var intrinsicContentSize: CGSize {
         return CGSize(width: bounds.width, height: textInsets.top)
+    }
+    
+    enum Status {
+        case inactive
+        case focus
+        case active
+        case disable
+        case error
+        case success
     }
 }
 

@@ -54,6 +54,7 @@ final class AuthCodeViewController: UIViewController {
         viewModel.verifyCodeNumber { result in
             switch result {
             case .success(let result):
+                print("idididid", result)
                 let vc = AuthNicknameViewController()
                 self.navigationController?.pushViewController(vc, animated: true)
             case .failure(let error):

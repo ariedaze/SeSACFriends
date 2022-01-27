@@ -8,28 +8,23 @@
 import Foundation
 import FirebaseAuth
 import RxSwift
+import RxCocoa
 import RxRelay
 
-class AuthPhoneViewModel: ValidationViewModel {
-    
+class AuthPhoneViewModel: ValidationViewModel, ViewModelType {
+    var validationSuccess: String = "전화 번호 인증 시작"
     var validationFailed: String = "잘못된 전화번호 형식입니다."
-    var data = BehaviorRelay<String>(value: "") // phone number
-    var errorMessage = BehaviorRelay<String>(value: "")
-    
-    func isValid() -> Observable<Bool> {
-        return data.map { self.validate($0) }
-    }
-    
+    var toastMessage = PublishRelay<String>()
+
     func validate(_ text: String) -> Bool {
         guard isPhonePattern(text) else {
-            errorMessage.accept(validationFailed)
             return false
         }
-        errorMessage.accept("")
         return true
     }
     
-    func makePhonePattern(with mask: String, phone: String) -> String {
+    func makePhonePattern(phone: String) -> String {
+        let mask = "XXX-XXXX-XXXX"
         let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
         var result = ""
         var index = numbers.startIndex // numbers iterator
@@ -49,25 +44,64 @@ class AuthPhoneViewModel: ValidationViewModel {
         let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegEx)
         return phoneTest.evaluate(with: text)
     }
-    
-    
-    func verifyPhoneNumber(completion: @escaping (Result<String?, Error>) -> Void) {
-        let phoneNumber = "+82\(data.value.replacingOccurrences(of: "-", with: ""))"
-        PhoneAuthProvider.provider()
-            .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
-                if let error = error {
-                    print("error")
-                    completion(.failure(error))
-                    
-//                    switch error.localizedDescription {
-//                        case
-//                    }
-                    
-                    return
-                }
-                AppSettings[.phoneNumber] = phoneNumber
-                // Sign in using the verificationID and the code sent to the user
-                completion(.success(verificationID))
-            }
+
+    struct Input {
+        let buttonTap: Signal<Void>
+        let phoneText: ControlProperty<String?>
     }
+    
+    struct Output {
+        let phonePattern: Observable<String>
+        let validStatus: Observable<Bool>
+        let toastMessage: Driver<String>
+        let verificationSuccess: Driver<String>
+    }
+    private let verificationSuccess = PublishRelay<String>()
+    
+    var disposeBag = DisposeBag()
+    
+    func transform(input: Input) -> Output {
+        let _ = input.buttonTap
+            .withLatestFrom(input.phoneText.asDriver())
+            .filter {
+                if self.validate($0 ?? "") { // button tapped and valid
+                    self.toastMessage.accept(self.validationSuccess)
+                    return true
+                }
+                self.toastMessage.accept(self.validationFailed) // button tapped and invalid
+                return false
+            }
+            .emit { [weak self] res in
+                AppSettings[.phoneNumber] = res
+                /*
+                 Todo:
+                 과도한 인증 시도가 있었습니다. 나중에 다시 시도해 주세요
+                 에러가 발생했습니다. 다시 시도해주세요
+                */
+                
+                FirebaseManager.verify(phoneNumber: res)
+                    .subscribe(onNext: {
+                        self?.verificationSuccess.accept($0)
+                    })
+                    .disposed(by: self!.disposeBag)
+            }
+            .disposed(by: disposeBag)
+
+        let phoneValidationResult = input.phoneText
+            .orEmpty
+            .map { self.validate($0) }
+            .share(replay: 1, scope: .whileConnected)
+        
+        let phonePattern = input.phoneText
+            .orEmpty
+            .map { self.makePhonePattern(phone: $0) }
+
+        return Output(
+            phonePattern: phonePattern,
+            validStatus: phoneValidationResult,
+            toastMessage: toastMessage.asDriver(onErrorJustReturn: ""),
+            verificationSuccess: verificationSuccess.asDriver(onErrorJustReturn: "")
+        )
+    }
+
 }

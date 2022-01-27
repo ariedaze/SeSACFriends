@@ -9,6 +9,7 @@ import Foundation
 import RxSwift
 import RxRelay
 
+
 class AuthCodeViewModel: ValidationViewModel {
     var verificationID: String = ""
     var validationFailed: String = ""
@@ -28,6 +29,8 @@ class AuthCodeViewModel: ValidationViewModel {
         return true
     }
     func verifyCodeNumber(completion: @escaping (Result<String?, Error>) -> Void) {
+        print(verificationID, "veryID!!!")
+        
         FirebaseManager.signInWithCredential(
             verificationId: verificationID,
             verificationCode: data.value) { result in

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E50C3AE327A1C6490085CABD /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C3AE227A1C6490085CABD /* Reusable.swift */; };
 		E575401C27968ED0001F9247 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E575401B27968ED0001F9247 /* AppDelegate.swift */; };
 		E575401E27968ED0001F9247 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E575401D27968ED0001F9247 /* SceneDelegate.swift */; };
 		E575402527968ED3001F9247 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E575402427968ED3001F9247 /* Assets.xcassets */; };
@@ -57,9 +58,16 @@
 		E57540A827A09574001F9247 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57540A727A09574001F9247 /* AuthAPI.swift */; };
 		E57540AE27A09B49001F9247 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = E57540AD27A09B49001F9247 /* Moya */; };
 		E57540B027A09B49001F9247 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = E57540AF27A09B49001F9247 /* RxMoya */; };
+		E57540B227A12E4F001F9247 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57540B127A12E4E001F9247 /* TabBarController.swift */; };
+		E57540B827A18FBF001F9247 /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57540B727A18FBF001F9247 /* MyInfoViewController.swift */; };
+		E57540BA27A18FDB001F9247 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57540B927A18FDB001F9247 /* ChatViewController.swift */; };
+		E57540BC27A18FF1001F9247 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57540BB27A18FF1001F9247 /* ShopViewController.swift */; };
+		E57540BE27A1900C001F9247 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57540BD27A1900C001F9247 /* MapViewController.swift */; };
+		E57540C027A19354001F9247 /* MyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57540BF27A19354001F9247 /* MyInfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E50C3AE227A1C6490085CABD /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		E575401827968ED0001F9247 /* SeSACFriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSACFriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E575401B27968ED0001F9247 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E575401D27968ED0001F9247 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +112,12 @@
 		E57540A0279E8A2B001F9247 /* AuthBirthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBirthViewModel.swift; sourceTree = "<group>"; };
 		E57540A2279E8A3A001F9247 /* AuthGenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthGenderViewModel.swift; sourceTree = "<group>"; };
 		E57540A727A09574001F9247 /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
+		E57540B127A12E4E001F9247 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		E57540B727A18FBF001F9247 /* MyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewController.swift; sourceTree = "<group>"; };
+		E57540B927A18FDB001F9247 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		E57540BB27A18FF1001F9247 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
+		E57540BD27A1900C001F9247 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		E57540BF27A19354001F9247 /* MyInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +158,10 @@
 		E575401A27968ED0001F9247 /* SeSACFriends */ = {
 			isa = PBXGroup;
 			children = (
+				E57540B627A178F6001F9247 /* MyInfo */,
+				E57540B527A178EE001F9247 /* Chat */,
+				E57540B427A178E1001F9247 /* Shop */,
+				E57540B327A178C7001F9247 /* Map */,
 				E5754088279D24CD001F9247 /* Manager */,
 				E575403127969382001F9247 /* Auth */,
 				E575404C279705D6001F9247 /* CustomView */,
@@ -218,6 +236,7 @@
 			children = (
 				E575404D279705ED001F9247 /* SeSACButton.swift */,
 				E57540662799255C001F9247 /* SeSACTextField.swift */,
+				E57540B127A12E4E001F9247 /* TabBarController.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -265,6 +284,7 @@
 			children = (
 				E5754062279878B8001F9247 /* ViewRepresentable.swift */,
 				E575409B279DF222001F9247 /* ViewModelProtocol.swift */,
+				E50C3AE227A1C6490085CABD /* Reusable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -285,6 +305,39 @@
 				E57540A727A09574001F9247 /* AuthAPI.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E57540B327A178C7001F9247 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				E57540BD27A1900C001F9247 /* MapViewController.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		E57540B427A178E1001F9247 /* Shop */ = {
+			isa = PBXGroup;
+			children = (
+				E57540BB27A18FF1001F9247 /* ShopViewController.swift */,
+			);
+			path = Shop;
+			sourceTree = "<group>";
+		};
+		E57540B527A178EE001F9247 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				E57540B927A18FDB001F9247 /* ChatViewController.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		E57540B627A178F6001F9247 /* MyInfo */ = {
+			isa = PBXGroup;
+			children = (
+				E57540B727A18FBF001F9247 /* MyInfoViewController.swift */,
+				E57540BF27A19354001F9247 /* MyInfoView.swift */,
+			);
+			path = MyInfo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -385,7 +438,10 @@
 				E5754087279D1F28001F9247 /* AuthGenderView.swift in Sources */,
 				E575403C2796A586001F9247 /* FontTHeme.swift in Sources */,
 				E575403627969698001F9247 /* UIColor+Extension.swift in Sources */,
+				E57540BA27A18FDB001F9247 /* ChatViewController.swift in Sources */,
+				E57540C027A19354001F9247 /* MyInfoView.swift in Sources */,
 				E575408F279DB92D001F9247 /* FirebaseManager.swift in Sources */,
+				E50C3AE327A1C6490085CABD /* Reusable.swift in Sources */,
 				E5754091279DD0B6001F9247 /* UIViewController+Extension.swift in Sources */,
 				E57540672799255C001F9247 /* SeSACTextField.swift in Sources */,
 				E5754070279A4ED2001F9247 /* AuthEmailViewController.swift in Sources */,
@@ -396,16 +452,20 @@
 				E575403827969EA1001F9247 /* AuthPhoneNumberViewController.swift in Sources */,
 				E5754033279693D9001F9247 /* ColorTheme.swift in Sources */,
 				E57540A1279E8A2B001F9247 /* AuthBirthViewModel.swift in Sources */,
+				E57540BC27A18FF1001F9247 /* ShopViewController.swift in Sources */,
 				E575401C27968ED0001F9247 /* AppDelegate.swift in Sources */,
 				E5754081279D1AB8001F9247 /* AuthTextFieldView.swift in Sources */,
 				E5754083279D1EE9001F9247 /* AuthCodeView.swift in Sources */,
 				E575405827971B3B001F9247 /* AuthCommonView.swift in Sources */,
 				E575401E27968ED0001F9247 /* SceneDelegate.swift in Sources */,
 				E5754098279DDA93001F9247 /* AuthNicknameViewModel.swift in Sources */,
+				E57540B827A18FBF001F9247 /* MyInfoViewController.swift in Sources */,
 				E57540A827A09574001F9247 /* AuthAPI.swift in Sources */,
 				E575407D279B0D2B001F9247 /* AuthEmailViewModel.swift in Sources */,
 				E5754085279D1F0B001F9247 /* AuthBirthView.swift in Sources */,
 				E575404E279705ED001F9247 /* SeSACButton.swift in Sources */,
+				E57540BE27A1900C001F9247 /* MapViewController.swift in Sources */,
+				E57540B227A12E4F001F9247 /* TabBarController.swift in Sources */,
 				E5754063279878B8001F9247 /* ViewRepresentable.swift in Sources */,
 				E5754076279A4F68001F9247 /* AuthBirthViewController.swift in Sources */,
 				E575406C27993D2B001F9247 /* AuthCodeViewController.swift in Sources */,

@@ -8,12 +8,13 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Toast
 
 final class AuthPhoneNumberViewController: UIViewController {
-    let viewModel = AuthPhoneViewModel()
-    let disposeBag = DisposeBag()
-    
     let mainView = AuthTextFieldView()
+    
+    let viewModel = AuthPhoneViewModel()
+    var disposeBag = DisposeBag()
     
     override func loadView() {
         self.view = mainView
@@ -27,47 +28,39 @@ final class AuthPhoneNumberViewController: UIViewController {
             titleText: "새싹 서비스 이용을 위해\n휴대폰 번호를 입력해 주세요",
             buttonTitleText: "인증 문자 받기"
         )
-        
-        // action
-        mainView.button.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
     }
-    
-    @objc func buttonClicked() {
-        viewModel.verifyPhoneNumber { result in
-            switch result {
-            case .success(let verificationID):
-                let vc = AuthCodeViewController()
-                vc.viewModel.verificationID = verificationID ?? ""
-                self.navigationController?.pushViewController(vc, animated: true)
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
+
     
     func bind(){
-        mainView.textField.rx.text
-            .orEmpty
-            .changed
-            .map { text in
-                text.phoneFormat(with: "XXX-XXXX-XXXX")
-            }
-            .bind(to: self.mainView.textField.rx.text)
+        let input = AuthPhoneViewModel.Input(
+            buttonTap: mainView.button.rx.tap.asSignal(),
+            phoneText: mainView.textField.rx.text)
+        
+        let output = viewModel.transform(input: input)
+        
+        output.phonePattern
+            .bind(to: mainView.textField.rx.text)
             .disposed(by: disposeBag)
         
-        // input: 전화번호 입력
-        mainView.textField.rx.text
-            .orEmpty
-            .distinctUntilChanged()
-            .bind(to: viewModel.data) // viewmodel에게 알려주기
-            .disposed(by: disposeBag)
-
-        // output:
-        // 1. 번호 체크 결과 & 버튼의 상태
-        viewModel.isValid()
-            .map { $0 ? .fill : .disable }
+        output.validStatus
+            .map {$0 ? SeSACButton.Status.fill : .disable}
             .bind(to: mainView.button.rx.status)
             .disposed(by: disposeBag)
+        
+        output.toastMessage
+            .drive(onNext: { [unowned self] message in
+                self.view.makeToast(message, position: .top)
+            })
+            .disposed(by: disposeBag)
+        
+        output.verificationSuccess
+            .drive { verificationID in
+                let vc = AuthCodeViewController()
+                vc.viewModel.verificationID = verificationID
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            .disposed(by: disposeBag)
+
     }
     
 

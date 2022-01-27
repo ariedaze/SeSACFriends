@@ -7,8 +7,24 @@
 
 import Foundation
 import FirebaseAuth
+import RxSwift
 
 class FirebaseManager {
+    static func verify(phoneNumber: String?) -> Observable<String> {
+        let phoneNumber = "+82\(phoneNumber!.replacingOccurrences(of: "-", with: ""))"
+        return Observable.create { observer in
+            PhoneAuthProvider.provider()
+                .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
+                    if let error = error {
+                        observer.onError(error)
+                    }
+                    observer.onNext(verificationID ?? "")
+                    observer.onCompleted()
+                }
+            return Disposables.create()
+        }
+    }
+    
     static func signInWithCredential(verificationId: String, verificationCode: String, completion: @escaping (Result<String?, Error>) -> Void) {
         let credential = PhoneAuthProvider.provider().credential(
             withVerificationID: verificationId,
@@ -30,6 +46,7 @@ class FirebaseManager {
         let user = Auth.auth().currentUser
         if let user = user {
             user.getIDToken { id, error in
+                print(id, "id주세요ㅠㅠ")
                 if let error = error {
                     completion(.failure(error))
                 }
@@ -38,4 +55,5 @@ class FirebaseManager {
             }
         }
     }
+
 }

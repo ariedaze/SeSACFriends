@@ -10,7 +10,7 @@ import RxMoya
 import RxSwift
 
 enum AuthAPI {
-    case signup
+    case signup(phone: String, nick: String)
     case update_fcm
     case withdraw
 }
@@ -22,6 +22,8 @@ extension AuthAPI: TargetType {
     
     var path: String {
         switch self {
+        case .update_fcm:
+            return "/update_fcm_token"
         case .withdraw:
             return "/withdraw"
         default:
@@ -38,18 +40,38 @@ extension AuthAPI: TargetType {
         }
     }
     
+    var sampleData: Data {
+        return Data()
+    }
+    
     var task: Task {
         switch self {
-        case let .signup:
-            return .requestPlain
+        case .signup:
+            return .requestParameters(
+                  parameters: [
+                    "phoneNumber" : "+821099999999",
+                    "FCMtoken" : "",
+                    "nick": "길라다?",
+                    "birth": "1995-01-01T09:23:44.054Z",
+                    "email": "example@example.com",
+                    "gender" : 0],
+                  encoding: URLEncoding.default)
+              
         default:
             return .requestPlain
         }
     }
     
     var headers: [String : String]? {
-        return nil
+        return [
+            "Content-Type": "application/x-www-form-urlencoded",
+            "idtoken": ""
+        ]
     }
+    
+//    public var validationType: ValidationType {
+//      return .successCodes
+//    }
 
 }
 
