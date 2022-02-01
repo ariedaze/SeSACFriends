@@ -34,21 +34,21 @@ class AuthCodeViewModel: ValidationViewModel {
         FirebaseManager.signInWithCredential(
             verificationId: verificationID,
             verificationCode: data.value) { result in
-            switch result {
-            case .success(_):
-                FirebaseManager.setIdToken { result in
-                    switch result {
-                    case .success(_):
-                        completion(.success(nil))
-                    case .failure(let error):
-                        completion(.failure(error)) //토스트: 에러가 발생했습니다. 잠시 후 다시 시도해주세요
+                switch result {
+                case .success(_):
+                    FirebaseManager.setIdToken { result in
+                        switch result {
+                        case .success(_):
+                            completion(.success(nil))
+                        case .failure(let error):
+                            completion(.failure(error)) //토스트: 에러가 발생했습니다. 잠시 후 다시 시도해주세요
+                        }
                     }
+                    case .failure(let error):
+                        print(error)
+                        completion(.failure(error))
+                    
                 }
-            case .failure(let error):
-                print(error)
-                completion(.failure(error))
             }
-        }
-        
     }
 }

@@ -6,37 +6,70 @@
 //
 
 import UIKit
-
-private enum Constants {
-    static let offset: CGFloat = 8
-    static let placeholderSize: CGFloat = 14
-}
+import SnapKit
 
 class SeSACTextField: UITextField {
+    
     private var border = UIView()
     private var label = UILabel()
     
+    override var placeholder: String? {
+        didSet {
+            label.text = placeholder
+            attributedPlaceholder = NSAttributedString(string: placeholder ?? "", attributes: [
+                NSAttributedString.Key.foregroundColor: ColorTheme.gray7,
+                NSAttributedString.Key.font: FontTheme.Title4_R14
+            ])
+        }
+    }
+    
+    var status: Status = .inactive {
+        didSet {
+            configuration()
+        }
+    }
+    private let insets = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
+
+    private var isEmpty: Bool {
+        text?.isEmpty ?? true
+    }
+    
     // font: TITLE4
-    
-    private var labelHeight: CGFloat {
-        ceil(font?.withSize(Constants.placeholderSize).lineHeight ?? 0)
-    }
-    
-    private var textInsets: UIEdgeInsets {
-        UIEdgeInsets(top: Constants.offset + labelHeight, left: 12, bottom: Constants.offset, right: -12)
-    }
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .lightGray
+        self.layer.cornerRadius = 4
+        setUp()
+        configuration()
+        addTarget(self, action: #selector(handleEditing), for: .allEditingEvents)
     }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    override var intrinsicContentSize: CGSize {
-        return CGSize(width: bounds.width, height: textInsets.top)
+
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: insets)
     }
     
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: insets)
+    }
+    
+    @objc private func handleEditing() {
+        self.status = isEmpty ? .inactive : .focus
+    }
+    
+    private func setUp() {
+        addSubview(border)
+        border.snp.makeConstraints {
+            $0.leading.trailing.bottom.equalToSuperview()
+            $0.height.equalTo(1)
+        }
+    }
+}
+
+extension SeSACTextField {
     enum Status {
         case inactive
         case focus
@@ -45,6 +78,22 @@ class SeSACTextField: UITextField {
         case error
         case success
     }
+    
+    private func configuration() {
+        switch status {
+        case .inactive:
+            self.border.backgroundColor = ColorTheme.gray3
+        case .focus:
+            self.border.backgroundColor = ColorTheme.black
+        case .active:
+            self.border.backgroundColor = ColorTheme.gray3
+        case .disable:
+            self.border.backgroundColor = .clear
+        case .error:
+            self.border.backgroundColor = ColorTheme.error
+        case .success:
+            self.border.backgroundColor = ColorTheme.success
+
+        }
+    }
 }
-
-

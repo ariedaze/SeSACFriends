@@ -18,7 +18,7 @@ final class AuthTextFieldView: AuthCommonView {
     override func setupConstraints() {
         super.setupConstraints()
         textField.snp.makeConstraints {
-            $0.center.equalToSuperview()
+            $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(16)
             $0.trailing.equalToSuperview().offset(-16)
             $0.height.equalTo(48)

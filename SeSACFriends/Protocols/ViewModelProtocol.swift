@@ -17,7 +17,6 @@ protocol ViewModelType {
 }
 
 protocol ValidationViewModel {
-    var validationFailed: String { get }
     func validate(_ text: String) -> Bool
 }
 

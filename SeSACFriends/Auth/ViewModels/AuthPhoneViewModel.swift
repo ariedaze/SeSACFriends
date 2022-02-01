@@ -12,8 +12,13 @@ import RxCocoa
 import RxRelay
 
 class AuthPhoneViewModel: ValidationViewModel, ViewModelType {
-    var validationSuccess: String = "전화 번호 인증 시작"
-    var validationFailed: String = "잘못된 전화번호 형식입니다."
+    enum Message: String {
+        case valid = "전화 번호 인증 시작"
+        case invalid = "잘못된 전화번호 형식입니다."
+        case exceed = "과도한 인증 시도가 있었습니다. 나중에 다시 시도해 주세요."
+        case error = "에러가 발생했습니다. 다시 시도해주세요"
+    }
+
     var toastMessage = PublishRelay<String>()
 
     func validate(_ text: String) -> Bool {
@@ -65,20 +70,14 @@ class AuthPhoneViewModel: ValidationViewModel, ViewModelType {
             .withLatestFrom(input.phoneText.asDriver())
             .filter {
                 if self.validate($0 ?? "") { // button tapped and valid
-                    self.toastMessage.accept(self.validationSuccess)
+                    self.toastMessage.accept(AuthPhoneViewModel.Message.valid.rawValue)
                     return true
                 }
-                self.toastMessage.accept(self.validationFailed) // button tapped and invalid
+                self.toastMessage.accept(AuthPhoneViewModel.Message.invalid.rawValue) // button tapped and invalid
                 return false
             }
             .emit { [weak self] res in
                 AppSettings[.phoneNumber] = res
-                /*
-                 Todo:
-                 과도한 인증 시도가 있었습니다. 나중에 다시 시도해 주세요
-                 에러가 발생했습니다. 다시 시도해주세요
-                */
-                
                 FirebaseManager.verify(phoneNumber: res)
                     .subscribe(onNext: {
                         self?.verificationSuccess.accept($0)

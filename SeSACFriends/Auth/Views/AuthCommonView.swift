@@ -88,7 +88,7 @@ class AuthCommonView: UIView, ViewRepresentable {
     func setupConstraints() {
         containerView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
-            $0.centerY.equalToSuperview().multipliedBy(0.8)
+            $0.centerY.equalToSuperview().multipliedBy(0.7)
         }
         labelView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()

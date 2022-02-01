@@ -28,6 +28,12 @@ final class AuthPhoneNumberViewController: UIViewController {
             titleText: "새싹 서비스 이용을 위해\n휴대폰 번호를 입력해 주세요",
             buttonTitleText: "인증 문자 받기"
         )
+        mainView.textField.placeholder = "휴대폰 번호(-없이 숫자만 입력)"
+        
+        // ui
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = false
+
     }
 
     
@@ -45,6 +51,11 @@ final class AuthPhoneNumberViewController: UIViewController {
         output.validStatus
             .map {$0 ? SeSACButton.Status.fill : .disable}
             .bind(to: mainView.button.rx.status)
+            .disposed(by: disposeBag)
+        
+        output.validStatus
+            .map {$0 ? .active : self.mainView.textField.status}
+            .bind(to: mainView.textField.rx.status)
             .disposed(by: disposeBag)
         
         output.toastMessage

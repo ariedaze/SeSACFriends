@@ -48,6 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Auth.auth().currentUser?.getIDToken(completion: { id, error in
             print(id, "내가 id다!!!!ㄱ")
         })
+
+        
         return true
     }
 
