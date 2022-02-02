@@ -80,18 +80,25 @@ extension SeSACTextField {
     }
     
     private func configuration() {
+        self.font = FontTheme.Title4_R14
         switch status {
         case .inactive:
+            self.textColor = ColorTheme.gray7
             self.border.backgroundColor = ColorTheme.gray3
         case .focus:
+            self.textColor = ColorTheme.black
             self.border.backgroundColor = ColorTheme.black
         case .active:
+            self.textColor = ColorTheme.black
             self.border.backgroundColor = ColorTheme.gray3
         case .disable:
+            self.textColor = ColorTheme.gray7
             self.border.backgroundColor = .clear
         case .error:
+            self.textColor = ColorTheme.black
             self.border.backgroundColor = ColorTheme.error
         case .success:
+            self.textColor = ColorTheme.black
             self.border.backgroundColor = ColorTheme.success
 
         }

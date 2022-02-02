@@ -40,6 +40,7 @@ class AuthCommonView: UIView, ViewRepresentable {
     let button: SeSACButton = {
         let button = SeSACButton()
         button.size = .h48
+        button.status = .disable
         return button
     }()
 

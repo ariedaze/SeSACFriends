@@ -28,7 +28,6 @@ final class AuthCodeView: AuthCommonView {
         super.setUpViews()
         inputFieldView.addSubview(textField)
         textField.addSubview(timeLabel)
-//        inputFieldView.addSubview(timeLabel)
         inputFieldView.addSubview(resetButton)
     }
     

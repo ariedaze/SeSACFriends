@@ -10,8 +10,10 @@ import RxSwift
 import RxCocoa
 
 class AuthNicknameViewModel: ViewModelType, ValidationViewModel {
-    var validationFailed = "닉네임은 1자 이상 10자 이내로 부탁드려요"
-    var toastMessage = PublishRelay<String>()
+    enum Message: String {
+        case invalid = "닉네임은 1자 이상 10자 이내로 부탁드려요"
+        case failed = "해당 닉네임은 사용할 수 없습니다"
+    }
     
     func validate(_ text: String) -> Bool {
         guard text.count >= 1 && text.count <= 10 else {
@@ -26,35 +28,23 @@ class AuthNicknameViewModel: ViewModelType, ValidationViewModel {
     }
     
     struct Output {
-        let invalidTap: Driver<String?>
-        let validTap: Driver<String?>
+        let buttonTap: Driver<String?>
         let validStatus: Observable<Bool>
         let toastMessage: Driver<String>
     }
-
+    private var toastMessage = PublishRelay<String>()
     var disposeBag = DisposeBag()
     
     func transform(input: Input) -> Output {
         
-        // button tapped and invalid
-        let invalidInputError = input.buttonTap
+        let buttonTap = input.buttonTap
             .withLatestFrom(input.nicknameText.asDriver())
             .filter {
-                if !self.validate($0 ?? "") {
-                    self.toastMessage.accept(self.validationFailed)
+                if self.validate($0 ?? "") { // button tapped and valid
+                    SignupRequest.shared.nick = $0 ?? ""
                     return true
                 }
-                return false
-            }
-            .asDriver(onErrorJustReturn: "")
-        
-        // button tapped and valid
-        let validInputResult = input.buttonTap
-            .withLatestFrom(input.nicknameText.asDriver())
-            .filter {
-                if self.validate($0 ?? "") {
-                    return true
-                }
+                self.toastMessage.accept(AuthNicknameViewModel.Message.invalid.rawValue) // button tapped and invalid
                 return false
             }
             .asDriver(onErrorJustReturn: "")
@@ -65,8 +55,7 @@ class AuthNicknameViewModel: ViewModelType, ValidationViewModel {
             .share(replay: 1, scope: .whileConnected)
         
         return Output(
-            invalidTap: invalidInputError,
-            validTap: validInputResult,
+            buttonTap: buttonTap,
             validStatus: nicknameValidationResult,
             toastMessage: toastMessage.asDriver(onErrorJustReturn: ""))
     }

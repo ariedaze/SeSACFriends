@@ -9,15 +9,19 @@ import Moya
 import RxMoya
 import RxSwift
 
+struct Endpoint {
+    static let baseURL = "http://test.monocoding.com:35484"
+}
+
 enum AuthAPI {
-    case signup(phone: String, nick: String)
+    case signup(param: SignupRequest)
     case update_fcm
     case withdraw
 }
 
 extension AuthAPI: TargetType {
     var baseURL: URL {
-        return URL(string: "http://test.monocoding.com:35484/user")!
+        return URL(string: "\(Endpoint.baseURL)/user")!
     }
     
     var path: String {
@@ -46,17 +50,8 @@ extension AuthAPI: TargetType {
     
     var task: Task {
         switch self {
-        case .signup:
-            return .requestParameters(
-                  parameters: [
-                    "phoneNumber" : "+821099999999",
-                    "FCMtoken" : "",
-                    "nick": "길라다?",
-                    "birth": "1995-01-01T09:23:44.054Z",
-                    "email": "example@example.com",
-                    "gender" : 0],
-                  encoding: URLEncoding.default)
-              
+        case .signup(let param):
+            return .requestJSONEncodable(param)
         default:
             return .requestPlain
         }
@@ -65,7 +60,7 @@ extension AuthAPI: TargetType {
     var headers: [String : String]? {
         return [
             "Content-Type": "application/x-www-form-urlencoded",
-            "idtoken": ""
+            "idtoken": AppSettings[.idToken] as? String ?? ""
         ]
     }
     

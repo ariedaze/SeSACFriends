@@ -10,7 +10,7 @@ import FirebaseAuth
 import RxSwift
 
 class FirebaseManager {
-    static func verify(phoneNumber: String?) -> Observable<String> {
+    static func verify(phoneNumber: String?) -> Observable<String> { // 전화번호 인증
         let phoneNumber = "+82\(phoneNumber!.replacingOccurrences(of: "-", with: ""))"
         return Observable.create { observer in
             PhoneAuthProvider.provider()
@@ -25,21 +25,33 @@ class FirebaseManager {
         }
     }
     
-    static func signInWithCredential(verificationId: String, verificationCode: String, completion: @escaping (Result<String?, Error>) -> Void) {
+    static func signInWithCredential(verificationId: String, verificationCode: String) -> Observable<String> { // 6자리 코드
+        
         let credential = PhoneAuthProvider.provider().credential(
             withVerificationID: verificationId,
             verificationCode: verificationCode
         )
         
-        Auth.auth().signIn(with: credential) { authResult, error in
-            if let error = error {
-                print("error")
-                completion(.failure(error))
-                return
+        return Observable.create { observer in
+            Auth.auth().signIn(with: credential) { authResult, error in
+                if let error = error {
+                    observer.onError(error)
+                }
+                print(authResult, "authresult가 뭐길래?")
+                observer.onNext("success")
+                observer.onCompleted()
             }
-            // User is signed in
-            completion(.success(nil))
+            return Disposables.create()
         }
+//        Auth.auth().signIn(with: credential) { authResult, error in
+//            if let error = error {
+//                print("error")
+//                completion(.failure(error))
+//                return
+//            }
+//            // User is signed in
+//            completion(.success(nil))
+//        }
     }
     
     static func setIdToken(completion: @escaping (Result<String?, Error>) -> Void) {

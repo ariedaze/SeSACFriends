@@ -59,6 +59,7 @@ class AuthEmailViewModel: ViewModelType, ValidationViewModel {
             .withLatestFrom(input.emailText.asDriver())
             .filter {
                 if self.validate($0 ?? "") {
+                    SignupRequest.shared.email = $0 ?? ""
                     return true
                 }
                 return false

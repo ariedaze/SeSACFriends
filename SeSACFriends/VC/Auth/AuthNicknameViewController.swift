@@ -47,18 +47,13 @@ final class AuthNicknameViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        output.invalidTap
-            .drive { a in
-                print("invalid", a)
-            }
-            .disposed(by: disposeBag)
-        
-        output.validTap
+        output.buttonTap
             .drive { _ in
                 let vc = AuthBirthViewController()
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             .disposed(by: disposeBag)
+        
     }
     
 }

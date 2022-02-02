@@ -34,8 +34,8 @@ final class AuthCodeViewController: UIViewController {
         let countdown = 60
         Observable<Int>.interval(.seconds(1), scheduler: MainScheduler.instance)
             .map { countdown - $0 }
-            .take(until: { $0 == 0 })
-            .subscribe(onNext: { value in 
+            .take(until: { $0 == -1 })
+            .subscribe(onNext: { value in
                 self.mainView.timeLabel.text = value.times
             }, onCompleted: {
                 print("completed")
@@ -50,40 +50,36 @@ final class AuthCodeViewController: UIViewController {
         mainView.textField.placeholder = "인증번호 입력"
         
         bind()
-        
-        mainView.button.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
-    func bind(){
-        // input: 전화번호 입력
-        mainView.textField.rx.text
-            .orEmpty
-            .distinctUntilChanged()
-            .bind(to: viewModel.data) // viewmodel에게 알려주기
-            .disposed(by: disposeBag)
 
-        // output:
-        // 1. 코드 6자리 & 버튼의 상태
-        viewModel.isValid()
-            .map { $0 ? .fill : .disable }
+    func bind(){
+        let input = AuthCodeViewModel.Input(
+            codeText: mainView.textField.rx.text,
+            buttonTap: mainView.button.rx.tap.asSignal())
+        
+        let output = viewModel.transform(input: input)
+        
+        output.validStatus
+            .map {$0 ? SeSACButton.Status.fill : .disable}
             .bind(to: mainView.button.rx.status)
             .disposed(by: disposeBag)
-    }
-    
-    @objc func buttonClicked() {
-        viewModel.verifyCodeNumber { result in
-            switch result {
-            case .success(let result):
-                print("베리파이코드 결과!", result)
+        
+        output.validStatus
+            .map {$0 ? .active : self.mainView.textField.status}
+            .bind(to: mainView.textField.rx.status)
+            .disposed(by: disposeBag)
+        
+        output.toastMessage
+            .drive(onNext: { [unowned self] message in
+                self.view.makeToast(message, position: .top)
+            })
+            .disposed(by: disposeBag)
+        
+        output.verificationSuccess
+            .drive { _ in
                 let vc = AuthNicknameViewController()
                 self.navigationController?.pushViewController(vc, animated: true)
-            case .failure(let error):
-                print(error)
             }
-        }
+            .disposed(by: disposeBag)
     }
 }
