@@ -27,7 +27,8 @@ final class AuthCodeView: AuthCommonView {
     override func setUpViews() {
         super.setUpViews()
         inputFieldView.addSubview(textField)
-        inputFieldView.addSubview(timeLabel)
+        textField.addSubview(timeLabel)
+//        inputFieldView.addSubview(timeLabel)
         inputFieldView.addSubview(resetButton)
     }
     
@@ -37,6 +38,11 @@ final class AuthCodeView: AuthCommonView {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(16)
             $0.height.equalTo(48)
+        }
+
+        timeLabel.snp.makeConstraints {
+            $0.trailing.equalToSuperview().offset(-12)
+            $0.centerY.equalToSuperview()
         }
         
         resetButton.snp.makeConstraints {

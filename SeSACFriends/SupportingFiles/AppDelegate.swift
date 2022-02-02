@@ -41,15 +41,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
           if let error = error {
             print("Error fetching FCM registration token: \(error)")
           } else if let token = token {
+              AppSettings[.FCMToken] = token
             print("FCM registration token: \(token)")
           }
         }
 
         Auth.auth().currentUser?.getIDToken(completion: { id, error in
-            print(id, "내가 id다!!!!ㄱ")
+            if let error = error {
+                print("Error: \(error)")
+            } else if let id = id {
+                print(id, "내가 id다!!!!")
+                AppSettings[.idToken] = id
+            }
+            
         })
-
         
+        // ui
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().backgroundColor = .clear
+        UINavigationBar.appearance().isTranslucent = true
+
         return true
     }
 
