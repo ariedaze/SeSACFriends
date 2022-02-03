@@ -232,12 +232,7 @@
 		E575405B279800D0001F9247 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				E57540642798820A001F9247 /* AuthPhoneViewModel.swift */,
-				E575406D27994045001F9247 /* AuthCodeViewModel.swift */,
-				E575407C279B0D2B001F9247 /* AuthEmailViewModel.swift */,
-				E5754097279DDA93001F9247 /* AuthNicknameViewModel.swift */,
-				E57540A0279E8A2B001F9247 /* AuthBirthViewModel.swift */,
-				E57540A2279E8A3A001F9247 /* AuthGenderViewModel.swift */,
+				E5D41B9227AAC5E700021C58 /* Auth */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -346,6 +341,19 @@
 				E575405527970E52001F9247 /* Auth */,
 			);
 			path = VC;
+			sourceTree = "<group>";
+		};
+		E5D41B9227AAC5E700021C58 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				E57540642798820A001F9247 /* AuthPhoneViewModel.swift */,
+				E575406D27994045001F9247 /* AuthCodeViewModel.swift */,
+				E575407C279B0D2B001F9247 /* AuthEmailViewModel.swift */,
+				E5754097279DDA93001F9247 /* AuthNicknameViewModel.swift */,
+				E57540A0279E8A2B001F9247 /* AuthBirthViewModel.swift */,
+				E57540A2279E8A3A001F9247 /* AuthGenderViewModel.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

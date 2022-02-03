@@ -10,6 +10,7 @@ import UIKit
 final class AuthGenderView: AuthCommonView {
     let manButtonView: UIView = {
         let view = UIView()
+        view.clipsToBounds = false
         view.layer.borderWidth = 1
         view.layer.cornerRadius = 8
         view.layer.borderColor = ColorTheme.gray3.cgColor
@@ -29,8 +30,8 @@ final class AuthGenderView: AuthCommonView {
         label.font = FontTheme.Title2_R16
         return label
     }()
-    let manButton: UIButton = UIButton()
-
+    let manButton = UIButton()
+    
     let womanButtonView: UIView = {
         let view = UIView()
         view.layer.borderWidth = 1
@@ -54,19 +55,30 @@ final class AuthGenderView: AuthCommonView {
     }()
     let womanButton: UIButton = UIButton()
     
+    func background(_ view: UIView, selected: Bool){
+        if selected {
+            view.backgroundColor = ColorTheme.whitegreen
+            view.layer.borderWidth = 0
+        } else {
+            view.backgroundColor = ColorTheme.white
+            view.layer.borderWidth = 1
+        }
+    }
+    
     override func setUpViews() {
         super.setUpViews()
         inputFieldView.addSubview(manButtonView)
+        manButtonView.addSubview(manButton)
         manButtonView.addSubview(manContentView)
         manContentView.addSubview(manImage)
         manContentView.addSubview(manTitle)
-        manButtonView.addSubview(manButton)
         
         inputFieldView.addSubview(womanButtonView)
+        womanButtonView.addSubview(womanButton)
         womanButtonView.addSubview(womanContentView)
         womanContentView.addSubview(womanImage)
         womanContentView.addSubview(womanTitle)
-        womanButtonView.addSubview(womanButton)
+        
     }
     
     override func setupConstraints() {

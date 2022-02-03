@@ -14,18 +14,41 @@ class FontTheme {
     static var Display1_R20: UIFont {
         return UIFont(name: FontTheme.NotoSansRegular, size: 20)!
     }
-    static let Title1_M16 = UIFont(name: FontTheme.NotoSansMedium, size: 16)!
-    static let Title2_R16 = UIFont(name: FontTheme.NotoSansRegular, size: 16)!
-    static let Title3_M14 = UIFont(name: FontTheme.NotoSansMedium, size: 14)!
-    static let Title4_R14 = UIFont(name: FontTheme.NotoSansRegular, size: 14)!
-    static let Title5_M12 = UIFont(name: FontTheme.NotoSansMedium, size: 12)!
-    static let Title6_R12 = UIFont(name: FontTheme.NotoSansRegular, size: 12)!
     
-    static let Body1_M16 = UIFont(name: FontTheme.NotoSansMedium, size: 16)!
-    static let Body2_R16 = UIFont(name: FontTheme.NotoSansRegular, size: 16)!
-    static let Body3_R14 = UIFont(name: FontTheme.NotoSansRegular, size: 14)!
-    static let Body4_R12 = UIFont(name: FontTheme.NotoSansRegular, size: 12)!
-    static let cation_R10 = UIFont(name: FontTheme.NotoSansMedium, size: 10)!
+    static var Title1_M16: UIFont {
+        return UIFont(name: FontTheme.NotoSansMedium, size: 16)!
+    }
+    static var Title2_R16: UIFont {
+        return UIFont(name: FontTheme.NotoSansRegular, size: 16)!
+    }
+    static var Title3_M14: UIFont {
+        return UIFont(name: FontTheme.NotoSansMedium, size: 14)!
+    }
+    static var Title4_R14: UIFont {
+        return UIFont(name: FontTheme.NotoSansRegular, size: 14)!
+    }
+    static var Title5_M12: UIFont {
+        return UIFont(name: FontTheme.NotoSansMedium, size: 12)!
+    }
+    static var Title6_R12: UIFont {
+        return UIFont(name: FontTheme.NotoSansRegular, size: 12)!
+    }
+
+    static var Body1_M16: UIFont {
+        return UIFont(name: FontTheme.NotoSansMedium, size: 16)!
+    }
+    static var Body2_R16: UIFont {
+        return UIFont(name: FontTheme.NotoSansRegular, size: 16)!
+    }
+    static var Body3_R14: UIFont {
+        return UIFont(name: FontTheme.NotoSansRegular, size: 14)!
+    }
+    static var Body4_R12: UIFont {
+        return UIFont(name: FontTheme.NotoSansRegular, size: 12)!
+    }
+    static var cation_R10: UIFont {
+        return UIFont(name: FontTheme.NotoSansRegular, size: 10)!
+    }
 }
 
 /*

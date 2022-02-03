@@ -42,12 +42,7 @@ final class AuthEmailViewController: UIViewController {
                 self.view.makeToast(message, position: .top)
             })
             .disposed(by: disposeBag)
-        
-        output.invalidTap
-            .drive { a in
-                print("invalid", a)
-            }
-            .disposed(by: disposeBag)
+
         
         output.validTap
             .drive { _ in

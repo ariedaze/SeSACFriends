@@ -12,7 +12,7 @@ class AuthCommonView: UIView, ViewRepresentable {
     let labelView: UIStackView = {
         let view = UIStackView()
         view.alignment = .center
-        view.distribution = .fillProportionally
+        view.distribution = .fill
         view.axis = .vertical
         view.spacing = 8
         return view
@@ -32,6 +32,7 @@ class AuthCommonView: UIView, ViewRepresentable {
         label.font = FontTheme.Title2_R16
         label.textColor = ColorTheme.gray7
         label.textAlignment = .center
+        label.numberOfLines = 0
         return label
     }()
     
@@ -76,14 +77,12 @@ class AuthCommonView: UIView, ViewRepresentable {
         
         containerView.addArrangedSubview(labelView)
         labelView.addArrangedSubview(titleLabel)
-        
-
-        containerView.addArrangedSubview(inputFieldView)
-        containerView.addArrangedSubview(button)
-        
         if let descriptionLabel = descriptionLabel {
             labelView.addArrangedSubview(descriptionLabel)
         }
+
+        containerView.addArrangedSubview(inputFieldView)
+        containerView.addArrangedSubview(button)
     }
     
     func setupConstraints() {

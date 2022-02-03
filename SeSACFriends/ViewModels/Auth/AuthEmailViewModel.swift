@@ -32,7 +32,6 @@ class AuthEmailViewModel: ViewModelType, ValidationViewModel {
     }
     
     struct Output {
-        let invalidTap: Driver<String?>
         let validTap: Driver<String?>
         let validStatus: Observable<Bool>
         let toastMessage: Driver<String>
@@ -42,18 +41,6 @@ class AuthEmailViewModel: ViewModelType, ValidationViewModel {
     
     func transform(input: Input) -> Output {
         
-        // button tapped and invalid
-        let invalidInputError = input.buttonTap
-            .withLatestFrom(input.emailText.asDriver())
-            .filter {
-                if !self.validate($0 ?? "") {
-                    self.toastMessage.accept(self.validationFailed)
-                    return true
-                }
-                return false
-            }
-            .asDriver(onErrorJustReturn: "")
-        
         // button tapped and valid
         let validInputResult = input.buttonTap
             .withLatestFrom(input.emailText.asDriver())
@@ -62,6 +49,7 @@ class AuthEmailViewModel: ViewModelType, ValidationViewModel {
                     SignupRequest.shared.email = $0 ?? ""
                     return true
                 }
+                self.toastMessage.accept(self.validationFailed)
                 return false
             }
             .asDriver(onErrorJustReturn: "")
@@ -72,7 +60,6 @@ class AuthEmailViewModel: ViewModelType, ValidationViewModel {
             .share(replay: 1, scope: .whileConnected)
         
         return Output(
-            invalidTap: invalidInputError,
             validTap: validInputResult,
             validStatus: emailTextValidationResult,
             toastMessage: toastMessage.asDriver(onErrorJustReturn: ""))

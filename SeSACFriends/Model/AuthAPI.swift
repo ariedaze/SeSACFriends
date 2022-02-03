@@ -50,8 +50,16 @@ extension AuthAPI: TargetType {
     
     var task: Task {
         switch self {
-        case .signup(let param):
-            return .requestJSONEncodable(param)
+        case .signup:
+            return .requestParameters(
+                parameters: [
+                    "phoneNumber" : SignupRequest.shared.phoneNumber,
+                    "FCMtoken" : SignupRequest.shared.FCMtoken,
+                    "nick": SignupRequest.shared.nick,
+                    "birth": SignupRequest.shared.birth,
+                    "email": SignupRequest.shared.email,
+                    "gender" : SignupRequest.shared.gender],
+                encoding: URLEncoding.default)
         default:
             return .requestPlain
         }
@@ -64,10 +72,10 @@ extension AuthAPI: TargetType {
         ]
     }
     
-//    public var validationType: ValidationType {
-//      return .successCodes
-//    }
-
+    //    public var validationType: ValidationType {
+    //      return .successCodes
+    //    }
+    
 }
 
 struct User: Decodable {
@@ -75,7 +83,7 @@ struct User: Decodable {
 }
 
 protocol NetworkingService {
-    func request(_ api: AuthAPI) -> Single<[User]>
+    func request(_ api: AuthAPI) -> Single<Response>
 }
 
 final class NetworkingAPI: NetworkingService {
@@ -85,9 +93,9 @@ final class NetworkingAPI: NetworkingService {
         self.provider = provider
     }
     
-    func request(_ api: AuthAPI) -> Single<[User]> {
+    func request(_ api: AuthAPI) -> Single<Response> {
+        dump(SignupRequest.shared)
+        print("wjwkd?", AppSettings[.idToken])
         return provider.rx.request(api)
-            .filterSuccessfulStatusCodes()
-            .map([User].self)
     }
 }
