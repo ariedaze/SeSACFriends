@@ -40,7 +40,6 @@ class MyInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "내정보"
-        
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
     }
@@ -56,7 +55,7 @@ extension MyInfoViewController: UITableViewDelegate, UITableViewDataSource {
         var content = cell.defaultContentConfiguration()
         
         if indexPath.section == 0 {
-            content.text = "김새싹"
+            content.attributedText = NSAttributedString(string: "김새싹", attributes: [ .font: FontTheme.Title1_M16, .foregroundColor: ColorTheme.black])
         }
         else {
             let category = MyInfo.allCases[indexPath.row]
@@ -76,5 +75,13 @@ extension MyInfoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return section == 0 ? 1 : MyInfo.allCases.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            let vc = ManageInfoViewController()
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }

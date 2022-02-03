@@ -72,10 +72,6 @@ extension AuthAPI: TargetType {
         ]
     }
     
-    //    public var validationType: ValidationType {
-    //      return .successCodes
-    //    }
-    
 }
 
 struct User: Decodable {

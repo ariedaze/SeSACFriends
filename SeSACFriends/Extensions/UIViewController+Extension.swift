@@ -26,3 +26,14 @@ extension UIViewController {
         }
     }
 }
+
+// UINavigationItem
+extension UIViewController {
+    @objc func setBackButton() {
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow"), style: .plain, target: self, action: #selector(popViewController))
+    }
+    
+    @objc func popViewController() {
+        self.navigationController?.popViewController(animated: true)
+    }
+}

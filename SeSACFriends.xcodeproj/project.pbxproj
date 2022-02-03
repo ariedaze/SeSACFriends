@@ -64,6 +64,11 @@
 		E5D41B8B27AAAF1F00021C58 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5D41B8127AAAF1E00021C58 /* NotoSansKR-Regular.otf */; };
 		E5D41B8C27AAAF1F00021C58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5D41B8227AAAF1F00021C58 /* Assets.xcassets */; };
 		E5D41B8D27AAAF1F00021C58 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B8327AAAF1F00021C58 /* ColorTheme.swift */; };
+		E5D41B9527AC110500021C58 /* ManagInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B9427AC110500021C58 /* ManagInfoView.swift */; };
+		E5D41B9727AC122600021C58 /* ManageInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B9627AC122600021C58 /* ManageInfoViewController.swift */; };
+		E5D41B9A27AC3F0100021C58 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = E5D41B9927AC3F0100021C58 /* Then */; };
+		E5D41B9D27AC4CD700021C58 /* ManageInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B9C27AC4CD700021C58 /* ManageInfoViewModel.swift */; };
+		E5D41B9F27AC62AF00021C58 /* CellReusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B9E27AC62AF00021C58 /* CellReusable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +123,10 @@
 		E5D41B8127AAAF1E00021C58 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		E5D41B8227AAAF1F00021C58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E5D41B8327AAAF1F00021C58 /* ColorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
+		E5D41B9427AC110500021C58 /* ManagInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagInfoView.swift; sourceTree = "<group>"; };
+		E5D41B9627AC122600021C58 /* ManageInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageInfoViewController.swift; sourceTree = "<group>"; };
+		E5D41B9C27AC4CD700021C58 /* ManageInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageInfoViewModel.swift; sourceTree = "<group>"; };
+		E5D41B9E27AC62AF00021C58 /* CellReusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellReusable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5754096279DD274001F9247 /* FirebaseMessaging in Frameworks */,
+				E5D41B9A27AC3F0100021C58 /* Then in Frameworks */,
 				E575405E2798750F001F9247 /* RxCocoa in Frameworks */,
 				E5754094279DD274001F9247 /* FirebaseAuth in Frameworks */,
 				E575405127970E17001F9247 /* SnapKit in Frameworks */,
@@ -158,7 +168,6 @@
 		E575401A27968ED0001F9247 /* SeSACFriends */ = {
 			isa = PBXGroup;
 			children = (
-				E5D41B9127AAB48100021C58 /* VC */,
 				E5D41B8E27AAB3FB00021C58 /* Views */,
 				E5D41B7827AAAF0F00021C58 /* Resources */,
 				E5754088279D24CD001F9247 /* Manager */,
@@ -204,7 +213,7 @@
 			path = CustomView;
 			sourceTree = "<group>";
 		};
-		E575405527970E52001F9247 /* Auth */ = {
+		E575405527970E52001F9247 /* VC */ = {
 			isa = PBXGroup;
 			children = (
 				E575403727969EA1001F9247 /* AuthPhoneNumberViewController.swift */,
@@ -214,17 +223,14 @@
 				E5754073279A4F3A001F9247 /* AuthGenderViewController.swift */,
 				E5754075279A4F68001F9247 /* AuthBirthViewController.swift */,
 			);
-			path = Auth;
+			path = VC;
 			sourceTree = "<group>";
 		};
 		E575405627971B2E001F9247 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				E575405727971B3B001F9247 /* AuthCommonView.swift */,
-				E5754080279D1AB8001F9247 /* AuthTextFieldView.swift */,
-				E5754082279D1EE9001F9247 /* AuthCodeView.swift */,
-				E5754084279D1F0B001F9247 /* AuthBirthView.swift */,
-				E5754086279D1F28001F9247 /* AuthGenderView.swift */,
+				E5D41B9327AC10E700021C58 /* Views */,
+				E575405527970E52001F9247 /* VC */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -232,6 +238,7 @@
 		E575405B279800D0001F9247 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				E5D41B9B27AC4CC600021C58 /* MyInfo */,
 				E5D41B9227AAC5E700021C58 /* Auth */,
 			);
 			path = ViewModels;
@@ -243,6 +250,7 @@
 				E5754062279878B8001F9247 /* ViewRepresentable.swift */,
 				E575409B279DF222001F9247 /* ViewModelProtocol.swift */,
 				E50C3AE227A1C6490085CABD /* Reusable.swift */,
+				E5D41B9E27AC62AF00021C58 /* CellReusable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -294,6 +302,8 @@
 			children = (
 				E57540B727A18FBF001F9247 /* MyInfoViewController.swift */,
 				E57540BF27A19354001F9247 /* MyInfoView.swift */,
+				E5D41B9427AC110500021C58 /* ManagInfoView.swift */,
+				E5D41B9627AC122600021C58 /* ManageInfoViewController.swift */,
 			);
 			path = MyInfo;
 			sourceTree = "<group>";
@@ -326,21 +336,13 @@
 		E5D41B8E27AAB3FB00021C58 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E575405627971B2E001F9247 /* Auth */,
 				E57540B627A178F6001F9247 /* MyInfo */,
+				E575405627971B2E001F9247 /* Auth */,
 				E57540B427A178E1001F9247 /* Shop */,
 				E57540B327A178C7001F9247 /* Map */,
 				E57540B527A178EE001F9247 /* Chat */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		E5D41B9127AAB48100021C58 /* VC */ = {
-			isa = PBXGroup;
-			children = (
-				E575405527970E52001F9247 /* Auth */,
-			);
-			path = VC;
 			sourceTree = "<group>";
 		};
 		E5D41B9227AAC5E700021C58 /* Auth */ = {
@@ -354,6 +356,26 @@
 				E57540A2279E8A3A001F9247 /* AuthGenderViewModel.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		E5D41B9327AC10E700021C58 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E575405727971B3B001F9247 /* AuthCommonView.swift */,
+				E5754080279D1AB8001F9247 /* AuthTextFieldView.swift */,
+				E5754082279D1EE9001F9247 /* AuthCodeView.swift */,
+				E5754084279D1F0B001F9247 /* AuthBirthView.swift */,
+				E5754086279D1F28001F9247 /* AuthGenderView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E5D41B9B27AC4CC600021C58 /* MyInfo */ = {
+			isa = PBXGroup;
+			children = (
+				E5D41B9C27AC4CD700021C58 /* ManageInfoViewModel.swift */,
+			);
+			path = MyInfo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,6 +403,7 @@
 				E575409E279DF54C001F9247 /* Toast */,
 				E57540AD27A09B49001F9247 /* Moya */,
 				E57540AF27A09B49001F9247 /* RxMoya */,
+				E5D41B9927AC3F0100021C58 /* Then */,
 			);
 			productName = SeSACFriends;
 			productReference = E575401827968ED0001F9247 /* SeSACFriends.app */;
@@ -416,6 +439,7 @@
 				E5754092279DD274001F9247 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				E575409D279DF54C001F9247 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				E57540AC27A09B49001F9247 /* XCRemoteSwiftPackageReference "Moya" */,
+				E5D41B9827AC3F0100021C58 /* XCRemoteSwiftPackageReference "Then" */,
 			);
 			productRefGroup = E575401927968ED0001F9247 /* Products */;
 			projectDirPath = "";
@@ -457,6 +481,7 @@
 				E57540C027A19354001F9247 /* MyInfoView.swift in Sources */,
 				E575408F279DB92D001F9247 /* FirebaseManager.swift in Sources */,
 				E50C3AE327A1C6490085CABD /* Reusable.swift in Sources */,
+				E5D41B9727AC122600021C58 /* ManageInfoViewController.swift in Sources */,
 				E5754091279DD0B6001F9247 /* UIViewController+Extension.swift in Sources */,
 				E57540672799255C001F9247 /* SeSACTextField.swift in Sources */,
 				E5754070279A4ED2001F9247 /* AuthEmailViewController.swift in Sources */,
@@ -473,6 +498,7 @@
 				E5754083279D1EE9001F9247 /* AuthCodeView.swift in Sources */,
 				E575405827971B3B001F9247 /* AuthCommonView.swift in Sources */,
 				E575401E27968ED0001F9247 /* SceneDelegate.swift in Sources */,
+				E5D41B9F27AC62AF00021C58 /* CellReusable.swift in Sources */,
 				E5754098279DDA93001F9247 /* AuthNicknameViewModel.swift in Sources */,
 				E57540B827A18FBF001F9247 /* MyInfoViewController.swift in Sources */,
 				E57540A827A09574001F9247 /* AuthAPI.swift in Sources */,
@@ -484,8 +510,10 @@
 				E57540B227A12E4F001F9247 /* TabBarController.swift in Sources */,
 				E5754063279878B8001F9247 /* ViewRepresentable.swift in Sources */,
 				E5754076279A4F68001F9247 /* AuthBirthViewController.swift in Sources */,
+				E5D41B9527AC110500021C58 /* ManagInfoView.swift in Sources */,
 				E575406C27993D2B001F9247 /* AuthCodeViewController.swift in Sources */,
 				E575406E27994045001F9247 /* AuthCodeViewModel.swift in Sources */,
+				E5D41B9D27AC4CD700021C58 /* ManageInfoViewModel.swift in Sources */,
 				E5754072279A4F07001F9247 /* AuthNicknameViewController.swift in Sources */,
 				E5754074279A4F3A001F9247 /* AuthGenderViewController.swift in Sources */,
 				E575408A279D24ED001F9247 /* AppSettings.swift in Sources */,
@@ -741,6 +769,14 @@
 				kind = branch;
 			};
 		};
+		E5D41B9827AC3F0100021C58 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -783,6 +819,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E57540AC27A09B49001F9247 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = RxMoya;
+		};
+		E5D41B9927AC3F0100021C58 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5D41B9827AC3F0100021C58 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
