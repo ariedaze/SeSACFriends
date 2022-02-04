@@ -69,6 +69,7 @@
 		E5D41B9A27AC3F0100021C58 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = E5D41B9927AC3F0100021C58 /* Then */; };
 		E5D41B9D27AC4CD700021C58 /* ManageInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B9C27AC4CD700021C58 /* ManageInfoViewModel.swift */; };
 		E5D41B9F27AC62AF00021C58 /* CellReusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B9E27AC62AF00021C58 /* CellReusable.swift */; };
+		E5D41BA127AC7A6100021C58 /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41BA027AC7A6100021C58 /* DynamicHeightCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -127,6 +128,7 @@
 		E5D41B9627AC122600021C58 /* ManageInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageInfoViewController.swift; sourceTree = "<group>"; };
 		E5D41B9C27AC4CD700021C58 /* ManageInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageInfoViewModel.swift; sourceTree = "<group>"; };
 		E5D41B9E27AC62AF00021C58 /* CellReusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellReusable.swift; sourceTree = "<group>"; };
+		E5D41BA027AC7A6100021C58 /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +211,7 @@
 				E575404D279705ED001F9247 /* SeSACButton.swift */,
 				E57540662799255C001F9247 /* SeSACTextField.swift */,
 				E57540B127A12E4E001F9247 /* TabBarController.swift */,
+				E5D41BA027AC7A6100021C58 /* DynamicHeightCollectionView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				E5754083279D1EE9001F9247 /* AuthCodeView.swift in Sources */,
 				E575405827971B3B001F9247 /* AuthCommonView.swift in Sources */,
 				E575401E27968ED0001F9247 /* SceneDelegate.swift in Sources */,
+				E5D41BA127AC7A6100021C58 /* DynamicHeightCollectionView.swift in Sources */,
 				E5D41B9F27AC62AF00021C58 /* CellReusable.swift in Sources */,
 				E5754098279DDA93001F9247 /* AuthNicknameViewModel.swift in Sources */,
 				E57540B827A18FBF001F9247 /* MyInfoViewController.swift in Sources */,

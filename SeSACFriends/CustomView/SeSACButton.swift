@@ -8,7 +8,7 @@
 import UIKit
 
 class SeSACButton: UIButton {
-    var status: Status = .fill {
+    var status: Status = .inactive {
         didSet {
             configuration()
         }
