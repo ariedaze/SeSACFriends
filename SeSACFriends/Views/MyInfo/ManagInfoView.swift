@@ -31,7 +31,6 @@ class ButtonCollectionViewCell: UICollectionViewCell {
 class ManageInfoView: UIView, ViewRepresentable {
     var isExpanded = false {
         willSet {
-            self.layoutIfNeeded()
             if newValue {
                 sesacTitleView.isHidden = false
                 sesacReviewView.isHidden = false
@@ -231,7 +230,6 @@ class ManageInfoView: UIView, ViewRepresentable {
         contentView.snp.makeConstraints {
             $0.top.trailing.leading.bottom.equalToSuperview()
             $0.width.equalTo(scrollView.snp.width)
-            $0.centerY.equalToSuperview()
         }
         
         scrollView.isScrollEnabled = true
@@ -273,7 +271,6 @@ class ManageInfoView: UIView, ViewRepresentable {
             $0.top.equalTo(sesacTitleLabel.snp.bottom).offset(16)
             $0.leading.trailing.equalTo(sesacTitleLabel)
             $0.bottom.equalToSuperview().offset(-16)
-//            $0.height.equalTo(200)
         }
         // 2-3
         sesacReviewLabel.snp.makeConstraints {
@@ -286,7 +283,7 @@ class ManageInfoView: UIView, ViewRepresentable {
         myInfoStackView.snp.makeConstraints {
             $0.top.equalTo(seSacInfoStackView.snp.bottom).offset(24)
             $0.leading.trailing.equalTo(seSacInfoStackView)
-//            $0.bottom.equalTo(scrollView.snp.bottom)
+            $0.bottom.equalTo(contentView.snp.bottom).offset(-16).priority(250)
         }
         genderLabel.snp.makeConstraints {
             $0.leading.centerY.equalToSuperview()
@@ -325,6 +322,10 @@ class ManageInfoView: UIView, ViewRepresentable {
         searchRangeLabel.snp.makeConstraints {
             $0.top.bottom.leading.equalToSuperview()
             $0.height.equalTo(50)
+        }
+        // 3-5
+        withdrawLabel.snp.makeConstraints {
+            $0.height.equalTo(48)
         }
 
     }
