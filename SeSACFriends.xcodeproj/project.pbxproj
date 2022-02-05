@@ -174,6 +174,7 @@
 		E575401A27968ED0001F9247 /* SeSACFriends */ = {
 			isa = PBXGroup;
 			children = (
+				E57A318027AEA04200276D7F /* Network */,
 				E5D41B8E27AAB3FB00021C58 /* Views */,
 				E5D41B7827AAAF0F00021C58 /* Resources */,
 				E5754088279D24CD001F9247 /* Manager */,
@@ -275,7 +276,6 @@
 			isa = PBXGroup;
 			children = (
 				E5754077279B0BDC001F9247 /* AuthModel.swift */,
-				E57540A727A09574001F9247 /* AuthAPI.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -313,6 +313,14 @@
 				E5D41B9627AC122600021C58 /* ManageInfoViewController.swift */,
 			);
 			path = MyInfo;
+			sourceTree = "<group>";
+		};
+		E57A318027AEA04200276D7F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E57540A727A09574001F9247 /* AuthAPI.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		E5D41B7827AAAF0F00021C58 /* Resources */ = {

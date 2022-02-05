@@ -11,6 +11,7 @@ import RxCocoa
 
 class ManageInfoViewController: UIViewController {
     let mainView = ManageInfoView()
+    var viewModel = ManageInfoViewModel()
     var disposeBag = DisposeBag()
     
     override func loadView() {
@@ -33,6 +34,18 @@ class ManageInfoViewController: UIViewController {
     }
     
     private func bind() {
+        let input = ManageInfoViewModel.Input(
+            buttonTrigger: mainView.withdrawButton.rx.tap
+            )
+        
+        let output = viewModel.transform(input: input)
+    
+        output.out
+            .subscribe (onNext: { _ in
+                print("성공?")
+            })
+            .disposed(by: disposeBag)
+        
         mainView.moreButton.rx.tap
             .scan(false) { lastState, newState in
                 return !lastState

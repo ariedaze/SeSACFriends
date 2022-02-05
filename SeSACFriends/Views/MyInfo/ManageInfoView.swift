@@ -168,17 +168,20 @@ class ManageInfoView: UIView, ViewRepresentable {
         $0.minimumValue = 17
         $0.tintColor = ColorTheme.brandgreen // color of track
         $0.outerTrackColor = ColorTheme.gray2
-        $0.showsThumbImageShadow = true
+        $0.showsThumbImageShadow = false
+        
         $0.orientation = .horizontal
         $0.trackWidth = 4
         $0.thumbImage = UIImage(named: "filter_control")
     }
     // 3-3 회원탈퇴
+    let withdrawView = UIView()
     let withdrawLabel = UILabel().then {
         $0.text = "회원탈퇴"
         $0.font = FontTheme.Title4_R14
         $0.textColor = ColorTheme.black
     }
+    let withdrawButton = UIButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -235,7 +238,9 @@ class ManageInfoView: UIView, ViewRepresentable {
         searchRangeView.addSubview(ageLabel)
         searchRangeView.addSubview(ageSlider)
         // 3-5
-        myInfoStackView.addArrangedSubview(withdrawLabel)
+        myInfoStackView.addArrangedSubview(withdrawView)
+        withdrawView.addSubview(withdrawLabel)
+        withdrawView.addSubview(withdrawButton)
     }
     
     func setupConstraints() {
@@ -360,8 +365,12 @@ class ManageInfoView: UIView, ViewRepresentable {
         // 3-5
         withdrawLabel.snp.makeConstraints {
             $0.height.equalTo(48)
+            $0.top.leading.bottom.equalToSuperview()
+            $0.trailing.lessThanOrEqualToSuperview()
         }
-
+        withdrawButton.snp.makeConstraints {
+            $0.edges.equalTo(withdrawLabel)
+        }
     }
 }
 

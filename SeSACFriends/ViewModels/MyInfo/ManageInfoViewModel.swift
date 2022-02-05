@@ -7,19 +7,35 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
+import Moya
 
 class ManageInfoViewModel: ViewModelType {
     var disposeBag = DisposeBag()
-    
-    struct Input {
+    let networkingApi = NetworkingAPI()
+
+    func transform(input: Input) -> Output {
         
+        let output = input.buttonTrigger
+            .asObservable()
+            .flatMapLatest {
+                self.networkingApi.request(.withdraw)
+                    .do(onError: { [weak self] error in
+                        print("error")
+                    })
+            }
+        
+        
+        return Output(out: output)
+    }
+}
+
+extension ManageInfoViewModel {
+    struct Input {
+        let buttonTrigger: ControlEvent<Void>
     }
     
     struct Output {
-        
-    }
-    
-    func transform(input: Input) -> Output {
-        return Output()
+        let out: Observable<Response>
     }
 }

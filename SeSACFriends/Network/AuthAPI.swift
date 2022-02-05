@@ -91,7 +91,7 @@ final class NetworkingAPI: NetworkingService {
     
     func request(_ api: AuthAPI) -> Single<Response> {
         dump(SignupRequest.shared)
-        print("wjwkd?", AppSettings[.idToken])
+        print("request with id?", AppSettings[.idToken])
         return provider.rx.request(api)
     }
 }
