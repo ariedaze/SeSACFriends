@@ -12,7 +12,8 @@ class ColorTheme {
     
     static var white = UIColor(rgb: 0xFFFFFF)
     static var black = UIColor(rgb: 0x333333)
-    static var green = UIColor(rgb: 0x49DC92)
+    static var brandgreen = UIColor(rgb: 0x49DC92)
+//    static var brandgreen = UIColor(named: "green")!
     static var whitegreen = UIColor(rgb: 0xCDF4E1)
     static var yellowgreen = UIColor(rgb: 0xB2EB61)
     

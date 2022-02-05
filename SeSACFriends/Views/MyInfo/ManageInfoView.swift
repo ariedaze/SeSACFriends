@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Then
+import MultiSlider
 
 class ButtonCollectionViewCell: UICollectionViewCell {
     let button = SeSACButton().then {
@@ -31,15 +32,12 @@ class ButtonCollectionViewCell: UICollectionViewCell {
 class ManageInfoView: UIView, ViewRepresentable {
     var isExpanded = false {
         willSet {
-            if newValue {
-                sesacTitleView.isHidden = false
-                sesacReviewView.isHidden = false
-                moreButtonImage.image = UIImage(named: "close_arrow")
-            } else {
-                sesacTitleView.isHidden = true
-                sesacReviewView.isHidden = true
-                moreButtonImage.image = UIImage(named: "more_arrow")
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear) {
+                self.sesacTitleView.isHidden = !newValue
+                self.sesacReviewView.isHidden = !newValue
+                
             }
+            moreButtonImage.image = newValue ? UIImage(named: "close_arrow") : UIImage(named: "more_arrow")
         }
     }
     let scrollView = UIScrollView().then {
@@ -112,7 +110,7 @@ class ManageInfoView: UIView, ViewRepresentable {
     // 3. info
     let myInfoStackView = UIStackView().then {
         $0.axis = .vertical
-        $0.distribution = .fillProportionally
+        $0.distribution = .fill
         $0.alignment = .fill
         $0.spacing = 16
         $0.isUserInteractionEnabled = true
@@ -150,12 +148,30 @@ class ManageInfoView: UIView, ViewRepresentable {
         $0.font = FontTheme.Title4_R14
         $0.textColor = ColorTheme.black
     }
+    let numberAccessSwitch = UISwitch().then {
+        $0.onTintColor = ColorTheme.brandgreen
+    }
     // 3-4 상대방
     let searchRangeView = UIView()
     let searchRangeLabel = UILabel().then {
         $0.text = "상대방 연령대"
         $0.font = FontTheme.Title4_R14
         $0.textColor = ColorTheme.black
+    }
+    let ageLabel = UILabel().then {
+        $0.text = "18-35"
+        $0.font = FontTheme.Title3_M14
+        $0.textColor = ColorTheme.brandgreen
+    }
+    let ageSlider = MultiSlider().then {
+        $0.maximumValue = 65
+        $0.minimumValue = 17
+        $0.tintColor = ColorTheme.brandgreen // color of track
+        $0.outerTrackColor = ColorTheme.gray2
+        $0.showsThumbImageShadow = true
+        $0.orientation = .horizontal
+        $0.trackWidth = 4
+        $0.thumbImage = UIImage(named: "filter_control")
     }
     // 3-3 회원탈퇴
     let withdrawLabel = UILabel().then {
@@ -200,31 +216,31 @@ class ManageInfoView: UIView, ViewRepresentable {
         sesacReviewView.addSubview(sesacReviewLabel)
         // 3
         contentView.addSubview(myInfoStackView)
-        // 3-1
+        // 3-1 성별
         myInfoStackView.addArrangedSubview(genderView)
         genderView.addSubview(genderLabel)
         genderView.addSubview(manButton)
         genderView.addSubview(womanButton)
-        // 3-2
+        // 3-2 취미
         myInfoStackView.addArrangedSubview(hobbyView)
         hobbyView.addSubview(hobbyLabel)
         hobbyView.addSubview(hobbyTextField)
-        // 3-3
+        // 3-3 번호 검색
         myInfoStackView.addArrangedSubview(numberAccessView)
         numberAccessView.addSubview(numberAccessLabel)
-        // 3-4
+        numberAccessView.addSubview(numberAccessSwitch)
+        // 3-4 상대방
         myInfoStackView.addArrangedSubview(searchRangeView)
         searchRangeView.addSubview(searchRangeLabel)
+        searchRangeView.addSubview(ageLabel)
+        searchRangeView.addSubview(ageSlider)
         // 3-5
         myInfoStackView.addArrangedSubview(withdrawLabel)
     }
     
     func setupConstraints() {
         scrollView.snp.makeConstraints {
-            $0.top.equalTo(self.snp.top)
-            $0.bottom.equalTo(self.snp.bottom)
-            $0.leading.equalTo(self.snp.leading)
-            $0.trailing.equalTo(self.snp.trailing)
+            $0.top.trailing.leading.bottom.equalToSuperview()
         }
         
         contentView.snp.makeConstraints {
@@ -308,21 +324,39 @@ class ManageInfoView: UIView, ViewRepresentable {
         }
         // 3-3
         numberAccessLabel.snp.makeConstraints {
-            $0.top.bottom.leading.equalToSuperview()
-            $0.height.equalTo(50)
+            $0.leading.equalToSuperview()
+//            $0.height.equalTo(50)
+            $0.centerY.equalToSuperview()
         }
-        scrollView.backgroundColor = .green
-        contentView.backgroundColor = .cyan
-        hobbyView.backgroundColor = .brown
-        myInfoStackView.backgroundColor = .orange
-        numberAccessView.backgroundColor = .red
-        searchRangeView.backgroundColor = .purple
-        withdrawLabel.backgroundColor = .blue
+        numberAccessSwitch.snp.makeConstraints {
+            $0.leading.equalTo(numberAccessLabel.snp.trailing)
+            $0.trailing.equalToSuperview()
+            $0.top.equalToSuperview().offset(10)
+            $0.bottom.equalToSuperview().offset(-10)
+        }
+//        scrollView.backgroundColor = ColorTheme.gray2
+//        contentView.backgroundColor = .cyan
+//        seSacInfoStackView.backgroundColor = .magenta
+//        hobbyView.backgroundColor = ColorTheme.brandgreen
+//        myInfoStackView.backgroundColor = .orange
+//        numberAccessView.backgroundColor = .red
+//        searchRangeView.backgroundColor = .purple
+//        withdrawLabel.backgroundColor = .blue
         // 3-4
         searchRangeLabel.snp.makeConstraints {
-            $0.top.bottom.leading.equalToSuperview()
-            $0.height.equalTo(50)
+            $0.leading.equalToSuperview()
         }
+        ageLabel.snp.makeConstraints {
+            $0.trailing.equalToSuperview()
+            $0.top.equalToSuperview().offset(10)
+            $0.firstBaseline.equalTo(searchRangeLabel.snp.firstBaseline)
+        }
+        ageSlider.snp.makeConstraints {
+            $0.top.equalTo(ageLabel.snp.bottom).offset(25)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview().offset(-10)
+        }
+        
         // 3-5
         withdrawLabel.snp.makeConstraints {
             $0.height.equalTo(48)

@@ -64,12 +64,14 @@
 		E5D41B8B27AAAF1F00021C58 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5D41B8127AAAF1E00021C58 /* NotoSansKR-Regular.otf */; };
 		E5D41B8C27AAAF1F00021C58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5D41B8227AAAF1F00021C58 /* Assets.xcassets */; };
 		E5D41B8D27AAAF1F00021C58 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B8327AAAF1F00021C58 /* ColorTheme.swift */; };
-		E5D41B9527AC110500021C58 /* ManagInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B9427AC110500021C58 /* ManagInfoView.swift */; };
+		E5D41B9527AC110500021C58 /* ManageInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B9427AC110500021C58 /* ManageInfoView.swift */; };
 		E5D41B9727AC122600021C58 /* ManageInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B9627AC122600021C58 /* ManageInfoViewController.swift */; };
 		E5D41B9A27AC3F0100021C58 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = E5D41B9927AC3F0100021C58 /* Then */; };
 		E5D41B9D27AC4CD700021C58 /* ManageInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B9C27AC4CD700021C58 /* ManageInfoViewModel.swift */; };
 		E5D41B9F27AC62AF00021C58 /* CellReusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B9E27AC62AF00021C58 /* CellReusable.swift */; };
 		E5D41BA127AC7A6100021C58 /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41BA027AC7A6100021C58 /* DynamicHeightCollectionView.swift */; };
+		E5D41BA527AD7C2C00021C58 /* MultiSlider in Frameworks */ = {isa = PBXBuildFile; productRef = E5D41BA427AD7C2C00021C58 /* MultiSlider */; };
+		E5D41BAA27AD964100021C58 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5D41BA927AD964100021C58 /* Colors.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,11 +126,12 @@
 		E5D41B8127AAAF1E00021C58 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		E5D41B8227AAAF1F00021C58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E5D41B8327AAAF1F00021C58 /* ColorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
-		E5D41B9427AC110500021C58 /* ManagInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagInfoView.swift; sourceTree = "<group>"; };
+		E5D41B9427AC110500021C58 /* ManageInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageInfoView.swift; sourceTree = "<group>"; };
 		E5D41B9627AC122600021C58 /* ManageInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageInfoViewController.swift; sourceTree = "<group>"; };
 		E5D41B9C27AC4CD700021C58 /* ManageInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageInfoViewModel.swift; sourceTree = "<group>"; };
 		E5D41B9E27AC62AF00021C58 /* CellReusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellReusable.swift; sourceTree = "<group>"; };
 		E5D41BA027AC7A6100021C58 /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
+		E5D41BA927AD964100021C58 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +148,7 @@
 				E57540AE27A09B49001F9247 /* Moya in Frameworks */,
 				E57540B027A09B49001F9247 /* RxMoya in Frameworks */,
 				E575409F279DF54C001F9247 /* Toast in Frameworks */,
+				E5D41BA527AD7C2C00021C58 /* MultiSlider in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,7 +309,7 @@
 			children = (
 				E57540B727A18FBF001F9247 /* MyInfoViewController.swift */,
 				E57540BF27A19354001F9247 /* MyInfoView.swift */,
-				E5D41B9427AC110500021C58 /* ManagInfoView.swift */,
+				E5D41B9427AC110500021C58 /* ManageInfoView.swift */,
 				E5D41B9627AC122600021C58 /* ManageInfoViewController.swift */,
 			);
 			path = MyInfo;
@@ -318,6 +322,7 @@
 				E5D41B8327AAAF1F00021C58 /* ColorTheme.swift */,
 				E5D41B7927AAAF1D00021C58 /* FontTHeme.swift */,
 				E5D41B7A27AAAF1E00021C58 /* Noto_Sans_KR */,
+				E5D41BA927AD964100021C58 /* Colors.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -407,6 +412,7 @@
 				E57540AD27A09B49001F9247 /* Moya */,
 				E57540AF27A09B49001F9247 /* RxMoya */,
 				E5D41B9927AC3F0100021C58 /* Then */,
+				E5D41BA427AD7C2C00021C58 /* MultiSlider */,
 			);
 			productName = SeSACFriends;
 			productReference = E575401827968ED0001F9247 /* SeSACFriends.app */;
@@ -443,6 +449,7 @@
 				E575409D279DF54C001F9247 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				E57540AC27A09B49001F9247 /* XCRemoteSwiftPackageReference "Moya" */,
 				E5D41B9827AC3F0100021C58 /* XCRemoteSwiftPackageReference "Then" */,
+				E5D41BA327AD7C2B00021C58 /* XCRemoteSwiftPackageReference "MultiSlider" */,
 			);
 			productRefGroup = E575401927968ED0001F9247 /* Products */;
 			projectDirPath = "";
@@ -460,6 +467,7 @@
 			files = (
 				E5D41B8827AAAF1F00021C58 /* OFL.txt in Resources */,
 				E5D41B8B27AAAF1F00021C58 /* NotoSansKR-Regular.otf in Resources */,
+				E5D41BAA27AD964100021C58 /* Colors.xcassets in Resources */,
 				E5D41B8527AAAF1F00021C58 /* NotoSansKR-Light.otf in Resources */,
 				E575402827968ED3001F9247 /* LaunchScreen.storyboard in Resources */,
 				E5D41B8C27AAAF1F00021C58 /* Assets.xcassets in Resources */,
@@ -514,7 +522,7 @@
 				E57540B227A12E4F001F9247 /* TabBarController.swift in Sources */,
 				E5754063279878B8001F9247 /* ViewRepresentable.swift in Sources */,
 				E5754076279A4F68001F9247 /* AuthBirthViewController.swift in Sources */,
-				E5D41B9527AC110500021C58 /* ManagInfoView.swift in Sources */,
+				E5D41B9527AC110500021C58 /* ManageInfoView.swift in Sources */,
 				E575406C27993D2B001F9247 /* AuthCodeViewController.swift in Sources */,
 				E575406E27994045001F9247 /* AuthCodeViewModel.swift in Sources */,
 				E5D41B9D27AC4CD700021C58 /* ManageInfoViewModel.swift in Sources */,
@@ -781,6 +789,14 @@
 				kind = branch;
 			};
 		};
+		E5D41BA327AD7C2B00021C58 /* XCRemoteSwiftPackageReference "MultiSlider" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yonat/MultiSlider.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -828,6 +844,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E5D41B9827AC3F0100021C58 /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
+		};
+		E5D41BA427AD7C2C00021C58 /* MultiSlider */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5D41BA327AD7C2B00021C58 /* XCRemoteSwiftPackageReference "MultiSlider" */;
+			productName = MultiSlider;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -44,14 +44,14 @@ extension SeSACButton {
             self.layer.borderWidth = 1
             self.layer.borderColor = ColorTheme.gray4.cgColor
         case .fill:
-            self.backgroundColor = ColorTheme.green
+            self.backgroundColor = ColorTheme.brandgreen
             self.setTitleColor(ColorTheme.white, for: .normal)
         case .outline:
             self.backgroundColor = ColorTheme.clear
-            self.setTitleColor(ColorTheme.green, for: .normal)
+            self.setTitleColor(ColorTheme.brandgreen, for: .normal)
             
             self.layer.borderWidth = 1
-            self.layer.borderColor = ColorTheme.green.cgColor
+            self.layer.borderColor = ColorTheme.brandgreen.cgColor
         case .cancel:
             self.backgroundColor = ColorTheme.gray2
             self.setTitleColor(ColorTheme.black, for: .normal)

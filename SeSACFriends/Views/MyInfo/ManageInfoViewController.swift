@@ -28,6 +28,8 @@ class ManageInfoViewController: UIViewController {
         mainView.titleCollectionView.dataSource = self
         viewDidLayoutSubviews()
         bind()
+        
+        mainView.ageSlider.value = [17, 55]
     }
     
     private func bind() {

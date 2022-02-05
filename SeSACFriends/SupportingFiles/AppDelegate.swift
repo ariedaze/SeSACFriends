@@ -57,8 +57,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         
         // ui
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = UIColor.white
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        UINavigationBar.appearance().compactAppearance = appearance
+        
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
-        UINavigationBar.appearance().backgroundColor = .clear
+        UINavigationBar.appearance().backgroundColor = .white
         UINavigationBar.appearance().isTranslucent = true
         UINavigationBar.appearance().tintColor = ColorTheme.black
         

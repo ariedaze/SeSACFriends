@@ -14,34 +14,36 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         configureTabBarItems()
     }
 
+    
     private func configureTabBarItems() {
-        self.tabBar.tintColor = ColorTheme.green
-        if #available(iOS 15.0, *) {
-            let appearance = UITabBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            appearance.shadowColor = nil
-            appearance.shadowImage = nil
-            appearance.backgroundColor = .white
-            appearance.selectionIndicatorTintColor = ColorTheme.green
-            UITabBar.appearance().standardAppearance = appearance
-            UITabBar.appearance().scrollEdgeAppearance = appearance
+        self.tabBar.tintColor = ColorTheme.brandgreen
+        self.tabBar.isTranslucent = false
+        if #available(iOS 15, *) {
+            let tabBarAppearance = UITabBarAppearance()
+            tabBarAppearance.backgroundColor = .white
+            tabBarAppearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: ColorTheme.brandgreen]
+            tabBarAppearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: ColorTheme.gray6]
+            tabBar.standardAppearance = tabBarAppearance
+            tabBar.scrollEdgeAppearance = tabBarAppearance
         } else {
-            UITabBar.appearance().barTintColor = ColorTheme.white
-            UITabBar.appearance().shadowImage = nil
-            UITabBar.appearance().backgroundImage = nil
+            
+            UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor: ColorTheme.brandgreen], for: .selected)
+            UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor: ColorTheme.gray6], for: .normal)
+            tabBar.barTintColor = .white
         }
         
         let mapVC = MapViewController()
-        mapVC.tabBarItem = UITabBarItem(title: "홈", image: UIImage(named: "home"), tag: 0)
+        mapVC.tabBarItem = UITabBarItem(title: "홈", image: UIImage(named: "home"), selectedImage: UIImage(named: "home_selected"))
+    
 
         let shopVC = ShopViewController()
-        shopVC.tabBarItem = UITabBarItem(title: "새싹샵", image: UIImage(named: "shop"), tag: 1)
+        shopVC.tabBarItem = UITabBarItem(title: "새싹샵", image: UIImage(named: "shop"), selectedImage: UIImage(named: "shop_selected"))
         
         let chatVC = ChatViewController()
-        chatVC.tabBarItem = UITabBarItem(title: "새싹친구", image: UIImage(named: "friends"), tag: 2)
+        chatVC.tabBarItem = UITabBarItem(title: "새싹친구", image: UIImage(named: "friends"), selectedImage: UIImage(named: "friends_selected"))
 
         let myInfoVC = MyInfoViewController()
-        myInfoVC.tabBarItem = UITabBarItem(title: "내정보", image: UIImage(named: "myinfo"), tag: 2)
+        myInfoVC.tabBarItem = UITabBarItem(title: "내정보", image: UIImage(named: "myinfo"), tag: 3)
         
         let mapNavigationVC = UINavigationController(rootViewController: mapVC)
         let shopNavigationVC = UINavigationController(rootViewController: shopVC)
