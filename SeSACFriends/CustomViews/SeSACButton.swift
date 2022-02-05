@@ -46,18 +46,20 @@ extension SeSACButton {
         case .fill:
             self.backgroundColor = ColorTheme.brandgreen
             self.setTitleColor(ColorTheme.white, for: .normal)
+            self.layer.borderWidth = 0
         case .outline:
             self.backgroundColor = ColorTheme.clear
             self.setTitleColor(ColorTheme.brandgreen, for: .normal)
-            
             self.layer.borderWidth = 1
             self.layer.borderColor = ColorTheme.brandgreen.cgColor
         case .cancel:
             self.backgroundColor = ColorTheme.gray2
             self.setTitleColor(ColorTheme.black, for: .normal)
+            self.layer.borderWidth = 0
         case .disable:
             self.backgroundColor = ColorTheme.gray6
             self.setTitleColor(ColorTheme.gray3, for: .normal)
+            self.layer.borderWidth = 0
         }
     }
     

@@ -54,6 +54,9 @@
 		E57540BC27A18FF1001F9247 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57540BB27A18FF1001F9247 /* ShopViewController.swift */; };
 		E57540BE27A1900C001F9247 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57540BD27A1900C001F9247 /* MapViewController.swift */; };
 		E57540C027A19354001F9247 /* MyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57540BF27A19354001F9247 /* MyInfoView.swift */; };
+		E57A318627AF115900276D7F /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A318527AF115900276D7F /* OnboardingViewController.swift */; };
+		E57A318827AF163100276D7F /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A318727AF163100276D7F /* OnboardingView.swift */; };
+		E57A318A27AF3C6800276D7F /* OnboardingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A318927AF3C6800276D7F /* OnboardingViewCell.swift */; };
 		E5D41B8427AAAF1F00021C58 /* FontTHeme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B7927AAAF1D00021C58 /* FontTHeme.swift */; };
 		E5D41B8527AAAF1F00021C58 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5D41B7B27AAAF1E00021C58 /* NotoSansKR-Light.otf */; };
 		E5D41B8627AAAF1F00021C58 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5D41B7C27AAAF1E00021C58 /* NotoSansKR-Bold.otf */; };
@@ -116,6 +119,9 @@
 		E57540BB27A18FF1001F9247 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		E57540BD27A1900C001F9247 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		E57540BF27A19354001F9247 /* MyInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoView.swift; sourceTree = "<group>"; };
+		E57A318527AF115900276D7F /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		E57A318727AF163100276D7F /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		E57A318927AF3C6800276D7F /* OnboardingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewCell.swift; sourceTree = "<group>"; };
 		E5D41B7927AAAF1D00021C58 /* FontTHeme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontTHeme.swift; sourceTree = "<group>"; };
 		E5D41B7B27AAAF1E00021C58 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
 		E5D41B7C27AAAF1E00021C58 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
@@ -180,7 +186,7 @@
 				E5754088279D24CD001F9247 /* Manager */,
 				E57540A627A09562001F9247 /* Model */,
 				E575405B279800D0001F9247 /* ViewModels */,
-				E575404C279705D6001F9247 /* CustomView */,
+				E575404C279705D6001F9247 /* CustomViews */,
 				E57540342796968D001F9247 /* Extensions */,
 				E575406127987857001F9247 /* Protocols */,
 				E575402F279691F7001F9247 /* SupportingFiles */,
@@ -210,7 +216,7 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		E575404C279705D6001F9247 /* CustomView */ = {
+		E575404C279705D6001F9247 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
 				E575404D279705ED001F9247 /* SeSACButton.swift */,
@@ -218,7 +224,7 @@
 				E57540B127A12E4E001F9247 /* TabBarController.swift */,
 				E5D41BA027AC7A6100021C58 /* DynamicHeightCollectionView.swift */,
 			);
-			path = CustomView;
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		E575405527970E52001F9247 /* VC */ = {
@@ -323,6 +329,16 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		E57A318427AF110E00276D7F /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				E57A318527AF115900276D7F /* OnboardingViewController.swift */,
+				E57A318727AF163100276D7F /* OnboardingView.swift */,
+				E57A318927AF3C6800276D7F /* OnboardingViewCell.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		E5D41B7827AAAF0F00021C58 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,6 +368,7 @@
 		E5D41B8E27AAB3FB00021C58 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E57A318427AF110E00276D7F /* Onboarding */,
 				E57540B627A178F6001F9247 /* MyInfo */,
 				E575405627971B2E001F9247 /* Auth */,
 				E57540B427A178E1001F9247 /* Shop */,
@@ -501,6 +518,7 @@
 				E575408F279DB92D001F9247 /* FirebaseManager.swift in Sources */,
 				E50C3AE327A1C6490085CABD /* Reusable.swift in Sources */,
 				E5D41B9727AC122600021C58 /* ManageInfoViewController.swift in Sources */,
+				E57A318627AF115900276D7F /* OnboardingViewController.swift in Sources */,
 				E5754091279DD0B6001F9247 /* UIViewController+Extension.swift in Sources */,
 				E57540672799255C001F9247 /* SeSACTextField.swift in Sources */,
 				E5754070279A4ED2001F9247 /* AuthEmailViewController.swift in Sources */,
@@ -514,6 +532,7 @@
 				E575401C27968ED0001F9247 /* AppDelegate.swift in Sources */,
 				E5754081279D1AB8001F9247 /* AuthTextFieldView.swift in Sources */,
 				E5D41B8D27AAAF1F00021C58 /* ColorTheme.swift in Sources */,
+				E57A318827AF163100276D7F /* OnboardingView.swift in Sources */,
 				E5754083279D1EE9001F9247 /* AuthCodeView.swift in Sources */,
 				E575405827971B3B001F9247 /* AuthCommonView.swift in Sources */,
 				E575401E27968ED0001F9247 /* SceneDelegate.swift in Sources */,
@@ -535,6 +554,7 @@
 				E575406E27994045001F9247 /* AuthCodeViewModel.swift in Sources */,
 				E5D41B9D27AC4CD700021C58 /* ManageInfoViewModel.swift in Sources */,
 				E5754072279A4F07001F9247 /* AuthNicknameViewController.swift in Sources */,
+				E57A318A27AF3C6800276D7F /* OnboardingViewCell.swift in Sources */,
 				E5754074279A4F3A001F9247 /* AuthGenderViewController.swift in Sources */,
 				E575408A279D24ED001F9247 /* AppSettings.swift in Sources */,
 				E5754078279B0BDC001F9247 /* AuthModel.swift in Sources */,

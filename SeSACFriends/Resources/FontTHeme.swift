@@ -11,6 +11,12 @@ class FontTheme {
     static let NotoSansRegular = "NotoSansKR-Regular"
     static let NotoSansMedium = "NotoSansKR-Medium"
     
+    static var onboardingView: UIFont {
+        return UIFont(name: FontTheme.NotoSansRegular, size: 24)!
+    }
+    static var onboardingViewP: UIFont {
+        return UIFont(name: FontTheme.NotoSansMedium, size: 24)!
+    }
     static var Display1_R20: UIFont {
         return UIFont(name: FontTheme.NotoSansRegular, size: 20)!
     }
