@@ -18,6 +18,11 @@ class OnboardingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mainView.button.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
     }
     
+    
+    @objc func buttonClicked() {
+        changeRootViewControllerToPhone()
+    }
 }

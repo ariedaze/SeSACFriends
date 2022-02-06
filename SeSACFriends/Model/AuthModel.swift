@@ -12,7 +12,7 @@ class SignupRequest: Codable {
     
     var phoneNumber: String = AppSettings[.phoneNumber] as? String ?? ""
     var nick: String = "ariee"
-    var birth: String = "1990-01-16T09:23:44.054Z"
+    var birth: Date = Date()
     var email: String = "a123@aaa.com"
     var gender: Int = 0
     var FCMtoken: String = AppSettings[.FCMToken] as? String ?? ""

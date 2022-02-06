@@ -14,6 +14,7 @@ struct Endpoint {
 }
 
 enum AuthAPI {
+    case login
     case signup(param: SignupRequest)
     case update_fcm
     case withdraw

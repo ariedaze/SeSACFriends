@@ -14,8 +14,9 @@ class AuthNicknameViewModel: ViewModelType, ValidationViewModel {
         case invalid = "닉네임은 1자 이상 10자 이내로 부탁드려요"
         case failed = "해당 닉네임은 사용할 수 없습니다"
     }
-    
-    func validate(_ text: String) -> Bool {
+
+    func validate<T>(_ object: T) -> Bool {
+        let text = object as! String
         guard text.count >= 1 && text.count <= 10 else {
             return false
         }

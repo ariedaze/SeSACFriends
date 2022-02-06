@@ -21,13 +21,14 @@ class AuthPhoneViewModel: ValidationViewModel, ViewModelType {
 
     var toastMessage = PublishRelay<String>()
 
-    func validate(_ text: String) -> Bool {
+    func validate<T>(_ object: T) -> Bool {
+        let text = object as! String
         guard isPhonePattern(text) else {
             return false
         }
         return true
     }
-    
+
     func makePhonePattern(phone: String) -> String {
         let mask = "XXX-XXXX-XXXX"
         let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
@@ -81,6 +82,12 @@ class AuthPhoneViewModel: ValidationViewModel, ViewModelType {
                 FirebaseManager.verify(phoneNumber: res)
                     .subscribe(onNext: {
                         self?.verificationSuccess.accept($0)
+                    }, onError: { error in
+                        if error.localizedDescription == FirebaseManager.error.TOO_MANY_REQUESTS.rawValue {
+                            self?.toastMessage.accept(AuthPhoneViewModel.Message.exceed.rawValue)
+                        } else {
+                            self?.toastMessage.accept(AuthPhoneViewModel.Message.error.rawValue)
+                        }
                     })
                     .disposed(by: self!.disposeBag)
             }

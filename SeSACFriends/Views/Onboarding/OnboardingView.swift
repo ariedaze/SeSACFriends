@@ -80,7 +80,7 @@ class OnboardingView: UIView, ViewRepresentable {
         
         pageControl.snp.makeConstraints {
             $0.top.equalTo(collectionView.snp.bottom)
-            $0.bottom.equalTo(button.snp.top).offset(-42)
+            $0.bottom.equalTo(button.snp.top)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(200)
             $0.height.equalTo(100)
@@ -89,7 +89,7 @@ class OnboardingView: UIView, ViewRepresentable {
         button.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(16)
             $0.trailing.equalToSuperview().offset(-16)
-            $0.bottom.equalTo(safeAreaLayoutGuide)
+            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-16)
         }
     }
 }

@@ -8,9 +8,16 @@
 import UIKit
 
 final class AuthBirthView: AuthCommonView {
+    var birthDate: Date = Date() {
+        didSet {
+            yearTextField.text = birthDate.yearName
+            monthTextField.text = birthDate.monthName
+            dayTextField.text = birthDate.dayName
+        }
+    }
     let yearTextField: SeSACTextField = {
         let tf = SeSACTextField()
-        tf.text = "1992"
+        tf.text = Date().yearName
         tf.isUserInteractionEnabled = false
         return tf
     }()
@@ -31,7 +38,7 @@ final class AuthBirthView: AuthCommonView {
     
     let monthTextField: SeSACTextField = {
         let tf = SeSACTextField()
-        tf.text = "11"
+        tf.text = Date().monthName
         tf.isUserInteractionEnabled = false
         return tf
     }()
@@ -51,7 +58,7 @@ final class AuthBirthView: AuthCommonView {
     }()
     let dayTextField: SeSACTextField = {
         let tf = SeSACTextField()
-        tf.text = "17"
+        tf.text = Date().dayName
         tf.isUserInteractionEnabled = false
         return tf
     }()
@@ -132,6 +139,6 @@ final class AuthBirthView: AuthCommonView {
     }
     
     @objc func dateChanged(_ sender: UIDatePicker) {
-        print(sender.date)
+        birthDate = sender.date
     }
 }

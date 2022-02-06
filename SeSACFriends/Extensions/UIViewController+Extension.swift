@@ -25,6 +25,29 @@ extension UIViewController {
             return currentViewController
         }
     }
+    
+    func changeRootViewControllerToPhone() {
+        let vc = AuthPhoneNumberViewController()
+        DispatchQueue.main.async {
+            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+                return
+            }
+            windowScene.windows.first?.rootViewController = UINavigationController(rootViewController: vc)
+            windowScene.windows.first?.makeKeyAndVisible()
+        }
+    }
+    
+    func changeRootViewControllerToHome() {
+        let vc = TabBarController()
+        DispatchQueue.main.async {
+            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+                return
+            }
+            windowScene.windows.first?.rootViewController = UINavigationController(rootViewController: vc)
+            windowScene.windows.first?.makeKeyAndVisible()
+        }
+    }
+
 }
 
 // UINavigationItem

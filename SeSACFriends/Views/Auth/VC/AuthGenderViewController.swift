@@ -27,28 +27,20 @@ final class AuthGenderViewController: UIViewController {
         )
         
         bind()
-        
-        mainView.button.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
-        
     }
     
     private func bind() {
         let input = AuthGenderViewModel.Input(
-            buttonTrigger: mainView.button.rx.tap,
+            buttonTrigger: mainView.button.rx.tap.asSignal(),
             manButtonTap: mainView.manButton.rx.tap.asSignal(),
             womanButtonTap: mainView.womanButton.rx.tap.asSignal())
         
         let output = viewModel.transform(input: input)
         
-        output.out
-            .subscribe (onNext: { _ in
-                print("성공?")
-            })
-            .disposed(by: disposeBag)
         
         output.buttonTap
             .subscribe (onNext: { value in
-                print(value)
+                self.mainView.button.status = .fill
                 if value == 0 {
                     if self.mainView.manButton.isSelected {
                         self.mainView.manButton.isSelected.toggle()
@@ -67,24 +59,10 @@ final class AuthGenderViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        
+        output.success
+            .drive(onNext: { [unowned self] _ in
+                self.changeRootViewControllerToHome()
+            })
+            .disposed(by: disposeBag)
     }
-    
-    
-    @objc func buttonClicked() {
-//        let vc = UIViewController()
-//        vc.view.backgroundColor = .purple
-//        self.navigationController?.pushViewController(vc, animated: true)
-    }
-}
-
-
-extension Reactive where Base: UIButton {
-    public var isSelectedChanged: ControlProperty<Bool> {
-        return base.rx.controlProperty(
-            editingEvents:  [.allEditingEvents,.touchUpInside],
-            getter: { $0.isSelected },
-            setter: { $0.isSelected = $1 })
-    }
-
 }

@@ -13,12 +13,14 @@ class AuthEmailViewModel: ViewModelType, ValidationViewModel {
     var validationFailed = "이메일 형식이 올바르지 않습니다."
     var toastMessage = PublishRelay<String>()
     
-    func validate(_ text: String) -> Bool {
+    func validate<T>(_ object: T) -> Bool {
+        let text = object as! String
         guard isPhonePattern(text: text) else {
             return false
         }
         return true
     }
+    
     func isPhonePattern(text : String) -> Bool{
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         

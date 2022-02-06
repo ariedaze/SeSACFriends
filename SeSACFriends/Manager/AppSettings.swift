@@ -10,6 +10,7 @@ import Foundation
 public enum AppSettings {
 
     public enum key: String {
+        case isFirst
         case phoneNumber
         case FCMToken
         case idToken

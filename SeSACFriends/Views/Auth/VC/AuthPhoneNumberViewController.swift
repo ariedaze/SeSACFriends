@@ -29,6 +29,7 @@ final class AuthPhoneNumberViewController: UIViewController {
             buttonTitleText: "인증 문자 받기"
         )
         mainView.textField.placeholder = "휴대폰 번호(-없이 숫자만 입력)"
+        mainView.textField.becomeFirstResponder()
     }
     
     func bind(){

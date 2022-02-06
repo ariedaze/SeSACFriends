@@ -41,8 +41,9 @@ class ManageInfoViewController: UIViewController {
         let output = viewModel.transform(input: input)
     
         output.out
-            .subscribe (onNext: { _ in
+            .subscribe (onNext: { [weak self] _ in
                 print("성공?")
+                self?.changeRootViewControllerToPhone()
             })
             .disposed(by: disposeBag)
         

@@ -15,6 +15,7 @@ class AuthGenderViewModel: ViewModelType {
         case error = "에러가 발생했습니다. 잠시 후 다시 시도해주세요"
     }
     private var toastMessage = PublishRelay<String>()
+    private var successSignup = PublishRelay<Bool>()
     private var selectedGender = -1
     
     var disposeBag = DisposeBag()
@@ -41,19 +42,25 @@ class AuthGenderViewModel: ViewModelType {
             .merge()
         
         let output = input.buttonTrigger
-            .asObservable()
-            .flatMapLatest {
+            .emit { [unowned self] _ in
+                SignupRequest.shared.gender = self.selectedGender
                 self.networkingApi.request(.signup(param: SignupRequest.shared))
-                    .do(onError: { [weak self] error in
-                        print("error")
-                    })
+                    .subscribe { event in
+                        switch event {
+                        case .success(let response):
+                            print("res", response.statusCode)
+                            self.successSignup.accept(true)
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
+                    .disposed(by: disposeBag)
             }
-
 
         return Output(
             buttonTap: source,
             toastMessage: toastMessage.asDriver(onErrorJustReturn: ""),
-            out: output
+            success: successSignup.asDriver(onErrorJustReturn: false)
         )
     }
 
@@ -61,15 +68,14 @@ class AuthGenderViewModel: ViewModelType {
 
 extension AuthGenderViewModel {
     struct Input {
-        let buttonTrigger: ControlEvent<Void>
+        let buttonTrigger: Signal<Void>
         let manButtonTap: Signal<Void>
         let womanButtonTap: Signal<Void>
-//        let nextButtonTap: Signal<Void>
     }
     
     struct Output {
         let buttonTap: Observable<Int>
         let toastMessage: Driver<String>
-        let out: Observable<Response>
+        let success: Driver<Bool>
     }
 }

@@ -17,6 +17,6 @@ protocol ViewModelType {
 }
 
 protocol ValidationViewModel {
-    func validate(_ text: String) -> Bool
+    func validate<T>(_ object: T) -> Bool
 }
 
