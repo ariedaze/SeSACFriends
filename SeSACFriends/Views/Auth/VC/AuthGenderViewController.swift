@@ -60,8 +60,8 @@ final class AuthGenderViewController: UIViewController {
             .disposed(by: disposeBag)
         
         output.success
-            .drive(onNext: { [unowned self] _ in
-                self.changeRootViewControllerToHome()
+            .drive(onNext: { [weak self] _ in
+                self?.changeRootViewControllerToHome()
             })
             .disposed(by: disposeBag)
     }

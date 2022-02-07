@@ -60,8 +60,10 @@ class AuthCodeViewModel: ValidationViewModel {
                 FirebaseManager.signInWithCredential(verificationId: self?.verificationID ?? "", verificationCode: verificationCode ?? "")
                     .subscribe(
                         onNext: {
-                        self?.verificationSuccess.accept($0)
-                        }, onError: {_ in 
+                            print($0, "id?")
+                            self?.verificationSuccess.accept($0)
+                        },
+                        onError: {_ in
                             self?.toastMessage.accept(AuthCodeViewModel.Message.error.rawValue)
                         })
                     .disposed(by: self!.disposeBag)

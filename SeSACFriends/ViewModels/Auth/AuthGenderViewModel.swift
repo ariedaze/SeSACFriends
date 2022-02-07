@@ -19,7 +19,7 @@ class AuthGenderViewModel: ViewModelType {
     private var selectedGender = -1
     
     var disposeBag = DisposeBag()
-    let networkingApi = NetworkingAPI()
+    let networkingApi = AuthNetworkingAPI()
     
     func transform(input: Input) -> Output {
         
@@ -42,19 +42,19 @@ class AuthGenderViewModel: ViewModelType {
             .merge()
         
         let output = input.buttonTrigger
-            .emit { [unowned self] _ in
-                SignupRequest.shared.gender = self.selectedGender
-                self.networkingApi.request(.signup(param: SignupRequest.shared))
+            .emit { [weak self] _ in
+                SignupRequest.shared.gender = self?.selectedGender ?? -2
+                self?.networkingApi.request(.signup(param: SignupRequest.shared))
                     .subscribe { event in
                         switch event {
                         case .success(let response):
                             print("res", response.statusCode)
-                            self.successSignup.accept(true)
+                            self?.successSignup.accept(true)
                         case .failure(let error):
                             print(error)
                         }
                     }
-                    .disposed(by: disposeBag)
+                    .disposed(by: self!.disposeBag)
             }
 
         return Output(

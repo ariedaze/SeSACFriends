@@ -17,8 +17,6 @@
 		E575404E279705ED001F9247 /* SeSACButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E575404D279705ED001F9247 /* SeSACButton.swift */; };
 		E575405127970E17001F9247 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E575405027970E17001F9247 /* SnapKit */; };
 		E575405827971B3B001F9247 /* AuthCommonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E575405727971B3B001F9247 /* AuthCommonView.swift */; };
-		E575405E2798750F001F9247 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = E575405D2798750F001F9247 /* RxCocoa */; };
-		E57540602798750F001F9247 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E575405F2798750F001F9247 /* RxSwift */; };
 		E5754063279878B8001F9247 /* ViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5754062279878B8001F9247 /* ViewRepresentable.swift */; };
 		E57540652798820A001F9247 /* AuthPhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57540642798820A001F9247 /* AuthPhoneViewModel.swift */; };
 		E57540672799255C001F9247 /* SeSACTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57540662799255C001F9247 /* SeSACTextField.swift */; };
@@ -57,6 +55,14 @@
 		E57A318627AF115900276D7F /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A318527AF115900276D7F /* OnboardingViewController.swift */; };
 		E57A318827AF163100276D7F /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A318727AF163100276D7F /* OnboardingView.swift */; };
 		E57A318A27AF3C6800276D7F /* OnboardingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A318927AF3C6800276D7F /* OnboardingViewCell.swift */; };
+		E57A318C27B0F75000276D7F /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A318B27B0F75000276D7F /* MapView.swift */; };
+		E57A318E27B160EF00276D7F /* QueueAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A318D27B160EF00276D7F /* QueueAPI.swift */; };
+		E57A319027B1813000276D7F /* LocationPermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A318F27B1813000276D7F /* LocationPermissionManager.swift */; };
+		E57A319327B1852700276D7F /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = E57A319227B1852700276D7F /* RxCocoa */; };
+		E57A319527B1852700276D7F /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = E57A319427B1852700276D7F /* RxRelay */; };
+		E57A319727B1852700276D7F /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E57A319627B1852700276D7F /* RxSwift */; };
+		E57A319A27B1883500276D7F /* RxCoreLocation in Frameworks */ = {isa = PBXBuildFile; productRef = E57A319927B1883500276D7F /* RxCoreLocation */; };
+		E57A319C27B194DC00276D7F /* QueueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A319B27B194DC00276D7F /* QueueModel.swift */; };
 		E5D41B8427AAAF1F00021C58 /* FontTHeme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B7927AAAF1D00021C58 /* FontTHeme.swift */; };
 		E5D41B8527AAAF1F00021C58 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5D41B7B27AAAF1E00021C58 /* NotoSansKR-Light.otf */; };
 		E5D41B8627AAAF1F00021C58 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5D41B7C27AAAF1E00021C58 /* NotoSansKR-Bold.otf */; };
@@ -122,6 +128,10 @@
 		E57A318527AF115900276D7F /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		E57A318727AF163100276D7F /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		E57A318927AF3C6800276D7F /* OnboardingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewCell.swift; sourceTree = "<group>"; };
+		E57A318B27B0F75000276D7F /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		E57A318D27B160EF00276D7F /* QueueAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueAPI.swift; sourceTree = "<group>"; };
+		E57A318F27B1813000276D7F /* LocationPermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionManager.swift; sourceTree = "<group>"; };
+		E57A319B27B194DC00276D7F /* QueueModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueModel.swift; sourceTree = "<group>"; };
 		E5D41B7927AAAF1D00021C58 /* FontTHeme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontTHeme.swift; sourceTree = "<group>"; };
 		E5D41B7B27AAAF1E00021C58 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
 		E5D41B7C27AAAF1E00021C58 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
@@ -145,16 +155,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E57A319527B1852700276D7F /* RxRelay in Frameworks */,
+				E57A319327B1852700276D7F /* RxCocoa in Frameworks */,
+				E57A319A27B1883500276D7F /* RxCoreLocation in Frameworks */,
 				E5754096279DD274001F9247 /* FirebaseMessaging in Frameworks */,
 				E5D41B9A27AC3F0100021C58 /* Then in Frameworks */,
-				E575405E2798750F001F9247 /* RxCocoa in Frameworks */,
 				E5754094279DD274001F9247 /* FirebaseAuth in Frameworks */,
 				E575405127970E17001F9247 /* SnapKit in Frameworks */,
-				E57540602798750F001F9247 /* RxSwift in Frameworks */,
 				E57540AE27A09B49001F9247 /* Moya in Frameworks */,
 				E57540B027A09B49001F9247 /* RxMoya in Frameworks */,
 				E575409F279DF54C001F9247 /* Toast in Frameworks */,
 				E5D41BA527AD7C2C00021C58 /* MultiSlider in Frameworks */,
+				E57A319727B1852700276D7F /* RxSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +286,7 @@
 			children = (
 				E5754089279D24ED001F9247 /* AppSettings.swift */,
 				E575408E279DB92D001F9247 /* FirebaseManager.swift */,
+				E57A318F27B1813000276D7F /* LocationPermissionManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -282,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				E5754077279B0BDC001F9247 /* AuthModel.swift */,
+				E57A319B27B194DC00276D7F /* QueueModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -290,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				E57540BD27A1900C001F9247 /* MapViewController.swift */,
+				E57A318B27B0F75000276D7F /* MapView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -325,6 +340,7 @@
 			isa = PBXGroup;
 			children = (
 				E57540A727A09574001F9247 /* AuthAPI.swift */,
+				E57A318D27B160EF00276D7F /* QueueAPI.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -381,11 +397,11 @@
 		E5D41B9227AAC5E700021C58 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				E57540A0279E8A2B001F9247 /* AuthBirthViewModel.swift */,
 				E57540642798820A001F9247 /* AuthPhoneViewModel.swift */,
 				E575406D27994045001F9247 /* AuthCodeViewModel.swift */,
 				E575407C279B0D2B001F9247 /* AuthEmailViewModel.swift */,
 				E5754097279DDA93001F9247 /* AuthNicknameViewModel.swift */,
-				E57540A0279E8A2B001F9247 /* AuthBirthViewModel.swift */,
 				E57540A2279E8A3A001F9247 /* AuthGenderViewModel.swift */,
 			);
 			path = Auth;
@@ -429,8 +445,6 @@
 			name = SeSACFriends;
 			packageProductDependencies = (
 				E575405027970E17001F9247 /* SnapKit */,
-				E575405D2798750F001F9247 /* RxCocoa */,
-				E575405F2798750F001F9247 /* RxSwift */,
 				E5754093279DD274001F9247 /* FirebaseAuth */,
 				E5754095279DD274001F9247 /* FirebaseMessaging */,
 				E575409E279DF54C001F9247 /* Toast */,
@@ -438,6 +452,10 @@
 				E57540AF27A09B49001F9247 /* RxMoya */,
 				E5D41B9927AC3F0100021C58 /* Then */,
 				E5D41BA427AD7C2C00021C58 /* MultiSlider */,
+				E57A319227B1852700276D7F /* RxCocoa */,
+				E57A319427B1852700276D7F /* RxRelay */,
+				E57A319627B1852700276D7F /* RxSwift */,
+				E57A319927B1883500276D7F /* RxCoreLocation */,
 			);
 			productName = SeSACFriends;
 			productReference = E575401827968ED0001F9247 /* SeSACFriends.app */;
@@ -469,12 +487,13 @@
 			mainGroup = E575400F27968ED0001F9247;
 			packageReferences = (
 				E575404F27970E17001F9247 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				E575405C2798750F001F9247 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				E5754092279DD274001F9247 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				E575409D279DF54C001F9247 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				E57540AC27A09B49001F9247 /* XCRemoteSwiftPackageReference "Moya" */,
 				E5D41B9827AC3F0100021C58 /* XCRemoteSwiftPackageReference "Then" */,
 				E5D41BA327AD7C2B00021C58 /* XCRemoteSwiftPackageReference "MultiSlider" */,
+				E57A319127B1852700276D7F /* XCRemoteSwiftPackageReference "RxSwift" */,
+				E57A319827B1883500276D7F /* XCRemoteSwiftPackageReference "RxCoreLocation" */,
 			);
 			productRefGroup = E575401927968ED0001F9247 /* Products */;
 			projectDirPath = "";
@@ -512,8 +531,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5754087279D1F28001F9247 /* AuthGenderView.swift in Sources */,
+				E57A318C27B0F75000276D7F /* MapView.swift in Sources */,
 				E575403627969698001F9247 /* UIColor+Extension.swift in Sources */,
 				E57540BA27A18FDB001F9247 /* ChatViewController.swift in Sources */,
+				E57A318E27B160EF00276D7F /* QueueAPI.swift in Sources */,
 				E57540C027A19354001F9247 /* MyInfoView.swift in Sources */,
 				E575408F279DB92D001F9247 /* FirebaseManager.swift in Sources */,
 				E50C3AE327A1C6490085CABD /* Reusable.swift in Sources */,
@@ -526,8 +547,10 @@
 				E575409C279DF222001F9247 /* ViewModelProtocol.swift in Sources */,
 				E575408C279D5D5A001F9247 /* String+Extension.swift in Sources */,
 				E57540652798820A001F9247 /* AuthPhoneViewModel.swift in Sources */,
+				E57A319027B1813000276D7F /* LocationPermissionManager.swift in Sources */,
 				E575403827969EA1001F9247 /* AuthPhoneNumberViewController.swift in Sources */,
 				E57540A1279E8A2B001F9247 /* AuthBirthViewModel.swift in Sources */,
+				E57A319C27B194DC00276D7F /* QueueModel.swift in Sources */,
 				E57540BC27A18FF1001F9247 /* ShopViewController.swift in Sources */,
 				E575401C27968ED0001F9247 /* AppDelegate.swift in Sources */,
 				E5754081279D1AB8001F9247 /* AuthTextFieldView.swift in Sources */,
@@ -705,6 +728,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -732,6 +756,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -777,14 +802,6 @@
 				kind = branch;
 			};
 		};
-		E575405C2798750F001F9247 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		E5754092279DD274001F9247 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -807,6 +824,22 @@
 			requirement = {
 				branch = master;
 				kind = branch;
+			};
+		};
+		E57A319127B1852700276D7F /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		E57A319827B1883500276D7F /* XCRemoteSwiftPackageReference "RxCoreLocation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxCoreLocation.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		E5D41B9827AC3F0100021C58 /* XCRemoteSwiftPackageReference "Then" */ = {
@@ -833,16 +866,6 @@
 			package = E575404F27970E17001F9247 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		E575405D2798750F001F9247 /* RxCocoa */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E575405C2798750F001F9247 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxCocoa;
-		};
-		E575405F2798750F001F9247 /* RxSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E575405C2798750F001F9247 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxSwift;
-		};
 		E5754093279DD274001F9247 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E5754092279DD274001F9247 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -867,6 +890,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E57540AC27A09B49001F9247 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = RxMoya;
+		};
+		E57A319227B1852700276D7F /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E57A319127B1852700276D7F /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		E57A319427B1852700276D7F /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E57A319127B1852700276D7F /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		E57A319627B1852700276D7F /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E57A319127B1852700276D7F /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		E57A319927B1883500276D7F /* RxCoreLocation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E57A319827B1883500276D7F /* XCRemoteSwiftPackageReference "RxCoreLocation" */;
+			productName = RxCoreLocation;
 		};
 		E5D41B9927AC3F0100021C58 /* Then */ = {
 			isa = XCSwiftPackageProductDependency;

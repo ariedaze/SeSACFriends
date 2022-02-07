@@ -60,6 +60,10 @@ extension SeSACButton {
             self.backgroundColor = ColorTheme.gray6
             self.setTitleColor(ColorTheme.gray3, for: .normal)
             self.layer.borderWidth = 0
+        case .normal:
+            self.backgroundColor = ColorTheme.white
+            self.setTitleColor(ColorTheme.black, for: .normal)
+            self.layer.borderWidth = 0
         }
     }
     
@@ -69,6 +73,7 @@ extension SeSACButton {
         case outline
         case cancel
         case disable
+        case normal
     }
     
     public enum Size: Int {

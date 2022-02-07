@@ -54,8 +54,8 @@ final class AuthPhoneNumberViewController: UIViewController {
             .disposed(by: disposeBag)
         
         output.toastMessage
-            .drive(onNext: { [unowned self] message in
-                self.view.makeToast(message, position: .top)
+            .drive(onNext: { [weak self] message in
+                self?.view.makeToast(message, position: .top)
             })
             .disposed(by: disposeBag)
         

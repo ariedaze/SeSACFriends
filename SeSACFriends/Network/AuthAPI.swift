@@ -75,15 +75,8 @@ extension AuthAPI: TargetType {
     
 }
 
-struct User: Decodable {
-    
-}
 
-protocol NetworkingService {
-    func request(_ api: AuthAPI) -> Single<Response>
-}
-
-final class NetworkingAPI: NetworkingService {
+final class AuthNetworkingAPI {
     let provider: MoyaProvider<AuthAPI>
     
     init(provider: MoyaProvider<AuthAPI> = MoyaProvider<AuthAPI>()) {

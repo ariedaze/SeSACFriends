@@ -12,7 +12,7 @@ import Moya
 
 class ManageInfoViewModel: ViewModelType {
     var disposeBag = DisposeBag()
-    let networkingApi = NetworkingAPI()
+    let networkingApi = AuthNetworkingAPI()
 
     func transform(input: Input) -> Output {
         
