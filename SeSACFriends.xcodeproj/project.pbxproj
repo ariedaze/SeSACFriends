@@ -194,15 +194,10 @@
 		E575401A27968ED0001F9247 /* SeSACFriends */ = {
 			isa = PBXGroup;
 			children = (
-				E57A318027AEA04200276D7F /* Network */,
-				E5D41B8E27AAB3FB00021C58 /* Views */,
-				E5D41B7827AAAF0F00021C58 /* Resources */,
-				E5754088279D24CD001F9247 /* Manager */,
-				E57540A627A09562001F9247 /* Model */,
-				E575405B279800D0001F9247 /* ViewModels */,
-				E575404C279705D6001F9247 /* CustomViews */,
-				E57540342796968D001F9247 /* Extensions */,
-				E575406127987857001F9247 /* Protocols */,
+				E57A31A027B1AC8100276D7F /* Utils */,
+				E57A318027AEA04200276D7F /* Networking */,
+				E5D41B8E27AAB3FB00021C58 /* Scene */,
+				E57540A627A09562001F9247 /* Models */,
 				E575402F279691F7001F9247 /* SupportingFiles */,
 			);
 			path = SeSACFriends;
@@ -257,19 +252,11 @@
 		E575405627971B2E001F9247 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				E5D41B9227AAC5E700021C58 /* ViewModels */,
 				E5D41B9327AC10E700021C58 /* Views */,
 				E575405527970E52001F9247 /* VC */,
 			);
 			path = Auth;
-			sourceTree = "<group>";
-		};
-		E575405B279800D0001F9247 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				E5D41B9B27AC4CC600021C58 /* MyInfo */,
-				E5D41B9227AAC5E700021C58 /* Auth */,
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		E575406127987857001F9247 /* Protocols */ = {
@@ -283,31 +270,21 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		E5754088279D24CD001F9247 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				E5754089279D24ED001F9247 /* AppSettings.swift */,
-				E575408E279DB92D001F9247 /* FirebaseManager.swift */,
-				E57A318F27B1813000276D7F /* LocationManager.swift */,
-			);
-			path = Manager;
-			sourceTree = "<group>";
-		};
-		E57540A627A09562001F9247 /* Model */ = {
+		E57540A627A09562001F9247 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				E5754077279B0BDC001F9247 /* AuthModel.swift */,
 				E57A319B27B194DC00276D7F /* QueueModel.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		E57540B327A178C7001F9247 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				E57A319F27B1AC2F00276D7F /* ViewModels */,
 				E57540BD27A1900C001F9247 /* MapViewController.swift */,
 				E57A318B27B0F75000276D7F /* MapView.swift */,
-				E57A319D27B1A47A00276D7F /* MapViewModel.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -331,21 +308,21 @@
 		E57540B627A178F6001F9247 /* MyInfo */ = {
 			isa = PBXGroup;
 			children = (
-				E57540B727A18FBF001F9247 /* MyInfoViewController.swift */,
-				E57540BF27A19354001F9247 /* MyInfoView.swift */,
-				E5D41B9427AC110500021C58 /* ManageInfoView.swift */,
-				E5D41B9627AC122600021C58 /* ManageInfoViewController.swift */,
+				E57A31A227B1ACF400276D7F /* Views */,
+				E5D41B9B27AC4CC600021C58 /* ViewModels */,
+				E57A31A127B1ACBA00276D7F /* ViewControllers */,
 			);
 			path = MyInfo;
 			sourceTree = "<group>";
 		};
-		E57A318027AEA04200276D7F /* Network */ = {
+		E57A318027AEA04200276D7F /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				E575408E279DB92D001F9247 /* FirebaseManager.swift */,
 				E57540A727A09574001F9247 /* AuthAPI.swift */,
 				E57A318D27B160EF00276D7F /* QueueAPI.swift */,
 			);
-			path = Network;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		E57A318427AF110E00276D7F /* Onboarding */ = {
@@ -356,6 +333,45 @@
 				E57A318927AF3C6800276D7F /* OnboardingViewCell.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		E57A319F27B1AC2F00276D7F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E57A319D27B1A47A00276D7F /* MapViewModel.swift */,
+				E57A318F27B1813000276D7F /* LocationManager.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E57A31A027B1AC8100276D7F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E5754089279D24ED001F9247 /* AppSettings.swift */,
+				E575406127987857001F9247 /* Protocols */,
+				E57540342796968D001F9247 /* Extensions */,
+				E575404C279705D6001F9247 /* CustomViews */,
+				E5D41B7827AAAF0F00021C58 /* Resources */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		E57A31A127B1ACBA00276D7F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E5D41B9627AC122600021C58 /* ManageInfoViewController.swift */,
+				E57540B727A18FBF001F9247 /* MyInfoViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E57A31A227B1ACF400276D7F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E57540BF27A19354001F9247 /* MyInfoView.swift */,
+				E5D41B9427AC110500021C58 /* ManageInfoView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E5D41B7827AAAF0F00021C58 /* Resources */ = {
@@ -384,7 +400,7 @@
 			path = Noto_Sans_KR;
 			sourceTree = "<group>";
 		};
-		E5D41B8E27AAB3FB00021C58 /* Views */ = {
+		E5D41B8E27AAB3FB00021C58 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
 				E57A318427AF110E00276D7F /* Onboarding */,
@@ -394,10 +410,10 @@
 				E57540B327A178C7001F9247 /* Map */,
 				E57540B527A178EE001F9247 /* Chat */,
 			);
-			path = Views;
+			path = Scene;
 			sourceTree = "<group>";
 		};
-		E5D41B9227AAC5E700021C58 /* Auth */ = {
+		E5D41B9227AAC5E700021C58 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				E57540A0279E8A2B001F9247 /* AuthBirthViewModel.swift */,
@@ -407,7 +423,7 @@
 				E5754097279DDA93001F9247 /* AuthNicknameViewModel.swift */,
 				E57540A2279E8A3A001F9247 /* AuthGenderViewModel.swift */,
 			);
-			path = Auth;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		E5D41B9327AC10E700021C58 /* Views */ = {
@@ -422,12 +438,12 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		E5D41B9B27AC4CC600021C58 /* MyInfo */ = {
+		E5D41B9B27AC4CC600021C58 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				E5D41B9C27AC4CD700021C58 /* ManageInfoViewModel.swift */,
 			);
-			path = MyInfo;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
