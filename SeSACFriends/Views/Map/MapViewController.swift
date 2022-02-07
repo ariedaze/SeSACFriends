@@ -8,10 +8,13 @@
 import UIKit
 import MapKit
 import CoreLocation
+import RxSwift
 
 class MapViewController: UIViewController {
     let mainView = MapView()
-    let locationManager = CLLocationManager() // 위치 조종 매니저
+    let locationManager = LocationManager.shared // 위치 조종 매니저
+    var disposeBag = DisposeBag()
+    let sesacCoordinate = CLLocationCoordinate2D(latitude: 37.51818789942772, longitude: 126.88541765534976) //새싹 영등포 캠퍼스의 위치입니다. 여기서 시작하면 재밌을 것 같죠? 하하
     
     override func loadView() {
         view = mainView
@@ -20,9 +23,23 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        locationManager.requestWhenInUseAuthorization() // 권한 설정
+//        let center = mainView.map.centerCoordinate
+        
+        locationManager.locationSubject // 실시간 위치 구독
+            .compactMap { $0 }
+            .subscribe(onNext: {
+                print("업데이트", $0)
+            })
+            .disposed(by: self.disposeBag)
+        
+        locationManager.requestLocation() // 위치 권한
+            .bind { print($0) }
+            .disposed(by: self.disposeBag)
+        
         mainView.map.delegate = self
-        locationManager.delegate = self
+        // 최초로 포커스 시킬 좌표 + 축척
+        mainView.map.setRegion(MKCoordinateRegion(center: sesacCoordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)), animated: true)
+
         mainView.myLocationButton.addTarget(self, action: #selector(findMyLocation), for: .touchUpInside)
     }
     
@@ -42,8 +59,9 @@ extension MapViewController: MKMapViewDelegate, CLLocationManagerDelegate {
     func checkCurrentLocationAuthorization(authorizationStatus: CLAuthorizationStatus) {
         switch authorizationStatus {
         case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-            locationManager.startUpdatingLocation()
+            print("not determined")
+//            locationManager.requestWhenInUseAuthorization()
+//            locationManager.startUpdatingLocation()
         case .restricted:
             print("restricted")
             goSetting()
@@ -54,20 +72,9 @@ extension MapViewController: MKMapViewDelegate, CLLocationManagerDelegate {
             print("always")
         case .authorizedWhenInUse:
             print("wheninuse")
-            locationManager.startUpdatingLocation()
+//            locationManager.startUpdatingLocation()
         @unknown default:
             print("unknown")
-        }
-        if #available(iOS 14.0, *) {
-            let accuracyState = locationManager.accuracyAuthorization
-            switch accuracyState {
-            case .fullAccuracy:
-                print("full")
-            case .reducedAccuracy:
-                print("reduced")
-            @unknown default:
-                print("Unknown")
-            }
         }
     }
     
@@ -86,31 +93,8 @@ extension MapViewController: MKMapViewDelegate, CLLocationManagerDelegate {
         present(alert, animated: true, completion: nil)
     }
     
-    func checkUserLocationServicesAuthorization() {
-        let authorizationStatus: CLAuthorizationStatus
-        if #available(iOS 14, *) {
-            authorizationStatus = locationManager.authorizationStatus
-        } else {
-            authorizationStatus = CLLocationManager.authorizationStatus()
-        }
-        if CLLocationManager.locationServicesEnabled() {
-            checkCurrentLocationAuthorization(authorizationStatus: authorizationStatus)
-        }
-    }
     
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        checkUserLocationServicesAuthorization()
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        checkUserLocationServicesAuthorization()
-    }
-
     @objc func findMyLocation() {
-        guard let currentLocation = locationManager.location else {
-            locationManager.requestWhenInUseAuthorization()
-            return
-        }
         mainView.map.showsUserLocation = true
         mainView.map.setUserTrackingMode(.follow, animated: true)
     }

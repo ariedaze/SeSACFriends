@@ -57,12 +57,13 @@
 		E57A318A27AF3C6800276D7F /* OnboardingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A318927AF3C6800276D7F /* OnboardingViewCell.swift */; };
 		E57A318C27B0F75000276D7F /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A318B27B0F75000276D7F /* MapView.swift */; };
 		E57A318E27B160EF00276D7F /* QueueAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A318D27B160EF00276D7F /* QueueAPI.swift */; };
-		E57A319027B1813000276D7F /* LocationPermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A318F27B1813000276D7F /* LocationPermissionManager.swift */; };
+		E57A319027B1813000276D7F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A318F27B1813000276D7F /* LocationManager.swift */; };
 		E57A319327B1852700276D7F /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = E57A319227B1852700276D7F /* RxCocoa */; };
 		E57A319527B1852700276D7F /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = E57A319427B1852700276D7F /* RxRelay */; };
 		E57A319727B1852700276D7F /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E57A319627B1852700276D7F /* RxSwift */; };
 		E57A319A27B1883500276D7F /* RxCoreLocation in Frameworks */ = {isa = PBXBuildFile; productRef = E57A319927B1883500276D7F /* RxCoreLocation */; };
 		E57A319C27B194DC00276D7F /* QueueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A319B27B194DC00276D7F /* QueueModel.swift */; };
+		E57A319E27B1A47A00276D7F /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A319D27B1A47A00276D7F /* MapViewModel.swift */; };
 		E5D41B8427AAAF1F00021C58 /* FontTHeme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B7927AAAF1D00021C58 /* FontTHeme.swift */; };
 		E5D41B8527AAAF1F00021C58 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5D41B7B27AAAF1E00021C58 /* NotoSansKR-Light.otf */; };
 		E5D41B8627AAAF1F00021C58 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5D41B7C27AAAF1E00021C58 /* NotoSansKR-Bold.otf */; };
@@ -130,8 +131,9 @@
 		E57A318927AF3C6800276D7F /* OnboardingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewCell.swift; sourceTree = "<group>"; };
 		E57A318B27B0F75000276D7F /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		E57A318D27B160EF00276D7F /* QueueAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueAPI.swift; sourceTree = "<group>"; };
-		E57A318F27B1813000276D7F /* LocationPermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionManager.swift; sourceTree = "<group>"; };
+		E57A318F27B1813000276D7F /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E57A319B27B194DC00276D7F /* QueueModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueModel.swift; sourceTree = "<group>"; };
+		E57A319D27B1A47A00276D7F /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		E5D41B7927AAAF1D00021C58 /* FontTHeme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontTHeme.swift; sourceTree = "<group>"; };
 		E5D41B7B27AAAF1E00021C58 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
 		E5D41B7C27AAAF1E00021C58 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
@@ -286,7 +288,7 @@
 			children = (
 				E5754089279D24ED001F9247 /* AppSettings.swift */,
 				E575408E279DB92D001F9247 /* FirebaseManager.swift */,
-				E57A318F27B1813000276D7F /* LocationPermissionManager.swift */,
+				E57A318F27B1813000276D7F /* LocationManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -305,6 +307,7 @@
 			children = (
 				E57540BD27A1900C001F9247 /* MapViewController.swift */,
 				E57A318B27B0F75000276D7F /* MapView.swift */,
+				E57A319D27B1A47A00276D7F /* MapViewModel.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -547,7 +550,7 @@
 				E575409C279DF222001F9247 /* ViewModelProtocol.swift in Sources */,
 				E575408C279D5D5A001F9247 /* String+Extension.swift in Sources */,
 				E57540652798820A001F9247 /* AuthPhoneViewModel.swift in Sources */,
-				E57A319027B1813000276D7F /* LocationPermissionManager.swift in Sources */,
+				E57A319027B1813000276D7F /* LocationManager.swift in Sources */,
 				E575403827969EA1001F9247 /* AuthPhoneNumberViewController.swift in Sources */,
 				E57540A1279E8A2B001F9247 /* AuthBirthViewModel.swift in Sources */,
 				E57A319C27B194DC00276D7F /* QueueModel.swift in Sources */,
@@ -573,6 +576,7 @@
 				E5754063279878B8001F9247 /* ViewRepresentable.swift in Sources */,
 				E5754076279A4F68001F9247 /* AuthBirthViewController.swift in Sources */,
 				E5D41B9527AC110500021C58 /* ManageInfoView.swift in Sources */,
+				E57A319E27B1A47A00276D7F /* MapViewModel.swift in Sources */,
 				E575406C27993D2B001F9247 /* AuthCodeViewController.swift in Sources */,
 				E575406E27994045001F9247 /* AuthCodeViewModel.swift in Sources */,
 				E5D41B9D27AC4CD700021C58 /* ManageInfoViewModel.swift in Sources */,
