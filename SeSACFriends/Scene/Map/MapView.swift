@@ -13,16 +13,20 @@ import Then
 class MapView: UIView, ViewRepresentable {
     let map = MKMapView()
     
+    let myPin = UIImageView().then {
+        $0.image = UIImage(named: "map_marker")
+    }
+    
     let buttonStack = UIStackView().then {
         $0.axis = .vertical
         $0.spacing = 0
         $0.distribution = .fillEqually
         $0.layer.cornerRadius = 8
         $0.clipsToBounds = true
-        $0.layer.shadowColor = ColorTheme.gray3.cgColor
-        $0.layer.shadowOpacity = 1.0
-        $0.layer.shadowOffset = CGSize.zero
-        $0.layer.shadowRadius = 2
+//        $0.layer.shadowColor = ColorTheme.gray3.cgColor
+        $0.layer.shadowOpacity = 0.5
+        $0.layer.shadowOffset = CGSize(width: 1, height: 1)
+        $0.layer.shadowRadius = 4
     }
     
     let totalButton = UIButton().then {
@@ -76,11 +80,16 @@ class MapView: UIView, ViewRepresentable {
         buttonStack.addArrangedSubview(womanButton)
         addSubview(myLocationButton)
         addSubview(searchButton)
+        addSubview(myPin)
     }
     
     func setupConstraints() {
         map.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        myPin.snp.makeConstraints {
+            $0.center.equalTo(map)
+            $0.width.height.equalTo(48)
         }
         buttonStack.snp.makeConstraints {
             $0.top.leading.equalTo(safeAreaLayoutGuide).offset(16)

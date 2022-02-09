@@ -64,6 +64,8 @@
 		E57A319A27B1883500276D7F /* RxCoreLocation in Frameworks */ = {isa = PBXBuildFile; productRef = E57A319927B1883500276D7F /* RxCoreLocation */; };
 		E57A319C27B194DC00276D7F /* QueueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A319B27B194DC00276D7F /* QueueModel.swift */; };
 		E57A319E27B1A47A00276D7F /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A319D27B1A47A00276D7F /* MapViewModel.swift */; };
+		E57A31A427B1ADEC00276D7F /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A31A327B1ADEC00276D7F /* CustomAnnotationView.swift */; };
+		E57A31A627B3156900276D7F /* MKMapView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A31A527B3156900276D7F /* MKMapView+Rx.swift */; };
 		E5D41B8427AAAF1F00021C58 /* FontTHeme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B7927AAAF1D00021C58 /* FontTHeme.swift */; };
 		E5D41B8527AAAF1F00021C58 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5D41B7B27AAAF1E00021C58 /* NotoSansKR-Light.otf */; };
 		E5D41B8627AAAF1F00021C58 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5D41B7C27AAAF1E00021C58 /* NotoSansKR-Bold.otf */; };
@@ -134,6 +136,8 @@
 		E57A318F27B1813000276D7F /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E57A319B27B194DC00276D7F /* QueueModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueModel.swift; sourceTree = "<group>"; };
 		E57A319D27B1A47A00276D7F /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		E57A31A327B1ADEC00276D7F /* CustomAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
+		E57A31A527B3156900276D7F /* MKMapView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Rx.swift"; sourceTree = "<group>"; };
 		E5D41B7927AAAF1D00021C58 /* FontTHeme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontTHeme.swift; sourceTree = "<group>"; };
 		E5D41B7B27AAAF1E00021C58 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
 		E5D41B7C27AAAF1E00021C58 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
@@ -221,6 +225,7 @@
 				E575403527969698001F9247 /* UIColor+Extension.swift */,
 				E575408B279D5D5A001F9247 /* String+Extension.swift */,
 				E5754090279DD0B6001F9247 /* UIViewController+Extension.swift */,
+				E57A31A527B3156900276D7F /* MKMapView+Rx.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -232,6 +237,7 @@
 				E57540662799255C001F9247 /* SeSACTextField.swift */,
 				E57540B127A12E4E001F9247 /* TabBarController.swift */,
 				E5D41BA027AC7A6100021C58 /* DynamicHeightCollectionView.swift */,
+				E57A31A327B1ADEC00276D7F /* CustomAnnotationView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -568,10 +574,12 @@
 				E57540652798820A001F9247 /* AuthPhoneViewModel.swift in Sources */,
 				E57A319027B1813000276D7F /* LocationManager.swift in Sources */,
 				E575403827969EA1001F9247 /* AuthPhoneNumberViewController.swift in Sources */,
+				E57A31A627B3156900276D7F /* MKMapView+Rx.swift in Sources */,
 				E57540A1279E8A2B001F9247 /* AuthBirthViewModel.swift in Sources */,
 				E57A319C27B194DC00276D7F /* QueueModel.swift in Sources */,
 				E57540BC27A18FF1001F9247 /* ShopViewController.swift in Sources */,
 				E575401C27968ED0001F9247 /* AppDelegate.swift in Sources */,
+				E57A31A427B1ADEC00276D7F /* CustomAnnotationView.swift in Sources */,
 				E5754081279D1AB8001F9247 /* AuthTextFieldView.swift in Sources */,
 				E5D41B8D27AAAF1F00021C58 /* ColorTheme.swift in Sources */,
 				E57A318827AF163100276D7F /* OnboardingView.swift in Sources */,

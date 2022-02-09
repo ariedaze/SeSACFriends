@@ -41,7 +41,7 @@ class AuthGenderViewModel: ViewModelType {
             })
             .merge()
         
-        let output = input.buttonTrigger
+        input.buttonTrigger
             .emit { [weak self] _ in
                 SignupRequest.shared.gender = self?.selectedGender ?? -2
                 self?.networkingApi.request(.signup(param: SignupRequest.shared))

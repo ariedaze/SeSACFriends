@@ -24,7 +24,6 @@ final class AuthBirthViewController: UIViewController {
             titleText: "생년월일을 알려주세요"
         )
         bind()
-        mainView.button.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
@@ -55,10 +54,5 @@ final class AuthBirthViewController: UIViewController {
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             .disposed(by: disposeBag)
-    }
-    
-    @objc func buttonClicked() {
-        let vc = AuthEmailViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -7,7 +7,13 @@
 
 import Foundation
 
-struct Queue: Codable {
+struct QueueResponse: Codable {
+    let fromQueueDB, fromQueueDBRequested: [FromQueueDB]
+    let fromRecommend: [String]
+}
+
+// MARK: - FromQueueDB
+struct FromQueueDB: Codable {
     let uid, nick: String
     let lat, long: Double
     let reputation: [Int]

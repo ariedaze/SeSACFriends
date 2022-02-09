@@ -67,7 +67,8 @@ final class QueueNetworkingAPI {
         self.provider = provider
     }
     
-    func request(_ api: QueueAPI) -> Single<Response> {
+    func request(_ api: QueueAPI) -> Single<QueueResponse> {
         return provider.rx.request(api)
+            .map(QueueResponse.self)
     }
 }

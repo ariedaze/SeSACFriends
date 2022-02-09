@@ -66,6 +66,7 @@ class AuthBirthViewModel: ViewModelType, ValidationViewModel {
 
 extension Date {
     var age: Int { Calendar.current.dateComponents([.year], from: self, to: Date()).year! }
+    
     public var year: Int {
         return Calendar.current.component(.year, from: self)
     }

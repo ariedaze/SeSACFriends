@@ -19,7 +19,7 @@ class LocationManager {
     
     private let locationManager: CLLocationManager = { // 권한, 실시간 위치 정보 매니저
         let manager = CLLocationManager()
-        manager.desiredAccuracy = kCLLocationAccuracyBest
+//        manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.distanceFilter = kCLDistanceFilterNone
         return manager
     }()

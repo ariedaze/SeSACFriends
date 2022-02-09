@@ -67,7 +67,7 @@ class AuthPhoneViewModel: ValidationViewModel, ViewModelType {
     var disposeBag = DisposeBag()
     
     func transform(input: Input) -> Output {
-        let _ = input.buttonTap
+        input.buttonTap
             .withLatestFrom(input.phoneText.asDriver())
             .filter {
                 if self.validate($0 ?? "") { // button tapped and valid
