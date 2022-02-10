@@ -12,6 +12,7 @@ import RxSwift
 
 enum QueueAPI {
     case searchSesac(parameters: [String: Any])
+    case myQueueState
 }
 
 extension QueueAPI: TargetType {
@@ -23,6 +24,8 @@ extension QueueAPI: TargetType {
         switch self {
         case .searchSesac:
             return "/onqueue"
+        case .myQueueState:
+            return "/myQueueSTate"
         default:
             return ""
         }
@@ -67,8 +70,9 @@ final class QueueNetworkingAPI {
         self.provider = provider
     }
     
-    func request(_ api: QueueAPI) -> Single<QueueResponse> {
+    func request(_ api: QueueAPI) -> Single<Response> {
         return provider.rx.request(api)
-            .map(QueueResponse.self)
+//            .map(QueueResponse.self)
     }
+
 }

@@ -9,6 +9,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import RxSwift
+import RxCocoa
 
 final class MapViewController: UIViewController {
     let mainView = MapView()
@@ -52,12 +53,17 @@ final class MapViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
+    deinit {
+        disposeBag = DisposeBag()
+    }
+    
     private func bind() {
         let input = MapViewModel.Input(
+            viewWillAppear: Observable.just(Void()),
             gpsButtonTap: mainView.myLocationButton.rx.tap.asSignal(),
             myPinLocation: mainView.map.rx.regionDidChangeAnimated
                 .skip(1)
-                .throttle(.milliseconds(8), latest: true, scheduler: MainScheduler.instance)
+                .debounce(.milliseconds(800), scheduler: MainScheduler.instance)
                 .map { _ in self.mainView.map.centerCoordinate }
         )
         let output = viewModel.transform(input: input)
@@ -75,10 +81,7 @@ final class MapViewController: UIViewController {
                 latitudinalMeters: 1400, longitudinalMeters: 1400)
             ,
             animated: true)
-        
 
-//        mainView.map.cameraZoomRange = MKMapView.CameraZoomRange(minCenterCoordinateDistance: 50,
-//                                                                 maxCenterCoordinateDistance: 3000)
         output.sesacList
             .subscribe(onNext: { status in
                 print(status.fromQueueDB, "sesac이들")
@@ -88,6 +91,23 @@ final class MapViewController: UIViewController {
                 }
             })
             .disposed(by: disposeBag)
+        
+        output.matchedState
+            .map {
+                switch $0 {
+                case .matched:
+                    return UIImage(named: "search_matched")!
+                case .matching:
+                    return UIImage(named: "search_matching")!
+                case .normal:
+                    return UIImage(named: "search_default")!
+                }
+            }
+            .bind(to: mainView.searchButton.rx.image(for: .normal))
+            .disposed(by: disposeBag)
+        
+        
+        
     }
     
     func setupMapUI(_ location: CLLocationCoordinate2D, sesac: Int) {
@@ -116,6 +136,7 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        print(#function)
         var span = mapView.region.span
         // lat: 위도 long: 경도
         // 위도 1도에 111Km (가로선) 경도 1도에 88.8km (세로선)
