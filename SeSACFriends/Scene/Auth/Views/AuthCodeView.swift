@@ -8,7 +8,9 @@
 import UIKit
 
 final class AuthCodeView: AuthCommonView {
-    let textField = SeSACTextField()
+    let textField = SeSACTextField().then {
+        $0.textContentType = .oneTimeCode
+    }
     
     let timeLabel: UILabel = {
         let label = UILabel()

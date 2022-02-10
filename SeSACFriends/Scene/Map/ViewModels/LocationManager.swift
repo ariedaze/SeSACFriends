@@ -11,7 +11,7 @@ import RxCocoa
 import RxCoreLocation
 import CoreLocation
 
-class LocationManager {
+final class LocationManager {
     static let shared = LocationManager()
     private let disposeBag = DisposeBag()
     

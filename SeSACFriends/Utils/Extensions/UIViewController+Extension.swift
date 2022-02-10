@@ -26,7 +26,7 @@ extension UIViewController {
         }
     }
     
-    func changeRootViewControllerToPhone() {
+    static func changeRootViewControllerToPhone() {
         let vc = AuthPhoneNumberViewController()
         DispatchQueue.main.async {
             guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
@@ -37,7 +37,7 @@ extension UIViewController {
         }
     }
     
-    func changeRootViewControllerToHome() {
+    static func changeRootViewControllerToHome() {
         let vc = TabBarController()
         DispatchQueue.main.async {
             guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {

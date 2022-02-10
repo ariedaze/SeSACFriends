@@ -11,28 +11,37 @@ import RxSwift
 import RxCocoa
 import RxRelay
 
-class MapViewModel: ViewModelType {
+final class MapViewModel: ViewModelType {
     var disposeBag = DisposeBag()
-    let locationManager = LocationManager.shared
-    let networkingApi = QueueNetworkingAPI()
-    
-    let sesacCoordinate = CLLocationCoordinate2D(latitude: 37.51818789942772, longitude: 126.88541765534976) //새싹 영등포 캠퍼스의 위치입니다. 여기서 시작하면 재밌을 것 같죠? 하하
+    private let locationManager = LocationManager.shared
+    private let networkingApi = QueueNetworkingAPI()
+    private let list = PublishRelay<QueueResponse>()
+    private let sesacCoordinate = CLLocationCoordinate2D(latitude: 37.51818789942772, longitude: 126.88541765534976) //새싹 영등포 캠퍼스의 위치입니다. 여기서 시작하면 재밌을 것 같죠? 하하
     
     func transform(input: Input) -> Output {
         input.myPinLocation
-            .subscribe(onNext: { t in
-                let paramters = [
-                    "lat": t.latitude, // 위도
-                    "long": t.longitude, // 경도
-                    "region": Int(((t.latitude+90)*100000).truncatingRemainder(dividingBy: 100000)*100000+((t.longitude+180)*100000).truncatingRemainder(dividingBy: 100000))
-                ] as [String : Any]
+            .subscribe(onNext: { location in
+                let lat = location.latitude
+                let long = location.longitude
+                let latP = Int((lat+90)*100000)
+                let longP = Int((long+180)*100000)
                 
+                let lat5 = latP/Int(pow(10.0, Double(latP.description.count-5)))
+                let long5 = longP/Int(pow(10.0, Double(longP.description.count-5)))
+                
+                let paramters = [
+                    "lat": location.latitude, // 위도
+                    "long": location.longitude, // 경도
+                    "region": lat5 * 100000 + long5
+                ] as [String : Any]
+                print(paramters)
                 self.networkingApi.request(.searchSesac(parameters: paramters))
                     .subscribe { result in
 //                        print("result", result)
                         switch result {
                         case .success(let response):
-                            print("res", response)
+                            self.list.accept(response)
+                            print("res", response.fromQueueDB.map {$0.gender})
                         case .failure(let error):
                             print(error)
                         }
@@ -43,7 +52,9 @@ class MapViewModel: ViewModelType {
 
         return Output(
             buttonAction: input.buttonTap,
-            firstRequest: locationManager.requestLocation()
+            firstLocation: sesacCoordinate,
+            requestLocationAuthorization: locationManager.requestLocation(),
+            sesacList: list
         )
     }
 }
@@ -56,6 +67,8 @@ extension MapViewModel {
     }
     struct Output {
         let buttonAction: Signal<Void>
-        let firstRequest: Observable<CLAuthorizationStatus>
+        let firstLocation: CLLocationCoordinate2D
+        let requestLocationAuthorization: Observable<CLAuthorizationStatus>
+        let sesacList: PublishRelay<QueueResponse>
     }
 }

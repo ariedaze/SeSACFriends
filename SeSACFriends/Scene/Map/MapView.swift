@@ -10,7 +10,7 @@ import MapKit
 import SnapKit
 import Then
 
-class MapView: UIView, ViewRepresentable {
+final class MapView: UIView, ViewRepresentable {
     let map = MKMapView()
     
     let myPin = UIImageView().then {

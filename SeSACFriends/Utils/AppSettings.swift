@@ -9,11 +9,12 @@ import Foundation
 
 public enum AppSettings {
 
-    public enum key: String {
+    public enum key: String, CaseIterable {
         case isFirst
         case phoneNumber
         case FCMToken
         case idToken
+        case matchingStatus
     }
 
     public static subscript(_ key: key) -> Any? {
@@ -23,6 +24,13 @@ public enum AppSettings {
         set {
             UserDefaults.standard.setValue(newValue, forKey: key.rawValue)
         }
+    }
+    
+    public static func withdraw() {
+        AppSettings.key.allCases.forEach {
+            AppSettings[$0] = nil
+        }
+        
     }
     
     public static func boolValue(_ key: key) -> Bool {

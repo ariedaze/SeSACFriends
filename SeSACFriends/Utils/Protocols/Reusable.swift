@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 protocol Reusable {
     static var reuseID: String {get}
@@ -30,3 +31,6 @@ extension UITableView {
         return cell
     }
 }
+
+extension SeSACAnnotation: Reusable {}
+extension CustomAnnotationView: Reusable {}

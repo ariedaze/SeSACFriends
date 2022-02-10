@@ -9,7 +9,8 @@ import Foundation
 import RxSwift
 import RxRelay
 import RxCocoa
-
+import Moya
+import UIKit
 
 class AuthCodeViewModel: ValidationViewModel {
     var verificationID: String = ""
@@ -28,6 +29,8 @@ class AuthCodeViewModel: ValidationViewModel {
         return true
     }
 
+    let networkingApi = AuthNetworkingAPI()
+    
     struct Input {
         let codeText: ControlProperty<String?>
         let buttonTap: Signal<Void>
@@ -55,22 +58,40 @@ class AuthCodeViewModel: ValidationViewModel {
                 self.toastMessage.accept(AuthCodeViewModel.Message.failed.rawValue) // button tapped and invalid
                 return false
             }
-            .emit { [weak self] verificationCode in
-                // 정상인증이라면 token 요청
-                FirebaseManager.signInWithCredential(verificationId: self?.verificationID ?? "", verificationCode: verificationCode ?? "")
-                    .subscribe(
-                        onNext: {
-                            print($0, "id?")
-                            self?.verificationSuccess.accept($0)
-                        },
-                        onError: {_ in
-                            self?.toastMessage.accept(AuthCodeViewModel.Message.error.rawValue)
-                        })
-                    .disposed(by: self!.disposeBag)
+            .emit { [weak self] code in
+                guard let self = self else {
+                    return
+                }
+                // Todo: 이 콜백지옥 해결해보자....
+                FirebaseManager.signInWithCredential(verificationId: self.verificationID, verificationCode: code ?? "")
+                    .subscribe {
+                        switch $0 {
+                        case .success(let res):
+                            print(res, "파베 성공")
+                            self.networkingApi.request(.checkuser)
+                                .subscribe {
+                                    switch $0 {
+                                    case .success(let res):
+                                        switch res.statusCode {
+                                        case 200:
+                                            UIViewController.changeRootViewControllerToHome()
+                                        default:
+                                            self.verificationSuccess.accept("")
+                                        }
+                                    case .failure(let err):
+                                        print(err, "getuser 실패")
+                                    }
+                                }
+                                .disposed(by: self.disposeBag)
+                        case .failure(_):
+                            self.toastMessage.accept(AuthCodeViewModel.Message.error.rawValue)
+                        }
+                    }
+                    .disposed(by: self.disposeBag)
+                
+                
             }
-            .disposed(by: disposeBag)
-
-
+        
         let codeValidationResult = input.codeText
             .orEmpty
             .map { self.validate($0) }

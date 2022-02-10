@@ -14,7 +14,7 @@ struct Endpoint {
 }
 
 enum AuthAPI {
-    case login
+    case checkuser
     case signup(param: SignupRequest)
     case update_fcm
     case withdraw
@@ -84,8 +84,8 @@ final class AuthNetworkingAPI {
     }
     
     func request(_ api: AuthAPI) -> Single<Response> {
-        dump(SignupRequest.shared)
-        print("request with id?", AppSettings[.idToken])
+//        dump(SignupRequest.shared)
+        print("request type?", api, AppSettings[.idToken])
         return provider.rx.request(api)
     }
 }

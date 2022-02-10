@@ -9,6 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 import Moya
+import UIKit
 
 class ManageInfoViewModel: ViewModelType {
     var disposeBag = DisposeBag()
@@ -17,16 +18,26 @@ class ManageInfoViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         
         let output = input.buttonTrigger
-            .asObservable()
-            .flatMapLatest {
+            .subscribe { _ in
                 self.networkingApi.request(.withdraw)
-                    .do(onError: { [weak self] error in
-                        print("error")
-                    })
+                    .subscribe {
+                        switch $0 {
+                        case .success(let res):
+                            print("탈퇴 완료?", res)
+                            AppSettings.withdraw()
+                            UIViewController.changeRootViewControllerToPhone()
+                        case .failure(let error):
+                            print("withdraw error", error)
+                        }
+                        
+                    }
+                    .disposed(by: self.disposeBag)
             }
+            .disposed(by: disposeBag)
+            
         
         
-        return Output(out: output)
+        return Output()
     }
 }
 
@@ -36,6 +47,6 @@ extension ManageInfoViewModel {
     }
     
     struct Output {
-        let out: Observable<Response>
+//        let out: Observable<Response>
     }
 }

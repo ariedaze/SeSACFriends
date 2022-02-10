@@ -40,12 +40,8 @@ class ManageInfoViewController: UIViewController {
         
         let output = viewModel.transform(input: input)
     
-        output.out
-            .subscribe (onNext: { [weak self] _ in
-                print("성공?")
-                self?.changeRootViewControllerToPhone()
-            })
-            .disposed(by: disposeBag)
+//        output.out
+
         
         mainView.moreButton.rx.tap
             .scan(false) { lastState, newState in

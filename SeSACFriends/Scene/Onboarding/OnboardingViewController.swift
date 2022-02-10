@@ -23,6 +23,6 @@ class OnboardingViewController: UIViewController {
     
     
     @objc func buttonClicked() {
-        changeRootViewControllerToPhone()
+        UIViewController.changeRootViewControllerToPhone()
     }
 }

@@ -28,38 +28,39 @@ class FirebaseManager {
         }
     }
     
-    static func signInWithCredential(verificationId: String, verificationCode: String) -> Observable<String> { // 6자리 코드
+    static func signInWithCredential(verificationId: String, verificationCode: String) -> Single<String> { // 6자리 코드
         
         let credential = PhoneAuthProvider.provider().credential(
             withVerificationID: verificationId,
             verificationCode: verificationCode
         )
         
-        return Observable.create { observer in
+        return Single.create { single in
             Auth.auth().signIn(with: credential) { authResult, error in
                 if let error = error {
-                    observer.onError(error)
-                    return
+                    single(.failure(error))
                 }
-                print(authResult, "authresult가 뭐길래?")
-                observer.onNext("success")
-                observer.onCompleted()
+                single(.success(""))
             }
             return Disposables.create()
         }
     }
     
-    static func setIdToken(completion: @escaping (Result<String?, Error>) -> Void) {
+    static func setIdToken() -> Single<String> {
         let user = Auth.auth().currentUser
-        if let user = user {
-            user.getIDToken { id, error in
-                print(id, "id주세요ㅠㅠ")
-                if let error = error {
-                    completion(.failure(error))
+        return Single.create { single in
+            if let user = user {
+                user.getIDToken { id, error in
+                    print(id, "id주세요ㅠㅠ")
+                    if let error = error {
+                        single(.failure(error))
+                    }
+                    AppSettings[.idToken] = id
+                    single(.success(id ?? ""))
                 }
-                AppSettings[.idToken] = id
-                completion(.success(nil))
+                
             }
+            return Disposables.create()
         }
     }
 

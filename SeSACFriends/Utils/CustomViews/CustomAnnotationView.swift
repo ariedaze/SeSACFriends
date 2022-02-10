@@ -10,8 +10,6 @@ import MapKit
 
 class CustomAnnotationView: MKAnnotationView {
     
-    static let identifier = "CustomAnnotationView"
-    
     override init(annotation: MKAnnotation?, reuseIdentifier: String?){
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         frame = CGRect(x: 0, y: 0, width: 40, height: 50)
@@ -30,26 +28,13 @@ class CustomAnnotationView: MKAnnotationView {
 }
 
 
-class CustomAnnotation: NSObject, MKAnnotation {
-  let sesac_image: Int?
-  let coordinate: CLLocationCoordinate2D
-
-  init(
-    sesac_image: Int?,
-    coordinate: CLLocationCoordinate2D
-  ) {
-    self.sesac_image = sesac_image
-    self.coordinate = coordinate
-
-    super.init()
-  }
-
-}
-
-
 class SeSACAnnotation: NSObject, MKAnnotation {
-    let coordinate: CLLocationCoordinate2D
-    init(coordinate: CLLocationCoordinate2D) {
+    @objc dynamic var coordinate: CLLocationCoordinate2D
+    
+    var sesac: Int
+    
+    init(coordinate: CLLocationCoordinate2D, sesac: Int) {
         self.coordinate = coordinate
+        self.sesac = sesac
     }
 }
