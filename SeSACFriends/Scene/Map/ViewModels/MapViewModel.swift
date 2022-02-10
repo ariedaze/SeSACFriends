@@ -19,6 +19,8 @@ final class MapViewModel: ViewModelType {
     private let sesacCoordinate = CLLocationCoordinate2D(latitude: 37.51818789942772, longitude: 126.88541765534976) //새싹 영등포 캠퍼스의 위치입니다. 여기서 시작하면 재밌을 것 같죠? 하하
     
     func transform(input: Input) -> Output {
+        
+        
         input.myPinLocation
             .subscribe(onNext: { location in
                 let lat = location.latitude
@@ -51,7 +53,7 @@ final class MapViewModel: ViewModelType {
             .disposed(by: disposeBag)
 
         return Output(
-            buttonAction: input.buttonTap,
+            buttonAction: input.gpsButtonTap,
             firstLocation: sesacCoordinate,
             requestLocationAuthorization: locationManager.requestLocation(),
             sesacList: list
@@ -62,7 +64,7 @@ final class MapViewModel: ViewModelType {
 
 extension MapViewModel {
     struct Input {
-        let buttonTap: Signal<Void>
+        let gpsButtonTap: Signal<Void>
         let myPinLocation: Observable<CLLocationCoordinate2D>
     }
     struct Output {

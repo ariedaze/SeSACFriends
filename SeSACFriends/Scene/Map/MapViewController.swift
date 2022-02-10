@@ -54,7 +54,7 @@ final class MapViewController: UIViewController {
     
     private func bind() {
         let input = MapViewModel.Input(
-            buttonTap: mainView.myLocationButton.rx.tap.asSignal(),
+            gpsButtonTap: mainView.myLocationButton.rx.tap.asSignal(),
             myPinLocation: mainView.map.rx.regionDidChangeAnimated
                 .skip(1)
                 .throttle(.milliseconds(8), latest: true, scheduler: MainScheduler.instance)
@@ -69,11 +69,16 @@ final class MapViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        // 최초로 포커스 시킬 좌표 + 축척
-        mainView.map.setRegion(MKCoordinateRegion(center: output.firstLocation, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)), animated: true)
+        mainView.map.setRegion(
+            MKCoordinateRegion(
+                center: output.firstLocation,
+                latitudinalMeters: 1400, longitudinalMeters: 1400)
+            ,
+            animated: true)
         
-        
-        
+
+//        mainView.map.cameraZoomRange = MKMapView.CameraZoomRange(minCenterCoordinateDistance: 50,
+//                                                                 maxCenterCoordinateDistance: 3000)
         output.sesacList
             .subscribe(onNext: { status in
                 print(status.fromQueueDB, "sesac이들")
@@ -108,5 +113,20 @@ extension MapViewController: MKMapViewDelegate {
         let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
         annotationView.image = resizedImage
         return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        var span = mapView.region.span
+        // lat: 위도 long: 경도
+        // 위도 1도에 111Km (가로선) 경도 1도에 88.8km (세로선)
+        // min 반지름 50m, max 반지름 3km
+        let minDelta = 0.1 / 88.8
+        let maxDelta = 6 / 88.8
+        if span.latitudeDelta < minDelta { // MIN LEVEL
+            span = MKCoordinateSpan(latitudeDelta: minDelta, longitudeDelta: minDelta)
+        } else if span.latitudeDelta > maxDelta { // MAX LEVEL
+            span = MKCoordinateSpan(latitudeDelta: maxDelta, longitudeDelta: maxDelta)
+        }
+        mapView.region.span = span
     }
 }
