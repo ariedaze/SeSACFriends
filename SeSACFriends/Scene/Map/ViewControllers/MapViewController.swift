@@ -64,25 +64,26 @@ final class MapViewController: UIViewController {
             myPinLocation: mainView.map.rx.regionDidChangeAnimated
                 .skip(1)
                 .debounce(.milliseconds(800), scheduler: MainScheduler.instance)
-                .map { _ in self.mainView.map.centerCoordinate }
+                .map { _ in self.mainView.map.centerCoordinate },
+            floatingButtonTap: mainView.searchButton.rx.tap
         )
         let output = viewModel.transform(input: input)
         
         
-        output.requestLocationAuthorization
+        output.requestLocationAuthorization // 권한설정
             .subscribe { status in
                 print("status", status)
             }
             .disposed(by: disposeBag)
         
-        mainView.map.setRegion(
+        mainView.map.setRegion( // mapview center 지정
             MKCoordinateRegion(
                 center: output.firstLocation,
                 latitudinalMeters: 1400, longitudinalMeters: 1400)
             ,
             animated: true)
 
-        output.sesacList
+        output.sesacList // 주변 새싹이들
             .subscribe(onNext: { status in
                 print(status.fromQueueDB, "sesac이들")
                 status.fromQueueDB.forEach {
@@ -92,7 +93,7 @@ final class MapViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        output.matchedState
+        output.matchedState // 매칭 상태
             .map {
                 switch $0 {
                 case .matched:
@@ -106,8 +107,13 @@ final class MapViewController: UIViewController {
             .bind(to: mainView.searchButton.rx.image(for: .normal))
             .disposed(by: disposeBag)
         
-        
-        
+        output.sceneTransition
+            .subscribe { [weak self] _ in
+                let vc = SearchHobbyViewController()
+                vc.hidesBottomBarWhenPushed = true
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }
+            .disposed(by: disposeBag)
     }
     
     func setupMapUI(_ location: CLLocationCoordinate2D, sesac: Int) {

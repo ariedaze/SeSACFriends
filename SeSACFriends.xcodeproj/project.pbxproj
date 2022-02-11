@@ -66,6 +66,8 @@
 		E57A319E27B1A47A00276D7F /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A319D27B1A47A00276D7F /* MapViewModel.swift */; };
 		E57A31A427B1ADEC00276D7F /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A31A327B1ADEC00276D7F /* CustomAnnotationView.swift */; };
 		E57A31A627B3156900276D7F /* MKMapView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A31A527B3156900276D7F /* MKMapView+Rx.swift */; };
+		E57A31B227B6EC2F00276D7F /* SearchHobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A31B127B6EC2F00276D7F /* SearchHobbyViewController.swift */; };
+		E57A31B527B6EC6600276D7F /* SearchHobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A31B427B6EC6600276D7F /* SearchHobbyView.swift */; };
 		E5D41B8427AAAF1F00021C58 /* FontTHeme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B7927AAAF1D00021C58 /* FontTHeme.swift */; };
 		E5D41B8527AAAF1F00021C58 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5D41B7B27AAAF1E00021C58 /* NotoSansKR-Light.otf */; };
 		E5D41B8627AAAF1F00021C58 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5D41B7C27AAAF1E00021C58 /* NotoSansKR-Bold.otf */; };
@@ -138,6 +140,8 @@
 		E57A319D27B1A47A00276D7F /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		E57A31A327B1ADEC00276D7F /* CustomAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
 		E57A31A527B3156900276D7F /* MKMapView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Rx.swift"; sourceTree = "<group>"; };
+		E57A31B127B6EC2F00276D7F /* SearchHobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHobbyViewController.swift; sourceTree = "<group>"; };
+		E57A31B427B6EC6600276D7F /* SearchHobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHobbyView.swift; sourceTree = "<group>"; };
 		E5D41B7927AAAF1D00021C58 /* FontTHeme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontTHeme.swift; sourceTree = "<group>"; };
 		E5D41B7B27AAAF1E00021C58 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
 		E5D41B7C27AAAF1E00021C58 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
@@ -288,8 +292,9 @@
 		E57540B327A178C7001F9247 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				E57A31B327B6EC5500276D7F /* Views */,
+				E57A31B027B6EBFD00276D7F /* ViewControllers */,
 				E57A319F27B1AC2F00276D7F /* ViewModels */,
-				E57540BD27A1900C001F9247 /* MapViewController.swift */,
 				E57A318B27B0F75000276D7F /* MapView.swift */,
 			);
 			path = Map;
@@ -376,6 +381,23 @@
 			children = (
 				E57540BF27A19354001F9247 /* MyInfoView.swift */,
 				E5D41B9427AC110500021C58 /* ManageInfoView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E57A31B027B6EBFD00276D7F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E57540BD27A1900C001F9247 /* MapViewController.swift */,
+				E57A31B127B6EC2F00276D7F /* SearchHobbyViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E57A31B327B6EC5500276D7F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E57A31B427B6EC6600276D7F /* SearchHobbyView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -560,7 +582,9 @@
 				E575403627969698001F9247 /* UIColor+Extension.swift in Sources */,
 				E57540BA27A18FDB001F9247 /* ChatViewController.swift in Sources */,
 				E57A318E27B160EF00276D7F /* QueueAPI.swift in Sources */,
+				E57A31B527B6EC6600276D7F /* SearchHobbyView.swift in Sources */,
 				E57540C027A19354001F9247 /* MyInfoView.swift in Sources */,
+				E57A31B227B6EC2F00276D7F /* SearchHobbyViewController.swift in Sources */,
 				E575408F279DB92D001F9247 /* FirebaseManager.swift in Sources */,
 				E50C3AE327A1C6490085CABD /* Reusable.swift in Sources */,
 				E5D41B9727AC122600021C58 /* ManageInfoViewController.swift in Sources */,

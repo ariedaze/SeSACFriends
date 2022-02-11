@@ -107,7 +107,8 @@ final class MapViewModel: ViewModelType {
             firstLocation: sesacCoordinate,
             requestLocationAuthorization: locationManager.requestLocation(),
             sesacList: list,
-            matchedState: matchedState
+            matchedState: matchedState,
+            sceneTransition: input.floatingButtonTap
         )
     }
 }
@@ -118,6 +119,7 @@ extension MapViewModel {
         let viewWillAppear: Observable<Void>
         let gpsButtonTap: Signal<Void>
         let myPinLocation: Observable<CLLocationCoordinate2D>
+        let floatingButtonTap: ControlEvent<Void>
     }
     struct Output {
         let buttonAction: Signal<Void>
@@ -125,5 +127,6 @@ extension MapViewModel {
         let requestLocationAuthorization: Observable<CLAuthorizationStatus>
         let sesacList: PublishRelay<QueueResponse>
         let matchedState: PublishRelay<MatchedState>
+        let sceneTransition: ControlEvent<Void>
     }
 }
