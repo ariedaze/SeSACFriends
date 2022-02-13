@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E50C3AE327A1C6490085CABD /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C3AE227A1C6490085CABD /* Reusable.swift */; };
+		E574CB0627B98DAD007B7F7E /* HobbyTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E574CB0527B98DAD007B7F7E /* HobbyTagCell.swift */; };
+		E574CB0827B99061007B7F7E /* HobbyCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E574CB0727B99061007B7F7E /* HobbyCollectionHeaderView.swift */; };
 		E575401C27968ED0001F9247 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E575401B27968ED0001F9247 /* AppDelegate.swift */; };
 		E575401E27968ED0001F9247 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E575401D27968ED0001F9247 /* SceneDelegate.swift */; };
 		E575402827968ED3001F9247 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E575402627968ED3001F9247 /* LaunchScreen.storyboard */; };
@@ -68,6 +70,8 @@
 		E57A31A627B3156900276D7F /* MKMapView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A31A527B3156900276D7F /* MKMapView+Rx.swift */; };
 		E57A31B227B6EC2F00276D7F /* SearchHobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A31B127B6EC2F00276D7F /* SearchHobbyViewController.swift */; };
 		E57A31B527B6EC6600276D7F /* SearchHobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A31B427B6EC6600276D7F /* SearchHobbyView.swift */; };
+		E57A31C827B9177400276D7F /* SearchHobbyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A31C727B9177400276D7F /* SearchHobbyViewModel.swift */; };
+		E57A31CA27B919D300276D7F /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A31C927B919D300276D7F /* Double+Extension.swift */; };
 		E5D41B8427AAAF1F00021C58 /* FontTHeme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B7927AAAF1D00021C58 /* FontTHeme.swift */; };
 		E5D41B8527AAAF1F00021C58 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5D41B7B27AAAF1E00021C58 /* NotoSansKR-Light.otf */; };
 		E5D41B8627AAAF1F00021C58 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5D41B7C27AAAF1E00021C58 /* NotoSansKR-Bold.otf */; };
@@ -90,6 +94,8 @@
 
 /* Begin PBXFileReference section */
 		E50C3AE227A1C6490085CABD /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		E574CB0527B98DAD007B7F7E /* HobbyTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyTagCell.swift; sourceTree = "<group>"; };
+		E574CB0727B99061007B7F7E /* HobbyCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyCollectionHeaderView.swift; sourceTree = "<group>"; };
 		E575401827968ED0001F9247 /* SeSACFriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSACFriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E575401B27968ED0001F9247 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E575401D27968ED0001F9247 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +148,8 @@
 		E57A31A527B3156900276D7F /* MKMapView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Rx.swift"; sourceTree = "<group>"; };
 		E57A31B127B6EC2F00276D7F /* SearchHobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHobbyViewController.swift; sourceTree = "<group>"; };
 		E57A31B427B6EC6600276D7F /* SearchHobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHobbyView.swift; sourceTree = "<group>"; };
+		E57A31C727B9177400276D7F /* SearchHobbyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHobbyViewModel.swift; sourceTree = "<group>"; };
+		E57A31C927B919D300276D7F /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		E5D41B7927AAAF1D00021C58 /* FontTHeme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontTHeme.swift; sourceTree = "<group>"; };
 		E5D41B7B27AAAF1E00021C58 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
 		E5D41B7C27AAAF1E00021C58 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
@@ -230,6 +238,7 @@
 				E575408B279D5D5A001F9247 /* String+Extension.swift */,
 				E5754090279DD0B6001F9247 /* UIViewController+Extension.swift */,
 				E57A31A527B3156900276D7F /* MKMapView+Rx.swift */,
+				E57A31C927B919D300276D7F /* Double+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -295,7 +304,6 @@
 				E57A31B327B6EC5500276D7F /* Views */,
 				E57A31B027B6EBFD00276D7F /* ViewControllers */,
 				E57A319F27B1AC2F00276D7F /* ViewModels */,
-				E57A318B27B0F75000276D7F /* MapView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -351,6 +359,7 @@
 			children = (
 				E57A319D27B1A47A00276D7F /* MapViewModel.swift */,
 				E57A318F27B1813000276D7F /* LocationManager.swift */,
+				E57A31C727B9177400276D7F /* SearchHobbyViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -397,7 +406,10 @@
 		E57A31B327B6EC5500276D7F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E57A318B27B0F75000276D7F /* MapView.swift */,
 				E57A31B427B6EC6600276D7F /* SearchHobbyView.swift */,
+				E574CB0527B98DAD007B7F7E /* HobbyTagCell.swift */,
+				E574CB0727B99061007B7F7E /* HobbyCollectionHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -579,8 +591,10 @@
 			files = (
 				E5754087279D1F28001F9247 /* AuthGenderView.swift in Sources */,
 				E57A318C27B0F75000276D7F /* MapView.swift in Sources */,
+				E574CB0827B99061007B7F7E /* HobbyCollectionHeaderView.swift in Sources */,
 				E575403627969698001F9247 /* UIColor+Extension.swift in Sources */,
 				E57540BA27A18FDB001F9247 /* ChatViewController.swift in Sources */,
+				E57A31C827B9177400276D7F /* SearchHobbyViewModel.swift in Sources */,
 				E57A318E27B160EF00276D7F /* QueueAPI.swift in Sources */,
 				E57A31B527B6EC6600276D7F /* SearchHobbyView.swift in Sources */,
 				E57540C027A19354001F9247 /* MyInfoView.swift in Sources */,
@@ -600,6 +614,7 @@
 				E575403827969EA1001F9247 /* AuthPhoneNumberViewController.swift in Sources */,
 				E57A31A627B3156900276D7F /* MKMapView+Rx.swift in Sources */,
 				E57540A1279E8A2B001F9247 /* AuthBirthViewModel.swift in Sources */,
+				E57A31CA27B919D300276D7F /* Double+Extension.swift in Sources */,
 				E57A319C27B194DC00276D7F /* QueueModel.swift in Sources */,
 				E57540BC27A18FF1001F9247 /* ShopViewController.swift in Sources */,
 				E575401C27968ED0001F9247 /* AppDelegate.swift in Sources */,
@@ -621,6 +636,7 @@
 				E575404E279705ED001F9247 /* SeSACButton.swift in Sources */,
 				E57540BE27A1900C001F9247 /* MapViewController.swift in Sources */,
 				E57540B227A12E4F001F9247 /* TabBarController.swift in Sources */,
+				E574CB0627B98DAD007B7F7E /* HobbyTagCell.swift in Sources */,
 				E5754063279878B8001F9247 /* ViewRepresentable.swift in Sources */,
 				E5754076279A4F68001F9247 /* AuthBirthViewController.swift in Sources */,
 				E5D41B9527AC110500021C58 /* ManageInfoView.swift in Sources */,

@@ -9,6 +9,7 @@ import UIKit
 
 class SearchHobbyViewController: UIViewController {
     let mainView = SearchHobbyView()
+    let viewModel = SearchHobbyViewModel()
     
     override func loadView() {
         view = mainView
@@ -16,13 +17,25 @@ class SearchHobbyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setBackButton()
+        addTapGestureForKeyboard()
+        setBackButtonStyle()
         self.navigationItem.titleView = mainView.searchBar
         mainView.collectionView.dataSource = self
         mainView.collectionView.delegate = self
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setKeyboardObserver()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        removeKeyboardObserver()
+    }
 }
 
+// collectionview delegate
 extension SearchHobbyViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 6
@@ -36,15 +49,68 @@ extension SearchHobbyViewController: UICollectionViewDelegate, UICollectionViewD
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         let label = UILabel().then {
-                $0.font = .systemFont(ofSize: 14)
-                $0.text = "안녕?????"
-                $0.sizeToFit()
-            }
-            let size = label.frame.size
-            
-        return CGSize(width: size.width + 16, height: size.height + 10)
+            $0.font = FontTheme.Title4_R14
+            $0.text = "안녕?????"
+            $0.sizeToFit()
+        } // button의 가로 길이를 구하기 위함
+        let size = label.frame.size
+        return CGSize(width: size.width + 32, height: 32)
+    }
 
+    // section headerView
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            let headerView = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: HobbyCollectionHeaderView.reuseID,
+                for: indexPath)
+
+            guard let typedHeaderView = headerView as? HobbyCollectionHeaderView
+            else { return headerView }
+
+            typedHeaderView.titleLabel.text = indexPath.section == 0 ? "지금 주변에는" : "내가 하고 싶은"
+            return typedHeaderView
+        default:
+            assert(false, "Invalid element type")
+        }
+    }
+
+    // section size
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 56)
+    }
+}
+
+// keyboard action
+extension SearchHobbyViewController {
+    @objc override func setKeyboardConstraints(_ show: Bool, keyboardHeight: Double = 0) {
+        super.setKeyboardConstraints(show, keyboardHeight: keyboardHeight)
+        var keyboardBottomOffsetConstant: Double
+        var offsetConstant: Int
+        if show {
+            offsetConstant = 0
+            keyboardBottomOffsetConstant = -(keyboardHeight - self.view.safeAreaInsets.bottom)
+            mainView.button.layer.cornerRadius = 0
+        } else {
+            offsetConstant = 16
+            keyboardBottomOffsetConstant = -16
+            mainView.button.layer.cornerRadius = 8
+        }
+        mainView.button.snp.remakeConstraints {
+            $0.leading.equalToSuperview().offset(offsetConstant)
+            $0.trailing.equalTo(self.view.safeAreaLayoutGuide).offset(-offsetConstant)
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(keyboardBottomOffsetConstant)
+        }
+    }
+
+    @objc override func hideKeyboard(_ sender: Any) {
+        super.hideKeyboard(sender)
+        self.mainView.searchBar.endEditing(true)
     }
 }

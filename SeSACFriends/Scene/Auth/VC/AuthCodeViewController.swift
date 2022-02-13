@@ -50,6 +50,8 @@ final class AuthCodeViewController: UIViewController {
         mainView.textField.placeholder = "인증번호 입력"
         
         bind()
+        
+        addTapGestureForKeyboard()
     }
 
     func bind(){

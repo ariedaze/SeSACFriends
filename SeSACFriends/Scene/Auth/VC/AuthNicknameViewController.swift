@@ -28,6 +28,8 @@ final class AuthNicknameViewController: UIViewController {
         )
 
         bind()
+        
+        addTapGestureForKeyboard()
     }
     
     private func bind() {

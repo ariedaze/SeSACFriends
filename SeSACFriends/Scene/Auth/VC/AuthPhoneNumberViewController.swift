@@ -30,6 +30,8 @@ final class AuthPhoneNumberViewController: UIViewController {
         )
         mainView.textField.placeholder = "휴대폰 번호(-없이 숫자만 입력)"
         mainView.textField.becomeFirstResponder()
+        
+        addTapGestureForKeyboard()
     }
     
     func bind(){

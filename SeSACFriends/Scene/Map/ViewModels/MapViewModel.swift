@@ -74,16 +74,11 @@ final class MapViewModel: ViewModelType {
             .subscribe(onNext: { location in
                 let lat = location.latitude
                 let long = location.longitude
-                let latP = Int((lat+90)*100000)
-                let longP = Int((long+180)*100000)
-                
-                let lat5 = latP/Int(pow(10.0, Double(latP.description.count-5)))
-                let long5 = longP/Int(pow(10.0, Double(longP.description.count-5)))
                 
                 let paramters = [
-                    "lat": location.latitude, // 위도
-                    "long": location.longitude, // 경도
-                    "region": lat5 * 100000 + long5
+                    "lat": lat, // 위도
+                    "long": long, // 경도
+                    "region": lat.lat5 * 100000 + long.long5
                 ] as [String : Any]
                 print(paramters)
                 self.networkingApi.request(.searchSesac(parameters: paramters))
@@ -130,3 +125,4 @@ extension MapViewModel {
         let sceneTransition: ControlEvent<Void>
     }
 }
+

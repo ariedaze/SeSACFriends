@@ -22,7 +22,7 @@ class ManageInfoViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.title = "정보 관리"
-        setBackButton()
+        setBackButtonStyle()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(rightBarButtonClicked))
         
         mainView.titleCollectionView.delegate = self

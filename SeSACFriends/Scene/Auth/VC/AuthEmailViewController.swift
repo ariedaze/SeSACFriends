@@ -24,6 +24,8 @@ final class AuthEmailViewController: UIViewController {
             descriptionText: "휴대폰 번호 변경 시 인증을 위해 사용해요"
         )
         bind()
+        
+        addTapGestureForKeyboard()
     }
     
     private func bind() {
