@@ -40,8 +40,9 @@ class FirebaseManager {
                 if let error = error {
                     single(.failure(error))
                 }
+                
                 single(.success(""))
-            }
+            } 
             return Disposables.create()
         }
     }

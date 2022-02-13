@@ -17,33 +17,33 @@ final class ManageInfoViewModel: ViewModelType {
 
     func transform(input: Input) -> Output {
         
-        let output = input.buttonTrigger
-            .subscribe { _ in
-                self.networkingApi.request(.withdraw)
-                    .subscribe {
-                        switch $0 {
-                        case .success(let res):
-                            print("탈퇴 완료?", res)
-                            AppSettings.withdraw()
-                            UIViewController.changeRootViewControllerToPhone()
-                        case .failure(let error):
-                            print("withdraw error", error)
-                        }
-                        
-                    }
-                    .disposed(by: self.disposeBag)
-            }
-            .disposed(by: disposeBag)
-            
-        
-        
+//        let output = input.buttonTrigger
+//            .subscribe { _ in
+//                self.networkingApi.request(.withdraw)
+//                    .subscribe {
+//                        switch $0 {
+//                        case .success(let res):
+//                            print("탈퇴 완료?", res)
+//                            AppSettings.withdraw()
+//                            UIViewController.changeRootViewControllerToPhone()
+//                        case .failure(let error):
+//                            print("withdraw error", error)
+//                        }
+//                        
+//                    }
+//                    .disposed(by: self.disposeBag)
+//            }
+//            .disposed(by: disposeBag)
+//            
+//        
+//        
         return Output()
     }
 }
 
 extension ManageInfoViewModel {
     struct Input {
-        let buttonTrigger: ControlEvent<Void>
+//        let buttonTrigger: ControlEvent<Void>
     }
     
     struct Output {

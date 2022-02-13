@@ -34,12 +34,18 @@ final class ManageInfoViewController: UIViewController {
     }
     
     private func bind() {
-        let input = ManageInfoViewModel.Input(
-            buttonTrigger: mainView.withdrawButton.rx.tap
+        let output = viewModel.transform(
+            input: ManageInfoViewModel.Input(
+                // buttonTrigger: mainView.withdrawButton.rx.tap
             )
-        
-        let output = viewModel.transform(input: input)
+        )
     
+        mainView.withdrawButton.rx.tap
+            .subscribe (onNext: {
+                self.showAlert(title: "정말 탈퇴하시겠습니까?", description: "탈퇴하면 새싹 프렌즈를 이용할 수 없어요ㅠ")
+            })
+            .disposed(by: disposeBag)
+        
         mainView.moreButton.rx.tap
             .scan(false) { lastState, newState in
                 return !lastState

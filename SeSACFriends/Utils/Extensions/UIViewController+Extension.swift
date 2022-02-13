@@ -111,3 +111,18 @@ extension UIViewController {
         
     }
 }
+
+// show Alert
+extension UIViewController {
+    func showAlert(title: String, description: String) {
+        let vc = AlertViewController()
+        vc.configure(title: title, description: description)
+        vc.cancelButton.addTarget(self, action: #selector(cancelAction), for: .touchUpInside)
+        vc.modalPresentationStyle = .overFullScreen
+        self.present(vc, animated: false, completion: nil)
+    }
+    
+    @objc func cancelAction() {
+        self.dismiss(animated: false, completion: nil)
+    }
+}

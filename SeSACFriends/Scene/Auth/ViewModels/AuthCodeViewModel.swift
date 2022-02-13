@@ -68,6 +68,10 @@ final class AuthCodeViewModel: ValidationViewModel {
                         switch $0 {
                         case .success(let res):
                             print(res, "파베 성공")
+                            FirebaseManager.setIdToken()
+                                .subscribe {
+                                }
+                                .disposed(by: self.disposeBag)
                             self.networkingApi.request(.checkuser)
                                 .subscribe {
                                     switch $0 {
