@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import CoreLocation
 
-class SearchHobbyViewModel: ViewModelType {
+final class SearchHobbyViewModel: ViewModelType {
     var disposeBag: DisposeBag = DisposeBag()
     
     private let sesacCoordinate = CLLocationCoordinate2D(latitude: 37.51818789942772, longitude: 126.88541765534976)

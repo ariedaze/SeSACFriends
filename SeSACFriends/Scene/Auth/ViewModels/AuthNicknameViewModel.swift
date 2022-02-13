@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class AuthNicknameViewModel: ViewModelType, ValidationViewModel {
+final class AuthNicknameViewModel: ViewModelType, ValidationViewModel {
     enum Message: String {
         case invalid = "닉네임은 1자 이상 10자 이내로 부탁드려요"
         case failed = "해당 닉네임은 사용할 수 없습니다"

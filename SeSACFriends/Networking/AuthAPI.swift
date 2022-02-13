@@ -85,7 +85,7 @@ final class AuthNetworkingAPI {
     
     func request(_ api: AuthAPI) -> Single<Response> {
 //        dump(SignupRequest.shared)
-        print("request type?", api, AppSettings[.idToken])
+        print("request type?", api, AppSettings[.idToken] as Any)
         return provider.rx.request(api)
     }
 }

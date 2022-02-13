@@ -86,7 +86,6 @@
 		E5D41B9727AC122600021C58 /* ManageInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B9627AC122600021C58 /* ManageInfoViewController.swift */; };
 		E5D41B9A27AC3F0100021C58 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = E5D41B9927AC3F0100021C58 /* Then */; };
 		E5D41B9D27AC4CD700021C58 /* ManageInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B9C27AC4CD700021C58 /* ManageInfoViewModel.swift */; };
-		E5D41B9F27AC62AF00021C58 /* CellReusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B9E27AC62AF00021C58 /* CellReusable.swift */; };
 		E5D41BA127AC7A6100021C58 /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41BA027AC7A6100021C58 /* DynamicHeightCollectionView.swift */; };
 		E5D41BA527AD7C2C00021C58 /* MultiSlider in Frameworks */ = {isa = PBXBuildFile; productRef = E5D41BA427AD7C2C00021C58 /* MultiSlider */; };
 		E5D41BAA27AD964100021C58 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5D41BA927AD964100021C58 /* Colors.xcassets */; };
@@ -163,7 +162,6 @@
 		E5D41B9427AC110500021C58 /* ManageInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageInfoView.swift; sourceTree = "<group>"; };
 		E5D41B9627AC122600021C58 /* ManageInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageInfoViewController.swift; sourceTree = "<group>"; };
 		E5D41B9C27AC4CD700021C58 /* ManageInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageInfoViewModel.swift; sourceTree = "<group>"; };
-		E5D41B9E27AC62AF00021C58 /* CellReusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellReusable.swift; sourceTree = "<group>"; };
 		E5D41BA027AC7A6100021C58 /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
 		E5D41BA927AD964100021C58 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -284,7 +282,6 @@
 				E5754062279878B8001F9247 /* ViewRepresentable.swift */,
 				E575409B279DF222001F9247 /* ViewModelProtocol.swift */,
 				E50C3AE227A1C6490085CABD /* Reusable.swift */,
-				E5D41B9E27AC62AF00021C58 /* CellReusable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -626,7 +623,6 @@
 				E575405827971B3B001F9247 /* AuthCommonView.swift in Sources */,
 				E575401E27968ED0001F9247 /* SceneDelegate.swift in Sources */,
 				E5D41BA127AC7A6100021C58 /* DynamicHeightCollectionView.swift in Sources */,
-				E5D41B9F27AC62AF00021C58 /* CellReusable.swift in Sources */,
 				E5754098279DDA93001F9247 /* AuthNicknameViewModel.swift in Sources */,
 				E57540B827A18FBF001F9247 /* MyInfoViewController.swift in Sources */,
 				E57540A827A09574001F9247 /* AuthAPI.swift in Sources */,

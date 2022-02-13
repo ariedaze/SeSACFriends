@@ -12,7 +12,7 @@ import RxCocoa
 import Moya
 import UIKit
 
-class AuthCodeViewModel: ValidationViewModel {
+final class AuthCodeViewModel: ValidationViewModel {
     var verificationID: String = ""
     
     enum Message: String {

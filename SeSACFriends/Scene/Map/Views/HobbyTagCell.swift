@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HobbyTagCell: UICollectionViewCell {
+final class HobbyTagCell: UICollectionViewCell {
     let hobbyButton = SeSACButton().then {
         $0.size = .h32
     }

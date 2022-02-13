@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class AuthBirthViewModel: ViewModelType, ValidationViewModel {
+final class AuthBirthViewModel: ViewModelType, ValidationViewModel {
     enum Message: String {
         case invalid = "새싹친구는 만17세 이상만 사용할 수 있습니다."
     }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyInfoView: UIView, ViewRepresentable {
+final class MyInfoView: UIView, ViewRepresentable {
     let tableView: UITableView = {
         let table = UITableView()
         table.separatorStyle = .none

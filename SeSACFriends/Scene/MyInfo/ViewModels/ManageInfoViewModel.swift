@@ -11,7 +11,7 @@ import RxCocoa
 import Moya
 import UIKit
 
-class ManageInfoViewModel: ViewModelType {
+final class ManageInfoViewModel: ViewModelType {
     var disposeBag = DisposeBag()
     let networkingApi = AuthNetworkingAPI()
 

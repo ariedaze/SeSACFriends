@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SignupRequest: Codable {
+final class SignupRequest: Codable {
     static let shared = SignupRequest()
     
     var phoneNumber: String = AppSettings[.phoneNumber] as? String ?? ""

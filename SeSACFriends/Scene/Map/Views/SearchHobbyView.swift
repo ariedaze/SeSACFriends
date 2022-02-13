@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchHobbyView: UIView, ViewRepresentable {
+final class SearchHobbyView: UIView, ViewRepresentable {
     let searchBar = UISearchBar().then {
         $0.placeholder = "띄어쓰기로 복수 입력이 가능해요"
     }
@@ -21,7 +21,7 @@ class SearchHobbyView: UIView, ViewRepresentable {
 
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.register(ButtonCollectionViewCell.self, forCellWithReuseIdentifier: ButtonCollectionViewCell.reuseIdentifier)
-        cv.register(HobbyCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HobbyCollectionHeaderView.reuseID)
+        cv.register(HobbyCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HobbyCollectionHeaderView.reuseIdentifier)
         cv.backgroundColor = .clear
         cv.keyboardDismissMode = .onDrag
         

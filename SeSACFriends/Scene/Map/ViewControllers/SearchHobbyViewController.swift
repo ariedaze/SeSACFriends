@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchHobbyViewController: UIViewController {
+final class SearchHobbyViewController: UIViewController {
     let mainView = SearchHobbyView()
     let viewModel = SearchHobbyViewModel()
     
@@ -68,7 +68,7 @@ extension SearchHobbyViewController: UICollectionViewDelegate, UICollectionViewD
         case UICollectionView.elementKindSectionHeader:
             let headerView = collectionView.dequeueReusableSupplementaryView(
                 ofKind: kind,
-                withReuseIdentifier: HobbyCollectionHeaderView.reuseID,
+                withReuseIdentifier: HobbyCollectionHeaderView.reuseIdentifier,
                 for: indexPath)
 
             guard let typedHeaderView = headerView as? HobbyCollectionHeaderView

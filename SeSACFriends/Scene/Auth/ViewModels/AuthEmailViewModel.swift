@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class AuthEmailViewModel: ViewModelType, ValidationViewModel {
+final class AuthEmailViewModel: ViewModelType, ValidationViewModel {
     var validationFailed = "이메일 형식이 올바르지 않습니다."
     var toastMessage = PublishRelay<String>()
     

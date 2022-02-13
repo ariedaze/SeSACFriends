@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import RxRelay
 
-class AuthPhoneViewModel: ValidationViewModel, ViewModelType {
+final class AuthPhoneViewModel: ValidationViewModel, ViewModelType {
     enum Message: String {
         case valid = "전화 번호 인증 시작"
         case invalid = "잘못된 전화번호 형식입니다."

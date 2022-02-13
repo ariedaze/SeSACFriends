@@ -30,7 +30,7 @@ enum MyInfo: String, CaseIterable {
     }
 }
 
-class MyInfoViewController: UIViewController {
+final class MyInfoViewController: UIViewController {
     let mainView = MyInfoView()
     
     override func loadView() {

@@ -38,15 +38,12 @@ final class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        mainView.map.register(CustomAnnotationView.self, forAnnotationViewWithReuseIdentifier: CustomAnnotationView.reuseID)
         mainView.map.delegate = self
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        bind()
+        bindViewModel()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -57,19 +54,19 @@ final class MapViewController: UIViewController {
         disposeBag = DisposeBag()
     }
     
-    private func bind() {
-        let input = MapViewModel.Input(
-            viewWillAppear: Observable.just(Void()),
-            gpsButtonTap: mainView.myLocationButton.rx.tap.asSignal(),
-            myPinLocation: mainView.map.rx.regionDidChangeAnimated
-                .skip(1)
-                .debounce(.milliseconds(800), scheduler: MainScheduler.instance)
-                .map { _ in self.mainView.map.centerCoordinate },
-            floatingButtonTap: mainView.searchButton.rx.tap
+    private func bindViewModel() {
+        let output = viewModel.transform(
+            input: MapViewModel.Input(
+                viewWillAppear: Observable.just(Void()),
+                gpsButtonTap: mainView.myLocationButton.rx.tap.asSignal(),
+                myPinLocation: mainView.map.rx.regionDidChangeAnimated
+                    .skip(1)
+                    .debounce(.milliseconds(800), scheduler: MainScheduler.instance)
+                    .map { _ in self.mainView.map.centerCoordinate },
+                floatingButtonTap: mainView.searchButton.rx.tap
+            )
         )
-        let output = viewModel.transform(input: input)
-        
-        
+    
         output.requestLocationAuthorization // 권한설정
             .subscribe { status in
                 print("status", status)
@@ -109,6 +106,7 @@ final class MapViewController: UIViewController {
         
         output.sceneTransition
             .subscribe { [weak self] _ in
+                print("왜 버튼 클릭이 여러번 되는거죠?")
                 let vc = SearchHobbyViewController()
                 vc.hidesBottomBarWhenPushed = true
                 self?.navigationController?.pushViewController(vc, animated: true)
@@ -116,7 +114,7 @@ final class MapViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    func setupMapUI(_ location: CLLocationCoordinate2D, sesac: Int) {
+    private func setupMapUI(_ location: CLLocationCoordinate2D, sesac: Int) {
         let currentPin = SeSACAnnotation(coordinate: location, sesac: sesac)
         mainView.map.addAnnotation(currentPin)
     }
@@ -131,7 +129,7 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     private func setupAnnotationView(for annotation: SeSACAnnotation, on mapView: MKMapView) -> MKAnnotationView {
-        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: CustomAnnotationView.reuseID, for: annotation)
+        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: CustomAnnotationView.reuseIdentifier, for: annotation)
         let sesacImage =  UIImage(named: "sesac_face_\(annotation.sesac + 1)")!
         let size = CGSize(width: 80, height: 80)
         UIGraphicsBeginImageContext(size)

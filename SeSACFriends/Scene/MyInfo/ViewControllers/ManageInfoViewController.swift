@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class ManageInfoViewController: UIViewController {
+final class ManageInfoViewController: UIViewController {
     let mainView = ManageInfoView()
     var viewModel = ManageInfoViewModel()
     var disposeBag = DisposeBag()
@@ -40,9 +40,6 @@ class ManageInfoViewController: UIViewController {
         
         let output = viewModel.transform(input: input)
     
-//        output.out
-
-        
         mainView.moreButton.rx.tap
             .scan(false) { lastState, newState in
                 return !lastState

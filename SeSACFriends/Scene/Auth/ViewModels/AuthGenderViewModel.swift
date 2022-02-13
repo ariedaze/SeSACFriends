@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import Moya
 
-class AuthGenderViewModel: ViewModelType {
+final class AuthGenderViewModel: ViewModelType {
     enum Message: String {
         case error = "에러가 발생했습니다. 잠시 후 다시 시도해주세요"
     }

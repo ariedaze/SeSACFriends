@@ -10,7 +10,7 @@ import SnapKit
 import Then
 import MultiSlider
 
-class ButtonCollectionViewCell: UICollectionViewCell {
+final class ButtonCollectionViewCell: UICollectionViewCell {
     let button = SeSACButton().then {
         $0.size = .h32
         $0.isUserInteractionEnabled = false
@@ -29,7 +29,7 @@ class ButtonCollectionViewCell: UICollectionViewCell {
     }
 }
 
-class ManageInfoView: UIView, ViewRepresentable {
+final class ManageInfoView: UIView, ViewRepresentable {
     var isExpanded = false {
         willSet {
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear) {

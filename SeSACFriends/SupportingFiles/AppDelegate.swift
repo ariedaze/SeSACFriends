@@ -59,13 +59,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().backgroundColor = .white
         UINavigationBar.appearance().isTranslucent = true
         UINavigationBar.appearance().tintColor = ColorTheme.black
-        
-        let attributes = [NSAttributedString.Key.font: FontTheme.Title3_M14, .foregroundColor: ColorTheme.black]
-        UINavigationBar.appearance().titleTextAttributes = attributes
-        
-        UIBarButtonItem.appearance().setTitleTextAttributes(
-            //            [NSAttributedString.Key.foregroundColor : UIColor(red:0.12, green:0.28, blue:0.40, alpha:1.0),
-            [NSAttributedString.Key.font: FontTheme.Title3_M14], for: .normal)
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: FontTheme.Title3_M14, .foregroundColor: ColorTheme.black]
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: FontTheme.Title3_M14], for: .normal)
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [
+            .foregroundColor: ColorTheme.black,
+            .font: FontTheme.Title4_R14
+        ]
         return true
     }
     

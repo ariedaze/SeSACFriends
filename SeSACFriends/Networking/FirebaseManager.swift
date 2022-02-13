@@ -51,7 +51,7 @@ class FirebaseManager {
         return Single.create { single in
             if let user = user {
                 user.getIDToken { id, error in
-                    print(id, "id주세요ㅠㅠ")
+                    print(id as Any, "id주세요ㅠㅠ")
                     if let error = error {
                         single(.failure(error))
                     }

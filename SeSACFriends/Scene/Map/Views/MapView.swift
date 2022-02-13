@@ -11,7 +11,9 @@ import SnapKit
 import Then
 
 final class MapView: UIView, ViewRepresentable {
-    let map = MKMapView()
+    let map = MKMapView().then {
+        $0.register(CustomAnnotationView.self, forAnnotationViewWithReuseIdentifier: CustomAnnotationView.reuseIdentifier)
+    }
     
     let myPin = UIImageView().then {
         $0.image = UIImage(named: "map_marker")
