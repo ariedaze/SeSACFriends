@@ -51,28 +51,25 @@ extension MyInfoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        var content = cell.defaultContentConfiguration()
-        
-        if indexPath.section == 0 {
-            content.attributedText = NSAttributedString(string: "김새싹", attributes: [ .font: FontTheme.Title1_M16, .foregroundColor: ColorTheme.black])
-        }
-        else {
+        if indexPath.section == 0{
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MyInfoNicknameCell.reuseIdentifier, for: indexPath) as? MyInfoNicknameCell else {
+                return UITableViewCell()
+            }
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath)
+            var content = cell.defaultContentConfiguration()
             let category = MyInfo.allCases[indexPath.row]
-            
             content.image = UIImage(named: "\(category.imageName)")
             content.imageProperties.tintColor = ColorTheme.black
             content.imageToTextPadding = 14
-            
             content.attributedText = NSAttributedString(string: "\(category.rawValue)", attributes: [ .font: FontTheme.Title2_R16, .foregroundColor: ColorTheme.black])
-
+            cell.contentConfiguration = content
+            cell.selectionStyle = .none
+            return cell
         }
-        
-        cell.contentConfiguration = content
-        cell.selectionStyle = .none
-
-        return cell
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return section == 0 ? 1 : MyInfo.allCases.count
     }
@@ -83,5 +80,9 @@ extension MyInfoViewController: UITableViewDelegate, UITableViewDataSource {
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return indexPath.section == 0 ? UITableView.automaticDimension : 74
     }
 }

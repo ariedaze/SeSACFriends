@@ -11,6 +11,7 @@
 		E574CB0627B98DAD007B7F7E /* HobbyTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E574CB0527B98DAD007B7F7E /* HobbyTagCell.swift */; };
 		E574CB0827B99061007B7F7E /* HobbyCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E574CB0727B99061007B7F7E /* HobbyCollectionHeaderView.swift */; };
 		E574CB0A27B9AD66007B7F7E /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E574CB0927B9AD66007B7F7E /* AlertViewController.swift */; };
+		E574CB0C27B9BD83007B7F7E /* MyInfoNicknameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E574CB0B27B9BD83007B7F7E /* MyInfoNicknameCell.swift */; };
 		E575401C27968ED0001F9247 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E575401B27968ED0001F9247 /* AppDelegate.swift */; };
 		E575401E27968ED0001F9247 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E575401D27968ED0001F9247 /* SceneDelegate.swift */; };
 		E575402827968ED3001F9247 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E575402627968ED3001F9247 /* LaunchScreen.storyboard */; };
@@ -97,6 +98,7 @@
 		E574CB0527B98DAD007B7F7E /* HobbyTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyTagCell.swift; sourceTree = "<group>"; };
 		E574CB0727B99061007B7F7E /* HobbyCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyCollectionHeaderView.swift; sourceTree = "<group>"; };
 		E574CB0927B9AD66007B7F7E /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		E574CB0B27B9BD83007B7F7E /* MyInfoNicknameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoNicknameCell.swift; sourceTree = "<group>"; };
 		E575401827968ED0001F9247 /* SeSACFriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSACFriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E575401B27968ED0001F9247 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E575401D27968ED0001F9247 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 			children = (
 				E57540BF27A19354001F9247 /* MyInfoView.swift */,
 				E5D41B9427AC110500021C58 /* ManageInfoView.swift */,
+				E574CB0B27B9BD83007B7F7E /* MyInfoNicknameCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -622,6 +625,7 @@
 				E5754081279D1AB8001F9247 /* AuthTextFieldView.swift in Sources */,
 				E5D41B8D27AAAF1F00021C58 /* ColorTheme.swift in Sources */,
 				E57A318827AF163100276D7F /* OnboardingView.swift in Sources */,
+				E574CB0C27B9BD83007B7F7E /* MyInfoNicknameCell.swift in Sources */,
 				E5754083279D1EE9001F9247 /* AuthCodeView.swift in Sources */,
 				E575405827971B3B001F9247 /* AuthCommonView.swift in Sources */,
 				E575401E27968ED0001F9247 /* SceneDelegate.swift in Sources */,

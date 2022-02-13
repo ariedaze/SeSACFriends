@@ -10,8 +10,10 @@ import UIKit
 final class MyInfoView: UIView, ViewRepresentable {
     let tableView: UITableView = {
         let table = UITableView()
-        table.separatorStyle = .none
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        table.register(MyInfoNicknameCell.self, forCellReuseIdentifier: MyInfoNicknameCell.reuseIdentifier)
+        table.register(UITableViewCell.self, forCellReuseIdentifier: "infoCell")
+        table.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        table.rowHeight = UITableView.automaticDimension
         return table
     }()
     
