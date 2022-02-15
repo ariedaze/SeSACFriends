@@ -21,12 +21,12 @@ final class ManageInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "정보 관리"
         setBackButtonStyle()
+        self.navigationItem.title = "정보 관리"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(rightBarButtonClicked))
         
-        mainView.titleCollectionView.delegate = self
-        mainView.titleCollectionView.dataSource = self
+        mainView.seSacCardView.titleCollectionView.delegate = self
+        mainView.seSacCardView.titleCollectionView.dataSource = self
         viewDidLayoutSubviews()
         bind()
         
@@ -46,11 +46,11 @@ final class ManageInfoViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        mainView.moreButton.rx.tap
+        mainView.seSacCardView.moreButton.rx.tap
             .scan(false) { lastState, newState in
                 return !lastState
             }
-            .bind(to: self.mainView.rx.isExpanded)
+            .bind(to: self.mainView.seSacCardView.rx.isExpanded)
             .disposed(by: disposeBag)
     }
     

@@ -1,37 +1,48 @@
 //
-//  ShopViewController.swift
+//  NearUserViewController.swift
 //  SeSACFriends
 //
-//  Created by Ahyeonway on 2022/01/26.
+//  Created by Ahyeonway on 2022/02/14.
 //
 
 import UIKit
 import Tabman
 import Pageboy
 
-class ShopViewController: TabmanViewController {
+final class NearUserViewController: TabmanViewController {
     let sesacTabBarView = SeSACTabBarView()
     var viewControllers: Array<UIViewController> = [AuthCodeViewController()]
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewControllers.append(AuthEmailViewController())
+        // navigationItem 설정
+        self.navigationItem.title = "새싹 찾기"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "찾기중단", style: .plain, target: self, action: #selector(rightBarButtonClicked))
+        setBackButtonStyle()
+        
+        // tab
         self.view.backgroundColor = .white
+        viewControllers.append(AuthEmailViewController())
         addBar(sesacTabBarView.bar, dataSource: self, at: .top)
         self.dataSource = self
+
+    }
+    
+    @objc func rightBarButtonClicked() {
+        
     }
 }
 
-extension ShopViewController: PageboyViewControllerDataSource, TMBarDataSource {
+
+extension NearUserViewController: PageboyViewControllerDataSource, TMBarDataSource {
   
   func barItem(for bar: TMBar, at index: Int) -> TMBarItemable {
       switch index {
       case 0:
-          return TMBarItem(title: "새싹")
+          return TMBarItem(title: "주변 새싹")
       case 1:
-          return TMBarItem(title: "배경")
+          return TMBarItem(title: "받은 요청")
       default:
           return TMBarItem(title: "Page \(index)")
       }

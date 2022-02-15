@@ -107,7 +107,7 @@ final class MapViewController: UIViewController {
         output.sceneTransition
             .subscribe { [weak self] _ in
                 print("왜 버튼 클릭이 여러번 되는거죠?")
-                let vc = SearchHobbyViewController()
+                let vc =  SearchHobbyViewController()
                 vc.hidesBottomBarWhenPushed = true
                 self?.navigationController?.pushViewController(vc, animated: true)
             }

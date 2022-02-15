@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import RxSwift
 
 final class SearchHobbyViewController: UIViewController {
     let mainView = SearchHobbyView()
     let viewModel = SearchHobbyViewModel()
+    var disposeBag = DisposeBag()
     
     override func loadView() {
         view = mainView
@@ -22,6 +24,7 @@ final class SearchHobbyViewController: UIViewController {
         self.navigationItem.titleView = mainView.searchBar
         mainView.collectionView.dataSource = self
         mainView.collectionView.delegate = self
+        bindViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,6 +35,16 @@ final class SearchHobbyViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         removeKeyboardObserver()
+    }
+    
+    func bindViewModel() {
+        mainView.button.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                let vc = NearUserViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 }
 
