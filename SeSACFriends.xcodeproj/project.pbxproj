@@ -12,6 +12,11 @@
 		E56C4CFD27BB6D8300A91EC8 /* SeSACCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4CFC27BB6D8300A91EC8 /* SeSACCardView.swift */; };
 		E56C4CFF27BB722900A91EC8 /* NearSeSACViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4CFE27BB722900A91EC8 /* NearSeSACViewController.swift */; };
 		E56C4D0127BB726500A91EC8 /* NearSeSACCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4D0027BB726500A91EC8 /* NearSeSACCell.swift */; };
+		E56C4D0327BB732C00A91EC8 /* SeSACProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4D0227BB732C00A91EC8 /* SeSACProfileImageView.swift */; };
+		E56C4D0527BB759400A91EC8 /* SeSACBackgroundShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4D0427BB759400A91EC8 /* SeSACBackgroundShopViewController.swift */; };
+		E56C4D0727BB855A00A91EC8 /* SeSACBackgroundShopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4D0627BB855A00A91EC8 /* SeSACBackgroundShopCell.swift */; };
+		E56C4D0927BB859900A91EC8 /* ShopInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4D0827BB859900A91EC8 /* ShopInfoView.swift */; };
+		E56C4D0D27BB880C00A91EC8 /* SeSACProfileShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4D0C27BB880C00A91EC8 /* SeSACProfileShopViewController.swift */; };
 		E574CB0627B98DAD007B7F7E /* HobbyTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E574CB0527B98DAD007B7F7E /* HobbyTagCell.swift */; };
 		E574CB0827B99061007B7F7E /* HobbyCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E574CB0727B99061007B7F7E /* HobbyCollectionHeaderView.swift */; };
 		E574CB0A27B9AD66007B7F7E /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E574CB0927B9AD66007B7F7E /* AlertViewController.swift */; };
@@ -107,6 +112,11 @@
 		E56C4CFC27BB6D8300A91EC8 /* SeSACCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACCardView.swift; sourceTree = "<group>"; };
 		E56C4CFE27BB722900A91EC8 /* NearSeSACViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearSeSACViewController.swift; sourceTree = "<group>"; };
 		E56C4D0027BB726500A91EC8 /* NearSeSACCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearSeSACCell.swift; sourceTree = "<group>"; };
+		E56C4D0227BB732C00A91EC8 /* SeSACProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACProfileImageView.swift; sourceTree = "<group>"; };
+		E56C4D0427BB759400A91EC8 /* SeSACBackgroundShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACBackgroundShopViewController.swift; sourceTree = "<group>"; };
+		E56C4D0627BB855A00A91EC8 /* SeSACBackgroundShopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACBackgroundShopCell.swift; sourceTree = "<group>"; };
+		E56C4D0827BB859900A91EC8 /* ShopInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopInfoView.swift; sourceTree = "<group>"; };
+		E56C4D0C27BB880C00A91EC8 /* SeSACProfileShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACProfileShopViewController.swift; sourceTree = "<group>"; };
 		E574CB0527B98DAD007B7F7E /* HobbyTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyTagCell.swift; sourceTree = "<group>"; };
 		E574CB0727B99061007B7F7E /* HobbyCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyCollectionHeaderView.swift; sourceTree = "<group>"; };
 		E574CB0927B9AD66007B7F7E /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
@@ -209,6 +219,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E56C4D0A27BB85A300A91EC8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E56C4D0827BB859900A91EC8 /* ShopInfoView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E56C4D0B27BB85B000A91EC8 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E57540BB27A18FF1001F9247 /* ShopViewController.swift */,
+				E56C4D0427BB759400A91EC8 /* SeSACBackgroundShopViewController.swift */,
+				E56C4D0627BB855A00A91EC8 /* SeSACBackgroundShopCell.swift */,
+				E56C4D0C27BB880C00A91EC8 /* SeSACProfileShopViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		E575400F27968ED0001F9247 = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +302,7 @@
 				E574CB0927B9AD66007B7F7E /* AlertViewController.swift */,
 				E574CB1127B9C4A8007B7F7E /* PageView.swift */,
 				E56C4CFC27BB6D8300A91EC8 /* SeSACCardView.swift */,
+				E56C4D0227BB732C00A91EC8 /* SeSACProfileImageView.swift */,
 			);
 			path = CommonView;
 			sourceTree = "<group>";
@@ -332,7 +362,8 @@
 		E57540B427A178E1001F9247 /* Shop */ = {
 			isa = PBXGroup;
 			children = (
-				E57540BB27A18FF1001F9247 /* ShopViewController.swift */,
+				E56C4D0B27BB85B000A91EC8 /* ViewControllers */,
+				E56C4D0A27BB85A300A91EC8 /* Views */,
 			);
 			path = Shop;
 			sourceTree = "<group>";
@@ -629,11 +660,13 @@
 				E57A31B527B6EC6600276D7F /* SearchHobbyView.swift in Sources */,
 				E57540C027A19354001F9247 /* MyInfoView.swift in Sources */,
 				E57A31B227B6EC2F00276D7F /* SearchHobbyViewController.swift in Sources */,
+				E56C4D0927BB859900A91EC8 /* ShopInfoView.swift in Sources */,
 				E575408F279DB92D001F9247 /* FirebaseManager.swift in Sources */,
 				E50C3AE327A1C6490085CABD /* Reusable.swift in Sources */,
 				E5D41B9727AC122600021C58 /* ManageInfoViewController.swift in Sources */,
 				E57A318627AF115900276D7F /* OnboardingViewController.swift in Sources */,
 				E56C4CFD27BB6D8300A91EC8 /* SeSACCardView.swift in Sources */,
+				E56C4D0D27BB880C00A91EC8 /* SeSACProfileShopViewController.swift in Sources */,
 				E5754091279DD0B6001F9247 /* UIViewController+Extension.swift in Sources */,
 				E57540672799255C001F9247 /* SeSACTextField.swift in Sources */,
 				E56C4D0127BB726500A91EC8 /* NearSeSACCell.swift in Sources */,
@@ -645,6 +678,7 @@
 				E57A319027B1813000276D7F /* LocationManager.swift in Sources */,
 				E56C4CFB27BB667D00A91EC8 /* NearSeSACView.swift in Sources */,
 				E575403827969EA1001F9247 /* AuthPhoneNumberViewController.swift in Sources */,
+				E56C4D0727BB855A00A91EC8 /* SeSACBackgroundShopCell.swift in Sources */,
 				E57A31A627B3156900276D7F /* MKMapView+Rx.swift in Sources */,
 				E57540A1279E8A2B001F9247 /* AuthBirthViewModel.swift in Sources */,
 				E57A31CA27B919D300276D7F /* Double+Extension.swift in Sources */,
@@ -677,7 +711,9 @@
 				E5754076279A4F68001F9247 /* AuthBirthViewController.swift in Sources */,
 				E5D41B9527AC110500021C58 /* ManageInfoView.swift in Sources */,
 				E57A319E27B1A47A00276D7F /* MapViewModel.swift in Sources */,
+				E56C4D0327BB732C00A91EC8 /* SeSACProfileImageView.swift in Sources */,
 				E575406C27993D2B001F9247 /* AuthCodeViewController.swift in Sources */,
+				E56C4D0527BB759400A91EC8 /* SeSACBackgroundShopViewController.swift in Sources */,
 				E575406E27994045001F9247 /* AuthCodeViewModel.swift in Sources */,
 				E5D41B9D27AC4CD700021C58 /* ManageInfoViewModel.swift in Sources */,
 				E5754072279A4F07001F9247 /* AuthNicknameViewController.swift in Sources */,

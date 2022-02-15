@@ -80,5 +80,6 @@ extension SeSACButton {
         case h48 = 48
         case h40 = 40
         case h32 = 32
+        case h20 = 20
     }
 }

@@ -18,6 +18,7 @@ class NearSeSACCell: UITableViewCell {
         }
         sesacCard.titleCollectionView.dataSource = self
         sesacCard.titleCollectionView.delegate = self
+        sesacCard.profileImageView.button.setTitle("저장하기", for: .normal)
     }
     
     required init?(coder: NSCoder) {

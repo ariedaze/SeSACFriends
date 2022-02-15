@@ -11,13 +11,12 @@ import Pageboy
 
 class ShopViewController: TabmanViewController {
     let sesacTabBarView = SeSACTabBarView()
-    var viewControllers: Array<UIViewController> = [AuthCodeViewController()]
+    var viewControllers: Array<UIViewController> = [SeSACBackgroundShopViewController()]
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewControllers.append(AuthEmailViewController())
         self.view.backgroundColor = .white
         addBar(sesacTabBarView.bar, dataSource: self, at: .top)
         self.dataSource = self

@@ -21,10 +21,7 @@ class SeSACCardView: UIView {
     }
     
     // 1. 프로필이미지
-    let profileImageView = UIImageView().then {
-        $0.layer.cornerRadius = 8
-        $0.backgroundColor = .yellow
-    }
+    let profileImageView = SeSACProfileImageView()
     
     // 2. 새싹 타이틀 / 리뷰 스택뷰
     let seSacInfoStackView = UIStackView().then {
@@ -122,7 +119,7 @@ class SeSACCardView: UIView {
             $0.top.equalTo(safeAreaLayoutGuide).offset(16)
             $0.leading.equalToSuperview().offset(16)
             $0.trailing.equalToSuperview().offset(-16)
-            $0.height.equalTo(self.snp.width).multipliedBy(0.5)
+//            $0.height.equalTo(self.snp.width).multipliedBy(0.5)
         }
         // 2
         seSacInfoStackView.snp.makeConstraints {
