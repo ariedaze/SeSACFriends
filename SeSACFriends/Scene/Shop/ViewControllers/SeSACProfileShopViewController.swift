@@ -8,7 +8,7 @@
 import UIKit
 
 final class SeSACProfileShopViewController: UIViewController {
-    var collectionView: UICollectionView = {
+    var collectionView: DynamicHeightCollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         let spacing: CGFloat = 12
@@ -16,10 +16,9 @@ final class SeSACProfileShopViewController: UIViewController {
         layout.minimumInteritemSpacing = spacing
     
 
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let cv = DynamicHeightCollectionView(frame: .zero, collectionViewLayout: layout)
         cv.register(SeSACProfileShopCell.self, forCellWithReuseIdentifier: SeSACProfileShopCell.reuseIdentifier)
         
-        cv.isScrollEnabled = false
         cv.backgroundColor = .clear
         return cv
     }()
@@ -28,7 +27,7 @@ final class SeSACProfileShopViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints {
-            $0.edges.equalTo(view.safeAreaLayoutGuide)
+            $0.edges.equalToSuperview()
         }
         collectionView.delegate = self
         collectionView.dataSource = self

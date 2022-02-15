@@ -178,7 +178,8 @@ final class ManageInfoView: UIView, ViewRepresentable {
         // 3-1
         myInfoStackView.snp.makeConstraints {
             $0.top.equalTo(seSacCardView.snp.bottom).offset(24)
-            $0.leading.trailing.equalTo(seSacCardView)
+            $0.leading.equalToSuperview().offset(16)
+            $0.trailing.equalToSuperview().offset(-16)
             $0.bottom.equalTo(contentView.snp.bottom).offset(-16).priority(250)
         }
         genderLabel.snp.makeConstraints {
