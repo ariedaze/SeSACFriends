@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShopInfoView: UIView {
+final class ShopInfoView: UIView {
     
     let sesacNameLabel = UILabel().then {
         $0.font = FontTheme.Title2_R16

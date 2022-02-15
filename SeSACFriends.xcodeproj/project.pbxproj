@@ -222,6 +222,7 @@
 		E56C4D0A27BB85A300A91EC8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E56C4D0627BB855A00A91EC8 /* SeSACBackgroundShopCell.swift */,
 				E56C4D0827BB859900A91EC8 /* ShopInfoView.swift */,
 			);
 			path = Views;
@@ -232,7 +233,6 @@
 			children = (
 				E57540BB27A18FF1001F9247 /* ShopViewController.swift */,
 				E56C4D0427BB759400A91EC8 /* SeSACBackgroundShopViewController.swift */,
-				E56C4D0627BB855A00A91EC8 /* SeSACBackgroundShopCell.swift */,
 				E56C4D0C27BB880C00A91EC8 /* SeSACProfileShopViewController.swift */,
 			);
 			path = ViewControllers;

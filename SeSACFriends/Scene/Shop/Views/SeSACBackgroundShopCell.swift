@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SeSACBackgroundShopCell: UITableViewCell {
+final class SeSACBackgroundShopCell: UITableViewCell {
     let containerView = UIView()
     
     let sesacImageView = UIImageView().then {
@@ -15,7 +15,6 @@ class SeSACBackgroundShopCell: UITableViewCell {
         $0.layer.cornerRadius = 8
     }
     let sesacInfo = ShopInfoView()
-    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

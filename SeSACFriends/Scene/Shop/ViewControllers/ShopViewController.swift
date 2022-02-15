@@ -9,9 +9,11 @@ import UIKit
 import Tabman
 import Pageboy
 
-class ShopViewController: TabmanViewController {
+final class ShopViewController: TabmanViewController {
     let sesacTabBarView = SeSACTabBarView()
-    var viewControllers: Array<UIViewController> = [SeSACBackgroundShopViewController()]
+    var viewControllers = [
+        SeSACProfileShopViewController(), SeSACBackgroundShopViewController()
+    ]
 
     
     override func viewDidLoad() {

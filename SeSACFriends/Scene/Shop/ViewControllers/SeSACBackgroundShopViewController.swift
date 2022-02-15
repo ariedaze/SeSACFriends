@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SeSACBackgroundShopViewController: UIViewController {
+final class SeSACBackgroundShopViewController: UIViewController {
     let tableView = UITableView().then {
         $0.register(SeSACBackgroundShopCell.self, forCellReuseIdentifier: SeSACBackgroundShopCell.reuseIdentifier)
         $0.rowHeight = UITableView.automaticDimension
