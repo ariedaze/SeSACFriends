@@ -1,5 +1,5 @@
 //
-//  NearUserViewController.swift
+//  SearchSeSACViewController.swift
 //  SeSACFriends
 //
 //  Created by Ahyeonway on 2022/02/14.
@@ -9,9 +9,9 @@ import UIKit
 import Tabman
 import Pageboy
 
-final class NearUserViewController: TabmanViewController {
+final class SearchSeSACViewController: TabmanViewController {
     let sesacTabBarView = SeSACTabBarView()
-    var viewControllers: Array<UIViewController> = [AuthCodeViewController()]
+    var viewControllers: Array<UIViewController> = [NearSeSACViewController(), NearSeSACViewController()]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,6 @@ final class NearUserViewController: TabmanViewController {
         
         // tab
         self.view.backgroundColor = .white
-        viewControllers.append(AuthEmailViewController())
         addBar(sesacTabBarView.bar, dataSource: self, at: .top)
         self.dataSource = self
 
@@ -35,7 +34,7 @@ final class NearUserViewController: TabmanViewController {
 }
 
 
-extension NearUserViewController: PageboyViewControllerDataSource, TMBarDataSource {
+extension SearchSeSACViewController: PageboyViewControllerDataSource, TMBarDataSource {
   
   func barItem(for bar: TMBar, at index: Int) -> TMBarItemable {
       switch index {

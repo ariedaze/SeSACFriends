@@ -41,7 +41,7 @@ final class SearchHobbyViewController: UIViewController {
         mainView.button.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                let vc = NearUserViewController()
+                let vc = SearchSeSACViewController()
                 self.navigationController?.pushViewController(vc, animated: true)
             })
             .disposed(by: disposeBag)
