@@ -6,49 +6,58 @@
 //
 
 import Foundation
-import RxSwift
 import CoreLocation
 
-final class SearchHobbyViewModel: ViewModelType {
-    var disposeBag: DisposeBag = DisposeBag()
-    
-    private let sesacCoordinate = CLLocationCoordinate2D(latitude: 37.51818789942772, longitude: 126.88541765534976)
-    
-    let networkingApi = QueueNetworkingAPI()
-    
-
-    func transform(input: Input) -> Output {
-        
-        let paramters = [
-            "lat": sesacCoordinate.latitude, // 위도
-            "long": sesacCoordinate.longitude, // 경도
-            "region": sesacCoordinate.latitude.lat5 * 100000 + sesacCoordinate.longitude.long5
-        ] as [String : Any]
-        
-        
-        self.networkingApi.request(.searchSesac(parameters: paramters))
-            .map(QueueResponse.self)
-            .subscribe { result in
-//                        print("result", result)
-                switch result {
-                case .success(let response):
-//                    self.list.accept(response)
-                    print("res", response.fromQueueDB.map {$0.gender})
-                case .failure(let error):
-                    print(error)
-                }
-            }
-            .disposed(by: self.disposeBag)
-        
-        return Output()
-    }
-}
+import RxSwift
+import RxCocoa
+import RxRelay
 
 extension SearchHobbyViewModel {
     struct Input {
+        let searchHobbyTextFieldDidEditEvent: Observable<String?>
         
     }
     struct Output {
-        let sectionTitles = ["지금 주변에는", "내가 하고 싶은"]
+        let toastMessage: Driver<String>
+    }
+}
+
+final class SearchHobbyViewModel: ViewModelType {
+    var disposeBag = DisposeBag()
+    private let searchHobbyUseCase = DefaultSearchHobbyUseCase()
+    
+    private let toastMessage = PublishRelay<String>()
+
+    func transform(input: Input) -> Output {
+        // 서치바
+        input.searchHobbyTextFieldDidEditEvent
+            .subscribe(onNext: { [weak self] hobbys in
+                guard let hobbys = hobbys else {
+                    return
+                }
+                self?.searchHobbyUseCase.separatedString(hobbys)
+            })
+            .disposed(by: disposeBag)
+
+        self.searchHobbyUseCase.validTextCount
+            .subscribe(onNext: { [weak self] valid in
+                if !valid { self?.toastMessage.accept(ToastMessage.hobbyTextCountViolated.description) }
+            })
+            .disposed(by: disposeBag)
+        
+        self.searchHobbyUseCase
+            .validHobbyCount
+            .subscribe(onNext: { [weak self] valid in
+                if !valid {
+                    self?.toastMessage.accept(ToastMessage.hobbyTextCountViolated.description)
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        // 지금 주변에는
+        
+        return Output(
+            toastMessage: self.toastMessage.asDriver(onErrorJustReturn: "")
+        )
     }
 }

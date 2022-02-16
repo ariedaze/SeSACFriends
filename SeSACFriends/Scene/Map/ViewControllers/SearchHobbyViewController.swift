@@ -24,6 +24,7 @@ final class SearchHobbyViewController: UIViewController {
         self.navigationItem.titleView = mainView.searchBar
         mainView.collectionView.dataSource = self
         mainView.collectionView.delegate = self
+        
         bindViewModel()
     }
     
@@ -38,6 +39,18 @@ final class SearchHobbyViewController: UIViewController {
     }
     
     func bindViewModel() {
+        let output = viewModel.transform(
+            input: SearchHobbyViewModel.Input(
+                searchHobbyTextFieldDidEditEvent: mainView.searchBar.rx.text.asObservable()
+            ))
+        
+        output.toastMessage
+            .drive(onNext: { [weak self] message in
+                self?.view.makeToast(message, position: .top)
+            })
+            .disposed(by: disposeBag)
+            
+        
         mainView.button.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }

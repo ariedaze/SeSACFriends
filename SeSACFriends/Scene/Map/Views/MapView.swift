@@ -25,7 +25,6 @@ final class MapView: UIView, ViewRepresentable {
         $0.distribution = .fillEqually
         $0.layer.cornerRadius = 8
         $0.clipsToBounds = true
-//        $0.layer.shadowColor = ColorTheme.gray3.cgColor
         $0.layer.shadowOpacity = 0.5
         $0.layer.shadowOffset = CGSize(width: 1, height: 1)
         $0.layer.shadowRadius = 4

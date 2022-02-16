@@ -17,6 +17,8 @@
 		E56C4D0727BB855A00A91EC8 /* SeSACBackgroundShopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4D0627BB855A00A91EC8 /* SeSACBackgroundShopCell.swift */; };
 		E56C4D0927BB859900A91EC8 /* ShopInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4D0827BB859900A91EC8 /* ShopInfoView.swift */; };
 		E56C4D0D27BB880C00A91EC8 /* SeSACProfileShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4D0C27BB880C00A91EC8 /* SeSACProfileShopViewController.swift */; };
+		E56C4D1127BD747000A91EC8 /* SearchHobbyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4D1027BD747000A91EC8 /* SearchHobbyUseCase.swift */; };
+		E56C4D1427BD84D000A91EC8 /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4D1327BD84D000A91EC8 /* ToastMessage.swift */; };
 		E574CB0627B98DAD007B7F7E /* HobbyTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E574CB0527B98DAD007B7F7E /* HobbyTagCell.swift */; };
 		E574CB0827B99061007B7F7E /* HobbyCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E574CB0727B99061007B7F7E /* HobbyCollectionHeaderView.swift */; };
 		E574CB0A27B9AD66007B7F7E /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E574CB0927B9AD66007B7F7E /* AlertViewController.swift */; };
@@ -117,6 +119,8 @@
 		E56C4D0627BB855A00A91EC8 /* SeSACBackgroundShopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACBackgroundShopCell.swift; sourceTree = "<group>"; };
 		E56C4D0827BB859900A91EC8 /* ShopInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopInfoView.swift; sourceTree = "<group>"; };
 		E56C4D0C27BB880C00A91EC8 /* SeSACProfileShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACProfileShopViewController.swift; sourceTree = "<group>"; };
+		E56C4D1027BD747000A91EC8 /* SearchHobbyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHobbyUseCase.swift; sourceTree = "<group>"; };
+		E56C4D1327BD84D000A91EC8 /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		E574CB0527B98DAD007B7F7E /* HobbyTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyTagCell.swift; sourceTree = "<group>"; };
 		E574CB0727B99061007B7F7E /* HobbyCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyCollectionHeaderView.swift; sourceTree = "<group>"; };
 		E574CB0927B9AD66007B7F7E /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
@@ -238,6 +242,31 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		E56C4D0E27BD73A500A91EC8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E57A319B27B194DC00276D7F /* QueueModel.swift */,
+				E5754077279B0BDC001F9247 /* AuthModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E56C4D0F27BD740500A91EC8 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				E56C4D1027BD747000A91EC8 /* SearchHobbyUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		E56C4D1227BD84BC00A91EC8 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				E56C4D1327BD84D000A91EC8 /* ToastMessage.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
 		E575400F27968ED0001F9247 = {
 			isa = PBXGroup;
 			children = (
@@ -260,7 +289,7 @@
 				E57A31A027B1AC8100276D7F /* Utils */,
 				E57A318027AEA04200276D7F /* Networking */,
 				E5D41B8E27AAB3FB00021C58 /* Scene */,
-				E57540A627A09562001F9247 /* Models */,
+				E57540A627A09562001F9247 /* Domain */,
 				E575402F279691F7001F9247 /* SupportingFiles */,
 			);
 			path = SeSACFriends;
@@ -340,13 +369,13 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		E57540A627A09562001F9247 /* Models */ = {
+		E57540A627A09562001F9247 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				E5754077279B0BDC001F9247 /* AuthModel.swift */,
-				E57A319B27B194DC00276D7F /* QueueModel.swift */,
+				E56C4D0F27BD740500A91EC8 /* UseCase */,
+				E56C4D0E27BD73A500A91EC8 /* Models */,
 			);
-			path = Models;
+			path = Domain;
 			sourceTree = "<group>";
 		};
 		E57540B327A178C7001F9247 /* Map */ = {
@@ -419,6 +448,7 @@
 		E57A31A027B1AC8100276D7F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E56C4D1227BD84BC00A91EC8 /* Constant */,
 				E5754089279D24ED001F9247 /* AppSettings.swift */,
 				E575406127987857001F9247 /* Protocols */,
 				E57540342796968D001F9247 /* Extensions */,
@@ -662,6 +692,7 @@
 				E57A31B227B6EC2F00276D7F /* SearchHobbyViewController.swift in Sources */,
 				E56C4D0927BB859900A91EC8 /* ShopInfoView.swift in Sources */,
 				E575408F279DB92D001F9247 /* FirebaseManager.swift in Sources */,
+				E56C4D1127BD747000A91EC8 /* SearchHobbyUseCase.swift in Sources */,
 				E50C3AE327A1C6490085CABD /* Reusable.swift in Sources */,
 				E5D41B9727AC122600021C58 /* ManageInfoViewController.swift in Sources */,
 				E57A318627AF115900276D7F /* OnboardingViewController.swift in Sources */,
@@ -720,6 +751,7 @@
 				E57A318A27AF3C6800276D7F /* OnboardingViewCell.swift in Sources */,
 				E5754074279A4F3A001F9247 /* AuthGenderViewController.swift in Sources */,
 				E575408A279D24ED001F9247 /* AppSettings.swift in Sources */,
+				E56C4D1427BD84D000A91EC8 /* ToastMessage.swift in Sources */,
 				E5754078279B0BDC001F9247 /* AuthModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
