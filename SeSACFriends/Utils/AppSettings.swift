@@ -7,9 +7,9 @@
 
 import Foundation
 
-public enum AppSettings {
+enum AppSettings {
 
-    public enum key: String, CaseIterable {
+    enum key: String, CaseIterable {
         case isFirst
         case phoneNumber
         case FCMToken
@@ -17,7 +17,7 @@ public enum AppSettings {
         case matchingStatus
     }
 
-    public static subscript(_ key: key) -> Any? {
+    static subscript(_ key: key) -> Any? {
         get {
             return UserDefaults.standard.value(forKey: key.rawValue)
         }
@@ -26,28 +26,28 @@ public enum AppSettings {
         }
     }
     
-    public static func withdraw() {
+    static func withdraw() {
         AppSettings.key.allCases.forEach {
             AppSettings[$0] = nil
         }
         
     }
     
-    public static func boolValue(_ key: key) -> Bool {
+    static func boolValue(_ key: key) -> Bool {
         if let value = AppSettings[key] as? Bool {
             return value
         }
         return false
     }
     
-    public static func stringValue(_ key: key) -> String? {
+    static func stringValue(_ key: key) -> String? {
         if let value = AppSettings[key] as? String {
             return value
         }
         return nil
     }
     
-    public static func intValue(_ key: key) -> Int? {
+    static func intValue(_ key: key) -> Int? {
         if let value = AppSettings[key] as? Int {
             return value
         }

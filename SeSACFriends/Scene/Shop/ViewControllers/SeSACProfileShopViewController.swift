@@ -44,7 +44,6 @@ extension SeSACProfileShopViewController: UICollectionViewDelegate, UICollection
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SeSACProfileShopCell.reuseIdentifier, for: indexPath) as? SeSACProfileShopCell else {
             return UICollectionViewCell()
         }
-        cell.backgroundColor = .systemPink
         cell.infoView.sesacNameLabel.text = "안녕?"
         cell.infoView.infoLabel.text = "내가 이구역의 새싹이다!!"
         return cell
@@ -52,7 +51,8 @@ extension SeSACProfileShopViewController: UICollectionViewDelegate, UICollection
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = UIScreen.main.bounds.width
         let spacing: CGFloat = 12 + (16*2)
-        return CGSize(width: (width - spacing)/2, height: 300)
+        let cellWidth = (width - spacing)/2
+        return CGSize(width: cellWidth, height: cellWidth+104)
     }
 }
 

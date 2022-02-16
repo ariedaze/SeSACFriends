@@ -48,7 +48,7 @@ final class AuthCodeViewModel: ValidationViewModel {
     
     func transform(input: Input) -> Output {
         self.toastMessage.accept(AuthCodeViewModel.Message.valid.rawValue)
-        
+         
         let _ = input.buttonTap
             .withLatestFrom(input.codeText.asDriver())
             .filter {

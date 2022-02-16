@@ -16,9 +16,9 @@ extension MKMapView: HasDelegate {
 
 class RxMKMapViewDelegateProxy: DelegateProxy<MKMapView, MKMapViewDelegate>, DelegateProxyType, MKMapViewDelegate {
 
-    public weak private(set) var mapView: MKMapView?
+    weak private(set) var mapView: MKMapView?
 
-    public init(mapView: ParentObject) {
+    init(mapView: ParentObject) {
         self.mapView = mapView
         super.init(parentObject: mapView, delegateProxy: RxMKMapViewDelegateProxy.self)
     }
@@ -29,11 +29,11 @@ class RxMKMapViewDelegateProxy: DelegateProxy<MKMapView, MKMapViewDelegate>, Del
 }
 
 extension Reactive where Base: MKMapView {
-    public var delegate: DelegateProxy<MKMapView, MKMapViewDelegate> {
+    var delegate: DelegateProxy<MKMapView, MKMapViewDelegate> {
         return RxMKMapViewDelegateProxy.proxy(for: base)
     }
     
-    public var regionDidChangeAnimated: ControlEvent<Bool> {
+    var regionDidChangeAnimated: ControlEvent<Bool> {
         let source = delegate
             .methodInvoked(#selector(MKMapViewDelegate.mapView(_:regionDidChangeAnimated:)))
             .map { parameters in

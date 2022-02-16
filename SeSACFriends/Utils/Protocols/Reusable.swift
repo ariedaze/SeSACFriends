@@ -8,6 +8,9 @@
 import UIKit
 import MapKit
 
+// .withUnretained
+// RxCommunity
+
 protocol Reusable {
     static var reuseIdentifier: String {get}
 }

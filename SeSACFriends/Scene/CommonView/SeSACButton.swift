@@ -67,7 +67,7 @@ extension SeSACButton {
         }
     }
     
-    public enum Status {
+    enum Status {
         case inactive
         case fill
         case outline
@@ -76,7 +76,7 @@ extension SeSACButton {
         case normal
     }
     
-    public enum Size: Int {
+    enum Size: Int {
         case h48 = 48
         case h40 = 40
         case h32 = 32
