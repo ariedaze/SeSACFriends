@@ -72,9 +72,7 @@ extension AuthAPI: TargetType {
             "idtoken": AppSettings[.idToken] as? String ?? ""
         ]
     }
-    
 }
-
 
 final class AuthNetworkingAPI {
     let provider: MoyaProvider<AuthAPI>

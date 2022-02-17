@@ -25,7 +25,7 @@ enum MatchedState {
 final class MapViewModel: ViewModelType {
     var disposeBag = DisposeBag()
     private let locationManager = LocationManager.shared
-    private let networkingApi = QueueNetworkingAPI()
+    private let networkingApi = QueueNetworkService()
     
     private let list = PublishRelay<QueueResponse>() // 주변 새싹
     private let requestLocationAlert = PublishRelay<String>()

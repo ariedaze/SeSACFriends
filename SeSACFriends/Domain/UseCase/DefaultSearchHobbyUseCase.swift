@@ -8,18 +8,12 @@
 import Foundation
 import RxCocoa
 
-protocol SearchHobbyUseCase {
-    var validTextCount: PublishRelay<Bool> { get set }
-    var validHobbyCount: PublishRelay<Bool> { get set }
-    func separatedString(_ text: String)
-    func validate(text: String)
-    func validateCount(hobby: [String])
-}
-
-
 final class DefaultSearchHobbyUseCase: SearchHobbyUseCase {
+    private let queueRepository = DefaultQueueRepository()
+    
     var validTextCount =  PublishRelay<Bool>()
     var validHobbyCount = PublishRelay<Bool>()
+    
     
     func separatedString(_ text: String) {
         let hobbys = text.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: " ")
@@ -43,6 +37,7 @@ final class DefaultSearchHobbyUseCase: SearchHobbyUseCase {
         return true
     }
     
+    // 취미는 8개
     func checkArrayValidity(hobby: [String]) -> Bool {
         guard hobby.count <= 8 else {
             return false
