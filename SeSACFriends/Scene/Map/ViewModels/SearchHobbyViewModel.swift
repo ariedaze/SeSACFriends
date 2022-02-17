@@ -14,21 +14,28 @@ import RxRelay
 
 extension SearchHobbyViewModel {
     struct Input {
+        let viewDidLoadEvent: Observable<Void>
         let searchHobbyTextFieldDidEditEvent: Observable<String?>
         
     }
     struct Output {
-        let toastMessage: Driver<String>
+        let toastMessage = PublishRelay<String>()
+        let onqueueResponse = PublishRelay<QueueResponse>()
     }
 }
 
 final class SearchHobbyViewModel: ViewModelType {
-    var disposeBag = DisposeBag()
     private let searchHobbyUseCase = DefaultSearchHobbyUseCase()
-    
-    private let toastMessage = PublishRelay<String>()
 
+    let sesacCoordinate = CLLocationCoordinate2D(latitude: 37.51818789942772, longitude: 126.88541765534976) //새싹 영등포 캠퍼스의 위치입니다. 여기서 시작하면 재밌을 것 같죠? 하하
+    
+    // remove
     func transform(input: Input) -> Output {
+        return Output()
+    }
+    
+    func transform(input: Input, disposeBag: DisposeBag) -> Output {
+        let output = Output()
         // 서치바
         input.searchHobbyTextFieldDidEditEvent
             .subscribe(onNext: { [weak self] hobbys in
@@ -40,24 +47,31 @@ final class SearchHobbyViewModel: ViewModelType {
             .disposed(by: disposeBag)
 
         self.searchHobbyUseCase.validTextCount
-            .subscribe(onNext: { [weak self] valid in
-                if !valid { self?.toastMessage.accept(ToastMessage.hobbyTextCountViolated.description) }
+            .subscribe(onNext: { valid in
+                if !valid { output.toastMessage.accept(ToastMessage.hobbyTextCountViolated.description) }
             })
             .disposed(by: disposeBag)
         
         self.searchHobbyUseCase
             .validHobbyCount
-            .subscribe(onNext: { [weak self] valid in
+            .subscribe(onNext: { valid in
                 if !valid {
-                    self?.toastMessage.accept(ToastMessage.hobbyTextCountViolated.description)
+                    output.toastMessage.accept(ToastMessage.hobbyTextCountViolated.description)
                 }
             })
             .disposed(by: disposeBag)
         
         // 지금 주변에는
+        input.viewDidLoadEvent
+            .subscribe({ [weak self] _ in
+                self?.searchHobbyUseCase.onqueue()
+            })
+            .disposed(by: disposeBag)
         
-        return Output(
-            toastMessage: self.toastMessage.asDriver(onErrorJustReturn: "")
-        )
+        self.searchHobbyUseCase.onqueueResponse
+            .bind(to: output.onqueueResponse)
+            .disposed(by: disposeBag)
+        
+        return output
     }
 }

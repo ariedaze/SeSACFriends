@@ -41,15 +41,26 @@ final class SearchHobbyViewController: UIViewController {
     func bindViewModel() {
         let output = viewModel.transform(
             input: SearchHobbyViewModel.Input(
+                viewDidLoadEvent: Observable.just(()).asObservable(),
                 searchHobbyTextFieldDidEditEvent: mainView.searchBar.rx.text.asObservable()
-            ))
+            ),
+            disposeBag: self.disposeBag
+        )
         
         output.toastMessage
+            .asDriver(onErrorJustReturn: "")
             .drive(onNext: { [weak self] message in
                 self?.view.makeToast(message, position: .top)
             })
             .disposed(by: disposeBag)
             
+        output.onqueueResponse
+            .asDriver(onErrorJustReturn: QueueResponse.defaultValue)
+            .drive(onNext: { queue in
+                print("내가 추천 취미다!!!", queue.fromRecommend)
+                print("내가 다른 사용자 취미다!!!", queue.fromQueueDB)
+            })
+            .disposed(by: disposeBag)
         
         mainView.button.rx.tap
             .subscribe(onNext: { [weak self] in
@@ -88,7 +99,7 @@ extension SearchHobbyViewController: UICollectionViewDelegate, UICollectionViewD
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
-
+ 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionView.elementKindSectionHeader:

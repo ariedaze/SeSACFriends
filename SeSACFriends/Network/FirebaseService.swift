@@ -1,5 +1,5 @@
 //
-//  FirebaseManager.swift
+//  FirebaseService.swift
 //  SeSACFriends
 //
 //  Created by Ahyeonway on 2022/01/24.
@@ -9,7 +9,7 @@ import Foundation
 import FirebaseAuth
 import RxSwift
 
-class FirebaseManager {
+final class FirebaseService {
     enum error: String {
         case TOO_MANY_REQUESTS = "We have blocked all requests from this device due to unusual activity. Try again later."
     }

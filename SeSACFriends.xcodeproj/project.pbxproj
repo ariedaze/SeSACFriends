@@ -21,6 +21,7 @@
 		E56C4D1727BD89C800A91EC8 /* SearchHobbyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4D1627BD89C800A91EC8 /* SearchHobbyUseCase.swift */; };
 		E56C4D1827BE714A00A91EC8 /* DefaultSearchHobbyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4D1027BD747000A91EC8 /* DefaultSearchHobbyUseCase.swift */; };
 		E56C4D1E27BE76C200A91EC8 /* DefaultQueueRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4D1D27BE76C200A91EC8 /* DefaultQueueRepository.swift */; };
+		E56C4D2127BEDFFA00A91EC8 /* PrimitiveSequence+rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4D2027BEDFFA00A91EC8 /* PrimitiveSequence+rx.swift */; };
 		E574CB0627B98DAD007B7F7E /* HobbyTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E574CB0527B98DAD007B7F7E /* HobbyTagCell.swift */; };
 		E574CB0827B99061007B7F7E /* HobbyCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E574CB0727B99061007B7F7E /* HobbyCollectionHeaderView.swift */; };
 		E574CB0A27B9AD66007B7F7E /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E574CB0927B9AD66007B7F7E /* AlertViewController.swift */; };
@@ -55,7 +56,7 @@
 		E5754087279D1F28001F9247 /* AuthGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5754086279D1F28001F9247 /* AuthGenderView.swift */; };
 		E575408A279D24ED001F9247 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5754089279D24ED001F9247 /* AppSettings.swift */; };
 		E575408C279D5D5A001F9247 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E575408B279D5D5A001F9247 /* String+Extension.swift */; };
-		E575408F279DB92D001F9247 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E575408E279DB92D001F9247 /* FirebaseManager.swift */; };
+		E575408F279DB92D001F9247 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E575408E279DB92D001F9247 /* FirebaseService.swift */; };
 		E5754091279DD0B6001F9247 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5754090279DD0B6001F9247 /* UIViewController+Extension.swift */; };
 		E5754094279DD274001F9247 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E5754093279DD274001F9247 /* FirebaseAuth */; };
 		E5754096279DD274001F9247 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = E5754095279DD274001F9247 /* FirebaseMessaging */; };
@@ -91,6 +92,7 @@
 		E57A31B527B6EC6600276D7F /* SearchHobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A31B427B6EC6600276D7F /* SearchHobbyView.swift */; };
 		E57A31C827B9177400276D7F /* SearchHobbyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A31C727B9177400276D7F /* SearchHobbyViewModel.swift */; };
 		E57A31CA27B919D300276D7F /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A31C927B919D300276D7F /* Double+Extension.swift */; };
+		E5BD0DE027BEE7640016808B /* OnqueueError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD0DDF27BEE7640016808B /* OnqueueError.swift */; };
 		E5D41B8427AAAF1F00021C58 /* FontTHeme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B7927AAAF1D00021C58 /* FontTHeme.swift */; };
 		E5D41B8527AAAF1F00021C58 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5D41B7B27AAAF1E00021C58 /* NotoSansKR-Light.otf */; };
 		E5D41B8627AAAF1F00021C58 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5D41B7C27AAAF1E00021C58 /* NotoSansKR-Bold.otf */; };
@@ -125,6 +127,7 @@
 		E56C4D1327BD84D000A91EC8 /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		E56C4D1627BD89C800A91EC8 /* SearchHobbyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHobbyUseCase.swift; sourceTree = "<group>"; };
 		E56C4D1D27BE76C200A91EC8 /* DefaultQueueRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultQueueRepository.swift; sourceTree = "<group>"; };
+		E56C4D2027BEDFFA00A91EC8 /* PrimitiveSequence+rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrimitiveSequence+rx.swift"; sourceTree = "<group>"; };
 		E574CB0527B98DAD007B7F7E /* HobbyTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyTagCell.swift; sourceTree = "<group>"; };
 		E574CB0727B99061007B7F7E /* HobbyCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyCollectionHeaderView.swift; sourceTree = "<group>"; };
 		E574CB0927B9AD66007B7F7E /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
@@ -159,7 +162,7 @@
 		E5754086279D1F28001F9247 /* AuthGenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthGenderView.swift; sourceTree = "<group>"; };
 		E5754089279D24ED001F9247 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		E575408B279D5D5A001F9247 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
-		E575408E279DB92D001F9247 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		E575408E279DB92D001F9247 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		E5754090279DD0B6001F9247 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		E5754097279DDA93001F9247 /* AuthNicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNicknameViewModel.swift; sourceTree = "<group>"; };
 		E575409B279DF222001F9247 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
@@ -186,6 +189,7 @@
 		E57A31B427B6EC6600276D7F /* SearchHobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHobbyView.swift; sourceTree = "<group>"; };
 		E57A31C727B9177400276D7F /* SearchHobbyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHobbyViewModel.swift; sourceTree = "<group>"; };
 		E57A31C927B919D300276D7F /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		E5BD0DDF27BEE7640016808B /* OnqueueError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnqueueError.swift; sourceTree = "<group>"; };
 		E5D41B7927AAAF1D00021C58 /* FontTHeme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontTHeme.swift; sourceTree = "<group>"; };
 		E5D41B7B27AAAF1E00021C58 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
 		E5D41B7C27AAAF1E00021C58 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
@@ -288,6 +292,15 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
+		E56C4D1F27BEDFE600A91EC8 /* rx */ = {
+			isa = PBXGroup;
+			children = (
+				E57A31A527B3156900276D7F /* MKMapView+Rx.swift */,
+				E56C4D2027BEDFFA00A91EC8 /* PrimitiveSequence+rx.swift */,
+			);
+			path = rx;
+			sourceTree = "<group>";
+		};
 		E575400F27968ED0001F9247 = {
 			isa = PBXGroup;
 			children = (
@@ -332,10 +345,10 @@
 		E57540342796968D001F9247 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E56C4D1F27BEDFE600A91EC8 /* rx */,
 				E575403527969698001F9247 /* UIColor+Extension.swift */,
 				E575408B279D5D5A001F9247 /* String+Extension.swift */,
 				E5754090279DD0B6001F9247 /* UIViewController+Extension.swift */,
-				E57A31A527B3156900276D7F /* MKMapView+Rx.swift */,
 				E57A31C927B919D300276D7F /* Double+Extension.swift */,
 			);
 			path = Extensions;
@@ -440,7 +453,7 @@
 		E57A318027AEA04200276D7F /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				E575408E279DB92D001F9247 /* FirebaseManager.swift */,
+				E575408E279DB92D001F9247 /* FirebaseService.swift */,
 				E57540A727A09574001F9247 /* AuthNetworkServicce.swift */,
 				E57A318D27B160EF00276D7F /* QueueNetworkService.swift */,
 			);
@@ -470,6 +483,7 @@
 		E57A31A027B1AC8100276D7F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E5BD0DDE27BEE73A0016808B /* Error */,
 				E56C4D1227BD84BC00A91EC8 /* Constant */,
 				E5754089279D24ED001F9247 /* AppSettings.swift */,
 				E575406127987857001F9247 /* Protocols */,
@@ -520,6 +534,14 @@
 				E56C4D0027BB726500A91EC8 /* NearSeSACCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E5BD0DDE27BEE73A0016808B /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				E5BD0DDF27BEE7640016808B /* OnqueueError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 		E5D41B7827AAAF0F00021C58 /* Resources */ = {
@@ -707,6 +729,7 @@
 				E57A318C27B0F75000276D7F /* MapView.swift in Sources */,
 				E574CB0827B99061007B7F7E /* HobbyCollectionHeaderView.swift in Sources */,
 				E575403627969698001F9247 /* UIColor+Extension.swift in Sources */,
+				E5BD0DE027BEE7640016808B /* OnqueueError.swift in Sources */,
 				E57540BA27A18FDB001F9247 /* ChatViewController.swift in Sources */,
 				E57A31C827B9177400276D7F /* SearchHobbyViewModel.swift in Sources */,
 				E57A318E27B160EF00276D7F /* QueueNetworkService.swift in Sources */,
@@ -714,7 +737,7 @@
 				E57540C027A19354001F9247 /* MyInfoView.swift in Sources */,
 				E57A31B227B6EC2F00276D7F /* SearchHobbyViewController.swift in Sources */,
 				E56C4D0927BB859900A91EC8 /* ShopInfoView.swift in Sources */,
-				E575408F279DB92D001F9247 /* FirebaseManager.swift in Sources */,
+				E575408F279DB92D001F9247 /* FirebaseService.swift in Sources */,
 				E50C3AE327A1C6490085CABD /* Reusable.swift in Sources */,
 				E5D41B9727AC122600021C58 /* ManageInfoViewController.swift in Sources */,
 				E57A318627AF115900276D7F /* OnboardingViewController.swift in Sources */,
@@ -758,6 +781,7 @@
 				E5754085279D1F0B001F9247 /* AuthBirthView.swift in Sources */,
 				E5D41B8427AAAF1F00021C58 /* FontTHeme.swift in Sources */,
 				E574CB0A27B9AD66007B7F7E /* AlertViewController.swift in Sources */,
+				E56C4D2127BEDFFA00A91EC8 /* PrimitiveSequence+rx.swift in Sources */,
 				E575404E279705ED001F9247 /* SeSACButton.swift in Sources */,
 				E57540BE27A1900C001F9247 /* MapViewController.swift in Sources */,
 				E57540B227A12E4F001F9247 /* TabBarController.swift in Sources */,

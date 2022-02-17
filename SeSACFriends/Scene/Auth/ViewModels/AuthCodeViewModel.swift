@@ -63,12 +63,12 @@ final class AuthCodeViewModel: ValidationViewModel {
                     return
                 }
                 // Todo: 이 콜백지옥 해결해보자....
-                FirebaseManager.signInWithCredential(verificationId: self.verificationID, verificationCode: code ?? "")
+                FirebaseService.signInWithCredential(verificationId: self.verificationID, verificationCode: code ?? "")
                     .subscribe {
                         switch $0 {
                         case .success(let res):
                             print(res, "파베 성공")
-                            FirebaseManager.setIdToken()
+                            FirebaseService.setIdToken()
                                 .subscribe {
                                 }
                                 .disposed(by: self.disposeBag)

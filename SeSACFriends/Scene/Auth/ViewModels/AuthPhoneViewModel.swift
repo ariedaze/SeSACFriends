@@ -79,11 +79,11 @@ final class AuthPhoneViewModel: ValidationViewModel, ViewModelType {
             }
             .emit { [weak self] res in
                 AppSettings[.phoneNumber] = res
-                FirebaseManager.verify(phoneNumber: res)
+                FirebaseService.verify(phoneNumber: res)
                     .subscribe(onNext: {
                         self?.verificationSuccess.accept($0)
                     }, onError: { error in
-                        if error.localizedDescription == FirebaseManager.error.TOO_MANY_REQUESTS.rawValue {
+                        if error.localizedDescription == FirebaseService.error.TOO_MANY_REQUESTS.rawValue {
                             self?.toastMessage.accept(AuthPhoneViewModel.Message.exceed.rawValue)
                         } else {
                             self?.toastMessage.accept(AuthPhoneViewModel.Message.error.rawValue)

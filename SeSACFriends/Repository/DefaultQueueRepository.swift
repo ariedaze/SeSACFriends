@@ -6,24 +6,30 @@
 //
 
 import Foundation
-import CoreLocation
+import RxSwift
+import Moya
 
 protocol QueueRepository {
-    func onqueue(location: CLLocationCoordinate2D)
+    func onqueue(lat: Double, long: Double) -> Single<Response>
 }
-
-
 
 final class DefaultQueueRepository: QueueRepository {
-    private let queueNetworkService = QueueNetworkService()
+    let provider = MoyaProvider<QueueAPI>()
     
-    func onqueue(location: CLLocationCoordinate2D) {
-        queueNetworkService.request(.onQueue(
-            parameters: [
-                "lat": location.latitude,
-                "long": location.longitude,
-                "region": "\(location.latitude.lat5)\(location.longitude.long5)"
-                ]
-        ))
+    func onqueue(lat: Double, long: Double) -> Single<Response> {
+        let paramters = [
+            "lat": lat, // 위도
+            "long": long, // 경도
+            "region": lat.lat5 * 100000 + long.long5
+        ] as [String : Any]
+        
+        return provider.rx.request(
+            .onQueue(parameters: paramters))
+        
+    }
+    
+    func queue(type: Int = 2, hf: [String]) -> Single<Response> {
+        return provider.rx.request(.requestHobby)
     }
 }
+

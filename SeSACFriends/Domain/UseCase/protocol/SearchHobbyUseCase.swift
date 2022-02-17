@@ -14,4 +14,5 @@ protocol SearchHobbyUseCase {
     func separatedString(_ text: String)
     func validate(text: String)
     func validateCount(hobby: [String])
+    func onqueue()
 }

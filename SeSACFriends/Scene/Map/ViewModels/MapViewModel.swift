@@ -11,10 +11,6 @@ import RxSwift
 import RxCocoa
 import RxRelay
 
-struct QueueState: Codable {
-    let dodged, matched, reviewed: Int
-    let matchedNick, matchedUid: String
-}
 
 enum MatchedState {
     case matching
@@ -24,6 +20,7 @@ enum MatchedState {
 
 final class MapViewModel: ViewModelType {
     var disposeBag = DisposeBag()
+    
     private let locationManager = LocationManager.shared
     private let networkingApi = QueueNetworkService()
     
@@ -69,7 +66,6 @@ final class MapViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
 
-        
         input.myPinLocation
             .subscribe(onNext: { location in
                 let lat = location.latitude
@@ -81,14 +77,17 @@ final class MapViewModel: ViewModelType {
                     "region": lat.lat5 * 100000 + long.long5
                 ] as [String : Any]
                 print(paramters)
-                self.networkingApi.request(.searchSesac(parameters: paramters))
+                
+                self.networkingApi.request(.onQueue(parameters: paramters))
+                    .catchOnqueueError()
+                    .debug("networking")
                     .map(QueueResponse.self)
+                    .debug("networking debug")
                     .subscribe { result in
-//                        print("result", result)
                         switch result {
                         case .success(let response):
                             self.list.accept(response)
-                            print("res", response.fromQueueDB.map {$0.gender})
+                            print("res", response.fromQueueDB)
                         case .failure(let error):
                             print(error)
                         }
@@ -96,6 +95,7 @@ final class MapViewModel: ViewModelType {
                     .disposed(by: self.disposeBag)
             })
             .disposed(by: disposeBag)
+        
 
         return Output(
             buttonAction: input.gpsButtonTap,

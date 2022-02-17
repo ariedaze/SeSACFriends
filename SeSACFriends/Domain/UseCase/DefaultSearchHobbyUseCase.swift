@@ -6,14 +6,16 @@
 //
 
 import Foundation
+import RxSwift
 import RxCocoa
 
 final class DefaultSearchHobbyUseCase: SearchHobbyUseCase {
     private let queueRepository = DefaultQueueRepository()
+    private let disposeBag = DisposeBag()
     
     var validTextCount =  PublishRelay<Bool>()
     var validHobbyCount = PublishRelay<Bool>()
-    
+    var onqueueResponse = PublishSubject<QueueResponse>()
     
     func separatedString(_ text: String) {
         let hobbys = text.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: " ")
@@ -43,5 +45,20 @@ final class DefaultSearchHobbyUseCase: SearchHobbyUseCase {
             return false
         }
         return true
+    }
+    
+    func onqueue() {
+        queueRepository.onqueue(lat: 37.51555287666034, long: 126.88781071074185)
+            .catchOnqueueError()
+            .map(QueueResponse.self)
+            .subscribe { [weak self] result in
+                switch result {
+                case .success(let queueResponse):
+                    self?.onqueueResponse.onNext(queueResponse)
+                case .failure(let error):
+                    print("onqueue error", error)
+                }
+            }
+            .disposed(by: self.disposeBag)
     }
 }
