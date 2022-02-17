@@ -93,6 +93,7 @@
 		E57A31C827B9177400276D7F /* SearchHobbyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A31C727B9177400276D7F /* SearchHobbyViewModel.swift */; };
 		E57A31CA27B919D300276D7F /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A31C927B919D300276D7F /* Double+Extension.swift */; };
 		E5BD0DE027BEE7640016808B /* OnqueueError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD0DDF27BEE7640016808B /* OnqueueError.swift */; };
+		E5BD0DE227BF09060016808B /* ButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD0DE127BF09060016808B /* ButtonCollectionViewCell.swift */; };
 		E5D41B8427AAAF1F00021C58 /* FontTHeme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B7927AAAF1D00021C58 /* FontTHeme.swift */; };
 		E5D41B8527AAAF1F00021C58 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5D41B7B27AAAF1E00021C58 /* NotoSansKR-Light.otf */; };
 		E5D41B8627AAAF1F00021C58 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5D41B7C27AAAF1E00021C58 /* NotoSansKR-Bold.otf */; };
@@ -190,6 +191,7 @@
 		E57A31C727B9177400276D7F /* SearchHobbyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHobbyViewModel.swift; sourceTree = "<group>"; };
 		E57A31C927B919D300276D7F /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		E5BD0DDF27BEE7640016808B /* OnqueueError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnqueueError.swift; sourceTree = "<group>"; };
+		E5BD0DE127BF09060016808B /* ButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCollectionViewCell.swift; sourceTree = "<group>"; };
 		E5D41B7927AAAF1D00021C58 /* FontTHeme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontTHeme.swift; sourceTree = "<group>"; };
 		E5D41B7B27AAAF1E00021C58 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
 		E5D41B7C27AAAF1E00021C58 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 				E574CB1127B9C4A8007B7F7E /* PageView.swift */,
 				E56C4CFC27BB6D8300A91EC8 /* SeSACCardView.swift */,
 				E56C4D0227BB732C00A91EC8 /* SeSACProfileImageView.swift */,
+				E5BD0DE127BF09060016808B /* ButtonCollectionViewCell.swift */,
 			);
 			path = CommonView;
 			sourceTree = "<group>";
@@ -750,6 +753,7 @@
 				E56C4D1E27BE76C200A91EC8 /* DefaultQueueRepository.swift in Sources */,
 				E5754070279A4ED2001F9247 /* AuthEmailViewController.swift in Sources */,
 				E57540A3279E8A3A001F9247 /* AuthGenderViewModel.swift in Sources */,
+				E5BD0DE227BF09060016808B /* ButtonCollectionViewCell.swift in Sources */,
 				E575409C279DF222001F9247 /* ViewModelType.swift in Sources */,
 				E575408C279D5D5A001F9247 /* String+Extension.swift in Sources */,
 				E57540652798820A001F9247 /* AuthPhoneViewModel.swift in Sources */,

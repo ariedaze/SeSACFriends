@@ -16,7 +16,7 @@ class SeSACButton: UIButton {
     
     var size: Size = .h48
     
-    open override var intrinsicContentSize: CGSize {
+    override var intrinsicContentSize: CGSize {
         var size = super.intrinsicContentSize
         size.height = CGFloat(self.size.rawValue)
         return size

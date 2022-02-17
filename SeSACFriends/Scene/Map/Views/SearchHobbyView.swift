@@ -18,6 +18,7 @@ final class SearchHobbyView: UIView, ViewRepresentable {
         let spacing: CGFloat = 8
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
 
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.register(ButtonCollectionViewCell.self, forCellWithReuseIdentifier: ButtonCollectionViewCell.reuseIdentifier)

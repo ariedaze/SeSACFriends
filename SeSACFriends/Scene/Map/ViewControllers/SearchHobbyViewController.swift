@@ -38,6 +38,13 @@ final class SearchHobbyViewController: UIViewController {
         removeKeyboardObserver()
     }
     
+    var Recommend: [String] = [] {
+        didSet {
+            mainView.collectionView.reloadData()
+        }
+    }
+    var recommendUser: [[String]] = []
+    
     func bindViewModel() {
         let output = viewModel.transform(
             input: SearchHobbyViewModel.Input(
@@ -53,12 +60,14 @@ final class SearchHobbyViewController: UIViewController {
                 self?.view.makeToast(message, position: .top)
             })
             .disposed(by: disposeBag)
-            
+        
         output.onqueueResponse
             .asDriver(onErrorJustReturn: QueueResponse.defaultValue)
             .drive(onNext: { queue in
+                self.Recommend = queue.fromRecommend
+                self.recommendUser = queue.fromQueueDB.map { $0.hf }
                 print("내가 추천 취미다!!!", queue.fromRecommend)
-                print("내가 다른 사용자 취미다!!!", queue.fromQueueDB)
+                print("내가 다른 사용자 취미다!!!", queue.fromQueueDB.forEach {$0.hf})
             })
             .disposed(by: disposeBag)
         
@@ -75,24 +84,15 @@ final class SearchHobbyViewController: UIViewController {
 // collectionview delegate
 extension SearchHobbyViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return Recommend.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ButtonCollectionViewCell.reuseIdentifier, for: indexPath) as? ButtonCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.button.setTitle("안녕?????", for: .normal)
+        cell.button.setTitle(Recommend[indexPath.row], for: .normal)
         return cell
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let label = UILabel().then {
-            $0.font = FontTheme.Title4_R14
-            $0.text = "안녕?????"
-            $0.sizeToFit()
-        } // button의 가로 길이를 구하기 위함
-        let size = label.frame.size
-        return CGSize(width: size.width + 32, height: 32)
     }
 
     // section headerView

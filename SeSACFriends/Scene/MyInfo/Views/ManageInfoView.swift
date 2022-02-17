@@ -10,27 +10,8 @@ import SnapKit
 import Then
 import MultiSlider
 
-final class ButtonCollectionViewCell: UICollectionViewCell {
-    let button = SeSACButton().then {
-        $0.size = .h32
-        $0.isUserInteractionEnabled = false
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        contentView.addSubview(button)
-        button.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-}
-
 final class ManageInfoView: UIView, ViewRepresentable {
-
+    
     let scrollView = UIScrollView().then {
         $0.showsVerticalScrollIndicator = false
         $0.isUserInteractionEnabled = true
