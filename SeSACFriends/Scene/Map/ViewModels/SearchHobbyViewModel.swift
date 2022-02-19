@@ -27,7 +27,7 @@ extension SearchHobbyViewModel {
 final class SearchHobbyViewModel: ViewModelType {
     private let searchHobbyUseCase = DefaultSearchHobbyUseCase()
 
-    let sesacCoordinate = CLLocationCoordinate2D(latitude: 37.51818789942772, longitude: 126.88541765534976) //새싹 영등포 캠퍼스의 위치입니다. 여기서 시작하면 재밌을 것 같죠? 하하
+    let sesacCoordinate = CLLocationCoordinate2D(latitude: 37.51818789942772, longitude: 126.88541765534976)
     
     // remove
     func transform(input: Input) -> Output {

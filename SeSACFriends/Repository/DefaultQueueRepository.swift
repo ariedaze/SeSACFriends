@@ -16,20 +16,31 @@ protocol QueueRepository {
 final class DefaultQueueRepository: QueueRepository {
     let provider = MoyaProvider<QueueAPI>()
     
+    // 주변 새싹 찾기
     func onqueue(lat: Double, long: Double) -> Single<Response> {
         let paramters = [
             "lat": lat, // 위도
             "long": long, // 경도
             "region": lat.lat5 * 100000 + long.long5
-        ] as [String : Any]
+        ] as [String: Any]
         
         return provider.rx.request(
             .onQueue(parameters: paramters))
         
     }
     
-    func queue(type: Int = 2, hf: [String]) -> Single<Response> {
+    // 취미 요청하기
+    func requestHobby(type: Int = 2, hf: [String], lat: Double, long: Double) -> Single<Response> {
+        let paramter = [
+            "type": 2,
+            "lat": lat,
+            "long": long,
+            "region": lat.lat5 * 100000 + long.long5,
+            "hf": ["anything"]
+        ] as [String: Any]
+        
         return provider.rx.request(.requestHobby)
     }
+
 }
 

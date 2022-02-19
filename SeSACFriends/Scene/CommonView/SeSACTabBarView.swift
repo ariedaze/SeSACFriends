@@ -13,7 +13,7 @@ final class SeSACTabBarView: UIView {
     let bar = TMBar.ButtonBar().then {
         $0.layout.transitionStyle = .snap
         $0.layout.contentMode = .fit
-        $0.backgroundView.style = .blur(style: .light)
+        $0.backgroundView.style = TMBarBackgroundView.Style.flat(color: .white)
         
         // 인디케이터
         $0.indicator.weight = .custom(value: 2)

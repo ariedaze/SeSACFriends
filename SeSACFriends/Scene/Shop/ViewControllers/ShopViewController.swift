@@ -10,14 +10,6 @@ import Tabman
 import Pageboy
 
 final class ShopViewController: TabmanViewController {
-    let scrollView = UIScrollView().then {
-        $0.showsVerticalScrollIndicator = false
-        $0.isUserInteractionEnabled = true
-    }
-    let contentView = UIView()
-    let imageView = SeSACProfileImageView()
-    let tabView = UIView()
-    
     let sesacTabBarView = SeSACTabBarView()
     
     var viewControllers = [
@@ -26,40 +18,9 @@ final class ShopViewController: TabmanViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(self.calculateRequiredInsets(), "이거")
-        
-        tabView.addSubview(imageView)
-        view.addSubview(tabView)
-        
-        tabView.snp.makeConstraints {
-            $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-        }
-        
-        imageView.snp.makeConstraints {
-            $0.leading.top.equalTo(view.safeAreaLayoutGuide).offset(16)
-            $0.trailing.equalToSuperview().offset(-16)
-        }
-        
-        
-        tabView.backgroundColor = .magenta
-        
-        self.view.backgroundColor = .white
-        
-        addBar(sesacTabBarView.bar, dataSource: self, at: .custom(view: tabView, layout: { bar in
-            bar.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                bar.topAnchor.constraint(equalTo: self.imageView.bottomAnchor),
-                bar.centerXAnchor.constraint(equalTo: self.tabView.centerXAnchor),
-                bar.leadingAnchor.constraint(equalTo: self.tabView.leadingAnchor),
-                bar.trailingAnchor.constraint(equalTo: self.tabView.trailingAnchor)
-            ])
-        }))
-        
+        // tabbar
+        addBar(sesacTabBarView.bar, dataSource: self, at: .top)
         self.dataSource = self
-    }
-    
-    override func calculateRequiredInsets() -> TabmanViewController.Insets {
-        return Insets(barInsets: UIEdgeInsets(top: 270, left: 0, bottom: 0, right: 0), safeAreaInsets: UIEdgeInsets(top: 270, left: 0, bottom: 0, right: 0))
     }
 }
 
@@ -74,9 +35,7 @@ extension ShopViewController: PageboyViewControllerDataSource, TMBarDataSource {
         default:
             return TMBarItem(title: "Page \(index)")
         }
-        
     }
-    
     
     func numberOfViewControllers(in pageboyViewController: PageboyViewController) -> Int {
         return viewControllers.count

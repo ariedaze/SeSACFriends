@@ -36,7 +36,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         let mapVC = MapViewController()
         mapVC.tabBarItem = UITabBarItem(title: "홈", image: UIImage(named: "home"), selectedImage: UIImage(named: "home_selected"))
     
-        let shopVC = ShopViewController()
+        let shopVC = ShopParentViewController()
         shopVC.tabBarItem = UITabBarItem(title: "새싹샵", image: UIImage(named: "shop"), selectedImage: UIImage(named: "shop_selected"))
 
         let myInfoVC = MyInfoViewController()

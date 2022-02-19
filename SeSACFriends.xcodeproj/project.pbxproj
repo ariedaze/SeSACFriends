@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E50C3AE327A1C6490085CABD /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C3AE227A1C6490085CABD /* Reusable.swift */; };
+		E50F99E227C11CC2003E2179 /* ShopParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F99E127C11CC2003E2179 /* ShopParentViewController.swift */; };
 		E56C4CFB27BB667D00A91EC8 /* NearSeSACView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4CFA27BB667D00A91EC8 /* NearSeSACView.swift */; };
 		E56C4CFD27BB6D8300A91EC8 /* SeSACCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4CFC27BB6D8300A91EC8 /* SeSACCardView.swift */; };
 		E56C4CFF27BB722900A91EC8 /* NearSeSACViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4CFE27BB722900A91EC8 /* NearSeSACViewController.swift */; };
@@ -115,6 +116,7 @@
 
 /* Begin PBXFileReference section */
 		E50C3AE227A1C6490085CABD /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		E50F99E127C11CC2003E2179 /* ShopParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopParentViewController.swift; sourceTree = "<group>"; };
 		E56C4CFA27BB667D00A91EC8 /* NearSeSACView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearSeSACView.swift; sourceTree = "<group>"; };
 		E56C4CFC27BB6D8300A91EC8 /* SeSACCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACCardView.swift; sourceTree = "<group>"; };
 		E56C4CFE27BB722900A91EC8 /* NearSeSACViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearSeSACViewController.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				E57540BB27A18FF1001F9247 /* ShopViewController.swift */,
 				E56C4D0427BB759400A91EC8 /* SeSACBackgroundShopViewController.swift */,
 				E56C4D0C27BB880C00A91EC8 /* SeSACProfileShopViewController.swift */,
+				E50F99E127C11CC2003E2179 /* ShopParentViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -772,6 +775,7 @@
 				E5D41B8D27AAAF1F00021C58 /* ColorTheme.swift in Sources */,
 				E56C4CFF27BB722900A91EC8 /* NearSeSACViewController.swift in Sources */,
 				E57A318827AF163100276D7F /* OnboardingView.swift in Sources */,
+				E50F99E227C11CC2003E2179 /* ShopParentViewController.swift in Sources */,
 				E574CB0C27B9BD83007B7F7E /* MyInfoNicknameCell.swift in Sources */,
 				E5754083279D1EE9001F9247 /* AuthCodeView.swift in Sources */,
 				E575405827971B3B001F9247 /* AuthCommonView.swift in Sources */,
