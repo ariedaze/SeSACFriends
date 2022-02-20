@@ -12,7 +12,7 @@ import RxRelay
 protocol ViewModelType {
     associatedtype Input
     associatedtype Output
-    func transform(input: Input) -> Output
+//    func transform(input: Input, disposeBag: DisposeBag) -> Output
 }
 
 protocol ValidationViewModel {

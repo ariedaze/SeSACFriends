@@ -58,5 +58,39 @@
 
 
 
-**개발하면서 이런 걸 고민했어요! [ahyeonlog의 개발일지🍎](./docs/wiki.md)**
+## 🍎개발하면서 이런 걸 고민했어요! 🍎
+
+#### 커밋 메시지
+- 커밋 메시지 작성 시 본문에 작업 내용을 꼭 적는다.
+- 커밋 메시지 Convention
+  - [Feat] : 기능추가 / 새로운 로직
+  - [Fix] : 버그수정
+  - [Chore] : 간단한 수정
+  - [Docs] : 문서 및 리드미 작성
+  - [Merge] : 머지, 충돌
+  - [Refactor] : 리팩토링
+
+#### ✔️ 개발 체크리스트 ✔️ 
+- [회원 인증](./docs/authchecklist.md)
+- [홈 탭 친구 찾기 / 주변 친구들 목록 / 친구 매칭 기능](./docs/homechecklist.md)
+- 매칭된 친구와 채팅 / 약속 취소 / 신고하기 / 리뷰 작성
+- 새싹샵
+- 마이페이지
+
+#### 📅 주차별 데일리 스크럼  📅
+
+- [1주차](./docs/week01.md)
+- [2주차](./docs/week02.md)
+- [3주차]()
+- [4주차](./docs/week04.md)
+- [5주차]()
+
+#### 🍎 기술 포스트 🍎
+
+- [RxSwift Trait](https://ahyeonlog.tistory.com/71)
+
+- [stackview 안에 dynamic height를 가지는 collectionview 그리기](https://ahyeonlog.tistory.com/70)
+- [RxSwift 도전](https://ahyeonlog.tistory.com/66)
+
+
 

@@ -25,9 +25,7 @@ extension SearchHobbyViewModel {
 }
 
 final class SearchHobbyViewModel: ViewModelType {
-    private let searchHobbyUseCase = DefaultSearchHobbyUseCase()
-
-    let sesacCoordinate = CLLocationCoordinate2D(latitude: 37.51818789942772, longitude: 126.88541765534976)
+    private let searchHobbyUseCase = SeSACSearchHobbyUseCase()
     
     // remove
     func transform(input: Input) -> Output {

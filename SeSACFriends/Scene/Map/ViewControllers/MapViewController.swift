@@ -39,11 +39,11 @@ final class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mainView.map.delegate = self
+        bindViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        bindViewModel()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -55,56 +55,69 @@ final class MapViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        let output = viewModel.transform(
+        let output = self.viewModel.transform(
             input: MapViewModel.Input(
-                viewWillAppear: Observable.just(Void()),
-                gpsButtonTap: mainView.myLocationButton.rx.tap.asSignal(),
-                myPinLocation: mainView.map.rx.regionDidChangeAnimated
+                viewDidLoadEvent: Observable.just(()).asObservable(),
+                viewDidAppearEvent: self.rx.methodInvoked(#selector(viewDidAppear(_:)))
+                    .map({ _ in })
+                    .asObservable(),
+                mapCenterDidChanged: mainView.map.rx.regionDidChangeAnimated
                     .skip(1)
                     .debounce(.milliseconds(800), scheduler: MainScheduler.instance)
                     .map { _ in self.mainView.map.centerCoordinate },
+                gpsButtonTap: mainView.myLocationButton.rx.tap.asSignal(),
                 floatingButtonTap: mainView.searchButton.rx.tap
-            )
+            ),
+            disposeBag: disposeBag
         )
-    
-        output.requestLocationAuthorization // 권한설정
-            .subscribe { status in
-                print("status", status)
-            }
+        
+        output.authorizationAlertShouldShow
+            .asDriver(onErrorJustReturn: false)
+            .drive(onNext: { [weak self] shouldShowAlert in
+                if shouldShowAlert { self?.goSetting() }
+            })
             .disposed(by: disposeBag)
         
-        mainView.map.setRegion( // mapview center 지정
-            MKCoordinateRegion(
-                center: output.firstLocation,
-                latitudinalMeters: 1400, longitudinalMeters: 1400)
-            ,
-            animated: true)
-
-        output.sesacList // 주변 새싹이들
-            .subscribe(onNext: { status in
-                print(status.fromQueueDB, "sesac이들")
-                status.fromQueueDB.forEach {
+        output.mapCenterLocation
+            .asDriver(onErrorJustReturn: self.mainView.map.userLocation.coordinate)
+            .drive(onNext: { [weak self] userLocation in
+                self?.updateCurrentLocation(
+                    latitude: userLocation.latitude,
+                    longitude: userLocation.longitude,
+                    delta: 0.005
+                )
+            })
+            .disposed(by: disposeBag)
+        
+        output.sesacList
+            .subscribe(onNext: { [weak self] list in
+                list.forEach {
                     let coordinate = CLLocationCoordinate2D(latitude: $0.lat, longitude: $0.long)
-                    self.setupMapUI(coordinate, sesac: $0.sesac)
+                    self?.setupMapUI(coordinate, sesac: $0.sesac)
                 }
             })
             .disposed(by: disposeBag)
         
-        output.matchedState // 매칭 상태
-            .map {
-                switch $0 {
-                case .matched:
-                    return UIImage(named: "search_matched")!
-                case .matching:
-                    return UIImage(named: "search_matching")!
-                case .normal:
-                    return UIImage(named: "search_default")!
-                }
-            }
-            .bind(to: mainView.searchButton.rx.image(for: .normal))
-            .disposed(by: disposeBag)
-        
-        output.sceneTransition
+//        let input
+//                gpsButtonTap: mainView.myLocationButton.rx.tap.asSignal(),
+//                floatingButtonTap: mainView.searchButton.rx.tap
+//            )
+//        )
+//        output.matchedState // 매칭 상태
+//            .map {
+//                switch $0 {
+//                case .matched:
+//                    return UIImage(named: "search_matched")!
+//                case .matching:
+//                    return UIImage(named: "search_matching")!
+//                case .normal:
+//                    return UIImage(named: "search_default")!
+//                }
+//            }
+//            .bind(to: mainView.searchButton.rx.image(for: .normal))
+//            .disposed(by: disposeBag)
+//        
+        mainView.searchButton.rx.tap
             .subscribe { [weak self] _ in
                 print("왜 버튼 클릭이 여러번 되는거죠?")
                 let vc =  SearchHobbyViewController()
@@ -113,14 +126,22 @@ final class MapViewController: UIViewController {
             }
             .disposed(by: disposeBag)
     }
-    
-    private func setupMapUI(_ location: CLLocationCoordinate2D, sesac: Int) {
-        let currentPin = SeSACAnnotation(coordinate: location, sesac: sesac)
-        mainView.map.addAnnotation(currentPin)
-    }
 }
 
 extension MapViewController: MKMapViewDelegate {
+    private func updateCurrentLocation(latitude: CLLocationDegrees, longitude: CLLocationDegrees, delta: Double) {
+        let coordinateLocation = CLLocationCoordinate2DMake(latitude, longitude)
+        let spanValue = MKCoordinateSpan(latitudeDelta: delta, longitudeDelta: delta)
+        let locationRegion = MKCoordinateRegion(center: coordinateLocation, span: spanValue)
+        mainView.map.setRegion(locationRegion, animated: true)
+    }
+    
+    private func setupMapUI(_ location: CLLocationCoordinate2D, sesac: Int) {
+        print("유아이가 안되나유?")
+        let currentPin = SeSACAnnotation(coordinate: location, sesac: sesac)
+        mainView.map.addAnnotation(currentPin)
+    }
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard let annotation = annotation as? SeSACAnnotation else {
             return nil
@@ -140,7 +161,7 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        print(#function)
+//        print(#function)
         var span = mapView.region.span
         // lat: 위도 long: 경도
         // 위도 1도에 111Km (가로선) 경도 1도에 88.8km (세로선)
@@ -153,14 +174,5 @@ extension MapViewController: MKMapViewDelegate {
             span = MKCoordinateSpan(latitudeDelta: maxDelta, longitudeDelta: maxDelta)
         }
         mapView.region.span = span
-    }
-    @objc func findMyLocation() {
-//        guard let currentLocation = locationManager.location else {
-//            locationManager.requestWhenInUseAuthorization()
-//            return
-//        }
-        mapView.map.showsUserLocation = true
-        mapView.map.setUserTrackingMode(.follow, animated: true)
-        
     }
 }

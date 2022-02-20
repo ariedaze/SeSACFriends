@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class DefaultSearchHobbyUseCase: SearchHobbyUseCase {
+final class SeSACSearchHobbyUseCase: SearchHobbyUseCase {
     private let queueRepository = DefaultQueueRepository()
     private let disposeBag = DisposeBag()
     

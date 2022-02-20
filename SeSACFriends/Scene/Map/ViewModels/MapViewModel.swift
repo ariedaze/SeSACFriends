@@ -19,110 +19,113 @@ enum MatchedState {
 }
 
 final class MapViewModel: ViewModelType {
-    var disposeBag = DisposeBag()
+    private let mapUseCase = SeSACMapUseCase()
     
-    private let locationManager = LocationManager.shared
-    private let networkingApi = QueueNetworkService()
-    
-    private let list = PublishRelay<QueueResponse>() // 주변 새싹
-    private let requestLocationAlert = PublishRelay<String>()
-    private let matchedState = PublishRelay<MatchedState>()
-    
-    private let sesacCoordinate = CLLocationCoordinate2D(latitude: 37.51818789942772, longitude: 126.88541765534976) //새싹 영등포 캠퍼스의 위치입니다. 여기서 시작하면 재밌을 것 같죠? 하하
-    
-    
-    func transform(input: Input) -> Output {
+    func transform(input: Input, disposeBag: DisposeBag) -> Output {
+        let output = Output()
         
-        input.viewWillAppear
-            .flatMap {self.networkingApi.request(.myQueueState) }
-            .filter({ response in
-                if response.statusCode == 200 { return true }
-                else if response.statusCode == 201 {
-                    print("친구 찾기 중단된 상태")
-                    self.matchedState.accept(.normal)
-                }
-                return false
-            })
-            .map(QueueState.self)
-            .subscribe(onNext: { queue in
-                if queue.matched == 0 { // 대기중.
-                    self.matchedState.accept(.matching)
-                } else {
-                    self.matchedState.accept(.matched)
-                }
+        input.viewDidLoadEvent
+            .subscribe({ [weak self] _ in
+                self?.mapUseCase.checkAuthorization()
+                self?.mapUseCase.observeUserLocation()
             })
             .disposed(by: disposeBag)
         
-        input.gpsButtonTap.asObservable()
-            .flatMap { self.locationManager.requestLocation() }
-            .filter { status in
-                print(status, "filter status")
-                return true
-            }
-            .subscribe(onNext: { status in
-                if status == .notDetermined {
-                    
-                }
+        self.mapUseCase.authorizationStatus
+            .map({ return $0 == .disallowed })
+            .bind(to: output.authorizationAlertShouldShow)
+            .disposed(by: disposeBag)
+        
+        self.mapUseCase.userLocation
+            .map({ return $0 })
+            .bind(to: output.mapCenterLocation)
+            .disposed(by: disposeBag)
+        
+        Observable.combineLatest(input.viewDidAppearEvent, self.mapUseCase.userLocation.asObservable())
+            .map{ $1 }
+            .distinctUntilChanged()
+            .throttle(.seconds(3), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] location in
+                self?.mapUseCase.onqueue(at: location)
             })
             .disposed(by: disposeBag)
-
-        input.myPinLocation
+        
+        self.mapUseCase.onqueueResponse
+            .subscribe(onNext: { response in
+                output.sesacList.accept(response.fromQueueDB)
+            })
+            .disposed(by: disposeBag)
+        
+        input.mapCenterDidChanged
             .subscribe(onNext: { location in
-                let lat = location.latitude
-                let long = location.longitude
-                
-                let paramters = [
-                    "lat": lat, // 위도
-                    "long": long, // 경도
-                    "region": lat.lat5 * 100000 + long.long5
-                ] as [String : Any]
-                print(paramters)
-                
-                self.networkingApi.request(.onQueue(parameters: paramters))
-                    .catchOnqueueError()
-                    .debug("networking")
-                    .map(QueueResponse.self)
-                    .debug("networking debug")
-                    .subscribe { result in
-                        switch result {
-                        case .success(let response):
-                            self.list.accept(response)
-                            print("res", response.fromQueueDB)
-                        case .failure(let error):
-                            print(error)
-                        }
-                    }
-                    .disposed(by: self.disposeBag)
+                print("location")
             })
             .disposed(by: disposeBag)
         
+//        input.viewWillAppear
+//            .flatMap {self.networkingApi.request(.myQueueState) }
+//            .filter({ response in
+//                if response.statusCode == 200 { return true }
+//                else if response.statusCode == 201 {
+//                    print("친구 찾기 중단된 상태")
+//                    self.matchedState.accept(.normal)
+//                }
+//                return false
+//            })
+//            .map(QueueState.self)
+//            .subscribe(onNext: { queue in
+//                if queue.matched == 0 { // 대기중.
+//                    self.matchedState.accept(.matching)
+//                } else {
+//                    self.matchedState.accept(.matched)
+//                }
+//            })
+//            .disposed(by: disposeBag)
+        
+//        input.gpsButtonTap.asObservable()
+//            .flatMap { self.locationManager.requestLocation() }
+//            .filter { status in
+//                print(status, "filter status")
+//                return true
+//            }
+//            .subscribe(onNext: { status in
+//                if status == .notDetermined {
+//
+//                }
+//            })
+//            .disposed(by: disposeBag)
 
-        return Output(
-            buttonAction: input.gpsButtonTap,
-            firstLocation: sesacCoordinate,
-            requestLocationAuthorization: locationManager.requestLocation(),
-            sesacList: list,
-            matchedState: matchedState,
-            sceneTransition: input.floatingButtonTap
-        )
+
+        return output
     }
 }
 
 
 extension MapViewModel {
     struct Input {
-        let viewWillAppear: Observable<Void>
+        let viewDidLoadEvent: Observable<Void>
+        let viewDidAppearEvent: Observable<Void>
+        let mapCenterDidChanged: Observable<CLLocationCoordinate2D>
         let gpsButtonTap: Signal<Void>
-        let myPinLocation: Observable<CLLocationCoordinate2D>
         let floatingButtonTap: ControlEvent<Void>
     }
     struct Output {
-        let buttonAction: Signal<Void>
-        let firstLocation: CLLocationCoordinate2D
-        let requestLocationAuthorization: Observable<CLAuthorizationStatus>
-        let sesacList: PublishRelay<QueueResponse>
+        let mapCenterLocation = BehaviorRelay<CLLocationCoordinate2D>(value: CLLocationCoordinate2D(latitude: LocationConstant.sesacCampusCoordinateLatitude, longitude: LocationConstant.sesacCampusCoordinateLongitude))
+        let authorizationAlertShouldShow = BehaviorRelay<Bool>(value: false)
+        let sesacList = PublishRelay<[FromQueueDB]>()
         let matchedState: PublishRelay<MatchedState>
         let sceneTransition: ControlEvent<Void>
     }
 }
 
+extension CLLocationCoordinate2D: Equatable {}
+
+public func ==(lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
+    return lhs.latitude.cutNumber == rhs.latitude.cutNumber && lhs.longitude.cutNumber == rhs.longitude.cutNumber
+}
+
+extension Double {
+    var cutNumber: String {
+        return String(format: "%.3f", self)
+    }
+}

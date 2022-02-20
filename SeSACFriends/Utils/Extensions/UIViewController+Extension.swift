@@ -125,4 +125,19 @@ extension UIViewController {
     @objc func cancelAction() {
         self.dismiss(animated: false, completion: nil)
     }
+    
+    func goSetting() {
+        let alert = UIAlertController(title: "위치 서비스 사용 불가", message: "현재 위치를 찾기 위해 위치 권한이 필요합니다.", preferredStyle: .alert)
+        let settingAction = UIAlertAction(title: "설정", style: .default) { action in
+            guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+            // 열 수 있는 url 이라면, 이동
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+        }
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel) { UIAlertAction in}
+        alert.addAction(settingAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
 }

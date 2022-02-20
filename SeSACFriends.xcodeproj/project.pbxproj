@@ -13,6 +13,9 @@
 		E50F99E727C27ED2003E2179 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = E50F99E627C27ED2003E2179 /* RxRelay */; };
 		E50F99E927C27ED2003E2179 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E50F99E827C27ED2003E2179 /* RxSwift */; };
 		E50F99EC27C27F5C003E2179 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = E50F99EB27C27F5C003E2179 /* RxDataSources */; };
+		E50F99EE27C2B0C7003E2179 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F99ED27C2B0C7003E2179 /* LocationService.swift */; };
+		E50F99F127C2B15C003E2179 /* MapUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F99F027C2B15C003E2179 /* MapUseCase.swift */; };
+		E50F99F327C2CE28003E2179 /* LocationConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F99F227C2CE28003E2179 /* LocationConstant.swift */; };
 		E56C4CFB27BB667D00A91EC8 /* NearSeSACView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4CFA27BB667D00A91EC8 /* NearSeSACView.swift */; };
 		E56C4CFD27BB6D8300A91EC8 /* SeSACCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4CFC27BB6D8300A91EC8 /* SeSACCardView.swift */; };
 		E56C4CFF27BB722900A91EC8 /* NearSeSACViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4CFE27BB722900A91EC8 /* NearSeSACViewController.swift */; };
@@ -84,7 +87,7 @@
 		E57A318A27AF3C6800276D7F /* OnboardingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A318927AF3C6800276D7F /* OnboardingViewCell.swift */; };
 		E57A318C27B0F75000276D7F /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A318B27B0F75000276D7F /* MapView.swift */; };
 		E57A318E27B160EF00276D7F /* QueueNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A318D27B160EF00276D7F /* QueueNetworkService.swift */; };
-		E57A319027B1813000276D7F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A318F27B1813000276D7F /* LocationManager.swift */; };
+		E57A319027B1813000276D7F /* SeSACLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A318F27B1813000276D7F /* SeSACLocationService.swift */; };
 		E57A319A27B1883500276D7F /* RxCoreLocation in Frameworks */ = {isa = PBXBuildFile; productRef = E57A319927B1883500276D7F /* RxCoreLocation */; };
 		E57A319C27B194DC00276D7F /* QueueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A319B27B194DC00276D7F /* QueueModel.swift */; };
 		E57A319E27B1A47A00276D7F /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A319D27B1A47A00276D7F /* MapViewModel.swift */; };
@@ -118,6 +121,9 @@
 /* Begin PBXFileReference section */
 		E50C3AE227A1C6490085CABD /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		E50F99E127C11CC2003E2179 /* ShopParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopParentViewController.swift; sourceTree = "<group>"; };
+		E50F99ED27C2B0C7003E2179 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		E50F99F027C2B15C003E2179 /* MapUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUseCase.swift; sourceTree = "<group>"; };
+		E50F99F227C2CE28003E2179 /* LocationConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationConstant.swift; sourceTree = "<group>"; };
 		E56C4CFA27BB667D00A91EC8 /* NearSeSACView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearSeSACView.swift; sourceTree = "<group>"; };
 		E56C4CFC27BB6D8300A91EC8 /* SeSACCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACCardView.swift; sourceTree = "<group>"; };
 		E56C4CFE27BB722900A91EC8 /* NearSeSACViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearSeSACViewController.swift; sourceTree = "<group>"; };
@@ -184,7 +190,7 @@
 		E57A318927AF3C6800276D7F /* OnboardingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewCell.swift; sourceTree = "<group>"; };
 		E57A318B27B0F75000276D7F /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		E57A318D27B160EF00276D7F /* QueueNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueNetworkService.swift; sourceTree = "<group>"; };
-		E57A318F27B1813000276D7F /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		E57A318F27B1813000276D7F /* SeSACLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACLocationService.swift; sourceTree = "<group>"; };
 		E57A319B27B194DC00276D7F /* QueueModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueModel.swift; sourceTree = "<group>"; };
 		E57A319D27B1A47A00276D7F /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		E57A31A327B1ADEC00276D7F /* SeSACAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACAnnotationView.swift; sourceTree = "<group>"; };
@@ -237,6 +243,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E50F99EF27C2B0D2003E2179 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				E57A318F27B1813000276D7F /* SeSACLocationService.swift */,
+				E50F99ED27C2B0C7003E2179 /* LocationService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		E56C4D0A27BB85A300A91EC8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				E56C4D1327BD84D000A91EC8 /* ToastMessage.swift */,
+				E50F99F227C2CE28003E2179 /* LocationConstant.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -287,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				E56C4D1627BD89C800A91EC8 /* SearchHobbyUseCase.swift */,
+				E50F99F027C2B15C003E2179 /* MapUseCase.swift */,
 			);
 			path = protocol;
 			sourceTree = "<group>";
@@ -364,6 +381,7 @@
 		E575404C279705D6001F9247 /* CommonView */ = {
 			isa = PBXGroup;
 			children = (
+				E575406127987857001F9247 /* Protocols */,
 				E575404D279705ED001F9247 /* SeSACButton.swift */,
 				E57540662799255C001F9247 /* SeSACTextField.swift */,
 				E57540B127A12E4E001F9247 /* TabBarController.swift */,
@@ -482,7 +500,6 @@
 			isa = PBXGroup;
 			children = (
 				E57A319D27B1A47A00276D7F /* MapViewModel.swift */,
-				E57A318F27B1813000276D7F /* LocationManager.swift */,
 				E57A31C727B9177400276D7F /* SearchHobbyViewModel.swift */,
 			);
 			path = ViewModels;
@@ -491,10 +508,10 @@
 		E57A31A027B1AC8100276D7F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E50F99EF27C2B0D2003E2179 /* Service */,
 				E5BD0DDE27BEE73A0016808B /* Error */,
 				E56C4D1227BD84BC00A91EC8 /* Constant */,
 				E5754089279D24ED001F9247 /* AppSettings.swift */,
-				E575406127987857001F9247 /* Protocols */,
 				E57540342796968D001F9247 /* Extensions */,
 				E5D41B7827AAAF0F00021C58 /* Resources */,
 			);
@@ -752,6 +769,8 @@
 				E5D41B9727AC122600021C58 /* ManageInfoViewController.swift in Sources */,
 				E57A318627AF115900276D7F /* OnboardingViewController.swift in Sources */,
 				E56C4D1727BD89C800A91EC8 /* SearchHobbyUseCase.swift in Sources */,
+				E50F99F127C2B15C003E2179 /* MapUseCase.swift in Sources */,
+				E50F99EE27C2B0C7003E2179 /* LocationService.swift in Sources */,
 				E56C4CFD27BB6D8300A91EC8 /* SeSACCardView.swift in Sources */,
 				E56C4D0D27BB880C00A91EC8 /* SeSACProfileShopViewController.swift in Sources */,
 				E5754091279DD0B6001F9247 /* UIViewController+Extension.swift in Sources */,
@@ -764,7 +783,7 @@
 				E575409C279DF222001F9247 /* ViewModelType.swift in Sources */,
 				E575408C279D5D5A001F9247 /* String+Extension.swift in Sources */,
 				E57540652798820A001F9247 /* AuthPhoneViewModel.swift in Sources */,
-				E57A319027B1813000276D7F /* LocationManager.swift in Sources */,
+				E57A319027B1813000276D7F /* SeSACLocationService.swift in Sources */,
 				E56C4CFB27BB667D00A91EC8 /* NearSeSACView.swift in Sources */,
 				E575403827969EA1001F9247 /* AuthPhoneNumberViewController.swift in Sources */,
 				E56C4D0727BB855A00A91EC8 /* SeSACBackgroundShopCell.swift in Sources */,
@@ -774,6 +793,7 @@
 				E57A319C27B194DC00276D7F /* QueueModel.swift in Sources */,
 				E57540BC27A18FF1001F9247 /* ShopViewController.swift in Sources */,
 				E575401C27968ED0001F9247 /* AppDelegate.swift in Sources */,
+				E50F99F327C2CE28003E2179 /* LocationConstant.swift in Sources */,
 				E57A31A427B1ADEC00276D7F /* SeSACAnnotationView.swift in Sources */,
 				E5754081279D1AB8001F9247 /* AuthTextFieldView.swift in Sources */,
 				E5D41B8D27AAAF1F00021C58 /* ColorTheme.swift in Sources */,
