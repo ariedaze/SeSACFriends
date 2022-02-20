@@ -154,4 +154,13 @@ extension MapViewController: MKMapViewDelegate {
         }
         mapView.region.span = span
     }
+    @objc func findMyLocation() {
+//        guard let currentLocation = locationManager.location else {
+//            locationManager.requestWhenInUseAuthorization()
+//            return
+//        }
+        mapView.map.showsUserLocation = true
+        mapView.map.setUserTrackingMode(.follow, animated: true)
+        
+    }
 }

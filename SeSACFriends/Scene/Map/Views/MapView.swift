@@ -13,6 +13,8 @@ import Then
 final class MapView: UIView, ViewRepresentable {
     let map = MKMapView().then {
         $0.register(CustomAnnotationView.self, forAnnotationViewWithReuseIdentifier: CustomAnnotationView.reuseIdentifier)
+        $0.showsUserLocation = true
+        $0.userTrackingMode = .follow
     }
     
     let myPin = UIImageView().then {
