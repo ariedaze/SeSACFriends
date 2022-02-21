@@ -46,6 +46,7 @@ final class MapViewModel: ViewModelType {
             .distinctUntilChanged()
             .throttle(.seconds(3), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] location in
+                print("dlrjs ")
                 self?.mapUseCase.onqueue(at: location)
             })
             .disposed(by: disposeBag)
@@ -57,9 +58,15 @@ final class MapViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         input.mapCenterDidChanged
+            .distinctUntilChanged()
             .subscribe(onNext: { location in
-                print("location")
+                print("location center 변화")
             })
+            .disposed(by: disposeBag)
+        
+        input.gpsButtonDidTapEvent
+            .map({ true })
+            .bind(to: output.shouldSetCenter)
             .disposed(by: disposeBag)
         
 //        input.viewWillAppear
@@ -106,15 +113,16 @@ extension MapViewModel {
         let viewDidLoadEvent: Observable<Void>
         let viewDidAppearEvent: Observable<Void>
         let mapCenterDidChanged: Observable<CLLocationCoordinate2D>
-        let gpsButtonTap: Signal<Void>
+        let gpsButtonDidTapEvent: Observable<Void>
         let floatingButtonTap: ControlEvent<Void>
     }
     struct Output {
         let mapCenterLocation = BehaviorRelay<CLLocationCoordinate2D>(value: CLLocationCoordinate2D(latitude: LocationConstant.sesacCampusCoordinateLatitude, longitude: LocationConstant.sesacCampusCoordinateLongitude))
         let authorizationAlertShouldShow = BehaviorRelay<Bool>(value: false)
         let sesacList = PublishRelay<[FromQueueDB]>()
-        let matchedState: PublishRelay<MatchedState>
-        let sceneTransition: ControlEvent<Void>
+        let matchedState = PublishRelay<MatchedState>()
+//        let sceneTransition = ControlEvent<Void>(events: _)
+        let shouldSetCenter = BehaviorRelay(value: true)
     }
 }
 

@@ -16,7 +16,7 @@ extension SearchHobbyViewModel {
     struct Input {
         let viewDidLoadEvent: Observable<Void>
         let searchHobbyTextFieldDidEditEvent: Observable<String?>
-        
+        let searchButtonTapEvent: Observable<Void>
     }
     struct Output {
         let toastMessage = PublishRelay<String>()
@@ -68,6 +68,13 @@ final class SearchHobbyViewModel: ViewModelType {
         
         self.searchHobbyUseCase.onqueueResponse
             .bind(to: output.onqueueResponse)
+            .disposed(by: disposeBag)
+        
+        // searchbutton
+        input.searchButtonTapEvent
+            .subscribe({ _ in
+                print("tap")
+            })
             .disposed(by: disposeBag)
         
         return output

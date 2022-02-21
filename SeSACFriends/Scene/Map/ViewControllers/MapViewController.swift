@@ -13,9 +13,10 @@ import RxCocoa
 
 final class MapViewController: UIViewController {
     let mainView = MapView()
+    let viewModel = MapViewModel()
+    var disposeBag = DisposeBag()
     
     private var allAnnotations: [MKAnnotation]?
-    
     private var displayedAnnotations: [MKAnnotation]? {
         willSet {
             if let currentAnnotations = displayedAnnotations {
@@ -29,9 +30,6 @@ final class MapViewController: UIViewController {
         }
     }
     
-    let viewModel = MapViewModel()
-    var disposeBag = DisposeBag()
-    
     override func loadView() {
         view = mainView
     }
@@ -40,22 +38,24 @@ final class MapViewController: UIViewController {
         super.viewDidLoad()
         mainView.map.delegate = self
         bindViewModel()
+        print(#function, self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.allAnnotations?.removeAll()
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
+
+    override func viewDidDisappear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     deinit {
-        disposeBag = DisposeBag()
+        print("내가 사라져볼게 얍!", self)
     }
     
     private func bindViewModel() {
-        let output = self.viewModel.transform(
+        let output = viewModel.transform(
             input: MapViewModel.Input(
                 viewDidLoadEvent: Observable.just(()).asObservable(),
                 viewDidAppearEvent: self.rx.methodInvoked(#selector(viewDidAppear(_:)))
@@ -64,8 +64,8 @@ final class MapViewController: UIViewController {
                 mapCenterDidChanged: mainView.map.rx.regionDidChangeAnimated
                     .skip(1)
                     .debounce(.milliseconds(800), scheduler: MainScheduler.instance)
-                    .map { _ in self.mainView.map.centerCoordinate },
-                gpsButtonTap: mainView.myLocationButton.rx.tap.asSignal(),
+                    .map { [weak self] _ in self?.mainView.map.centerCoordinate ?? CLLocationCoordinate2D(latitude: LocationConstant.sesacCampusCoordinateLatitude, longitude: LocationConstant.sesacCampusCoordinateLongitude) },
+                gpsButtonDidTapEvent: mainView.myLocationButton.rx.tap.asObservable(),
                 floatingButtonTap: mainView.searchButton.rx.tap
             ),
             disposeBag: disposeBag
@@ -90,19 +90,17 @@ final class MapViewController: UIViewController {
             .disposed(by: disposeBag)
         
         output.sesacList
-            .subscribe(onNext: { [weak self] list in
+            .asDriver(onErrorJustReturn: [])
+            .drive(onNext: { [weak self] list in
                 list.forEach {
                     let coordinate = CLLocationCoordinate2D(latitude: $0.lat, longitude: $0.long)
+//                    let currentPin = SeSACAnnotation(coordinate: coordinate, sesac: $0.sesac)
                     self?.setupMapUI(coordinate, sesac: $0.sesac)
+//                    self?.allAnnotations?.append(currentPin)
                 }
             })
             .disposed(by: disposeBag)
         
-//        let input
-//                gpsButtonTap: mainView.myLocationButton.rx.tap.asSignal(),
-//                floatingButtonTap: mainView.searchButton.rx.tap
-//            )
-//        )
 //        output.matchedState // 매칭 상태
 //            .map {
 //                switch $0 {
@@ -119,7 +117,7 @@ final class MapViewController: UIViewController {
 //        
         mainView.searchButton.rx.tap
             .subscribe { [weak self] _ in
-                print("왜 버튼 클릭이 여러번 되는거죠?")
+                print("왜 버튼안돼?")
                 let vc =  SearchHobbyViewController()
                 vc.hidesBottomBarWhenPushed = true
                 self?.navigationController?.pushViewController(vc, animated: true)
@@ -136,8 +134,14 @@ extension MapViewController: MKMapViewDelegate {
         mainView.map.setRegion(locationRegion, animated: true)
     }
     
-    private func setupMapUI(_ location: CLLocationCoordinate2D, sesac: Int) {
-        print("유아이가 안되나유?")
+    func configureCenter() { // 현재위치를 중앙으로
+        mainView.map.userTrackingMode = .follow
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let locationRegion = MKCoordinateRegion(center: mainView.map.userLocation.coordinate, span: span)
+        mainView.map.setRegion(locationRegion, animated: true)
+    }
+    
+    private func setupMapUI(_ location: CLLocationCoordinate2D, sesac: Int) { // 새싹핀
         let currentPin = SeSACAnnotation(coordinate: location, sesac: sesac)
         mainView.map.addAnnotation(currentPin)
     }

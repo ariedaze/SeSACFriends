@@ -16,6 +16,7 @@
 		E50F99EE27C2B0C7003E2179 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F99ED27C2B0C7003E2179 /* LocationService.swift */; };
 		E50F99F127C2B15C003E2179 /* MapUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F99F027C2B15C003E2179 /* MapUseCase.swift */; };
 		E50F99F327C2CE28003E2179 /* LocationConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F99F227C2CE28003E2179 /* LocationConstant.swift */; };
+		E50F99F527C2EE90003E2179 /* InAppPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F99F427C2EE90003E2179 /* InAppPurchase.swift */; };
 		E56C4CFB27BB667D00A91EC8 /* NearSeSACView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4CFA27BB667D00A91EC8 /* NearSeSACView.swift */; };
 		E56C4CFD27BB6D8300A91EC8 /* SeSACCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4CFC27BB6D8300A91EC8 /* SeSACCardView.swift */; };
 		E56C4CFF27BB722900A91EC8 /* NearSeSACViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4CFE27BB722900A91EC8 /* NearSeSACViewController.swift */; };
@@ -124,6 +125,7 @@
 		E50F99ED27C2B0C7003E2179 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		E50F99F027C2B15C003E2179 /* MapUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUseCase.swift; sourceTree = "<group>"; };
 		E50F99F227C2CE28003E2179 /* LocationConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationConstant.swift; sourceTree = "<group>"; };
+		E50F99F427C2EE90003E2179 /* InAppPurchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchase.swift; sourceTree = "<group>"; };
 		E56C4CFA27BB667D00A91EC8 /* NearSeSACView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearSeSACView.swift; sourceTree = "<group>"; };
 		E56C4CFC27BB6D8300A91EC8 /* SeSACCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACCardView.swift; sourceTree = "<group>"; };
 		E56C4CFE27BB722900A91EC8 /* NearSeSACViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearSeSACViewController.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				E56C4D0427BB759400A91EC8 /* SeSACBackgroundShopViewController.swift */,
 				E56C4D0C27BB880C00A91EC8 /* SeSACProfileShopViewController.swift */,
 				E50F99E127C11CC2003E2179 /* ShopParentViewController.swift */,
+				E50F99F427C2EE90003E2179 /* InAppPurchase.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -798,6 +801,7 @@
 				E5754081279D1AB8001F9247 /* AuthTextFieldView.swift in Sources */,
 				E5D41B8D27AAAF1F00021C58 /* ColorTheme.swift in Sources */,
 				E56C4CFF27BB722900A91EC8 /* NearSeSACViewController.swift in Sources */,
+				E50F99F527C2EE90003E2179 /* InAppPurchase.swift in Sources */,
 				E57A318827AF163100276D7F /* OnboardingView.swift in Sources */,
 				E50F99E227C11CC2003E2179 /* ShopParentViewController.swift in Sources */,
 				E574CB0C27B9BD83007B7F7E /* MyInfoNicknameCell.swift in Sources */,

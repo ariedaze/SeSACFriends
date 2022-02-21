@@ -49,7 +49,8 @@ final class SearchHobbyViewController: UIViewController {
         let output = viewModel.transform(
             input: SearchHobbyViewModel.Input(
                 viewDidLoadEvent: Observable.just(()).asObservable(),
-                searchHobbyTextFieldDidEditEvent: mainView.searchBar.rx.text.asObservable()
+                searchHobbyTextFieldDidEditEvent: mainView.searchBar.rx.text.asObservable(),
+                searchButtonTapEvent: mainView.button.rx.tap.asObservable()
             ),
             disposeBag: self.disposeBag
         )
