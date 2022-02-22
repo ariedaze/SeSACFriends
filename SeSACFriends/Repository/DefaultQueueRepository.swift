@@ -13,6 +13,7 @@ protocol QueueRepository {
     func onqueue(lat: Double, long: Double) -> Single<Response>
     func myQueueState() -> Single<Response>
     func searchFriends(type: Int, hf: [String], lat: Double, long: Double) -> Single<Response>
+    func stopSearchFriends() -> Single<Response>
     func requestHobby(with uid: String) -> Single<Response>
     func acceptHobby(with uid: String) -> Single<Response>
     func cancelHobby(with uid: String) -> Single<Response>
@@ -49,6 +50,10 @@ final class DefaultQueueRepository: QueueRepository {
         ] as [String: Any]
         
         return provider.rx.request(.searchFriends(parameters: parameters))
+    }
+    
+    func stopSearchFriends() -> Single<Response> {
+        return provider.rx.request(.stopSearchFriends)
     }
 
     // 취미 함께하기 요청

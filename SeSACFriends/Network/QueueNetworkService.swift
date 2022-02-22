@@ -27,7 +27,7 @@ enum QueueAPI {
     static private let idToken = AppSettings[.idToken] as? String ?? ""
     
     case searchFriends(parameters: [String: Any]) // 취미 함께할 친구 찾기 요청 (.post, /)
-    case stopSearchFriends(parameters: [String: Any]) // 취미 함께할 친구 찾기 중단(.delete, /)
+    case stopSearchFriends // 취미 함께할 친구 찾기 중단(.delete, /)
     case onQueue(parameters: [String: Any]) //주변새싹탐색기능 (.post, /onqueue)
     case requestHobby(parameters: [String: Any]) // 취미함께하기 요청 (.post, /hobbyrequest)
     case acceptHobby(parameters: [String: Any]) // 취미 함께하기 수락 (.post, /hobbyaccept)
@@ -51,7 +51,7 @@ extension QueueAPI: TargetType {
             return "/hobbyaccept"
         case .dodge:
             return "/dodge"
-        case .rate(let id, let _):
+        case .rate(let id, _):
             return "/rate/\(id)"
         case .myQueueState:
             return "/myQueueState"

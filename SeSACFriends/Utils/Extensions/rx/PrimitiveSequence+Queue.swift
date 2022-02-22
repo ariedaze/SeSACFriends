@@ -38,4 +38,18 @@ extension PrimitiveSequence where Trait == SingleTrait, Element == Response {
             return .just(response)
         }
     }
+    
+    func stopQueueError() -> Single<Element> {
+        return flatMap { response in
+            guard response.statusCode == 200 else {
+                print("catch delete queue error: ", response.description, response.response)
+                do {
+                    throw QueueError(rawValue: response.statusCode) ?? QueueError.unknownError
+                } catch {
+                    throw error
+                }
+            }
+            return .just(response)
+        }
+    }
 }

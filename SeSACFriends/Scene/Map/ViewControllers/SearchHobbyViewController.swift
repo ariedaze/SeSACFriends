@@ -46,12 +46,14 @@ final class SearchHobbyViewController: UIViewController {
     var recommendUser: [[String]] = []
     
     func bindViewModel() {
+        let input = SearchHobbyViewModel.Input(
+            viewDidLoadEvent: Observable.just(()).asObservable(),
+            searchHobbyTextFieldDidEditEvent: mainView.searchBar.rx.text.asObservable(),
+            searchButtonTapEvent: mainView.button.rx.tap.asObservable()
+        )
+        
         let output = viewModel.transform(
-            input: SearchHobbyViewModel.Input(
-                viewDidLoadEvent: Observable.just(()).asObservable(),
-                searchHobbyTextFieldDidEditEvent: mainView.searchBar.rx.text.asObservable(),
-                searchButtonTapEvent: mainView.button.rx.tap.asObservable()
-            ),
+            input: input,
             disposeBag: self.disposeBag
         )
         

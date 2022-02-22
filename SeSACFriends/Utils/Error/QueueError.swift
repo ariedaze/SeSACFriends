@@ -7,10 +7,6 @@
 
 import Foundation
 
-struct QueueErrorResponse: Decodable {
-    let message: String
-}
-
 enum QueueError: Int, Error {
     case reportCumulativeError = 201
     case panaltyOneMinuteError = 203

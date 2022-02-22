@@ -50,24 +50,22 @@ final class MapViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    deinit {
-        print("내가 사라져볼게 얍!", self)
-    }
-    
     private func bindViewModel() {
+        let input = MapViewModel.Input(
+            viewDidLoadEvent: Observable.just(()).asObservable(),
+            viewDidAppearEvent: self.rx.methodInvoked(#selector(viewDidAppear(_:)))
+                .map({ _ in })
+                .asObservable(),
+            mapCenterDidChanged: mainView.map.rx.regionDidChangeAnimated
+                .skip(1)
+                .debounce(.milliseconds(800), scheduler: MainScheduler.instance)
+                .map { [weak self] _ in self?.mainView.map.centerCoordinate ?? CLLocationCoordinate2D(latitude: LocationConstant.sesacCampusCoordinateLatitude, longitude: LocationConstant.sesacCampusCoordinateLongitude) },
+            gpsButtonDidTapEvent: mainView.myLocationButton.rx.tap.asObservable(),
+            floatingButtonTap: mainView.searchButton.rx.tap
+        )
+        
         let output = viewModel.transform(
-            input: MapViewModel.Input(
-                viewDidLoadEvent: Observable.just(()).asObservable(),
-                viewDidAppearEvent: self.rx.methodInvoked(#selector(viewDidAppear(_:)))
-                    .map({ _ in })
-                    .asObservable(),
-                mapCenterDidChanged: mainView.map.rx.regionDidChangeAnimated
-                    .skip(1)
-                    .debounce(.milliseconds(800), scheduler: MainScheduler.instance)
-                    .map { [weak self] _ in self?.mainView.map.centerCoordinate ?? CLLocationCoordinate2D(latitude: LocationConstant.sesacCampusCoordinateLatitude, longitude: LocationConstant.sesacCampusCoordinateLongitude) },
-                gpsButtonDidTapEvent: mainView.myLocationButton.rx.tap.asObservable(),
-                floatingButtonTap: mainView.searchButton.rx.tap
-            ),
+            input: input,
             disposeBag: disposeBag
         )
         
@@ -117,7 +115,6 @@ final class MapViewController: UIViewController {
 //        
         mainView.searchButton.rx.tap
             .subscribe { [weak self] _ in
-                print("왜 버튼안돼?")
                 let vc =  SearchHobbyViewController()
                 vc.hidesBottomBarWhenPushed = true
                 self?.navigationController?.pushViewController(vc, animated: true)
@@ -142,6 +139,7 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     private func setupMapUI(_ location: CLLocationCoordinate2D, sesac: Int) { // 새싹핀
+        print("??")
         let currentPin = SeSACAnnotation(coordinate: location, sesac: sesac)
         mainView.map.addAnnotation(currentPin)
     }

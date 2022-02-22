@@ -31,13 +31,22 @@ final class MapViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
         
+        self.mapUseCase.userLocation
+            .take(2)
+            .subscribe(onNext: { location in
+                print("location", location)
+                output.mapCenterLocation.accept(location)
+            })
+            .disposed(by: disposeBag)
+        
         self.mapUseCase.authorizationStatus
             .map({ return $0 == .disallowed })
             .bind(to: output.authorizationAlertShouldShow)
             .disposed(by: disposeBag)
         
-        self.mapUseCase.userLocation
-            .map({ return $0 })
+        Observable.combineLatest(input.gpsButtonDidTapEvent, self.mapUseCase.userLocation.asObservable())
+            .map{ $1 }
+            .distinctUntilChanged()
             .bind(to: output.mapCenterLocation)
             .disposed(by: disposeBag)
         
@@ -46,25 +55,27 @@ final class MapViewModel: ViewModelType {
             .distinctUntilChanged()
             .throttle(.seconds(3), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] location in
-                print("dlrjs ")
+                print("userLocation 변화중")
                 self?.mapUseCase.onqueue(at: location)
             })
             .disposed(by: disposeBag)
         
         self.mapUseCase.onqueueResponse
             .subscribe(onNext: { response in
+                print("output", response.fromQueueDB.count)
                 output.sesacList.accept(response.fromQueueDB)
             })
             .disposed(by: disposeBag)
         
         input.mapCenterDidChanged
             .distinctUntilChanged()
-            .subscribe(onNext: { location in
-                print("location center 변화")
+            .throttle(.seconds(3), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] location in
+                self?.mapUseCase.onqueue(at: location)
             })
             .disposed(by: disposeBag)
         
-        input.gpsButtonDidTapEvent
+        input.gpsButtonDidTapEvent // 권한 설정과 묶기
             .map({ true })
             .bind(to: output.shouldSetCenter)
             .disposed(by: disposeBag)
@@ -88,20 +99,6 @@ final class MapViewModel: ViewModelType {
 //                }
 //            })
 //            .disposed(by: disposeBag)
-        
-//        input.gpsButtonTap.asObservable()
-//            .flatMap { self.locationManager.requestLocation() }
-//            .filter { status in
-//                print(status, "filter status")
-//                return true
-//            }
-//            .subscribe(onNext: { status in
-//                if status == .notDetermined {
-//
-//                }
-//            })
-//            .disposed(by: disposeBag)
-
 
         return output
     }
@@ -121,7 +118,7 @@ extension MapViewModel {
         let authorizationAlertShouldShow = BehaviorRelay<Bool>(value: false)
         let sesacList = PublishRelay<[FromQueueDB]>()
         let matchedState = PublishRelay<MatchedState>()
-//        let sceneTransition = ControlEvent<Void>(events: _)
+
         let shouldSetCenter = BehaviorRelay(value: true)
     }
 }

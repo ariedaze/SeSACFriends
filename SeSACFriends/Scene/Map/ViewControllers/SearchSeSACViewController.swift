@@ -11,7 +11,7 @@ import Pageboy
 
 final class SearchSeSACViewController: TabmanViewController {
     let sesacTabBarView = SeSACTabBarView()
-    var viewControllers: Array<UIViewController> = [NearSeSACViewController(), NearSeSACViewController()]
+    var viewControllers: Array<UIViewController> = [NearSeSACViewController(type: .nearSeSAC), NearSeSACViewController(type: .receiveSeSAC)]
 
     override func viewDidLoad() {
         super.viewDidLoad()
