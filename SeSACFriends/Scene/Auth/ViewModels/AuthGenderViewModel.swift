@@ -56,6 +56,7 @@ final class AuthGenderViewModel: ViewModelType {
                     }
                     .disposed(by: self!.disposeBag)
             }
+            .disposed(by: disposeBag)
 
         return Output(
             buttonTap: source,

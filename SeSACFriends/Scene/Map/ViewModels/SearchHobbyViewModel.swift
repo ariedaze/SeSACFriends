@@ -21,6 +21,7 @@ extension SearchHobbyViewModel {
     struct Output {
         let toastMessage = PublishRelay<String>()
         let onqueueResponse = PublishRelay<QueueResponse>()
+        let requestSuccess = PublishRelay<Bool>()
     }
 }
 
@@ -58,11 +59,11 @@ final class SearchHobbyViewModel: ViewModelType {
                 }
             })
             .disposed(by: disposeBag)
-        
+         
         // 지금 주변에는
         input.viewDidLoadEvent
             .subscribe({ [weak self] _ in
-                self?.searchHobbyUseCase.onqueue()
+                self?.searchHobbyUseCase.onqueue(lat: LocationConstant.sesacCampusCoordinateLatitude, long: LocationConstant.sesacCampusCoordinateLongitude)
             })
             .disposed(by: disposeBag)
         
@@ -72,9 +73,15 @@ final class SearchHobbyViewModel: ViewModelType {
         
         // searchbutton
         input.searchButtonTapEvent
-            .subscribe({ _ in
-                print("tap")
+            .subscribe({ [weak self] _ in
+                self?.searchHobbyUseCase.searchFriends(lat: LocationConstant.sesacCampusCoordinateLatitude, long: LocationConstant.sesacCampusCoordinateLongitude)
+                
             })
+            .disposed(by: disposeBag)
+        
+        self.searchHobbyUseCase
+            .requestSuccess
+            .bind(to: output.requestSuccess)
             .disposed(by: disposeBag)
         
         return output

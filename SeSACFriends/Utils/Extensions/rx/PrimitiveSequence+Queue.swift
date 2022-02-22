@@ -25,5 +25,17 @@ extension PrimitiveSequence where Trait == SingleTrait, Element == Response {
         }
     }
     
-
+    func queueError() -> Single<Element> {
+        return flatMap { response in
+            guard response.statusCode == 200 else {
+                print("catch queue error: ", response.description, response.response)
+                do {
+                    throw QueueError(rawValue: response.statusCode) ?? QueueError.unknownError
+                } catch {
+                    throw error
+                }
+            }
+            return .just(response)
+        }
+    }
 }

@@ -28,65 +28,65 @@ final class DefaultQueueRepository: QueueRepository {
     
     // 주변 새싹 찾기
     func onqueue(lat: Double, long: Double) -> Single<Response> {
-        let paramters = [
+        let parameters = [
             "lat": lat, // 위도
             "long": long, // 경도
             "region": lat.lat5 * 100000 + long.long5
         ] as [String: Any]
         
         return provider.rx.request(
-            .onQueue(parameters: paramters))
+            .onQueue(parameters: parameters))
     }
 
     // 취미 함께할 새싹 찾기 시작
-    func searchFriends(type: Int = 2, hf: [String], lat: Double, long: Double) -> Single<Response> {
-        let paramter = [
+    func searchFriends(type: Int = 2, hf: [String] = ["Anything"], lat: Double, long: Double) -> Single<Response> {
+        let parameters = [
             "type": 2,
             "lat": lat,
             "long": long,
             "region": lat.lat5 * 100000 + long.long5,
-            "hf": ["Anything"]
+            "hf": hf
         ] as [String: Any]
         
-        return provider.rx.request(.searchFriends)
+        return provider.rx.request(.searchFriends(parameters: parameters))
     }
 
     // 취미 함께하기 요청
     func requestHobby(with uid: String) -> Single<Response> {
-        let paramter = [
+        let parameters = [
             "otheruid": uid
         ] as [String: Any]
         
-        return provider.rx.request(.requestHobby)
+        return provider.rx.request(.requestHobby(parameters: parameters))
     }
     
     // 취미 함께하기 수락
     func acceptHobby(with uid: String) -> Single<Response> {
-        let paramter = [
+        let parameters = [
             "otheruid": uid
         ] as [String: Any]
         
-        return provider.rx.request(.acceptHobby)
+        return provider.rx.request(.acceptHobby(parameters: parameters))
     }
     
     // 취미 함께하기 약속 취소
     func cancelHobby(with uid: String) -> Single<Response> {
-        let paramter = [
+        let parameters = [
             "otheruid": uid
         ] as [String: Any]
         
-        return provider.rx.request(.dodge)
+        return provider.rx.request(.dodge(parameters: parameters))
     }
     
     // 리뷰남기기
     func rate(with uid: String, reputation: [Int], comment: String) -> Single<Response> {
-        let paramter = [
+        let parameters = [
             "otheruid": uid,
             "reputation": reputation,
             "comment": comment,
         ] as [String: Any]
         
-        return provider.rx.request(.rate(id: uid))
+        return provider.rx.request(.rate(id: uid, parameters: parameters))
     }
 }
 

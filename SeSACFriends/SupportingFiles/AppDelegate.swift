@@ -42,6 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let error = error {
                 print("Error: \(error)")
             } else if let id = id {
+                
                 print(id, "내가 id다!!!!")
                 AppSettings[.idToken] = id
             }

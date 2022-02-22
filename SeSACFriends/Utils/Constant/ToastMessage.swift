@@ -8,6 +8,7 @@
 import Foundation
 
 enum ToastMessage {
+    // 취미 등록
     case hobbyTextCountViolated
     case hobbyCountViolated
     case hobbyAlreadyExist
@@ -20,6 +21,7 @@ enum ToastMessage {
             return "취미를 더 이상 추가할 수 없습니다"
         case .hobbyAlreadyExist:
             return "이미 등록된 취미입니다"
+            
         }
     }
 }

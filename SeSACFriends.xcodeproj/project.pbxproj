@@ -17,6 +17,8 @@
 		E50F99F127C2B15C003E2179 /* MapUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F99F027C2B15C003E2179 /* MapUseCase.swift */; };
 		E50F99F327C2CE28003E2179 /* LocationConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F99F227C2CE28003E2179 /* LocationConstant.swift */; };
 		E50F99F527C2EE90003E2179 /* InAppPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F99F427C2EE90003E2179 /* InAppPurchase.swift */; };
+		E50F99F727C46167003E2179 /* SeSACMapUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F99F627C46167003E2179 /* SeSACMapUseCase.swift */; };
+		E50F99F927C4636E003E2179 /* QueueError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F99F827C4636E003E2179 /* QueueError.swift */; };
 		E56C4CFB27BB667D00A91EC8 /* NearSeSACView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4CFA27BB667D00A91EC8 /* NearSeSACView.swift */; };
 		E56C4CFD27BB6D8300A91EC8 /* SeSACCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4CFC27BB6D8300A91EC8 /* SeSACCardView.swift */; };
 		E56C4CFF27BB722900A91EC8 /* NearSeSACViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4CFE27BB722900A91EC8 /* NearSeSACViewController.swift */; };
@@ -28,9 +30,9 @@
 		E56C4D0D27BB880C00A91EC8 /* SeSACProfileShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4D0C27BB880C00A91EC8 /* SeSACProfileShopViewController.swift */; };
 		E56C4D1427BD84D000A91EC8 /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4D1327BD84D000A91EC8 /* ToastMessage.swift */; };
 		E56C4D1727BD89C800A91EC8 /* SearchHobbyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4D1627BD89C800A91EC8 /* SearchHobbyUseCase.swift */; };
-		E56C4D1827BE714A00A91EC8 /* DefaultSearchHobbyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4D1027BD747000A91EC8 /* DefaultSearchHobbyUseCase.swift */; };
+		E56C4D1827BE714A00A91EC8 /* SeSACSearchHobbyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4D1027BD747000A91EC8 /* SeSACSearchHobbyUseCase.swift */; };
 		E56C4D1E27BE76C200A91EC8 /* DefaultQueueRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4D1D27BE76C200A91EC8 /* DefaultQueueRepository.swift */; };
-		E56C4D2127BEDFFA00A91EC8 /* PrimitiveSequence+rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4D2027BEDFFA00A91EC8 /* PrimitiveSequence+rx.swift */; };
+		E56C4D2127BEDFFA00A91EC8 /* PrimitiveSequence+Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C4D2027BEDFFA00A91EC8 /* PrimitiveSequence+Queue.swift */; };
 		E574CB0627B98DAD007B7F7E /* HobbyTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E574CB0527B98DAD007B7F7E /* HobbyTagCell.swift */; };
 		E574CB0827B99061007B7F7E /* HobbyCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E574CB0727B99061007B7F7E /* HobbyCollectionHeaderView.swift */; };
 		E574CB0A27B9AD66007B7F7E /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E574CB0927B9AD66007B7F7E /* AlertViewController.swift */; };
@@ -89,7 +91,6 @@
 		E57A318C27B0F75000276D7F /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A318B27B0F75000276D7F /* MapView.swift */; };
 		E57A318E27B160EF00276D7F /* QueueNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A318D27B160EF00276D7F /* QueueNetworkService.swift */; };
 		E57A319027B1813000276D7F /* SeSACLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A318F27B1813000276D7F /* SeSACLocationService.swift */; };
-		E57A319A27B1883500276D7F /* RxCoreLocation in Frameworks */ = {isa = PBXBuildFile; productRef = E57A319927B1883500276D7F /* RxCoreLocation */; };
 		E57A319C27B194DC00276D7F /* QueueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A319B27B194DC00276D7F /* QueueModel.swift */; };
 		E57A319E27B1A47A00276D7F /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A319D27B1A47A00276D7F /* MapViewModel.swift */; };
 		E57A31A427B1ADEC00276D7F /* SeSACAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A31A327B1ADEC00276D7F /* SeSACAnnotationView.swift */; };
@@ -126,6 +127,8 @@
 		E50F99F027C2B15C003E2179 /* MapUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUseCase.swift; sourceTree = "<group>"; };
 		E50F99F227C2CE28003E2179 /* LocationConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationConstant.swift; sourceTree = "<group>"; };
 		E50F99F427C2EE90003E2179 /* InAppPurchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchase.swift; sourceTree = "<group>"; };
+		E50F99F627C46167003E2179 /* SeSACMapUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACMapUseCase.swift; sourceTree = "<group>"; };
+		E50F99F827C4636E003E2179 /* QueueError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueError.swift; sourceTree = "<group>"; };
 		E56C4CFA27BB667D00A91EC8 /* NearSeSACView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearSeSACView.swift; sourceTree = "<group>"; };
 		E56C4CFC27BB6D8300A91EC8 /* SeSACCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACCardView.swift; sourceTree = "<group>"; };
 		E56C4CFE27BB722900A91EC8 /* NearSeSACViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearSeSACViewController.swift; sourceTree = "<group>"; };
@@ -135,11 +138,11 @@
 		E56C4D0627BB855A00A91EC8 /* SeSACBackgroundShopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACBackgroundShopCell.swift; sourceTree = "<group>"; };
 		E56C4D0827BB859900A91EC8 /* ShopInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopInfoView.swift; sourceTree = "<group>"; };
 		E56C4D0C27BB880C00A91EC8 /* SeSACProfileShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACProfileShopViewController.swift; sourceTree = "<group>"; };
-		E56C4D1027BD747000A91EC8 /* DefaultSearchHobbyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSearchHobbyUseCase.swift; sourceTree = "<group>"; };
+		E56C4D1027BD747000A91EC8 /* SeSACSearchHobbyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACSearchHobbyUseCase.swift; sourceTree = "<group>"; };
 		E56C4D1327BD84D000A91EC8 /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		E56C4D1627BD89C800A91EC8 /* SearchHobbyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHobbyUseCase.swift; sourceTree = "<group>"; };
 		E56C4D1D27BE76C200A91EC8 /* DefaultQueueRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultQueueRepository.swift; sourceTree = "<group>"; };
-		E56C4D2027BEDFFA00A91EC8 /* PrimitiveSequence+rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrimitiveSequence+rx.swift"; sourceTree = "<group>"; };
+		E56C4D2027BEDFFA00A91EC8 /* PrimitiveSequence+Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrimitiveSequence+Queue.swift"; sourceTree = "<group>"; };
 		E574CB0527B98DAD007B7F7E /* HobbyTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyTagCell.swift; sourceTree = "<group>"; };
 		E574CB0727B99061007B7F7E /* HobbyCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyCollectionHeaderView.swift; sourceTree = "<group>"; };
 		E574CB0927B9AD66007B7F7E /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
@@ -226,7 +229,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E574CB1527BB1772007B7F7E /* Tabman in Frameworks */,
-				E57A319A27B1883500276D7F /* RxCoreLocation in Frameworks */,
 				E50F99E527C27ED2003E2179 /* RxCocoa in Frameworks */,
 				E5754096279DD274001F9247 /* FirebaseMessaging in Frameworks */,
 				E5D41B9A27AC3F0100021C58 /* Then in Frameworks */,
@@ -288,7 +290,8 @@
 			isa = PBXGroup;
 			children = (
 				E56C4D1527BD89AD00A91EC8 /* protocol */,
-				E56C4D1027BD747000A91EC8 /* DefaultSearchHobbyUseCase.swift */,
+				E56C4D1027BD747000A91EC8 /* SeSACSearchHobbyUseCase.swift */,
+				E50F99F627C46167003E2179 /* SeSACMapUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -323,7 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				E57A31A527B3156900276D7F /* MKMapView+Rx.swift */,
-				E56C4D2027BEDFFA00A91EC8 /* PrimitiveSequence+rx.swift */,
+				E56C4D2027BEDFFA00A91EC8 /* PrimitiveSequence+Queue.swift */,
 			);
 			path = rx;
 			sourceTree = "<group>";
@@ -568,6 +571,7 @@
 			isa = PBXGroup;
 			children = (
 				E5BD0DDF27BEE7640016808B /* OnqueueError.swift */,
+				E50F99F827C4636E003E2179 /* QueueError.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -670,7 +674,6 @@
 				E57540AF27A09B49001F9247 /* RxMoya */,
 				E5D41B9927AC3F0100021C58 /* Then */,
 				E5D41BA427AD7C2C00021C58 /* MultiSlider */,
-				E57A319927B1883500276D7F /* RxCoreLocation */,
 				E574CB1427BB1772007B7F7E /* Tabman */,
 				E50F99E427C27ED2003E2179 /* RxCocoa */,
 				E50F99E627C27ED2003E2179 /* RxRelay */,
@@ -712,7 +715,6 @@
 				E57540AC27A09B49001F9247 /* XCRemoteSwiftPackageReference "Moya" */,
 				E5D41B9827AC3F0100021C58 /* XCRemoteSwiftPackageReference "Then" */,
 				E5D41BA327AD7C2B00021C58 /* XCRemoteSwiftPackageReference "MultiSlider" */,
-				E57A319827B1883500276D7F /* XCRemoteSwiftPackageReference "RxCoreLocation" */,
 				E574CB1327BB1772007B7F7E /* XCRemoteSwiftPackageReference "Tabman" */,
 				E50F99E327C27ED2003E2179 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				E50F99EA27C27F5C003E2179 /* XCRemoteSwiftPackageReference "RxDataSources" */,
@@ -752,7 +754,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E56C4D1827BE714A00A91EC8 /* DefaultSearchHobbyUseCase.swift in Sources */,
+				E56C4D1827BE714A00A91EC8 /* SeSACSearchHobbyUseCase.swift in Sources */,
 				E5754087279D1F28001F9247 /* AuthGenderView.swift in Sources */,
 				E574CB1227B9C4A8007B7F7E /* PageView.swift in Sources */,
 				E574CB0E27B9C2A4007B7F7E /* SearchSeSACViewController.swift in Sources */,
@@ -785,6 +787,7 @@
 				E5BD0DE227BF09060016808B /* ButtonCollectionViewCell.swift in Sources */,
 				E575409C279DF222001F9247 /* ViewModelType.swift in Sources */,
 				E575408C279D5D5A001F9247 /* String+Extension.swift in Sources */,
+				E50F99F927C4636E003E2179 /* QueueError.swift in Sources */,
 				E57540652798820A001F9247 /* AuthPhoneViewModel.swift in Sources */,
 				E57A319027B1813000276D7F /* SeSACLocationService.swift in Sources */,
 				E56C4CFB27BB667D00A91EC8 /* NearSeSACView.swift in Sources */,
@@ -817,7 +820,7 @@
 				E5754085279D1F0B001F9247 /* AuthBirthView.swift in Sources */,
 				E5D41B8427AAAF1F00021C58 /* FontTHeme.swift in Sources */,
 				E574CB0A27B9AD66007B7F7E /* AlertViewController.swift in Sources */,
-				E56C4D2127BEDFFA00A91EC8 /* PrimitiveSequence+rx.swift in Sources */,
+				E56C4D2127BEDFFA00A91EC8 /* PrimitiveSequence+Queue.swift in Sources */,
 				E575404E279705ED001F9247 /* SeSACButton.swift in Sources */,
 				E57540BE27A1900C001F9247 /* MapViewController.swift in Sources */,
 				E57540B227A12E4F001F9247 /* TabBarController.swift in Sources */,
@@ -835,6 +838,7 @@
 				E57A318A27AF3C6800276D7F /* OnboardingViewCell.swift in Sources */,
 				E5754074279A4F3A001F9247 /* AuthGenderViewController.swift in Sources */,
 				E575408A279D24ED001F9247 /* AppSettings.swift in Sources */,
+				E50F99F727C46167003E2179 /* SeSACMapUseCase.swift in Sources */,
 				E56C4D1427BD84D000A91EC8 /* ToastMessage.swift in Sources */,
 				E5754078279B0BDC001F9247 /* AuthModel.swift in Sources */,
 			);
@@ -1106,14 +1110,6 @@
 				kind = branch;
 			};
 		};
-		E57A319827B1883500276D7F /* XCRemoteSwiftPackageReference "RxCoreLocation" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/RxSwiftCommunity/RxCoreLocation.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		E5D41B9827AC3F0100021C58 /* XCRemoteSwiftPackageReference "Then" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/devxoul/Then";
@@ -1187,11 +1183,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E57540AC27A09B49001F9247 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = RxMoya;
-		};
-		E57A319927B1883500276D7F /* RxCoreLocation */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E57A319827B1883500276D7F /* XCRemoteSwiftPackageReference "RxCoreLocation" */;
-			productName = RxCoreLocation;
 		};
 		E5D41B9927AC3F0100021C58 /* Then */ = {
 			isa = XCSwiftPackageProductDependency;

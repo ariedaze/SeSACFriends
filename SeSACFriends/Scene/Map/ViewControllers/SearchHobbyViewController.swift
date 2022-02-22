@@ -72,11 +72,13 @@ final class SearchHobbyViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        mainView.button.rx.tap
-            .subscribe(onNext: { [weak self] in
-                guard let self = self else { return }
-                let vc = SearchSeSACViewController()
-                self.navigationController?.pushViewController(vc, animated: true)
+        output.requestSuccess
+            .asDriver(onErrorJustReturn: false)
+            .drive(onNext: { [weak self] status in
+                if status {
+                    let vc = SearchSeSACViewController()
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }
             })
             .disposed(by: disposeBag)
     }

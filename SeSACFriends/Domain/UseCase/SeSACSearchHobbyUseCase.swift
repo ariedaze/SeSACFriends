@@ -1,5 +1,5 @@
 //
-//  SearchHobbyUseCase.swift
+//  SeSACSearchHobbyUseCase.swift
 //  SeSACFriends
 //
 //  Created by Ahyeonway on 2022/02/17.
@@ -7,15 +7,16 @@
 
 import Foundation
 import RxSwift
-import RxCocoa
 
 final class SeSACSearchHobbyUseCase: SearchHobbyUseCase {
     private let queueRepository = DefaultQueueRepository()
     private let disposeBag = DisposeBag()
     
-    var validTextCount =  PublishRelay<Bool>()
-    var validHobbyCount = PublishRelay<Bool>()
+    var validTextCount =  PublishSubject<Bool>()
+    var validHobbyCount = PublishSubject<Bool>()
     var onqueueResponse = PublishSubject<QueueResponse>()
+    var toastMessage = PublishSubject<String>()
+    var requestSuccess = PublishSubject<Bool>()
     
     func separatedString(_ text: String) {
         let hobbys = text.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: " ")
@@ -24,11 +25,11 @@ final class SeSACSearchHobbyUseCase: SearchHobbyUseCase {
     }
     
     func validate(text: String) {
-        self.validTextCount.accept(checkCountValidty(text: text))
+        self.validTextCount.onNext(checkCountValidty(text: text))
     }
     
     func validateCount(hobby: [String]) {
-        self.validHobbyCount.accept(checkArrayValidity(hobby: hobby))
+        self.validHobbyCount.onNext(checkArrayValidity(hobby: hobby))
     }
     
     // 취미 1-8자리
@@ -47,8 +48,8 @@ final class SeSACSearchHobbyUseCase: SearchHobbyUseCase {
         return true
     }
     
-    func onqueue() {
-        queueRepository.onqueue(lat: 37.51555287666034, long: 126.88781071074185)
+    func onqueue(lat: Double, long: Double) {
+        queueRepository.onqueue(lat: lat, long: long)
             .catchOnqueueError()
             .map(QueueResponse.self)
             .subscribe { [weak self] result in
@@ -59,6 +60,25 @@ final class SeSACSearchHobbyUseCase: SearchHobbyUseCase {
                     print("onqueue error", error)
                 }
             }
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
+    }
+    
+    func searchFriends(lat: Double, long: Double) {
+        queueRepository.searchFriends(lat: lat, long: long)
+            .queueError()
+            .map { $0 }
+            .subscribe { [weak self] result in
+                switch result {
+                case .success(let response):
+                    print("success")
+                    self?.requestSuccess.onNext(true)
+                    
+                case .failure(let error):
+                    self?.toastMessage.onNext(error.localizedDescription)
+                    print("queue error", error)
+                    self?.requestSuccess.onNext(false)
+                }
+            }
+            .disposed(by: disposeBag)
     }
 }
