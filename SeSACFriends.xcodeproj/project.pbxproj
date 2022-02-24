@@ -100,6 +100,8 @@
 		E57A31C827B9177400276D7F /* SearchHobbyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A31C727B9177400276D7F /* SearchHobbyViewModel.swift */; };
 		E57A31CA27B919D300276D7F /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A31C927B919D300276D7F /* Double+Extension.swift */; };
 		E59007F927C7CC54002DD0E6 /* SeSACNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59007F827C7CC54002DD0E6 /* SeSACNetworkError.swift */; };
+		E59007FC27C7DD98002DD0E6 /* SeSACSearchFriendsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59007FB27C7DD98002DD0E6 /* SeSACSearchFriendsUseCase.swift */; };
+		E59007FE27C7E0C2002DD0E6 /* SearchFriendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59007FD27C7E0C2002DD0E6 /* SearchFriendsViewModel.swift */; };
 		E5BD0DE027BEE7640016808B /* OnqueueError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD0DDF27BEE7640016808B /* OnqueueError.swift */; };
 		E5BD0DE227BF09060016808B /* ButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD0DE127BF09060016808B /* ButtonCollectionViewCell.swift */; };
 		E5D41B8427AAAF1F00021C58 /* FontTHeme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B7927AAAF1D00021C58 /* FontTHeme.swift */; };
@@ -206,6 +208,8 @@
 		E57A31C727B9177400276D7F /* SearchHobbyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHobbyViewModel.swift; sourceTree = "<group>"; };
 		E57A31C927B919D300276D7F /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		E59007F827C7CC54002DD0E6 /* SeSACNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACNetworkError.swift; sourceTree = "<group>"; };
+		E59007FB27C7DD98002DD0E6 /* SeSACSearchFriendsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACSearchFriendsUseCase.swift; sourceTree = "<group>"; };
+		E59007FD27C7E0C2002DD0E6 /* SearchFriendsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendsViewModel.swift; sourceTree = "<group>"; };
 		E5BD0DDF27BEE7640016808B /* OnqueueError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnqueueError.swift; sourceTree = "<group>"; };
 		E5BD0DE127BF09060016808B /* ButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCollectionViewCell.swift; sourceTree = "<group>"; };
 		E5D41B7927AAAF1D00021C58 /* FontTHeme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontTHeme.swift; sourceTree = "<group>"; };
@@ -294,6 +298,7 @@
 				E56C4D1527BD89AD00A91EC8 /* protocol */,
 				E56C4D1027BD747000A91EC8 /* SeSACSearchHobbyUseCase.swift */,
 				E50F99F627C46167003E2179 /* SeSACMapUseCase.swift */,
+				E59007FB27C7DD98002DD0E6 /* SeSACSearchFriendsUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -509,6 +514,7 @@
 			children = (
 				E57A319D27B1A47A00276D7F /* MapViewModel.swift */,
 				E57A31C727B9177400276D7F /* SearchHobbyViewModel.swift */,
+				E59007FD27C7E0C2002DD0E6 /* SearchFriendsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -797,6 +803,7 @@
 				E57540A3279E8A3A001F9247 /* AuthGenderViewModel.swift in Sources */,
 				E5BD0DE227BF09060016808B /* ButtonCollectionViewCell.swift in Sources */,
 				E575409C279DF222001F9247 /* ViewModelType.swift in Sources */,
+				E59007FE27C7E0C2002DD0E6 /* SearchFriendsViewModel.swift in Sources */,
 				E575408C279D5D5A001F9247 /* String+Extension.swift in Sources */,
 				E50F99F927C4636E003E2179 /* QueueError.swift in Sources */,
 				E57540652798820A001F9247 /* AuthPhoneViewModel.swift in Sources */,
@@ -837,6 +844,7 @@
 				E57540B227A12E4F001F9247 /* TabBarController.swift in Sources */,
 				E574CB0627B98DAD007B7F7E /* HobbyTagCell.swift in Sources */,
 				E5754063279878B8001F9247 /* ViewRepresentable.swift in Sources */,
+				E59007FC27C7DD98002DD0E6 /* SeSACSearchFriendsUseCase.swift in Sources */,
 				E5754076279A4F68001F9247 /* AuthBirthViewController.swift in Sources */,
 				E5D41B9527AC110500021C58 /* ManageInfoView.swift in Sources */,
 				E57A319E27B1A47A00276D7F /* MapViewModel.swift in Sources */,

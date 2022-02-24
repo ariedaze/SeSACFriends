@@ -17,6 +17,7 @@ enum SearchSeSACType {
 class NearSeSACViewController: UIViewController {
     var type: SearchSeSACType
     let mainView = NearSeSACView()
+    let viewModel = SearchFriendsViewModel()
     var disposeBag = DisposeBag()
     
     override func loadView() {
@@ -44,7 +45,17 @@ class NearSeSACViewController: UIViewController {
     }
     
     private func bindViewModel() {
+        print("됐나?")
+        let input = SearchFriendsViewModel.Input(
+            viewDidAppearEvent: self.rx.methodInvoked(#selector(viewDidAppear(_:)))
+                .map({ _ in })
+                .asObservable()
+        )
         
+        let output = viewModel.transform(
+            input: input,
+            disposeBag: disposeBag
+        )
     }
 }
 
