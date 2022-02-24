@@ -49,7 +49,7 @@ final class SeSACMapUseCase: MapUseCase {
     
     func onqueue(at location: CLLocationCoordinate2D) {
         queueRepository.onqueue(lat: location.latitude, long: location.longitude)
-            .catchOnqueueError()
+            .catchSeSACNetworkError(OnqueueError.self)
             .map(QueueResponse.self)
             .subscribe { [weak self] result in
                 switch result {
@@ -60,5 +60,15 @@ final class SeSACMapUseCase: MapUseCase {
                 }
             }
             .disposed(by: self.disposeBag)
+    }
+    
+    func checkQueueStatus() {
+//        queueRepository.myQueueState()
+//            .catchQueueError(TestError.self)
+//            .map { $0 }
+//            .subscribe { [weak self] result in
+//                print(result)
+//            }
+//            .disposed(by: disposeBag)
     }
 }

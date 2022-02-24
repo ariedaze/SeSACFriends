@@ -11,40 +11,13 @@ import RxSwift
 import Moya
 
 extension PrimitiveSequence where Trait == SingleTrait, Element == Response {
-    func catchOnqueueError() -> Single<Element> {
+    func catchSeSACNetworkError<T: SeSACNetworkError>(_ errorType: T.Type) -> Single<Element> {
         return flatMap { response in
             guard response.statusCode == 200 else {
-                print("catch onqueue error: ", response.description, response.response)
+                print("catch sesac network error: ", response.description, response.response as Any)
                 do {
-                    throw OnqueueError(rawValue: response.statusCode) ?? OnqueueError.unknownError
-                } catch {
-                    throw error
-                }
-            }
-            return .just(response)
-        }
-    }
-    
-    func queueError() -> Single<Element> {
-        return flatMap { response in
-            guard response.statusCode == 200 else {
-                print("catch queue error: ", response.description, response.response)
-                do {
-                    throw QueueError(rawValue: response.statusCode) ?? QueueError.unknownError
-                } catch {
-                    throw error
-                }
-            }
-            return .just(response)
-        }
-    }
-    
-    func stopQueueError() -> Single<Element> {
-        return flatMap { response in
-            guard response.statusCode == 200 else {
-                print("catch delete queue error: ", response.description, response.response)
-                do {
-                    throw QueueError(rawValue: response.statusCode) ?? QueueError.unknownError
+                    throw T(rawValue: response.statusCode as! T.RawValue) ?? errorType.defaultError()
+//                    ?? T.unknownError
                 } catch {
                     throw error
                 }
@@ -53,3 +26,4 @@ extension PrimitiveSequence where Trait == SingleTrait, Element == Response {
         }
     }
 }
+

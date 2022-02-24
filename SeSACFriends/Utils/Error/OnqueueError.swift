@@ -7,16 +7,16 @@
 
 import Foundation
 
-struct OnqueueErrorResponse: Decodable {
-    let message: String
-}
-
-enum OnqueueError: Int, Error {
+enum OnqueueError: Int, SeSACNetworkError {
     case tokenError = 401
     case unauthorization = 406
     case serverError = 500
     case clientError = 501
     case unknownError
+    
+    static func defaultError() -> OnqueueError {
+        return .unknownError
+    }
     
     var description: String {
         switch self {

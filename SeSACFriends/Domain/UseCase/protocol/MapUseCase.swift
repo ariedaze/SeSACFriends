@@ -19,6 +19,7 @@ protocol MapUseCase {
     var userLocation: BehaviorSubject<CLLocationCoordinate2D> { get set }
     var onqueueResponse: PublishSubject<QueueResponse> {get set}
     func onqueue(at location: CLLocationCoordinate2D)
+    func checkQueueStatus()
     func checkAuthorization()
     func observeUserLocation()
 }

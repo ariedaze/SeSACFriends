@@ -60,6 +60,16 @@ final class MapViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
         
+//        Observable.combineLatest(input.viewDidAppearEvent, self.mapUseCase.userLocation.asObservable())
+//            .map{ $1 }
+//            .distinctUntilChanged()
+//            .throttle(.seconds(3), scheduler: MainScheduler.instance)
+//            .subscribe(onNext: { [weak self] location in
+//                print("userLocation 변화중")
+//                self?.mapUseCase.onqueue(at: location)
+//            })
+//            .disposed(by: disposeBag)
+        
         self.mapUseCase.onqueueResponse
             .subscribe(onNext: { response in
                 print("output", response.fromQueueDB.count)

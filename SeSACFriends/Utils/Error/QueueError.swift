@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum QueueError: Int, Error {
+enum QueueError: Int, SeSACNetworkError {
     case reportCumulativeError = 201
     case panaltyOneMinuteError = 203
     case panaltyTwoMinuteError
@@ -18,6 +18,10 @@ enum QueueError: Int, Error {
     case serverError = 500
     case clientError = 501
     case unknownError
+    
+    static func defaultError() -> QueueError {
+        return .unknownError
+    }
     
     var description: String {
         switch self {

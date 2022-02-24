@@ -50,7 +50,7 @@ final class SeSACSearchHobbyUseCase: SearchHobbyUseCase {
     
     func onqueue(lat: Double, long: Double) {
         queueRepository.onqueue(lat: lat, long: long)
-            .catchOnqueueError()
+            .catchSeSACNetworkError(OnqueueError.self)
             .map(QueueResponse.self)
             .subscribe { [weak self] result in
                 switch result {
@@ -65,7 +65,7 @@ final class SeSACSearchHobbyUseCase: SearchHobbyUseCase {
     
     func searchFriends(lat: Double, long: Double) {
         queueRepository.searchFriends(lat: lat, long: long)
-            .queueError()
+            .catchSeSACNetworkError(QueueError.self)
             .map { $0 }
             .subscribe { [weak self] result in
                 switch result {

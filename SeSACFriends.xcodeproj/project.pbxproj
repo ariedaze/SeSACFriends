@@ -99,6 +99,7 @@
 		E57A31B527B6EC6600276D7F /* SearchHobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A31B427B6EC6600276D7F /* SearchHobbyView.swift */; };
 		E57A31C827B9177400276D7F /* SearchHobbyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A31C727B9177400276D7F /* SearchHobbyViewModel.swift */; };
 		E57A31CA27B919D300276D7F /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A31C927B919D300276D7F /* Double+Extension.swift */; };
+		E59007F927C7CC54002DD0E6 /* SeSACNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59007F827C7CC54002DD0E6 /* SeSACNetworkError.swift */; };
 		E5BD0DE027BEE7640016808B /* OnqueueError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD0DDF27BEE7640016808B /* OnqueueError.swift */; };
 		E5BD0DE227BF09060016808B /* ButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD0DE127BF09060016808B /* ButtonCollectionViewCell.swift */; };
 		E5D41B8427AAAF1F00021C58 /* FontTHeme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B7927AAAF1D00021C58 /* FontTHeme.swift */; };
@@ -204,6 +205,7 @@
 		E57A31B427B6EC6600276D7F /* SearchHobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHobbyView.swift; sourceTree = "<group>"; };
 		E57A31C727B9177400276D7F /* SearchHobbyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHobbyViewModel.swift; sourceTree = "<group>"; };
 		E57A31C927B919D300276D7F /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		E59007F827C7CC54002DD0E6 /* SeSACNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACNetworkError.swift; sourceTree = "<group>"; };
 		E5BD0DDF27BEE7640016808B /* OnqueueError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnqueueError.swift; sourceTree = "<group>"; };
 		E5BD0DE127BF09060016808B /* ButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCollectionViewCell.swift; sourceTree = "<group>"; };
 		E5D41B7927AAAF1D00021C58 /* FontTHeme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontTHeme.swift; sourceTree = "<group>"; };
@@ -567,9 +569,18 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		E59007FA27C7CC62002DD0E6 /* protocol */ = {
+			isa = PBXGroup;
+			children = (
+				E59007F827C7CC54002DD0E6 /* SeSACNetworkError.swift */,
+			);
+			path = protocol;
+			sourceTree = "<group>";
+		};
 		E5BD0DDE27BEE73A0016808B /* Error */ = {
 			isa = PBXGroup;
 			children = (
+				E59007FA27C7CC62002DD0E6 /* protocol */,
 				E5BD0DDF27BEE7640016808B /* OnqueueError.swift */,
 				E50F99F827C4636E003E2179 /* QueueError.swift */,
 			);
@@ -839,6 +850,7 @@
 				E5754074279A4F3A001F9247 /* AuthGenderViewController.swift in Sources */,
 				E575408A279D24ED001F9247 /* AppSettings.swift in Sources */,
 				E50F99F727C46167003E2179 /* SeSACMapUseCase.swift in Sources */,
+				E59007F927C7CC54002DD0E6 /* SeSACNetworkError.swift in Sources */,
 				E56C4D1427BD84D000A91EC8 /* ToastMessage.swift in Sources */,
 				E5754078279B0BDC001F9247 /* AuthModel.swift in Sources */,
 			);
