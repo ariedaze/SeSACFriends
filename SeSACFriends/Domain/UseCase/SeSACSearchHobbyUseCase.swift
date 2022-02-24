@@ -69,7 +69,7 @@ final class SeSACSearchHobbyUseCase: SearchHobbyUseCase {
             .map { $0 }
             .subscribe { [weak self] result in
                 switch result {
-                case .success(let response):
+                case .success(let _):
                     print("success")
                     self?.requestSuccess.onNext(true)
                     

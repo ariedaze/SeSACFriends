@@ -29,17 +29,33 @@ final class ManageInfoViewController: UIViewController {
         mainView.seSacCardView.titleCollectionView.dataSource = self
         viewDidLayoutSubviews()
         bind()
-        
-        mainView.ageSlider.value = [17, 55]
     }
     
     private func bind() {
+        let input = ManageInfoViewModel.Input(
+            viewDidLoadEvent: Observable.just(()).asObservable()
+        )
         let output = viewModel.transform(
-            input: ManageInfoViewModel.Input(
-                // buttonTrigger: mainView.withdrawButton.rx.tap
-            )
+            input: input,
+            disposeBag: disposeBag
         )
     
+        output.myinfo
+            .share()
+            .subscribe(onNext: { [weak self] info in
+                if info.gender == 0 {
+                    self?.mainView.womanButton.status = .fill
+                } else if info.gender == 1 {
+                    self?.mainView.manButton.status = .fill
+                }
+                self?.mainView.hobbyTextField.text = info.hobby
+                self?.mainView.seSacCardView.nicknameLabel.text = info.nick
+                self?.mainView.ageLabel.text = "\(info.ageMin)-\(info.ageMax)"
+                self?.mainView.ageSlider.value = [CGFloat(info.ageMin), CGFloat(info.ageMax)]
+                self?.mainView.numberAccessSwitch.isOn = info.searchable == 1 ? true : false
+            })
+            .disposed(by: disposeBag)
+        
         mainView.withdrawButton.rx.tap
             .subscribe (onNext: {
                 self.showAlert(title: "정말 탈퇴하시겠습니까?", description: "탈퇴하면 새싹 프렌즈를 이용할 수 없어요ㅠ")

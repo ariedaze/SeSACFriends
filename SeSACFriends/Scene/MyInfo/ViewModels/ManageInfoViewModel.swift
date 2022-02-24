@@ -9,44 +9,34 @@ import Foundation
 import RxSwift
 import RxCocoa
 import Moya
-import UIKit
 
 final class ManageInfoViewModel: ViewModelType {
     var disposeBag = DisposeBag()
-    let networkingApi = AuthNetworkingAPI()
+    let myinfoUseCase = SeSACMyInfoUseCase()
 
-    func transform(input: Input) -> Output {
+    func transform(input: Input, disposeBag: DisposeBag) -> Output {
+        let output = Output()
         
-//        let output = input.buttonTrigger
-//            .subscribe { _ in
-//                self.networkingApi.request(.withdraw)
-//                    .subscribe {
-//                        switch $0 {
-//                        case .success(let res):
-//                            print("탈퇴 완료?", res)
-//                            AppSettings.withdraw()
-//                            UIViewController.changeRootViewControllerToPhone()
-//                        case .failure(let error):
-//                            print("withdraw error", error)
-//                        }
-//                        
-//                    }
-//                    .disposed(by: self.disposeBag)
-//            }
-//            .disposed(by: disposeBag)
-//            
-//        
-//        
-        return Output()
+        input.viewDidLoadEvent
+            .subscribe({ [weak self] _ in
+                self?.myinfoUseCase.myinfo()
+            })
+            .disposed(by: disposeBag)
+        
+        self.myinfoUseCase.myinfoResponse
+            .bind(to: output.myinfo)
+            .disposed(by: disposeBag)
+        
+        return output
     }
 }
 
 extension ManageInfoViewModel {
     struct Input {
-//        let buttonTrigger: ControlEvent<Void>
+        let viewDidLoadEvent: Observable<Void>
     }
     
     struct Output {
-//        let out: Observable<Response>
+        let myinfo = PublishRelay<MyInfoModel>()
     }
 }

@@ -18,6 +18,7 @@ enum AuthAPI {
     case signup(param: SignupRequest)
     case update_fcm
     case withdraw
+    case update_info
 }
 
 extension AuthAPI: TargetType {
@@ -31,6 +32,8 @@ extension AuthAPI: TargetType {
             return "/update_fcm_token"
         case .withdraw:
             return "/withdraw"
+        case .update_info:
+            return "/update/mypage"
         default:
             return ""
         }
@@ -38,10 +41,10 @@ extension AuthAPI: TargetType {
     
     var method: Moya.Method {
         switch self {
-        case .signup:
-            return .post
-        default:
+        case .checkuser:
             return .get
+        default:
+            return .post
         }
     }
     

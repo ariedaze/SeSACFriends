@@ -21,7 +21,7 @@ protocol QueueRepository {
 }
 
 final class DefaultQueueRepository: QueueRepository {
-    let provider = MoyaProvider<QueueAPI>()
+    private let provider = MoyaProvider<QueueAPI>()
     
     func myQueueState() -> Single<Response> {
         return provider.rx.request(.myQueueState)

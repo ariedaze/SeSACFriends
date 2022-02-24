@@ -50,7 +50,6 @@
 
 - MVVM을 도입하여 뷰컨트롤러와 뷰는 화면을 그리는 역할에만 집중하고 데이터 관리, 로직의 실행은 뷰모델에서 진행되도록 했습니다.
 
-  
 
 > **Input/Output Modeling**
 
@@ -70,12 +69,14 @@
   - [Merge] : 머지, 충돌
   - [Refactor] : 리팩토링
 
+
+
 #### ✔️ 개발 체크리스트 ✔️ 
 - [회원 인증](./docs/authchecklist.md)
-- [홈 탭 친구 찾기 / 주변 친구들 목록 / 친구 매칭 기능](./docs/homechecklist.md)
+- [홈 탭 친구 찾기](./docs/homechecklist.md) / [주변 친구들 목록](./docs/searchchecklist.md) / 친구 매칭 기능
 - 매칭된 친구와 채팅 / 약속 취소 / 신고하기 / 리뷰 작성
 - 새싹샵
-- 마이페이지
+- [마이페이지](./docs/myinfochecklist.md)
 
 #### 📅 주차별 데일리 스크럼  📅
 

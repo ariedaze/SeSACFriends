@@ -15,11 +15,13 @@ final class ManageInfoView: UIView, ViewRepresentable {
     let scrollView = UIScrollView().then {
         $0.showsVerticalScrollIndicator = false
         $0.isUserInteractionEnabled = true
+        $0.keyboardDismissMode = .onDrag
     }
     let contentView = UIView()
     
     // 1. title 2. 리뷰
     let seSacCardView = SeSACCardView()
+    
     // 3. info
     let myInfoStackView = UIStackView().then {
         $0.axis = .vertical
@@ -30,7 +32,7 @@ final class ManageInfoView: UIView, ViewRepresentable {
     }
     // 3-1 성별
     let genderView = UIView()
-    let genderLabel = UILabel().then {
+    private let genderLabel = UILabel().then {
         $0.text = "내 성별"
         $0.font = FontTheme.Title4_R14
         $0.textColor = ColorTheme.black
@@ -46,7 +48,7 @@ final class ManageInfoView: UIView, ViewRepresentable {
     
     // 3-2 취미
     let hobbyView = UIView()
-    let hobbyLabel = UILabel().then {
+    private let hobbyLabel = UILabel().then {
         $0.text = "자주 하는 취미"
         $0.font = FontTheme.Title4_R14
         $0.textColor = ColorTheme.black
@@ -56,7 +58,7 @@ final class ManageInfoView: UIView, ViewRepresentable {
     }
     // 3-3 번호검색
     let numberAccessView = UIView()
-    let numberAccessLabel = UILabel().then {
+    private let numberAccessLabel = UILabel().then {
         $0.text = "내 번호 검색 허용"
         $0.font = FontTheme.Title4_R14
         $0.textColor = ColorTheme.black
@@ -66,13 +68,12 @@ final class ManageInfoView: UIView, ViewRepresentable {
     }
     // 3-4 상대방
     let searchRangeView = UIView()
-    let searchRangeLabel = UILabel().then {
+    private let searchRangeLabel = UILabel().then {
         $0.text = "상대방 연령대"
         $0.font = FontTheme.Title4_R14
         $0.textColor = ColorTheme.black
     }
     let ageLabel = UILabel().then {
-        $0.text = "18-35"
         $0.font = FontTheme.Title3_M14
         $0.textColor = ColorTheme.brandgreen
     }

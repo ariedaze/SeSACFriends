@@ -10,19 +10,6 @@ import Moya
 import RxMoya
 import RxSwift
 
-
-final class QueueNetworkService {
-    let provider: MoyaProvider<QueueAPI>
-    
-    init(provider: MoyaProvider<QueueAPI> = MoyaProvider<QueueAPI>()) {
-        self.provider = provider
-    }
-    
-    func request(_ api: QueueAPI) -> Single<Response> {
-        return provider.rx.request(api)
-    }
-}
-
 enum QueueAPI {
     static private let idToken = AppSettings[.idToken] as? String ?? ""
     
