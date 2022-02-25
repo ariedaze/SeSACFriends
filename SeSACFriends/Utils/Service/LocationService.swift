@@ -14,6 +14,8 @@ import RxCocoa
 protocol LocationService {
     var authorizationStatus: BehaviorRelay<CLAuthorizationStatus> { get set }
     func requestAuthorization()
+    func start()
+    func stop()
     func observeUpdatedAuthorization() -> Observable<CLAuthorizationStatus>
     func observeUpdatedLocation() -> Observable<[CLLocation]>
 }

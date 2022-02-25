@@ -27,7 +27,19 @@ final class MapViewModel: ViewModelType {
         input.viewDidLoadEvent
             .subscribe({ [weak self] _ in
                 self?.mapUseCase.checkAuthorization()
+            })
+            .disposed(by: disposeBag)
+        
+        input.viewDidAppearEvent
+            .subscribe({ [weak self] _ in
+                self?.mapUseCase.startLocationTracker()
                 self?.mapUseCase.observeUserLocation()
+            })
+            .disposed(by: disposeBag)
+        
+        input.viewDidDisappearEvent
+            .subscribe({ [weak self] _ in
+                self?.mapUseCase.stopLocationTracker()
             })
             .disposed(by: disposeBag)
         
@@ -50,8 +62,7 @@ final class MapViewModel: ViewModelType {
             .bind(to: output.mapCenterLocation)
             .disposed(by: disposeBag)
         
-        Observable.combineLatest(input.viewDidAppearEvent, self.mapUseCase.userLocation.asObservable())
-            .map{ $1 }
+        self.mapUseCase.userLocation.asObservable()
             .distinctUntilChanged()
             .throttle(.seconds(3), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] location in
@@ -59,16 +70,6 @@ final class MapViewModel: ViewModelType {
                 self?.mapUseCase.onqueue(at: location)
             })
             .disposed(by: disposeBag)
-        
-//        Observable.combineLatest(input.viewDidAppearEvent, self.mapUseCase.userLocation.asObservable())
-//            .map{ $1 }
-//            .distinctUntilChanged()
-//            .throttle(.seconds(3), scheduler: MainScheduler.instance)
-//            .subscribe(onNext: { [weak self] location in
-//                print("userLocation 변화중")
-//                self?.mapUseCase.onqueue(at: location)
-//            })
-//            .disposed(by: disposeBag)
         
         self.mapUseCase.onqueueResponse
             .subscribe(onNext: { response in
@@ -119,6 +120,7 @@ extension MapViewModel {
     struct Input {
         let viewDidLoadEvent: Observable<Void>
         let viewDidAppearEvent: Observable<Void>
+        let viewDidDisappearEvent: Observable<Void>
         let mapCenterDidChanged: Observable<CLLocationCoordinate2D>
         let gpsButtonDidTapEvent: Observable<Void>
         let floatingButtonTap: ControlEvent<Void>

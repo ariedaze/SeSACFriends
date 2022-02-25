@@ -28,6 +28,10 @@ final class SeSSACLocationService: NSObject, LocationService {
     func start() {
         self.locationManager.startUpdatingLocation()
     }
+    
+    func stop() {
+        self.locationManager.stopUpdatingLocation()
+    }
 
     func requestAuthorization() {
         self.locationManager.requestWhenInUseAuthorization()

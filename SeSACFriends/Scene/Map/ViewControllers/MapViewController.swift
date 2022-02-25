@@ -56,6 +56,11 @@ final class MapViewController: UIViewController {
             viewDidAppearEvent: self.rx.methodInvoked(#selector(viewDidAppear(_:)))
                 .map({ _ in })
                 .asObservable(),
+            viewDidDisappearEvent:
+                self.rx
+                .methodInvoked(#selector(viewDidDisappear(_:)))
+                .map({_ in})
+                .asObservable(),
             mapCenterDidChanged: mainView.map.rx.regionDidChangeAnimated
                 .skip(1)
                 .debounce(.milliseconds(800), scheduler: MainScheduler.instance)
@@ -92,9 +97,7 @@ final class MapViewController: UIViewController {
             .drive(onNext: { [weak self] list in
                 list.forEach {
                     let coordinate = CLLocationCoordinate2D(latitude: $0.lat, longitude: $0.long)
-//                    let currentPin = SeSACAnnotation(coordinate: coordinate, sesac: $0.sesac)
                     self?.setupMapUI(coordinate, sesac: $0.sesac)
-//                    self?.allAnnotations?.append(currentPin)
                 }
             })
             .disposed(by: disposeBag)
@@ -139,7 +142,6 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     private func setupMapUI(_ location: CLLocationCoordinate2D, sesac: Int) { // 새싹핀
-        print("??")
         let currentPin = SeSACAnnotation(coordinate: location, sesac: sesac)
         mainView.map.addAnnotation(currentPin)
     }

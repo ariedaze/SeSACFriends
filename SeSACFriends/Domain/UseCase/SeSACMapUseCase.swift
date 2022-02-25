@@ -38,6 +38,14 @@ final class SeSACMapUseCase: MapUseCase {
             .disposed(by: self.disposeBag)
     }
     
+    func startLocationTracker() {
+        self.locationService.start()
+    }
+    
+    func stopLocationTracker() {
+        self.locationService.stop()
+    }
+    
     func observeUserLocation() {
         return self.locationService.observeUpdatedLocation()
             .compactMap({ $0.last?.coordinate })
