@@ -11,7 +11,7 @@ import RxMoya
 import RxSwift
 
 enum QueueAPI {
-    static private let idToken = AppSettings[.idToken] as? String ?? ""
+    static private let idToken = AppSettings.idToken
     
     case searchFriends(parameters: [String: Any]) // 취미 함께할 친구 찾기 요청 (.post, /)
     case stopSearchFriends // 취미 함께할 친구 찾기 중단(.delete, /)

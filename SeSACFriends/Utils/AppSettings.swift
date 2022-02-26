@@ -7,51 +7,43 @@
 
 import Foundation
 
-enum AppSettings {
 
-    enum key: String, CaseIterable {
-        case isFirst
-        case phoneNumber
-        case FCMToken
-        case idToken
-        case matchingStatus
-    }
 
-    static subscript(_ key: key) -> Any? {
+@propertyWrapper
+struct AppSetting<T> {
+    let key: String
+    let defaultValue: T
+    var container: UserDefaults = .standard
+    
+    var wrappedValue: T {
         get {
-            return UserDefaults.standard.value(forKey: key.rawValue)
+            return container.object(forKey: key) as? T ?? defaultValue
         }
         set {
-            UserDefaults.standard.setValue(newValue, forKey: key.rawValue)
+            container.set(newValue, forKey: key)
         }
     }
-    
-    static func withdraw() {
-        AppSettings.key.allCases.forEach {
-            AppSettings[$0] = nil
-        }
-        
-    }
-    
-    static func boolValue(_ key: key) -> Bool {
-        if let value = AppSettings[key] as? Bool {
-            return value
-        }
-        return false
-    }
-    
-    static func stringValue(_ key: key) -> String? {
-        if let value = AppSettings[key] as? String {
-            return value
-        }
-        return nil
-    }
-    
-    static func intValue(_ key: key) -> Int? {
-        if let value = AppSettings[key] as? Int {
-            return value
-        }
-        return nil
-    }
-    
 }
+
+enum AppSettings {
+    @AppSetting(key: KEY.isFirst.rawValue, defaultValue: true)
+    static var isFirst: Bool
+    @AppSetting(key: KEY.phoneNumber.rawValue, defaultValue: "")
+    static var phoneNumber: String
+    @AppSetting(key: KEY.FCMToken.rawValue, defaultValue: "")
+    static var FCMToken: String
+    @AppSetting(key: KEY.idToken.rawValue, defaultValue: "")
+    static var idToken: String
+    @AppSetting(key: KEY.matchingStatus.rawValue, defaultValue: -100)
+    static var matchingStatus: Int
+}
+
+
+enum KEY: String, CaseIterable {
+    case isFirst
+    case phoneNumber
+    case FCMToken
+    case idToken
+    case matchingStatus
+}
+

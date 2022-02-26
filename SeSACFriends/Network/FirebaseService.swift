@@ -56,7 +56,7 @@ final class FirebaseService {
                     if let error = error {
                         single(.failure(error))
                     }
-                    AppSettings[.idToken] = id
+                    AppSettings.idToken = id
                     single(.success(id ?? ""))
                 }
                 

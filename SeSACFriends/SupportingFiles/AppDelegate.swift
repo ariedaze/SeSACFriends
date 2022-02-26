@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else if let id = id {
                 
                 print(id, "내가 id다!!!!")
-                AppSettings[.idToken] = id
+                AppSettings.idToken = id
             }
             
         })
@@ -94,7 +94,7 @@ extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         //
         print("Firebase registration token: \(String(describing: fcmToken))")
-        AppSettings[.FCMToken] = fcmToken
+        AppSettings.FCMToken = fcmToken
         let dataDict: [String: String] = ["token": fcmToken ?? ""]
         NotificationCenter.default.post(
             name: Notification.Name("FCMToken"),

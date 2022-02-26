@@ -45,7 +45,6 @@ class NearSeSACViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        print("됐나?")
         let input = SearchFriendsViewModel.Input(
             viewDidAppearEvent: self.rx.methodInvoked(#selector(viewDidAppear(_:)))
                 .map({ _ in })
