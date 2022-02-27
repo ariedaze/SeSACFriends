@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 enum MyInfo: String, CaseIterable {
     case notice = "공지사항"
@@ -32,6 +33,8 @@ enum MyInfo: String, CaseIterable {
 
 final class MyInfoViewController: UIViewController {
     let mainView = MyInfoView()
+    let viewModel = MyInfoViewModel()
+    let disposeBag = DisposeBag()
     
     override func loadView() {
         self.view = mainView
@@ -55,6 +58,16 @@ extension MyInfoViewController: UITableViewDelegate, UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MyInfoNicknameCell.reuseIdentifier, for: indexPath) as? MyInfoNicknameCell else {
                 return UITableViewCell()
             }
+            let output = viewModel.transform(
+                input: MyInfoViewModel.Input(viewDidLoadEvent: Observable.just(()).asObservable()),
+                disposeBag: disposeBag)
+                
+            output.myinfo
+                .subscribe(onNext: { nick in
+                    cell.nicknameLabel.text = nick
+                })
+                .disposed(by: disposeBag)
+            
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath)
