@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 enum SearchSeSACType {
     case nearSeSAC
@@ -39,8 +40,7 @@ class NearSeSACViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainView.tableView.delegate = self
-        mainView.tableView.dataSource = self
+        
         bindViewModel()
     }
     
@@ -55,25 +55,61 @@ class NearSeSACViewController: UIViewController {
             input: input,
             disposeBag: disposeBag
         )
+        
+        if self.type == .nearSeSAC {
+            output.fromQueueDB
+                .asDriver(onErrorJustReturn: [])
+                .drive(
+                    mainView.tableView.rx.items(
+                        cellIdentifier: NearSeSACCell.reuseIdentifier,
+                        cellType: NearSeSACCell.self)
+                ) { (row, element, cell) in
+                    cell.sesacCard.profileImageView.profileImageView.image = UIImage(named: "sesac_background_\(element.background+1)")
+                    cell.sesacCard.profileImageView.sesacImageView.image = UIImage(named: "sesac_face_\(element.background+1)")
+                    cell.sesacCard.nicknameLabel.text = element.nick
+                }
+                .disposed(by: disposeBag)
+        } else {
+            output.fromQueueDBRequested
+                .asDriver(onErrorJustReturn: [])
+                .drive(
+                    mainView.tableView.rx.items(
+                        cellIdentifier: NearSeSACCell.reuseIdentifier,
+                        cellType: NearSeSACCell.self)
+                ) { (row, element, cell) in
+                    cell.sesacCard.nicknameLabel.text = element.nick
+                    cell.sesacCard.profileImageView.profileImageView.image = UIImage(named: "sesac_background_\(element.background+1)")
+                    cell.sesacCard.profileImageView.sesacImageView.image = UIImage(named: "sesac_face_\(element.background+1)")
+                    
+                    cell.sesacCard.moreButton.rx.tap
+                        .scan(false) { lastState, newState in
+                            self.mainView.tableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .none)
+                            return !lastState
+                        }
+                        .bind(to: cell.sesacCard.rx.isExpanded)
+                        .disposed(by: self.disposeBag)
+                }
+                .disposed(by: disposeBag)
+        }
+        
+        
+        
+        output.moveToHome
+            .subscribe(onNext: { response in
+                if response {
+                    UIViewController.changeRootViewControllerToHome()
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        output.moveToChatRoom
+            .subscribe(onNext: { [weak self] response in
+                if response {
+                    let vc = ChatViewController()
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }
 
-extension NearSeSACViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(ofType: NearSeSACCell.self, at: indexPath) else {
-            return UITableViewCell()
-        }
-        cell.sesacCard.moreButton.rx.tap
-            .scan(false) { lastState, newState in
-                tableView.reloadRows(at: [indexPath], with: .none)
-                return !lastState
-            }
-            .bind(to: cell.sesacCard.rx.isExpanded)
-            .disposed(by: self.disposeBag)
-        
-        return cell
-    }
-}

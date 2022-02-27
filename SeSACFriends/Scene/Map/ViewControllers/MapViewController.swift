@@ -115,7 +115,7 @@ final class MapViewController: UIViewController {
             }
             .bind(to: mainView.searchButton.rx.image(for: .normal))
             .disposed(by: disposeBag)
-//        
+       
         mainView.searchButton.rx.tap
             .subscribe { [weak self] _ in
                 let vc =  SearchHobbyViewController()

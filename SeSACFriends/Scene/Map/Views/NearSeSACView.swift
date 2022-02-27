@@ -12,6 +12,7 @@ import RxSwift
 class NearSeSACView: UIView {
     let tableView = UITableView().then {
         $0.register(NearSeSACCell.self, forCellReuseIdentifier: NearSeSACCell.reuseIdentifier)
+        $0.separatorStyle = .none
     }
     
     override init(frame: CGRect) {

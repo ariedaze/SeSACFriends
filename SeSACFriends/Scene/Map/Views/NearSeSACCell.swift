@@ -16,9 +16,11 @@ class NearSeSACCell: UITableViewCell {
         sesacCard.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+        sesacCard.isExpanded = true
         sesacCard.titleCollectionView.dataSource = self
         sesacCard.titleCollectionView.delegate = self
-        sesacCard.profileImageView.button.setTitle("저장하기", for: .normal)
+        sesacCard.profileImageView.button.status = .error
+        sesacCard.profileImageView.button.setTitle("요청하기", for: .normal)
     }
     
     required init?(coder: NSCoder) {

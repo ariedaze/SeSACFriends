@@ -13,12 +13,15 @@ class SeSACProfileImageView: UIView, ViewRepresentable {
     // 1. 프로필이미지
     let profileImageView = UIImageView().then {
         $0.layer.cornerRadius = 8
-        $0.backgroundColor = .yellow
+        $0.clipsToBounds = true
     }
+    
+    let sesacImageView = UIImageView()
     
     lazy var button: SeSACButton = {
         let button = SeSACButton()
         button.status = .fill
+        button.size = .h40
         return button
     }()
     
@@ -34,7 +37,7 @@ class SeSACProfileImageView: UIView, ViewRepresentable {
     
     func setUpViews() {
         addSubview(profileImageView)
-        
+        addSubview(sesacImageView)
         addSubview(button)
     
     }
@@ -42,6 +45,11 @@ class SeSACProfileImageView: UIView, ViewRepresentable {
         profileImageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
             $0.height.equalTo(self.snp.width).multipliedBy(0.55)
+        }
+        sesacImageView.snp.makeConstraints {
+            $0.width.height.equalTo(profileImageView.snp.height)
+            $0.centerY.equalTo(profileImageView).offset(16)
+            $0.centerX.equalTo(profileImageView)
         }
         button.snp.makeConstraints {
             $0.top.equalTo(profileImageView.snp.top).offset(13)

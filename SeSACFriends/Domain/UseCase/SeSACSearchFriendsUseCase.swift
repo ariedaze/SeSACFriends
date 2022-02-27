@@ -11,10 +11,12 @@ import RxSwift
 
 protocol SearchFriendsUseCase {
     var onqueueResponse: PublishSubject<QueueResponse> { get set }
-    var toastMessage: PublishSubject<String> { get set }
+    var queueState: PublishSubject<QueueState> { get set }
+    var stoppedSearch: PublishSubject<Bool> { get set }
     var requestSuccess: PublishSubject<Bool> { get set }
     
     func onqueue(lat: Double, long: Double)
+    func checkQueueStatus()
 }
 
 
@@ -23,7 +25,8 @@ final class SeSACSearchFriendsUseCase: SearchFriendsUseCase {
     private let disposeBag = DisposeBag()
     
     var onqueueResponse = PublishSubject<QueueResponse>()
-    var toastMessage = PublishSubject<String>()
+    var queueState = PublishSubject<QueueState>()
+    var stoppedSearch = PublishSubject<Bool>()
     var requestSuccess = PublishSubject<Bool>()
     
     func onqueue(lat: Double, long: Double) {
@@ -41,6 +44,21 @@ final class SeSACSearchFriendsUseCase: SearchFriendsUseCase {
             .disposed(by: disposeBag)
     }
     
-    
-    
+    func checkQueueStatus() {
+        queueRepository.myQueueState()
+            .catchSeSACNetworkError(QueueStateError.self)
+            .map(QueueState.self)
+            .subscribe { [weak self] result in
+                switch result {
+                case .success(let queueState):
+                    self?.queueState.onNext(queueState)
+                case .failure(let error):
+                    print("queuestate error", error)
+                    if error as! QueueStateError == QueueStateError.stoppedStateError {
+                        self?.stoppedSearch.onNext(true)
+                    }
+                }
+            }
+            .disposed(by: disposeBag)
+    }
 }

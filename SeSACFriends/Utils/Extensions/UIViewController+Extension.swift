@@ -47,7 +47,17 @@ extension UIViewController {
             windowScene.windows.first?.makeKeyAndVisible()
         }
     }
-
+    
+    static func changeRootViewControllerToChat() {
+        let vc = ChatViewController()
+        DispatchQueue.main.async {
+            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+                return
+            }
+            windowScene.windows.first?.rootViewController = vc
+            windowScene.windows.first?.makeKeyAndVisible()
+        }
+    }
 }
 
 // UINavigationItem

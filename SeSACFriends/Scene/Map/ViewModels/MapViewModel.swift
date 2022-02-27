@@ -86,7 +86,6 @@ final class MapViewModel: ViewModelType {
                 } else {
                     output.matchedState.accept(.matched)
                 }
-                
             })
             .disposed(by: disposeBag)
         

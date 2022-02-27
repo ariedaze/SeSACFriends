@@ -9,7 +9,7 @@ import UIKit
 
 // 정보 관리, 새싹 찾기에 들어가는 카드뷰
 class SeSACCardView: UIView {
-    var isExpanded = false {
+    var isExpanded = true {
         willSet {
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear) {
                 self.sesacTitleView.isHidden = !newValue

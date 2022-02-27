@@ -53,6 +53,9 @@ final class ManageInfoViewController: UIViewController {
                 self?.mainView.ageLabel.text = "\(info.ageMin)-\(info.ageMax)"
                 self?.mainView.ageSlider.value = [CGFloat(info.ageMin), CGFloat(info.ageMax)]
                 self?.mainView.numberAccessSwitch.isOn = info.searchable == 1 ? true : false
+                
+                self?.mainView.seSacCardView.profileImageView.profileImageView.image = UIImage(named: "sesac_background_\(info.background+1)")
+                self?.mainView.seSacCardView.profileImageView.sesacImageView.image = UIImage(named: "sesac_face_\(info.sesac+1)")
             })
             .disposed(by: disposeBag)
         

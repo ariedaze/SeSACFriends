@@ -64,6 +64,14 @@ extension SeSACButton {
             self.backgroundColor = ColorTheme.white
             self.setTitleColor(ColorTheme.black, for: .normal)
             self.layer.borderWidth = 0
+        case .error:
+            self.backgroundColor = ColorTheme.error
+            self.setTitleColor(ColorTheme.white, for: .normal)
+            self.layer.borderWidth = 0
+        case .success:
+            self.backgroundColor = ColorTheme.success
+            self.setTitleColor(ColorTheme.white, for: .normal)
+            self.layer.borderWidth = 0
         }
     }
     
@@ -74,6 +82,8 @@ extension SeSACButton {
         case cancel
         case disable
         case normal
+        case error
+        case success
     }
     
     enum Size: Int {
