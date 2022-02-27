@@ -29,6 +29,7 @@ final class DefaultQueueRepository: QueueRepository {
     
     // 주변 새싹 찾기
     func onqueue(lat: Double, long: Double) -> Single<Response> {
+        print("onqueue request type?", AppSettings.idToken)
         let parameters = [
             "lat": lat, // 위도
             "long": long, // 경도

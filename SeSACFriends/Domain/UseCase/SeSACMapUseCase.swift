@@ -18,6 +18,7 @@ final class SeSACMapUseCase: MapUseCase {
     var authorizationStatus = BehaviorSubject<LocationAuthorizationStatus?>(value: nil)
     var userLocation = BehaviorSubject<CLLocationCoordinate2D>(value: CLLocationCoordinate2D(latitude: 37.51818789942772, longitude: 126.88541765534976))
     var onqueueResponse = PublishSubject<QueueResponse>()
+    var queueState = PublishSubject<QueueState>()
     
     func checkAuthorization() {
         self.locationService.observeUpdatedAuthorization()
@@ -71,12 +72,17 @@ final class SeSACMapUseCase: MapUseCase {
     }
     
     func checkQueueStatus() {
-//        queueRepository.myQueueState()
-//            .catchQueueError(TestError.self)
-//            .map { $0 }
-//            .subscribe { [weak self] result in
-//                print(result)
-//            }
-//            .disposed(by: disposeBag)
+        queueRepository.myQueueState()
+            .catchSeSACNetworkError(QueueStateError.self)
+            .map(QueueState.self)
+            .subscribe { [weak self] result in
+                switch result {
+                case .success(let queueState):
+                    self?.queueState.onNext(queueState)
+                case .failure(let error):
+                    print("queuestate error", error)
+                }
+            }
+            .disposed(by: disposeBag)
     }
 }

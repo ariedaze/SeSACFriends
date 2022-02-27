@@ -78,7 +78,7 @@ final class AuthPhoneViewModel: ValidationViewModel, ViewModelType {
                 return false
             }
             .emit { [weak self] res in
-                AppSettings.phoneNumber = res
+                AppSettings.phoneNumber = res ?? ""
                 FirebaseService.verify(phoneNumber: res)
                     .subscribe(onNext: {
                         self?.verificationSuccess.accept($0)

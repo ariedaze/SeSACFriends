@@ -25,5 +25,5 @@ struct FromQueueDB: Codable {
 
 struct QueueState: Codable {
     let dodged, matched, reviewed: Int
-    let matchedNick, matchedUid: String
+    let matchedNick, matchedUid: String?
 }

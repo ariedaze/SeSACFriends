@@ -17,7 +17,9 @@ enum LocationAuthorizationStatus {
 protocol MapUseCase {
     var authorizationStatus: BehaviorSubject<LocationAuthorizationStatus?> { get set }
     var userLocation: BehaviorSubject<CLLocationCoordinate2D> { get set }
-    var onqueueResponse: PublishSubject<QueueResponse> {get set}
+    var onqueueResponse: PublishSubject<QueueResponse> { get set }
+    var queueState: PublishSubject<QueueState> { get set }
+    
     func onqueue(at location: CLLocationCoordinate2D)
     func checkQueueStatus()
     func startLocationTracker()

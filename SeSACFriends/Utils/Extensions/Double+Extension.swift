@@ -19,4 +19,13 @@ extension Double {
         let longPositive = Int((self+180)*100000)
         return longPositive/Int(pow(10.0, Double(longPositive.description.count-5)))
     }
+    
+    // CLLocationCoordinate2D Equatable을 위한 프로퍼티
+    var cutNumber: String {
+        return String(format: "%.3f", self)
+    }
+}
+
+extension Double {
+    
 }

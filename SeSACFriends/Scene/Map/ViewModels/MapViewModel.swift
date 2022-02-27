@@ -34,6 +34,7 @@ final class MapViewModel: ViewModelType {
             .subscribe({ [weak self] _ in
                 self?.mapUseCase.startLocationTracker()
                 self?.mapUseCase.observeUserLocation()
+                self?.mapUseCase.checkQueueStatus()
             })
             .disposed(by: disposeBag)
         
@@ -70,11 +71,22 @@ final class MapViewModel: ViewModelType {
                 self?.mapUseCase.onqueue(at: location)
             })
             .disposed(by: disposeBag)
-        
+
         self.mapUseCase.onqueueResponse
             .subscribe(onNext: { response in
                 print("output", response.fromQueueDB.count)
                 output.sesacList.accept(response.fromQueueDB)
+            })
+            .disposed(by: disposeBag)
+        
+        self.mapUseCase.queueState
+            .subscribe(onNext: {response in
+                if response.matched == 0 {
+                    output.matchedState.accept(.matching)
+                } else {
+                    output.matchedState.accept(.matched)
+                }
+                
             })
             .disposed(by: disposeBag)
         
@@ -90,26 +102,6 @@ final class MapViewModel: ViewModelType {
             .map({ true })
             .bind(to: output.shouldSetCenter)
             .disposed(by: disposeBag)
-        
-//        input.viewWillAppear
-//            .flatMap {self.networkingApi.request(.myQueueState) }
-//            .filter({ response in
-//                if response.statusCode == 200 { return true }
-//                else if response.statusCode == 201 {
-//                    print("친구 찾기 중단된 상태")
-//                    self.matchedState.accept(.normal)
-//                }
-//                return false
-//            })
-//            .map(QueueState.self)
-//            .subscribe(onNext: { queue in
-//                if queue.matched == 0 { // 대기중.
-//                    self.matchedState.accept(.matching)
-//                } else {
-//                    self.matchedState.accept(.matched)
-//                }
-//            })
-//            .disposed(by: disposeBag)
 
         return output
     }
@@ -135,14 +127,3 @@ extension MapViewModel {
     }
 }
 
-extension CLLocationCoordinate2D: Equatable {}
-
-public func ==(lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
-    return lhs.latitude.cutNumber == rhs.latitude.cutNumber && lhs.longitude.cutNumber == rhs.longitude.cutNumber
-}
-
-extension Double {
-    var cutNumber: String {
-        return String(format: "%.3f", self)
-    }
-}

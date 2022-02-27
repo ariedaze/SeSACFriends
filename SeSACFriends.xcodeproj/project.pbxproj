@@ -106,6 +106,8 @@
 		E590080227C7E864002DD0E6 /* SeSACMyInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590080127C7E864002DD0E6 /* SeSACMyInfoUseCase.swift */; };
 		E590080427C7EBB3002DD0E6 /* MyInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590080327C7EBB3002DD0E6 /* MyInfoModel.swift */; };
 		E590080627C7EC45002DD0E6 /* MyInfoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590080527C7EC45002DD0E6 /* MyInfoError.swift */; };
+		E590080827CBF0FA002DD0E6 /* QueueStateError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590080727CBF0FA002DD0E6 /* QueueStateError.swift */; };
+		E590080A27CBF534002DD0E6 /* CLLocationCorrdinate2D+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E590080927CBF534002DD0E6 /* CLLocationCorrdinate2D+Extension.swift */; };
 		E5BD0DE027BEE7640016808B /* OnqueueError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD0DDF27BEE7640016808B /* OnqueueError.swift */; };
 		E5BD0DE227BF09060016808B /* ButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BD0DE127BF09060016808B /* ButtonCollectionViewCell.swift */; };
 		E5D41B8427AAAF1F00021C58 /* FontTHeme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B7927AAAF1D00021C58 /* FontTHeme.swift */; };
@@ -218,6 +220,8 @@
 		E590080127C7E864002DD0E6 /* SeSACMyInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACMyInfoUseCase.swift; sourceTree = "<group>"; };
 		E590080327C7EBB3002DD0E6 /* MyInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoModel.swift; sourceTree = "<group>"; };
 		E590080527C7EC45002DD0E6 /* MyInfoError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoError.swift; sourceTree = "<group>"; };
+		E590080727CBF0FA002DD0E6 /* QueueStateError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueStateError.swift; sourceTree = "<group>"; };
+		E590080927CBF534002DD0E6 /* CLLocationCorrdinate2D+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCorrdinate2D+Extension.swift"; sourceTree = "<group>"; };
 		E5BD0DDF27BEE7640016808B /* OnqueueError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnqueueError.swift; sourceTree = "<group>"; };
 		E5BD0DE127BF09060016808B /* ButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCollectionViewCell.swift; sourceTree = "<group>"; };
 		E5D41B7927AAAF1D00021C58 /* FontTHeme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontTHeme.swift; sourceTree = "<group>"; };
@@ -398,6 +402,7 @@
 				E575408B279D5D5A001F9247 /* String+Extension.swift */,
 				E5754090279DD0B6001F9247 /* UIViewController+Extension.swift */,
 				E57A31C927B919D300276D7F /* Double+Extension.swift */,
+				E590080927CBF534002DD0E6 /* CLLocationCorrdinate2D+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -597,6 +602,7 @@
 		E5BD0DDE27BEE73A0016808B /* Error */ = {
 			isa = PBXGroup;
 			children = (
+				E590080727CBF0FA002DD0E6 /* QueueStateError.swift */,
 				E59007FA27C7CC62002DD0E6 /* protocol */,
 				E5BD0DDF27BEE7640016808B /* OnqueueError.swift */,
 				E50F99F827C4636E003E2179 /* QueueError.swift */,
@@ -813,6 +819,7 @@
 				E56C4D0127BB726500A91EC8 /* NearSeSACCell.swift in Sources */,
 				E56C4D1E27BE76C200A91EC8 /* DefaultQueueRepository.swift in Sources */,
 				E5754070279A4ED2001F9247 /* AuthEmailViewController.swift in Sources */,
+				E590080827CBF0FA002DD0E6 /* QueueStateError.swift in Sources */,
 				E57540A3279E8A3A001F9247 /* AuthGenderViewModel.swift in Sources */,
 				E5BD0DE227BF09060016808B /* ButtonCollectionViewCell.swift in Sources */,
 				E575409C279DF222001F9247 /* ViewModelType.swift in Sources */,
@@ -832,6 +839,7 @@
 				E575401C27968ED0001F9247 /* AppDelegate.swift in Sources */,
 				E50F99F327C2CE28003E2179 /* LocationConstant.swift in Sources */,
 				E57A31A427B1ADEC00276D7F /* SeSACAnnotationView.swift in Sources */,
+				E590080A27CBF534002DD0E6 /* CLLocationCorrdinate2D+Extension.swift in Sources */,
 				E5754081279D1AB8001F9247 /* AuthTextFieldView.swift in Sources */,
 				E5D41B8D27AAAF1F00021C58 /* ColorTheme.swift in Sources */,
 				E56C4CFF27BB722900A91EC8 /* NearSeSACViewController.swift in Sources */,

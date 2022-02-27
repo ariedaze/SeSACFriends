@@ -102,19 +102,19 @@ final class MapViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-//        output.matchedState // 매칭 상태
-//            .map {
-//                switch $0 {
-//                case .matched:
-//                    return UIImage(named: "search_matched")!
-//                case .matching:
-//                    return UIImage(named: "search_matching")!
-//                case .normal:
-//                    return UIImage(named: "search_default")!
-//                }
-//            }
-//            .bind(to: mainView.searchButton.rx.image(for: .normal))
-//            .disposed(by: disposeBag)
+        output.matchedState // 매칭 상태
+            .map {
+                switch $0 {
+                case .matched:
+                    return UIImage(named: "search_matched")!
+                case .matching:
+                    return UIImage(named: "search_matching")!
+                case .normal:
+                    return UIImage(named: "search_default")!
+                }
+            }
+            .bind(to: mainView.searchButton.rx.image(for: .normal))
+            .disposed(by: disposeBag)
 //        
         mainView.searchButton.rx.tap
             .subscribe { [weak self] _ in
