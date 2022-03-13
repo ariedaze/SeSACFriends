@@ -17,12 +17,12 @@ final class SeSACTabBarView: UIView {
         
         // 인디케이터
         $0.indicator.weight = .custom(value: 2)
-        $0.indicator.tintColor = ColorTheme.brandgreen
+        $0.indicator.tintColor = Colors.brandgreen.color
         
         // tintColor + font size
         $0.buttons.customize { (button) in
-            button.tintColor = ColorTheme.gray6
-            button.selectedTintColor = ColorTheme.brandgreen
+            button.tintColor = Colors.gray6.color
+            button.selectedTintColor = Colors.brandgreen.color
             button.font = FontTheme.Title4_R14
             button.selectedFont = FontTheme.Title3_M14
         }

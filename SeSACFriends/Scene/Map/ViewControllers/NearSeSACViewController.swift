@@ -56,7 +56,8 @@ class NearSeSACViewController: UIViewController {
             disposeBag: disposeBag
         )
         
-        if self.type == .nearSeSAC {
+        switch self.type {
+        case .nearSeSAC:
             output.fromQueueDB
                 .asDriver(onErrorJustReturn: [])
                 .drive(
@@ -69,7 +70,7 @@ class NearSeSACViewController: UIViewController {
                     cell.sesacCard.nicknameLabel.text = element.nick
                 }
                 .disposed(by: disposeBag)
-        } else {
+        case .receiveSeSAC:
             output.fromQueueDBRequested
                 .asDriver(onErrorJustReturn: [])
                 .drive(
@@ -91,9 +92,7 @@ class NearSeSACViewController: UIViewController {
                 }
                 .disposed(by: disposeBag)
         }
-        
-        
-        
+
         output.moveToHome
             .subscribe(onNext: { response in
                 if response {

@@ -56,6 +56,9 @@ final class ManageInfoViewController: UIViewController {
                 
                 self?.mainView.seSacCardView.profileImageView.profileImageView.image = UIImage(named: "sesac_background_\(info.background+1)")
                 self?.mainView.seSacCardView.profileImageView.sesacImageView.image = UIImage(named: "sesac_face_\(info.sesac+1)")
+                
+                
+                self?.mainView.seSacCardView.sesacReviewContentLabel.text = info.comment.first
             })
             .disposed(by: disposeBag)
         

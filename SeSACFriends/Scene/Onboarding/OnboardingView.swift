@@ -38,8 +38,8 @@ class OnboardingView: UIView, ViewRepresentable {
         $0.currentPage = 0
         $0.numberOfPages = 3
         $0.backgroundStyle = .minimal
-        $0.pageIndicatorTintColor = ColorTheme.gray5
-        $0.currentPageIndicatorTintColor = ColorTheme.black
+        $0.pageIndicatorTintColor = Colors.gray5.color
+        $0.currentPageIndicatorTintColor = Colors.black.color
         $0.isUserInteractionEnabled = false
     }
     

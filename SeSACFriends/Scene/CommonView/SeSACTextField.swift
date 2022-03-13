@@ -17,7 +17,7 @@ class SeSACTextField: UITextField {
         didSet {
             label.text = placeholder
             attributedPlaceholder = NSAttributedString(string: placeholder ?? "", attributes: [
-                NSAttributedString.Key.foregroundColor: ColorTheme.gray7,
+                NSAttributedString.Key.foregroundColor: Colors.gray7.color,
                 NSAttributedString.Key.font: FontTheme.Title4_R14
             ])
         }
@@ -83,23 +83,23 @@ extension SeSACTextField {
         self.font = FontTheme.Title4_R14
         switch status {
         case .inactive:
-            self.textColor = ColorTheme.gray7
-            self.border.backgroundColor = ColorTheme.gray3
+            self.textColor = Colors.gray7.color
+            self.border.backgroundColor = Colors.gray3.color
         case .focus:
-            self.textColor = ColorTheme.black
-            self.border.backgroundColor = ColorTheme.black
+            self.textColor = Colors.black.color
+            self.border.backgroundColor = Colors.black.color
         case .active:
-            self.textColor = ColorTheme.black
-            self.border.backgroundColor = ColorTheme.gray3
+            self.textColor = Colors.black.color
+            self.border.backgroundColor = Colors.gray3.color
         case .disable:
-            self.textColor = ColorTheme.gray7
+            self.textColor = Colors.gray7.color
             self.border.backgroundColor = .clear
         case .error:
-            self.textColor = ColorTheme.black
-            self.border.backgroundColor = ColorTheme.error
+            self.textColor = Colors.black.color
+            self.border.backgroundColor = Colors.error.color
         case .success:
-            self.textColor = ColorTheme.black
-            self.border.backgroundColor = ColorTheme.success
+            self.textColor = Colors.black.color
+            self.border.backgroundColor = Colors.success.color
 
         }
     }

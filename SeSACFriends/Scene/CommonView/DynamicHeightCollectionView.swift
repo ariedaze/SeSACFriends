@@ -19,3 +19,18 @@ class DynamicHeightCollectionView: UICollectionView {
         return contentSize
     }
 }
+
+class DynamicHeightTableView: UITableView {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if !__CGSizeEqualToSize(bounds.size, self.intrinsicContentSize) {
+            self.invalidateIntrinsicContentSize()
+        }
+    }
+    
+    override var contentSize: CGSize {
+        didSet{
+            self.invalidateIntrinsicContentSize()
+        }
+    }
+}

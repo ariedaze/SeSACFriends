@@ -33,29 +33,29 @@ final class MapView: UIView, ViewRepresentable {
     }
     
     let totalButton = UIButton().then {
-        $0.backgroundColor = ColorTheme.brandgreen
-        $0.setTitleColor(ColorTheme.white, for: .normal)
+        $0.backgroundColor = Colors.brandgreen.color
+        $0.setTitleColor(Colors.white.color, for: .normal)
         $0.setTitle("전체", for: .normal)
         $0.titleLabel?.font = FontTheme.Body3_R14
     }
     let manButton = UIButton().then {
-        $0.backgroundColor = ColorTheme.white
-        $0.setTitleColor(ColorTheme.black, for: .normal)
+        $0.backgroundColor = Colors.white.color
+        $0.setTitleColor(Colors.black.color, for: .normal)
         $0.setTitle("남자", for: .normal)
         $0.titleLabel?.font = FontTheme.Body3_R14
     }
     let womanButton = UIButton().then {
-        $0.backgroundColor = ColorTheme.white
-        $0.setTitleColor(ColorTheme.black, for: .normal)
+        $0.backgroundColor = Colors.white.color
+        $0.setTitleColor(Colors.black.color, for: .normal)
         $0.setTitle("여자", for: .normal)
         $0.titleLabel?.font = FontTheme.Body3_R14
     }
     
     let myLocationButton = UIButton().then {
-        $0.backgroundColor = ColorTheme.white
+        $0.backgroundColor = Colors.white.color
         $0.setImage(UIImage(named: "place"), for: .normal)
         $0.layer.cornerRadius = 8
-        $0.layer.shadowColor = ColorTheme.gray3.cgColor
+        $0.layer.shadowColor = Colors.gray3.color.cgColor
         $0.layer.shadowOpacity = 1.0
         $0.layer.shadowOffset = CGSize.zero
         $0.layer.shadowRadius = 2

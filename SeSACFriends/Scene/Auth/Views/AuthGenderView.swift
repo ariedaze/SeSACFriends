@@ -13,7 +13,7 @@ final class AuthGenderView: AuthCommonView {
         view.clipsToBounds = false
         view.layer.borderWidth = 1
         view.layer.cornerRadius = 8
-        view.layer.borderColor = ColorTheme.gray3.cgColor
+        view.layer.borderColor = Colors.gray3.color.cgColor
         return view
     }()
     let manContentView: UIView = UIView()
@@ -26,7 +26,7 @@ final class AuthGenderView: AuthCommonView {
         let label = UILabel()
         label.text = "남자"
         label.textAlignment = .center
-        label.textColor = ColorTheme.black
+        label.textColor = Colors.black.color
         label.font = FontTheme.Title2_R16
         return label
     }()
@@ -36,7 +36,7 @@ final class AuthGenderView: AuthCommonView {
         let view = UIView()
         view.layer.borderWidth = 1
         view.layer.cornerRadius = 8
-        view.layer.borderColor = ColorTheme.gray3.cgColor
+        view.layer.borderColor = Colors.gray3.color.cgColor
         return view
     }()
     let womanContentView: UIView = UIView()
@@ -49,7 +49,7 @@ final class AuthGenderView: AuthCommonView {
         let label = UILabel()
         label.text = "여자"
         label.textAlignment = .center
-        label.textColor = ColorTheme.black
+        label.textColor = Colors.black.color
         label.font = FontTheme.Title2_R16
         return label
     }()
@@ -57,10 +57,10 @@ final class AuthGenderView: AuthCommonView {
     
     func background(_ view: UIView, selected: Bool){
         if selected {
-            view.backgroundColor = ColorTheme.whitegreen
+            view.backgroundColor = Colors.whitegreen.color
             view.layer.borderWidth = 0
         } else {
-            view.backgroundColor = ColorTheme.white
+            view.backgroundColor = Colors.white.color
             view.layer.borderWidth = 1
         }
     }

@@ -24,7 +24,7 @@ final class AuthBirthView: AuthCommonView {
     let yearLabel: UILabel = {
         let lb = UILabel()
         lb.font = FontTheme.Title2_R16
-        lb.textColor = ColorTheme.black
+        lb.textColor = Colors.black.color
         lb.text = "년"
         return lb
     }()
@@ -45,7 +45,7 @@ final class AuthBirthView: AuthCommonView {
     let monthLabel: UILabel = {
         let lb = UILabel()
         lb.font = FontTheme.Title2_R16
-        lb.textColor = ColorTheme.black
+        lb.textColor = Colors.black.color
         lb.text = "월"
         return lb
     }()
@@ -65,7 +65,7 @@ final class AuthBirthView: AuthCommonView {
     let dayLabel: UILabel = {
         let lb = UILabel()
         lb.font = FontTheme.Title2_R16
-        lb.textColor = ColorTheme.black
+        lb.textColor = Colors.black.color
         lb.text = "일"
         return lb
     }()

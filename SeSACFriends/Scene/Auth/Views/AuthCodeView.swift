@@ -14,7 +14,7 @@ final class AuthCodeView: AuthCommonView {
     
     let timeLabel: UILabel = {
         let label = UILabel()
-        label.textColor = ColorTheme.brandgreen
+        label.textColor = Colors.brandgreen.color
         label.font = FontTheme.Title3_M14
         return label
     }()

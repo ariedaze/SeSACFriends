@@ -21,7 +21,7 @@ class AuthCommonView: UIView, ViewRepresentable {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = FontTheme.Display1_R20
-        label.textColor = ColorTheme.black
+        label.textColor = Colors.black.color
         label.numberOfLines = 2
         label.textAlignment = .center
         return label
@@ -30,7 +30,7 @@ class AuthCommonView: UIView, ViewRepresentable {
     lazy var descriptionLabel: UILabel? = {
         let label = UILabel()
         label.font = FontTheme.Title2_R16
-        label.textColor = ColorTheme.gray7
+        label.textColor = Colors.gray7.color
         label.textAlignment = .center
         label.numberOfLines = 0
         return label

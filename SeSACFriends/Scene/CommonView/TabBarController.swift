@@ -16,20 +16,20 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
     
     private func configureTabBarItems() {
-        self.tabBar.tintColor = ColorTheme.brandgreen
-        self.tabBar.unselectedItemTintColor = ColorTheme.gray6
+        self.tabBar.tintColor = Colors.brandgreen.color
+        self.tabBar.unselectedItemTintColor = Colors.gray6.color
         self.tabBar.isTranslucent = false
         if #available(iOS 15, *) {
             let tabBarAppearance = UITabBarAppearance()
             tabBarAppearance.backgroundColor = .white
-            tabBarAppearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: ColorTheme.brandgreen]
-            tabBarAppearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: ColorTheme.gray6]
+            tabBarAppearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: Colors.brandgreen.color]
+            tabBarAppearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: Colors.gray6.color]
             tabBar.standardAppearance = tabBarAppearance
             tabBar.scrollEdgeAppearance = tabBarAppearance
         } else {
 
-            UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor: ColorTheme.brandgreen], for: .selected)
-            UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor: ColorTheme.gray6], for: .normal)
+            UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor: Colors.brandgreen.color], for: .selected)
+            UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor: Colors.gray6.color], for: .normal)
             tabBar.barTintColor = .white
         }
         

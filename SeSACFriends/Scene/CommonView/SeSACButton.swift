@@ -39,38 +39,38 @@ extension SeSACButton {
     private func configuration() {
         switch status {
         case .inactive:
-            self.backgroundColor = ColorTheme.clear
-            self.setTitleColor(ColorTheme.black, for: .normal)
+            self.backgroundColor = .clear
+            self.setTitleColor(Colors.black.color, for: .normal)
             self.layer.borderWidth = 1
-            self.layer.borderColor = ColorTheme.gray4.cgColor
+            self.layer.borderColor = Colors.gray4.color.cgColor
         case .fill:
-            self.backgroundColor = ColorTheme.brandgreen
-            self.setTitleColor(ColorTheme.white, for: .normal)
+            self.backgroundColor = Colors.brandgreen.color
+            self.setTitleColor(Colors.white.color, for: .normal)
             self.layer.borderWidth = 0
         case .outline:
-            self.backgroundColor = ColorTheme.clear
-            self.setTitleColor(ColorTheme.brandgreen, for: .normal)
+            self.backgroundColor = .clear
+            self.setTitleColor(Colors.brandgreen.color, for: .normal)
             self.layer.borderWidth = 1
-            self.layer.borderColor = ColorTheme.brandgreen.cgColor
+            self.layer.borderColor = Colors.brandgreen.color.cgColor
         case .cancel:
-            self.backgroundColor = ColorTheme.gray2
-            self.setTitleColor(ColorTheme.black, for: .normal)
+            self.backgroundColor = Colors.gray2.color
+            self.setTitleColor(Colors.black.color, for: .normal)
             self.layer.borderWidth = 0
         case .disable:
-            self.backgroundColor = ColorTheme.gray6
-            self.setTitleColor(ColorTheme.gray3, for: .normal)
+            self.backgroundColor = Colors.gray6.color
+            self.setTitleColor(Colors.gray3.color, for: .normal)
             self.layer.borderWidth = 0
         case .normal:
-            self.backgroundColor = ColorTheme.white
-            self.setTitleColor(ColorTheme.black, for: .normal)
+            self.backgroundColor = Colors.white.color
+            self.setTitleColor(Colors.black.color, for: .normal)
             self.layer.borderWidth = 0
         case .error:
-            self.backgroundColor = ColorTheme.error
-            self.setTitleColor(ColorTheme.white, for: .normal)
+            self.backgroundColor = Colors.error.color
+            self.setTitleColor(Colors.white.color, for: .normal)
             self.layer.borderWidth = 0
         case .success:
-            self.backgroundColor = ColorTheme.success
-            self.setTitleColor(ColorTheme.white, for: .normal)
+            self.backgroundColor = Colors.success.color
+            self.setTitleColor(Colors.white.color, for: .normal)
             self.layer.borderWidth = 0
         }
     }

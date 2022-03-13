@@ -10,7 +10,7 @@ import UIKit
 final class HobbyCollectionHeaderView: UICollectionReusableView, Reusable {
     let titleLabel = UILabel().then {
         $0.font = FontTheme.Title6_R12
-        $0.textColor = ColorTheme.black
+        $0.textColor = Colors.black.color
     }
     
     override init(frame: CGRect) {

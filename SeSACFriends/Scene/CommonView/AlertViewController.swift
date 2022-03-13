@@ -10,19 +10,19 @@ import SnapKit
 
 final class AlertViewController: UIViewController, ViewRepresentable {
     let alertView = UIView().then {
-        $0.backgroundColor = ColorTheme.white
+        $0.backgroundColor = Colors.white.color
         $0.layer.cornerRadius = 16
     }
     let titleLabel = UILabel().then {
         $0.font = FontTheme.Body1_M16
-        $0.textColor = ColorTheme.black
+        $0.textColor = Colors.black.color
         $0.numberOfLines = 0
         $0.textAlignment = .center
     }
     
     let descriptionLabel = UILabel().then {
         $0.font = FontTheme.Title4_R14
-        $0.textColor = ColorTheme.gray7
+        $0.textColor = Colors.gray7.color
         $0.numberOfLines = 0
         $0.textAlignment = .center
     }
@@ -49,7 +49,7 @@ final class AlertViewController: UIViewController, ViewRepresentable {
     }
     
     func setUpViews() {
-        view.backgroundColor = ColorTheme.black.withAlphaComponent(0.5)
+        view.backgroundColor = Colors.black.color.withAlphaComponent(0.5)
         view.addSubview(alertView)
         alertView.addSubview(titleLabel)
         alertView.addSubview(descriptionLabel)

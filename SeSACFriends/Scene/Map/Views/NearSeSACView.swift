@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 
 class NearSeSACView: UIView {
-    let tableView = UITableView().then {
+    let tableView = DynamicHeightTableView().then {
         $0.register(NearSeSACCell.self, forCellReuseIdentifier: NearSeSACCell.reuseIdentifier)
         $0.separatorStyle = .none
     }

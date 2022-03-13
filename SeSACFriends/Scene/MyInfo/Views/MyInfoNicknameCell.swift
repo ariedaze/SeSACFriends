@@ -10,7 +10,7 @@ import UIKit
 final class MyInfoNicknameCell: UITableViewCell, ViewRepresentable {
     let sesacImageView = UIImageView().then {
         $0.image = UIImage(named: "sesac_face_1")
-        $0.layer.borderColor = ColorTheme.gray2.cgColor
+        $0.layer.borderColor = Colors.gray2.color.cgColor
         $0.layer.borderWidth = 1
         $0.layer.cornerRadius = 24
     }

@@ -11,7 +11,7 @@ final class ShopInfoView: UIView {
     
     let sesacNameLabel = UILabel().then {
         $0.font = FontTheme.Title2_R16
-        $0.textColor = ColorTheme.black
+        $0.textColor = Colors.black.color
     }
     
     let priceLabel = SeSACButton().then {
@@ -21,7 +21,7 @@ final class ShopInfoView: UIView {
     
     let infoLabel = UILabel().then {
         $0.font = FontTheme.Body3_R14
-        $0.textColor = ColorTheme.black
+        $0.textColor = Colors.black.color
     }
     
     override init(frame: CGRect) {

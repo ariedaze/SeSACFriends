@@ -74,9 +74,9 @@ extension MyInfoViewController: UITableViewDelegate, UITableViewDataSource {
             var content = cell.defaultContentConfiguration()
             let category = MyInfo.allCases[indexPath.row]
             content.image = UIImage(named: "\(category.imageName)")
-            content.imageProperties.tintColor = ColorTheme.black
+            content.imageProperties.tintColor = Colors.black.color
             content.imageToTextPadding = 14
-            content.attributedText = NSAttributedString(string: "\(category.rawValue)", attributes: [ .font: FontTheme.Title2_R16, .foregroundColor: ColorTheme.black])
+            content.attributedText = NSAttributedString(string: "\(category.rawValue)", attributes: [ .font: FontTheme.Title2_R16, .foregroundColor: Colors.black.color])
             cell.contentConfiguration = content
             cell.selectionStyle = .none
             return cell

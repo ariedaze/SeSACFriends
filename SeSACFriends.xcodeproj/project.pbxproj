@@ -99,6 +99,8 @@
 		E57A31B527B6EC6600276D7F /* SearchHobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A31B427B6EC6600276D7F /* SearchHobbyView.swift */; };
 		E57A31C827B9177400276D7F /* SearchHobbyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A31C727B9177400276D7F /* SearchHobbyViewModel.swift */; };
 		E57A31CA27B919D300276D7F /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A31C927B919D300276D7F /* Double+Extension.swift */; };
+		E58A9C2327DE42A900A4ACBB /* Colors+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58A9C2127DE42A800A4ACBB /* Colors+Generated.swift */; };
+		E58A9C2427DE42A900A4ACBB /* Fonts+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58A9C2227DE42A800A4ACBB /* Fonts+Generated.swift */; };
 		E59007F927C7CC54002DD0E6 /* SeSACNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59007F827C7CC54002DD0E6 /* SeSACNetworkError.swift */; };
 		E59007FC27C7DD98002DD0E6 /* SeSACSearchFriendsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59007FB27C7DD98002DD0E6 /* SeSACSearchFriendsUseCase.swift */; };
 		E59007FE27C7E0C2002DD0E6 /* SearchFriendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59007FD27C7E0C2002DD0E6 /* SearchFriendsViewModel.swift */; };
@@ -120,7 +122,6 @@
 		E5D41B8A27AAAF1F00021C58 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5D41B8027AAAF1E00021C58 /* NotoSansKR-Medium.otf */; };
 		E5D41B8B27AAAF1F00021C58 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5D41B8127AAAF1E00021C58 /* NotoSansKR-Regular.otf */; };
 		E5D41B8C27AAAF1F00021C58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5D41B8227AAAF1F00021C58 /* Assets.xcassets */; };
-		E5D41B8D27AAAF1F00021C58 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B8327AAAF1F00021C58 /* ColorTheme.swift */; };
 		E5D41B9527AC110500021C58 /* ManageInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B9427AC110500021C58 /* ManageInfoView.swift */; };
 		E5D41B9727AC122600021C58 /* ManageInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41B9627AC122600021C58 /* ManageInfoViewController.swift */; };
 		E5D41B9A27AC3F0100021C58 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = E5D41B9927AC3F0100021C58 /* Then */; };
@@ -128,6 +129,7 @@
 		E5D41BA127AC7A6100021C58 /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D41BA027AC7A6100021C58 /* DynamicHeightCollectionView.swift */; };
 		E5D41BA527AD7C2C00021C58 /* MultiSlider in Frameworks */ = {isa = PBXBuildFile; productRef = E5D41BA427AD7C2C00021C58 /* MultiSlider */; };
 		E5D41BAA27AD964100021C58 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5D41BA927AD964100021C58 /* Colors.xcassets */; };
+		E5D74D3A27DCD1A20024475F /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = E5D74D3927DCD1A20024475F /* SocketIO */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -214,6 +216,8 @@
 		E57A31B427B6EC6600276D7F /* SearchHobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHobbyView.swift; sourceTree = "<group>"; };
 		E57A31C727B9177400276D7F /* SearchHobbyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHobbyViewModel.swift; sourceTree = "<group>"; };
 		E57A31C927B919D300276D7F /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		E58A9C2127DE42A800A4ACBB /* Colors+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Colors+Generated.swift"; sourceTree = "<group>"; };
+		E58A9C2227DE42A800A4ACBB /* Fonts+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Fonts+Generated.swift"; sourceTree = "<group>"; };
 		E59007F827C7CC54002DD0E6 /* SeSACNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACNetworkError.swift; sourceTree = "<group>"; };
 		E59007FB27C7DD98002DD0E6 /* SeSACSearchFriendsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACSearchFriendsUseCase.swift; sourceTree = "<group>"; };
 		E59007FD27C7E0C2002DD0E6 /* SearchFriendsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendsViewModel.swift; sourceTree = "<group>"; };
@@ -235,7 +239,6 @@
 		E5D41B8027AAAF1E00021C58 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		E5D41B8127AAAF1E00021C58 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		E5D41B8227AAAF1F00021C58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E5D41B8327AAAF1F00021C58 /* ColorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
 		E5D41B9427AC110500021C58 /* ManageInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageInfoView.swift; sourceTree = "<group>"; };
 		E5D41B9627AC122600021C58 /* ManageInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageInfoViewController.swift; sourceTree = "<group>"; };
 		E5D41B9C27AC4CD700021C58 /* ManageInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageInfoViewModel.swift; sourceTree = "<group>"; };
@@ -257,6 +260,7 @@
 				E50F99E727C27ED2003E2179 /* RxRelay in Frameworks */,
 				E575405127970E17001F9247 /* SnapKit in Frameworks */,
 				E57540AE27A09B49001F9247 /* Moya in Frameworks */,
+				E5D74D3A27DCD1A20024475F /* SocketIO in Frameworks */,
 				E57540B027A09B49001F9247 /* RxMoya in Frameworks */,
 				E50F99EC27C27F5C003E2179 /* RxDataSources in Frameworks */,
 				E575409F279DF54C001F9247 /* Toast in Frameworks */,
@@ -616,16 +620,17 @@
 		E5D41B7827AAAF0F00021C58 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E58A9C2127DE42A800A4ACBB /* Colors+Generated.swift */,
+				E58A9C2227DE42A800A4ACBB /* Fonts+Generated.swift */,
 				E5D41B8227AAAF1F00021C58 /* Assets.xcassets */,
-				E5D41B8327AAAF1F00021C58 /* ColorTheme.swift */,
 				E5D41B7927AAAF1D00021C58 /* FontTHeme.swift */,
-				E5D41B7A27AAAF1E00021C58 /* Noto_Sans_KR */,
+				E5D41B7A27AAAF1E00021C58 /* Fonts */,
 				E5D41BA927AD964100021C58 /* Colors.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		E5D41B7A27AAAF1E00021C58 /* Noto_Sans_KR */ = {
+		E5D41B7A27AAAF1E00021C58 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
 				E5D41B7B27AAAF1E00021C58 /* NotoSansKR-Light.otf */,
@@ -636,7 +641,7 @@
 				E5D41B8027AAAF1E00021C58 /* NotoSansKR-Medium.otf */,
 				E5D41B8127AAAF1E00021C58 /* NotoSansKR-Regular.otf */,
 			);
-			path = Noto_Sans_KR;
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		E5D41B8E27AAB3FB00021C58 /* Scene */ = {
@@ -717,6 +722,7 @@
 				E50F99E627C27ED2003E2179 /* RxRelay */,
 				E50F99E827C27ED2003E2179 /* RxSwift */,
 				E50F99EB27C27F5C003E2179 /* RxDataSources */,
+				E5D74D3927DCD1A20024475F /* SocketIO */,
 			);
 			productName = SeSACFriends;
 			productReference = E575401827968ED0001F9247 /* SeSACFriends.app */;
@@ -756,6 +762,7 @@
 				E574CB1327BB1772007B7F7E /* XCRemoteSwiftPackageReference "Tabman" */,
 				E50F99E327C27ED2003E2179 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				E50F99EA27C27F5C003E2179 /* XCRemoteSwiftPackageReference "RxDataSources" */,
+				E5D74D3827DCD1A20024475F /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
 			);
 			productRefGroup = E575401927968ED0001F9247 /* Products */;
 			projectDirPath = "";
@@ -828,6 +835,7 @@
 				E5BD0DE227BF09060016808B /* ButtonCollectionViewCell.swift in Sources */,
 				E575409C279DF222001F9247 /* ViewModelType.swift in Sources */,
 				E59007FE27C7E0C2002DD0E6 /* SearchFriendsViewModel.swift in Sources */,
+				E58A9C2427DE42A900A4ACBB /* Fonts+Generated.swift in Sources */,
 				E575408C279D5D5A001F9247 /* String+Extension.swift in Sources */,
 				E50F99F927C4636E003E2179 /* QueueError.swift in Sources */,
 				E57540652798820A001F9247 /* AuthPhoneViewModel.swift in Sources */,
@@ -845,7 +853,6 @@
 				E57A31A427B1ADEC00276D7F /* SeSACAnnotationView.swift in Sources */,
 				E590080A27CBF534002DD0E6 /* CLLocationCorrdinate2D+Extension.swift in Sources */,
 				E5754081279D1AB8001F9247 /* AuthTextFieldView.swift in Sources */,
-				E5D41B8D27AAAF1F00021C58 /* ColorTheme.swift in Sources */,
 				E56C4CFF27BB722900A91EC8 /* NearSeSACViewController.swift in Sources */,
 				E50F99F527C2EE90003E2179 /* InAppPurchase.swift in Sources */,
 				E57A318827AF163100276D7F /* OnboardingView.swift in Sources */,
@@ -889,6 +896,7 @@
 				E590080227C7E864002DD0E6 /* SeSACMyInfoUseCase.swift in Sources */,
 				E56C4D1427BD84D000A91EC8 /* ToastMessage.swift in Sources */,
 				E5754078279B0BDC001F9247 /* AuthModel.swift in Sources */,
+				E58A9C2327DE42A900A4ACBB /* Colors+Generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1174,6 +1182,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		E5D74D3827DCD1A20024475F /* XCRemoteSwiftPackageReference "socket.io-client-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/socketio/socket.io-client-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1241,6 +1257,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E5D41BA327AD7C2B00021C58 /* XCRemoteSwiftPackageReference "MultiSlider" */;
 			productName = MultiSlider;
+		};
+		E5D74D3927DCD1A20024475F /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5D74D3827DCD1A20024475F /* XCRemoteSwiftPackageReference "socket.io-client-swift" */;
+			productName = SocketIO;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

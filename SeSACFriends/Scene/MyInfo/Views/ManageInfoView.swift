@@ -35,7 +35,7 @@ final class ManageInfoView: UIView, ViewRepresentable {
     private let genderLabel = UILabel().then {
         $0.text = "내 성별"
         $0.font = FontTheme.Title4_R14
-        $0.textColor = ColorTheme.black
+        $0.textColor = Colors.black.color
     }
     let manButton = SeSACButton().then {
         $0.setTitle("남자", for: .normal)
@@ -51,7 +51,7 @@ final class ManageInfoView: UIView, ViewRepresentable {
     private let hobbyLabel = UILabel().then {
         $0.text = "자주 하는 취미"
         $0.font = FontTheme.Title4_R14
-        $0.textColor = ColorTheme.black
+        $0.textColor = Colors.black.color
     }
     let hobbyTextField = SeSACTextField().then {
         $0.placeholder = "취미를 입력해주세요"
@@ -61,27 +61,27 @@ final class ManageInfoView: UIView, ViewRepresentable {
     private let numberAccessLabel = UILabel().then {
         $0.text = "내 번호 검색 허용"
         $0.font = FontTheme.Title4_R14
-        $0.textColor = ColorTheme.black
+        $0.textColor = Colors.black.color
     }
     let numberAccessSwitch = UISwitch().then {
-        $0.onTintColor = ColorTheme.brandgreen
+        $0.onTintColor = Colors.brandgreen.color
     }
     // 3-4 상대방
     let searchRangeView = UIView()
     private let searchRangeLabel = UILabel().then {
         $0.text = "상대방 연령대"
         $0.font = FontTheme.Title4_R14
-        $0.textColor = ColorTheme.black
+        $0.textColor = Colors.black.color
     }
     let ageLabel = UILabel().then {
         $0.font = FontTheme.Title3_M14
-        $0.textColor = ColorTheme.brandgreen
+        $0.textColor = Colors.brandgreen.color
     }
     let ageSlider = MultiSlider().then {
         $0.maximumValue = 65
         $0.minimumValue = 17
-        $0.tintColor = ColorTheme.brandgreen // color of track
-        $0.outerTrackColor = ColorTheme.gray2
+        $0.tintColor = Colors.brandgreen.color // color of track
+        $0.outerTrackColor = Colors.gray2.color
         $0.showsThumbImageShadow = false
         
         $0.orientation = .horizontal
@@ -93,7 +93,7 @@ final class ManageInfoView: UIView, ViewRepresentable {
     let withdrawLabel = UILabel().then {
         $0.text = "회원탈퇴"
         $0.font = FontTheme.Title4_R14
-        $0.textColor = ColorTheme.black
+        $0.textColor = Colors.black.color
     }
     let withdrawButton = UIButton()
     
@@ -109,7 +109,7 @@ final class ManageInfoView: UIView, ViewRepresentable {
     }
     
     func setUpViews() {
-        self.backgroundColor = ColorTheme.white
+        self.backgroundColor = Colors.white.color
         addSubview(scrollView)
         scrollView.addSubview(contentView)
         // 1, 2

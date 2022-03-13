@@ -13,7 +13,7 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
         $0.textAlignment = .center
         $0.numberOfLines = 0
         $0.font = FontTheme.onboardingView
-        $0.textColor = ColorTheme.black
+        $0.textColor = Colors.black.color
     }
     let imageView = UIImageView()
     
@@ -53,7 +53,7 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
             //label에 있는 Text를 NSMutableAttributedString으로 만들어준다.
             let attributedString = NSMutableAttributedString(string: text)
             
-            attributedString.addAttribute(.foregroundColor, value: ColorTheme.brandgreen, range: (text as NSString).range(of:point))
+            attributedString.addAttribute(.foregroundColor, value: Colors.brandgreen.color, range: (text as NSString).range(of:point))
             attributedString.addAttribute(.font, value: font, range: (text as NSString).range(of: point))
             
             //최종적으로 내 label에 속성을 적용

@@ -29,7 +29,7 @@ class SeSACCardView: UIView {
         $0.spacing = 8
         $0.layer.cornerRadius = 8
         $0.layer.borderWidth = 1
-        $0.layer.borderColor = ColorTheme.gray2.cgColor
+        $0.layer.borderColor = Colors.gray2.color.cgColor
         $0.alignment = .fill
         $0.distribution = .fill
         $0.isUserInteractionEnabled = true
@@ -41,7 +41,7 @@ class SeSACCardView: UIView {
     let nicknameLabel = UILabel().then {
         $0.text = "김새싹"
         $0.font = FontTheme.Title1_M16
-        $0.textColor = ColorTheme.black
+        $0.textColor = Colors.black.color
     }
     let moreButtonImage = UIImageView().then {
         $0.image = UIImage(named: "more_arrow")
@@ -53,7 +53,7 @@ class SeSACCardView: UIView {
     let sesacTitleLabel = UILabel().then {
         $0.text = "새싹 타이틀"
         $0.font = FontTheme.Title6_R12
-        $0.textColor = ColorTheme.black
+        $0.textColor = Colors.black.color
     }
     
     var titleCollectionView: DynamicHeightCollectionView = {
@@ -75,9 +75,16 @@ class SeSACCardView: UIView {
     let sesacReviewLabel = UILabel().then {
         $0.text = "새싹 리뷰"
         $0.font = FontTheme.Title6_R12
-        $0.textColor = ColorTheme.black
+        $0.textColor = Colors.black.color
     }
-    
+    let reviewMoreButton = UIImageView().then {
+        $0.image = UIImage(named: "right_more_arrow")
+    }
+    let sesacReviewContentLabel = UILabel().then {
+        $0.text = "첫 리뷰를 기다리는 중이에요!"
+        $0.font = FontTheme.Body3_R14
+        $0.textColor = Colors.gray6.color
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -111,6 +118,8 @@ class SeSACCardView: UIView {
         seSacInfoStackView.addArrangedSubview(sesacReviewView)
         sesacReviewView.isHidden = true
         sesacReviewView.addSubview(sesacReviewLabel)
+        sesacReviewView.addSubview(reviewMoreButton)
+        sesacReviewView.addSubview(sesacReviewContentLabel)
     }
     
     private func setupConstraints() {
@@ -156,9 +165,19 @@ class SeSACCardView: UIView {
         }
         // 2-3
         sesacReviewLabel.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview()
+            $0.top.equalToSuperview()
             $0.leading.equalToSuperview().offset(16)
+            $0.trailing.equalTo(reviewMoreButton.snp.leading)
+        }
+        reviewMoreButton.snp.makeConstraints {
+            $0.width.height.equalTo(16)
             $0.trailing.equalToSuperview().offset(-16)
+            $0.centerY.equalTo(sesacReviewLabel)
+        }
+        sesacReviewContentLabel.snp.makeConstraints {
+            $0.top.equalTo(sesacReviewLabel.snp.bottom).offset(16)
+            $0.leading.equalToSuperview().offset(16)
+            $0.bottom.trailing.equalToSuperview().offset(-16)
         }
     }
 }
