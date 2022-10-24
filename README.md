@@ -40,43 +40,5 @@
 
   
 
-## ✨ 프로젝트 체크리스트
-
-- [회원 인증](https://www.notion.so/ahyeonlog/494743e0d5e9463bb42ea5b5a45c36d4)
-- [홈 탭 친구 찾기](https://www.notion.so/ahyeonlog/8d2535540fee4e4aa9acab4e383312cf) / [주변 친구들 목록](https://www.notion.so/ahyeonlog/5ebe722b29844bf09e5b331a65e16154) / 친구 매칭 기능
-- 매칭된 친구와 채팅 / 약속 취소 / 신고하기 / 리뷰 작성
-- 새싹샵
-- [마이페이지](https://www.notion.so/ahyeonlog/7c57ec43712d4beebe32087d11165f19)
-
-  
-
-## 🍎개발하면서 이런 걸 고민했어요! 🍎
-
-- **커밋 메시지**
-
-```
-- 커밋 메시지 작성 시 본문에 작업 내용을 꼭 적는다.
-- 커밋 메시지 Convention
-  - [Feat] : 기능추가 / 새로운 로직
-  - [Fix] : 버그수정
-  - [Chore] : 간단한 수정
-  - [Docs] : 문서 및 리드미 작성
-  - [Merge] : 머지, 충돌
-  - [Refactor] : 리팩토링
-```
-
-
-
-- [여러 이슈들](https://github.com/ahyeonlog/SeSACFriends/issues?q=is%3Aissue+is%3Aclosed)
-
-​    
-
-#### 🍎 기술 포스트 🍎
-
-- [RxSwift Trait](https://ahyeonlog.tistory.com/71)
-
-- [stackview 안에 dynamic height를 가지는 collectionview 그리기](https://ahyeonlog.tistory.com/70)
-- [RxSwift 도전](https://ahyeonlog.tistory.com/66)
-
 
 
